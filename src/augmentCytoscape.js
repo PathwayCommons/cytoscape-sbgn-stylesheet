@@ -14,7 +14,7 @@ module.exports = function (cytoscape, jquery) {
 
     var halfWidth = width / 2;
     var halfHeight = height / 2;
-    var cornerRadius = radius || cyMath.getRoundRectangleRadius( width, height );
+    var cornerRadius = radius || Math.min(width / 4, height / 4, 8);
 
     if( context.beginPath ){ context.beginPath(); }
 
@@ -1899,4 +1899,4 @@ module.exports = function (cytoscape, jquery) {
 
     return false;
   };
-}
+};

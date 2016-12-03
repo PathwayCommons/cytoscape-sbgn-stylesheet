@@ -1,15 +1,16 @@
 var augmentCytoscape = require('./augmentCytoscape');
-var graphStyle = require('./style/graphStyle');
+var graphStyleSheet = require('./style/graphStyleSheet');
 var util = require('./util');
 
 // SbgnRenderer needs specific libraries to work, but we dont want to
 // include them in the dist script so they need to be passed in.
 
 var SbgnRenderer = function (opts, libs) {
+  
   if (!(this instanceof SbgnRenderer)) {
     return new SbgnRenderer();
   }
-  // change this to augmentCytoscape(cytoscape, jquery, augmentedFunctions)
+  
   augmentCytoscape(libs.cytoscape, libs.jquery);
 
   this.opts = opts;
@@ -17,7 +18,7 @@ var SbgnRenderer = function (opts, libs) {
 
   this.cy = libs.cytoscape({
     container: opts.container,
-    style: graphStyle(libs.cytoscape),
+    style: graphStyleSheet(libs.cytoscape),
     boxSelectionEnabled: opts.boxSelectionEnabled || true,
     showOverlay: opts.showOverlay || false,
     minZoom: opts.minZoom || false,

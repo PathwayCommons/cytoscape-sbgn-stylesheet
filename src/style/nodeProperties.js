@@ -1,13 +1,13 @@
 
 // render node properties based on SBGN
 
-var nodeStyle = {};
+var nodeProperties = {};
 
-nodeStyle.getCloneMarkerImgPath = function () {
+nodeProperties.getCloneMarkerImgPath = function () {
   return '';
 };
 
-nodeStyle.getCyShape = function(cyNode) {
+nodeProperties.getCyShape = function(cyNode) {
   var _class = cyNode.data('class');
   if (_class.endsWith(' multimer')) {
     _class = _class.replace(' multimer', '');
@@ -31,7 +31,7 @@ nodeStyle.getCyShape = function(cyNode) {
   return 'ellipse';
 };
 
-nodeStyle.getCyArrowShape = function(cyNode) {
+nodeProperties.getCyArrowShape = function(cyNode) {
   var _class = cyNode.data('class');
   if (_class == 'necessary stimulation') {
     return 'necessary stimulation';
@@ -51,7 +51,7 @@ nodeStyle.getCyArrowShape = function(cyNode) {
   return 'none';
 };
 
-nodeStyle.getNodeContent = function(cyNode) {
+nodeProperties.getNodeContent = function(cyNode) {
   var _class = cyNode.data('class');
 
   if (_class.endsWith(' multimer')) {
@@ -103,7 +103,7 @@ nodeStyle.getNodeContent = function(cyNode) {
   return content;
 };
 
-nodeStyle.getLabelTextSize = function (cyNode) {
+nodeProperties.getLabelTextSize = function (cyNode) {
   var _class = cyNode.data('class');
 
   // Dirty legacy hack.  These types of nodes are not supposed to have labels
@@ -113,21 +113,21 @@ nodeStyle.getLabelTextSize = function (cyNode) {
   }
 
   if (_class === 'and' || _class === 'or' || _class === 'not') {
-    return nodeStyle.getDynamicLabelTextSize(cyNode, 1);
+    return nodeProperties.getDynamicLabelTextSize(cyNode, 1);
   }
 
   if (_class.endsWith('process')) {
-    return nodeStyle.getDynamicLabelTextSize(cyNode, 1.5);
+    return nodeProperties.getDynamicLabelTextSize(cyNode, 1.5);
   }
 
   if (_class === 'complex' || _class === 'compartment') {
     return 16;
   }
 
-  return nodeStyle.getDynamicLabelTextSize(cyNode);
+  return nodeProperties.getDynamicLabelTextSize(cyNode);
 };
 
-nodeStyle.getCardinalityDistance = function (cyNode) {
+nodeProperties.getCardinalityDistance = function (cyNode) {
   var srcPos = cyNode.source().position();
   var tgtPos = cyNode.target().position();
 
@@ -135,7 +135,7 @@ nodeStyle.getCardinalityDistance = function (cyNode) {
   return distance * 0.15;
 };
 
-nodeStyle.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
+nodeProperties.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
   var labelSizeCoefficient = sizeCoefficient || 1;
   
   var h = cyNode.height();
@@ -144,4 +144,4 @@ nodeStyle.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
   return textHeight;
 };
 
-module.exports = nodeStyle;
+module.exports = nodeProperties;

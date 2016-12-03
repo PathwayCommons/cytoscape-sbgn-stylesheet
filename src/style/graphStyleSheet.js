@@ -1,4 +1,4 @@
-var nodeStyle = require('./nodeStyle.js');
+var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -8,10 +8,10 @@ var graphStyleSheet = function(cytoscape) {
         .selector('node')
         .css({
           'content': function (cyNode) {
-            return nodeStyle.getNodeContent(cyNode);
+            return nodeProperties.getNodeContent(cyNode);
           },
           'font-size': function (cyNode) {
-            return nodeStyle.getLabelTextSize(cyNode);
+            return nodeProperties.getLabelTextSize(cyNode);
           },
           'text-valign': 'center',
           'text-halign': 'center',
@@ -25,7 +25,7 @@ var graphStyleSheet = function(cytoscape) {
         .selector('node[?clonemarker][class="perturbing agent"]')
         .css({
           'background-image': function () {
-            return nodeStyle.getcloneMarkerImagePath();
+            return nodeProperties.getcloneMarkerImagePath();
           },
           'background-position-x': '50%',
           'background-position-y': '100%',
@@ -42,7 +42,7 @@ var graphStyleSheet = function(cytoscape) {
         .selector('node[class]')
         .css({
           'shape': function (cyNode) {
-            return nodeStyle.getCyShape(cyNode);
+            return nodeProperties.getCyShape(cyNode);
           }
         })
         .selector('node[class="perturbing agent"]')
@@ -141,7 +141,7 @@ var graphStyleSheet = function(cytoscape) {
           },
           'source-text-margin-y': '-10',
           'source-text-offset': function (cyNode) {
-            return nodeStyle.getCardinalityDistance(cyNode);
+            return nodeProperties.getCardinalityDistance(cyNode);
           }
         })
         .selector('edge[class="production"][cardinality > 0]')
@@ -151,13 +151,13 @@ var graphStyleSheet = function(cytoscape) {
           },
           'target-text-margin-y': '-10',
           'target-text-offset': function (cyNode) {
-            return nodeStyle.getCardinalityDistance(cyNode);
+            return nodeProperties.getCardinalityDistance(cyNode);
           }
         })
         .selector('edge[class]')
         .css({
           'target-arrow-shape': function (cyNode) {
-            return nodeStyle.getCyArrowShape(cyNode);
+            return nodeProperties.getCyArrowShape(cyNode);
           },
           'source-arrow-shape': 'none'
         })
