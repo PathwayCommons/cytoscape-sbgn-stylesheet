@@ -1,4 +1,6 @@
 
+// render node properties based on SBGN
+
 var nodeStyle = {};
 
 nodeStyle.getCloneMarkerImgPath = function () {

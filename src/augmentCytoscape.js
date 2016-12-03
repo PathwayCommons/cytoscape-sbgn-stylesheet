@@ -1,9 +1,8 @@
-var augmentCytoscape;
 
 // At the core of the renderer is cytoscape.
-// We need to augment it to render biology networks
+// We need to augment it to render SBGN specific graphics
 
-module.exports = augmentCytoscape = function (cytoscape, jquery) {
+module.exports = function (cytoscape, jquery) {
   var cyMath = cytoscape.math;
   var cyBaseNodeShapes = cytoscape.baseNodeShapes;
   var cyStyleProperties = cytoscape.styleProperties;
@@ -159,7 +158,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
             'opacity': node.css('text-opacity') * node.css('opacity'),
             'width': stateWidth, 'height': stateHeight};
 
-          if (state.clazz == "state variable") {//draw ellipse
+          if (state.clazz == 'state variable') {//draw ellipse
             drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
@@ -167,7 +166,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
 
             textProp.state = state.state;
             $$.sbgn.drawStateText(context, textProp);
-          } else if (state.clazz == "unit of information") {//draw rectangle
+          } else if (state.clazz == 'unit of information') {//draw rectangle
             drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight,
@@ -352,7 +351,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       y /= (height / 2 + padding);
 
       return (Math.pow(x, 2) + Math.pow(y, 2) <= 1);
-    }
+    };
 
     // Check bottom right quarter circle
     if (checkInEllipse(x, y,
@@ -383,11 +382,11 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       return;
     }
 
-    context.fillStyle = "rgba("
-            + node._private.style["background-color"].value[0] + ","
-            + node._private.style["background-color"].value[1] + ","
-            + node._private.style["background-color"].value[2] + ","
-            + (1 * node.css('opacity') * parentOpacity) + ")";
+    context.fillStyle = 'rgba('
+            + node._private.style['background-color'].value[0] + ','
+            + node._private.style['background-color'].value[1] + ','
+            + node._private.style['background-color'].value[2] + ','
+            + (1 * node.css('opacity') * parentOpacity) + ')';
   };
 
   $$.sbgn.drawSimpleChemicalPath = function (
@@ -455,7 +454,6 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       context.globalAlpha = oldGlobalAlpha;
     }
   }
-  ;
 
   function simpleChemicalRightClone(context, centerX, centerY,
           width, height, cloneMarker, opacity) {
@@ -486,7 +484,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       context.fillStyle = oldStyle;
       context.globalAlpha = oldGlobalAlpha;
     }
-  };
+  }
 
   $$.sbgn.drawEllipsePath = function (context, x, y, width, height) {
     cyBaseNodeShapes['ellipse'].drawPath(context, x, y, width, height);
@@ -514,7 +512,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
 
   $$.sbgn.isMultimer = function (node) {
     var sbgnClass = node._private.data.class;
-    if (sbgnClass && sbgnClass.indexOf("multimer") != -1)
+    if (sbgnClass && sbgnClass.indexOf('multimer') != -1)
       return true;
     return false;
   };
@@ -576,7 +574,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
   cyStyleProperties.types.arrowShape.enums.push('necessary stimulation');
 
   $$.sbgn.registerSbgnArrowShapes = function () {
-    cyBaseArrowShapes['necessary stimulation'] = jQuery.extend({}, cyBaseArrowShapes['triangle-tee']);
+    cyBaseArrowShapes['necessary stimulation'] = jquery.extend({}, cyBaseArrowShapes['triangle-tee']);
     cyBaseArrowShapes['necessary stimulation'].pointsTee = [
       -0.18, -0.43,
       0.18, -0.43
@@ -636,10 +634,10 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes['omitted process'] = jQuery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['omitted process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['omitted process'].label = '\\\\';
 
-    cyBaseNodeShapes['uncertain process'] = jQuery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['uncertain process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['uncertain process'].label = '?';
 
     cyBaseNodeShapes["unspecified entity"] = {
@@ -706,7 +704,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes["simple chemical"] = {
+    cyBaseNodeShapes['simple chemical'] = {
       multimerPadding: 5,
       draw: function (context, node) {
         var centerX = node._private.position.x;
@@ -714,7 +712,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
 
         var width = node.width();
         var height = node.height();
-        var multimerPadding = cyBaseNodeShapes["simple chemical"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['simple chemical'].multimerPadding;
         var label = node._private.data.label;
         var padding = parseInt(node.css('border-width'));
         var cloneMarker = node._private.data.clonemarker;
@@ -760,7 +758,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var width = node.width();
         var height = node.height();
         var padding = parseInt(node.css('border-width'));
-        var multimerPadding = cyBaseNodeShapes["simple chemical"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['simple chemical'].multimerPadding;
 
         var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
@@ -770,13 +768,13 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = cyBaseNodeShapes["ellipse"].intersectLine(
+        var nodeIntersectLines = cyBaseNodeShapes['ellipse'].intersectLine(
                 centerX, centerY, width, height, x, y, padding);
 
         //check whether sbgn class includes multimer substring or not
         var multimerIntersectionLines = [];
         if ($$.sbgn.isMultimer(node)) {
-          multimerIntersectionLines = cyBaseNodeShapes["ellipse"].intersectLine(
+          multimerIntersectionLines = cyBaseNodeShapes['ellipse'].intersectLine(
                   centerX + multimerPadding, centerY + multimerPadding, width,
                   height, x, y, padding);
         }
@@ -792,9 +790,9 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var width = node.width();
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
-        var multimerPadding = cyBaseNodeShapes["simple chemical"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['simple chemical'].multimerPadding;
 
-        var nodeCheckPoint = cyBaseNodeShapes["roundrectangle"].checkPoint(x, y,
+        var nodeCheckPoint = cyBaseNodeShapes['roundrectangle'].checkPoint(x, y,
                 padding, width, height,
                 centerX, centerY);
 
@@ -804,7 +802,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         //check whether sbgn class includes multimer substring or not
         var multimerCheckPoint = false;
         if ($$.sbgn.isMultimer(node)) {
-          multimerCheckPoint = cyBaseNodeShapes["ellipse"].checkPoint(x, y,
+          multimerCheckPoint = cyBaseNodeShapes['ellipse'].checkPoint(x, y,
                   padding, width, height,
                   centerX + multimerPadding, centerY + multimerPadding);
         }
@@ -813,7 +811,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes["macromolecule"] = {
+    cyBaseNodeShapes['macromolecule'] = {
       points: cyMath.generateUnitNgonPoints(4, 0),
       multimerPadding: 5,
       draw: function (context, node) {
@@ -822,7 +820,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var label = node._private.data.label;
-        var multimerPadding = cyBaseNodeShapes["macromolecule"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['macromolecule'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
         var padding = parseInt(node.css('border-width'));
 
@@ -869,7 +867,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var width = node.width();
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
-        var multimerPadding = cyBaseNodeShapes["macromolecule"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['macromolecule'].multimerPadding;
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
         var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
@@ -908,9 +906,9 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var width = node.width() + threshold;
         var height = node.height() + threshold;
         var padding = parseInt(node.css('border-width')) / 2;
-        var multimerPadding = cyBaseNodeShapes["macromolecule"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['macromolecule'].multimerPadding;
 
-        var nodeCheckPoint = cyBaseNodeShapes["roundrectangle"].checkPoint(x, y, padding,
+        var nodeCheckPoint = cyBaseNodeShapes['roundrectangle'].checkPoint(x, y, padding,
                 width, height, centerX, centerY);
         var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
@@ -918,7 +916,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         //check whether sbgn class includes multimer substring or not
         var multimerCheckPoint = false;
         if ($$.sbgn.isMultimer(node)) {
-          multimerCheckPoint = cyBaseNodeShapes["roundrectangle"].checkPoint(x, y, padding,
+          multimerCheckPoint = cyBaseNodeShapes['roundrectangle'].checkPoint(x, y, padding,
                   width, height, centerX + multimerPadding, centerY + multimerPadding);
         }
 
@@ -978,7 +976,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes["dissociation"] = {
+    cyBaseNodeShapes['dissociation'] = {
       draw: function (context, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
@@ -1046,7 +1044,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes["complex"] = {
+    cyBaseNodeShapes['complex'] = {
       points: [],
       multimerPadding: 5,
       cornerLength: 12,
@@ -1058,11 +1056,11 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
         var centerY = node._private.position.y;
         var stateAndInfos = node._private.data.statesandinfos;
         var label = node._private.data.label;
-        var cornerLength = cyBaseNodeShapes["complex"].cornerLength;
-        var multimerPadding = cyBaseNodeShapes["complex"].multimerPadding;
+        var cornerLength = cyBaseNodeShapes['complex'].cornerLength;
+        var multimerPadding = cyBaseNodeShapes['complex'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
 
-        cyBaseNodeShapes["complex"].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyBaseNodeShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
                 width, height);
 
         //check whether sbgn class includes multimer substring or not
@@ -1070,7 +1068,7 @@ module.exports = augmentCytoscape = function (cytoscape, jquery) {
           //add multimer shape
           drawPolygonPath(context,
                   centerX + multimerPadding, centerY + multimerPadding,
-                  width, height, cyBaseNodeShapes["complex"].points);
+                  width, height, cyBaseNodeShapes['complex'].points);
           context.fill();
 
           context.stroke();

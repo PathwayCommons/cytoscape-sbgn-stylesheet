@@ -2,8 +2,7 @@ var nodeStyle = require('./nodeStyle.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
-var graphStyle;
-module.exports = graphStyle = function(cytoscape) {
+var graphStyleSheet = function(cytoscape) {
 
   return cytoscape.stylesheet()
         .selector('node')
@@ -177,4 +176,4 @@ module.exports = graphStyle = function(cytoscape) {
         });
 };
 
-module.exports = graphStyle;
+module.exports = graphStyleSheet;
