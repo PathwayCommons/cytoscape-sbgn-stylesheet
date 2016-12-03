@@ -35,7 +35,7 @@ var SbgnRenderer = function (opts, libs) {
 // this should call the cytoscape add/remove functions
 // perform a layout
 // calculate the paddings
-SbgnRenderer.renderGraph = function (cytoscapeGraphJson) {
+SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
   var cy = this.cy;
 
   cy.startBatch();
@@ -84,7 +84,7 @@ SbgnRenderer.renderGraph = function (cytoscapeGraphJson) {
   cy.endBatch();
 };
 
-SbgnRenderer.saveAsPng = function (filename) {
+SbgnRenderer.prototype.saveAsPng = function (filename) {
   var pngContent = this.cy.png({scale: 3, full: true});
 
   var b64Data = pngContent.substr(pngContent.indexOf(',') + 1);
@@ -94,7 +94,7 @@ SbgnRenderer.saveAsPng = function (filename) {
   this.libs.filesaverjs.saveAs(fileBlob, filename);
 };
 
-SbgnRenderer.saveAsJpg = function (filename) {
+SbgnRenderer.prototype.saveAsJpg = function (filename) {
   var jpgContent = this.cy.jpg({scale: 3, full: true});
 
   var b64Data = jpgContent.substr(jpgContent.indexOf(',') + 1);

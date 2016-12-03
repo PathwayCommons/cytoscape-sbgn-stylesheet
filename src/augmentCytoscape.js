@@ -255,11 +255,7 @@ module.exports = function (cytoscape, jquery) {
 
     textProp.label = textProp.label || '';
 
-    if (truncate == false) {
-      text = textProp.label;
-    } else {
-      text = truncateText(textProp, context.font);
-    }
+    text = textProp.label;
 
     context.fillText(text, textProp.centerX, textProp.centerY);
     context.fillStyle = oldStyle;
