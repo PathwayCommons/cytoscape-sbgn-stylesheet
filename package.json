@@ -1,0 +1,27 @@
+{
+  "name": "sbgn-renderer",
+  "version": "0.1.0",
+  "description": "A library that renders sbgn based xml files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "biology",
+    "canvas",
+    "render",
+    "sbgn",
+    "network",
+    "graph",
+    "visualization"
+  ],
+  "author": "Dylan Fong",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-react": "^6.7.1"
+  }
+}
