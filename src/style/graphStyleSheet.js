@@ -2,7 +2,7 @@ var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
-var graphStyleSheet = function(cytoscape) {
+var graphStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
         .selector('node')
