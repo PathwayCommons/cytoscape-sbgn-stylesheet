@@ -20,7 +20,6 @@ $(document).ready(function () {
 
     var libs = {};
     libs.jquery = $;
-    libs.cytoscape = cytoscape;
 
     var renderer = new Renderer({
         container: container
@@ -40,10 +39,5 @@ $(document).ready(function () {
         readFile(file, renderer);
       };
     })
-
-    // renderer.renderGraph(data);
-    // global.window.renderer = renderer;
-    // global.window.Renderer = Renderer;
-
 
 });
