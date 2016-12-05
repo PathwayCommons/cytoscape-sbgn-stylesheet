@@ -1,6 +1,5 @@
 var augmentCytoscape = require('./augmentCytoscape');
 var graphStyleSheet = require('./style/graphStyleSheet');
-var util = require('./util');
 
 // SbgnRenderer needs specific libraries to work, but we dont want to
 // include them in the dist script so they need to be passed in.
@@ -82,26 +81,6 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
 
   cy.endBatch();
   cy.style().update();
-};
-
-SbgnRenderer.prototype.saveAsPng = function (filename) {
-  var pngContent = this.cy.png({scale: 3, full: true});
-
-  var b64Data = pngContent.substr(pngContent.indexOf(',') + 1);
-
-  var fileBlob = util.b64toBlob(b64Data, 'image/png');
-
-  this.libs.filesaverjs.saveAs(fileBlob, filename);
-};
-
-SbgnRenderer.prototype.saveAsJpg = function (filename) {
-  var jpgContent = this.cy.jpg({scale: 3, full: true});
-
-  var b64Data = jpgContent.substr(jpgContent.indexOf(',') + 1);
-
-  var fileBlob = util.b64toBlob(b64Data, 'image/jpeg');
-
-  this.libs.filesaverjs.saveAs(fileBlob, filename);
 };
 
 module.exports = SbgnRenderer;
