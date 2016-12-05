@@ -136,8 +136,8 @@ nodeProperties.getCardinalityDistance = function (cyNode) {
 };
 
 nodeProperties.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
-  var labelSizeCoefficient = sizeCoefficient || 1.5;
-  
+  var labelSizeCoefficient = sizeCoefficient || 0.75;
+
   var h = cyNode.height();
   var textHeight = parseInt(h / 2.45) * labelSizeCoefficient;
 

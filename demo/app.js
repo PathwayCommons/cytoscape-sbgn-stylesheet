@@ -1,5 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-(function (global){
 var Renderer = require('../src/index');
 
 $(document).ready(function () {
@@ -869,12 +868,12 @@ $(document).ready(function () {
     });
 
     // renderer.renderGraph(data);
-    global.window.renderer = renderer;
-    global.window.Renderer = Renderer;
+    // global.window.renderer = renderer;
+    // global.window.Renderer = Renderer;
 
 
 });
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"../src/index":3}],2:[function(require,module,exports){
 
 // At the core of the renderer is cytoscape.
@@ -2784,11 +2783,11 @@ var util = require('./util');
 // include them in the dist script so they need to be passed in.
 
 var SbgnRenderer = function (opts, libs) {
-  
+
   if (!(this instanceof SbgnRenderer)) {
     return new SbgnRenderer();
   }
-  
+
   augmentCytoscape(libs.cytoscape, libs.jquery);
 
   this.opts = opts;
@@ -2834,8 +2833,6 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
     padding: 50
   });
 
-  var compoundPadding = this.opts.compoundPadding || 10;
-
   var nodes = cy.nodes();
   var totalPadding = 0;
   var numSimpleNodes = 0;
@@ -2848,6 +2845,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
     }
   }
 
+  var compoundPadding = this.opts.compoundPadding || 10;
   var padding = (compoundPadding / 100) * Math.floor(totalPadding / (2 * numSimpleNodes));
   if (padding < 5) {
     padding = 5;
@@ -2860,6 +2858,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
   compounds.css('padding-bottom', padding);
 
   cy.endBatch();
+  cy.style().update();
 };
 
 SbgnRenderer.prototype.saveAsPng = function (filename) {
@@ -2889,7 +2888,7 @@ var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
-var graphStyleSheet = function(cytoscape) {
+var graphStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
         .selector('node')
@@ -3204,8 +3203,8 @@ nodeProperties.getCardinalityDistance = function (cyNode) {
 };
 
 nodeProperties.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
-  var labelSizeCoefficient = sizeCoefficient || 1.5;
-  
+  var labelSizeCoefficient = sizeCoefficient || 0.75;
+
   var h = cyNode.height();
   var textHeight = parseInt(h / 2.45) * labelSizeCoefficient;
 
@@ -3213,6 +3212,7 @@ nodeProperties.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
 };
 
 module.exports = nodeProperties;
+
 },{}],6:[function(require,module,exports){
 /* global Uint8Array */
 

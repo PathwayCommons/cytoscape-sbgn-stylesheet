@@ -867,8 +867,8 @@ $(document).ready(function () {
     });
 
     // renderer.renderGraph(data);
-    global.window.renderer = renderer;
-    global.window.Renderer = Renderer;
+    // global.window.renderer = renderer;
+    // global.window.Renderer = Renderer;
 
 
 });

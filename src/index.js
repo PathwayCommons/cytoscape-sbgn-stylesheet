@@ -6,11 +6,11 @@ var util = require('./util');
 // include them in the dist script so they need to be passed in.
 
 var SbgnRenderer = function (opts, libs) {
-  
+
   if (!(this instanceof SbgnRenderer)) {
     return new SbgnRenderer();
   }
-  
+
   augmentCytoscape(libs.cytoscape, libs.jquery);
 
   this.opts = opts;
@@ -56,8 +56,6 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
     padding: 50
   });
 
-  var compoundPadding = this.opts.compoundPadding || 10;
-
   var nodes = cy.nodes();
   var totalPadding = 0;
   var numSimpleNodes = 0;
@@ -70,6 +68,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
     }
   }
 
+  var compoundPadding = this.opts.compoundPadding || 10;
   var padding = (compoundPadding / 100) * Math.floor(totalPadding / (2 * numSimpleNodes));
   if (padding < 5) {
     padding = 5;
@@ -82,6 +81,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
   compounds.css('padding-bottom', padding);
 
   cy.endBatch();
+  cy.style().update();
 };
 
 SbgnRenderer.prototype.saveAsPng = function (filename) {
