@@ -23,6 +23,7 @@
   "author": "Dylan Fong",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^13.1.1",
     "chai": "^3.5.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",

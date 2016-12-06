@@ -2,7 +2,14 @@ var extend = require('extend');
 
 
 // At the core of the renderer is cytoscape.
-// We need to augment it to render SBGN specific graphics
+// We need to augment it to render SBGN specific graphics.
+
+// At a birds eye view, these are functions are designed to
+// write sbgn shapes such as polygons, square boxes, arrows, etc. to the
+// canvas.
+
+// At the conceptual level this is bad.  It exposes cytoscape internals
+// and modifies the cytoscape object itself.
 
 module.exports = function (cytoscape) {
   var cyMath = cytoscape.math;

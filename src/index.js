@@ -8,6 +8,8 @@ var SbgnRenderer = function (opts) {
     return new SbgnRenderer();
   }
 
+  // we must augment cytoscape to allow us to render sbgn specific
+  // graphics
   augmentCytoscape(sbgnCytoscape);
 
   this.opts = opts;
