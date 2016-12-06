@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.sbgnRenderer = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 },{}],2:[function(require,module,exports){
 exports.endianness = function () { return 'LE' };
@@ -458,899 +458,6 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],5:[function(require,module,exports){
-var Renderer = require('../src/index');
-var convertSbgnml = require('sbgnml-to-cytoscape');
-var defaultData = require('./test-data');
-
-var readFile = function (file, renderer) {
-  var reader = new FileReader();
-
-  reader.onload = function (e) {
-    var graph = convertSbgnml(e.target.result);
-    renderer.renderGraph(graph);
-
-  };
-
-  reader.readAsText(file);
-};
-
-$(document).ready(function () {
-
-    var container = $('#sbgn-network-container');
-
-    // var libs = {};
-    // libs.jquery = $;
-
-    var renderer = new Renderer({
-        container: container
-    });
-
-    renderer.renderGraph(defaultData);
-
-
-    $('#graph-load').click(function () {
-      $('#graph-input').trigger('click');
-    });
-
-    $('#graph-input').change(function () {
-      if ($(this).val() != '') {
-        var file = this.files[0];
-
-        readFile(file, renderer);
-      };
-    })
-
-});
-
-},{"../src/index":119,"./test-data":6,"sbgnml-to-cytoscape":116}],6:[function(require,module,exports){
-var data = {
-"nodes": [
-    {
-        "data": {
-            "id": "glyph4",
-            "bbox": {
-                "x": 318.1589165885067,
-                "y": 162.59898679973332,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ATP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph5",
-            "bbox": {
-                "x": 368.7150698032765,
-                "y": 353.3425311332147,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ADP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph7",
-            "bbox": {
-                "x": 423.4601247086921,
-                "y": 103.68144699737059,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ATP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph6",
-            "bbox": {
-                "x": 514.8286564804162,
-                "y": 40.16169718646756,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ADP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph10",
-            "bbox": {
-                "x": 588.775693273037,
-                "y": 410.5318087906144,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ATP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph9",
-            "bbox": {
-                "x": 497.6859428037237,
-                "y": 352.2241646137692,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ADP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph2",
-            "bbox": {
-                "x": 467.18302213209245,
-                "y": 240.2873064873903,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "RAF",
-            "statesandinfos": [
-                {
-                    "id": "glyph2a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "P"
-                    },
-                    "bbox": {
-                        "x": 0,
-                        "y": 50,
-                        "w": "25.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph18",
-            "bbox": {
-                "x": 944.040949176361,
-                "y": 284.0657446868406,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ADP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph16",
-            "bbox": {
-                "x": 689.1314585303767,
-                "y": 482.44467100584745,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ADP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph15",
-            "bbox": {
-                "x": 882.8443326294546,
-                "y": 482.5246268128043,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ATP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph17",
-            "bbox": {
-                "x": 759.9810408902129,
-                "y": 220.58540441014577,
-                "w": "60.0",
-                "h": "60.0"
-            },
-            "class": "simple chemical",
-            "label": "ATP",
-            "statesandinfos": [],
-            "parent": "",
-            "clonemarker": true,
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph12",
-            "bbox": {
-                "x": 722.5240088762721,
-                "y": 352.770069365478,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "MEK",
-            "statesandinfos": [
-                {
-                    "id": "glyph12a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "2P"
-                    },
-                    "bbox": {
-                        "x": 0,
-                        "y": 50,
-                        "w": "32.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph19",
-            "bbox": {
-                "x": 887.0312955929699,
-                "y": 188.01104320899924,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "ERK",
-            "statesandinfos": [
-                {
-                    "id": "glyph19a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "2P"
-                    },
-                    "bbox": {
-                        "x": -25,
-                        "y": 50,
-                        "w": "32.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph20",
-            "bbox": {
-                "x": 971.0567176507191,
-                "y": 84.6685272739719,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "tag",
-            "label": "ERK",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph1",
-            "bbox": {
-                "x": 213.55056132706864,
-                "y": 236.18933213306605,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "RAS",
-            "statesandinfos": [
-                {
-                    "id": "glyph1a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "active"
-                    },
-                    "bbox": {
-                        "x": 0,
-                        "y": 50,
-                        "w": "50.0",
-                        "h": "26.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph0",
-            "bbox": {
-                "x": 60.134389512288635,
-                "y": 200.02587224541605,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "tag",
-            "label": "RAS",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph24",
-            "bbox": {
-                "x": 607.5584862953788,
-                "y": 216.36466489184716,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "MEK",
-            "statesandinfos": [
-                {
-                    "id": "glyph24a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "P"
-                    },
-                    "bbox": {
-                        "x": -25,
-                        "y": 50,
-                        "w": "25.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph11",
-            "bbox": {
-                "x": 592.6185230656652,
-                "y": 313.4502085225929,
-                "w": "20.0",
-                "h": "20.0"
-            },
-            "class": "process",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph25",
-            "bbox": {
-                "x": 247.4431965319236,
-                "y": 338.29565236558483,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "RAF",
-            "statesandinfos": [
-                {
-                    "id": "glyph25a",
-                    "clazz": "state variable",
-                    "state": {},
-                    "bbox": {
-                        "x": 0,
-                        "y": 50,
-                        "w": "20.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph3",
-            "bbox": {
-                "x": 337.77918025112933,
-                "y": 259.13454532846924,
-                "w": "20.0",
-                "h": "20.0"
-            },
-            "class": "process",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph23",
-            "bbox": {
-                "x": 631.3665810796247,
-                "y": 93.61445750305336,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "MEK",
-            "statesandinfos": [
-                {
-                    "id": "glyph23a",
-                    "clazz": "state variable",
-                    "state": {},
-                    "bbox": {
-                        "x": -25,
-                        "y": 50,
-                        "w": "20.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph8",
-            "bbox": {
-                "x": 516.9252315842282,
-                "y": 142.01290840429613,
-                "w": "20.0",
-                "h": "20.0"
-            },
-            "class": "process",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph22",
-            "bbox": {
-                "x": 786.1602768573573,
-                "y": 557.4534904328991,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "ERK",
-            "statesandinfos": [
-                {
-                    "id": "glyph22a",
-                    "clazz": "state variable",
-                    "state": {},
-                    "bbox": {
-                        "x": -25,
-                        "y": 50,
-                        "w": "20.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph13",
-            "bbox": {
-                "x": 844.4300288939096,
-                "y": 284.87165823750354,
-                "w": "20.0",
-                "h": "20.0"
-            },
-            "class": "process",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph14",
-            "bbox": {
-                "x": 783.7402046808443,
-                "y": 453.1501505501591,
-                "w": "20.0",
-                "h": "20.0"
-            },
-            "class": "process",
-            "statesandinfos": [],
-            "parent": "",
-            "ports": []
-        }
-    },
-    {
-        "data": {
-            "id": "glyph21",
-            "bbox": {
-                "x": 872.1517334162531,
-                "y": 378.5680972732039,
-                "w": "100.0",
-                "h": "60.0"
-            },
-            "class": "macromolecule",
-            "label": "ERK",
-            "statesandinfos": [
-                {
-                    "id": "glyph21a",
-                    "clazz": "state variable",
-                    "state": {
-                        "value": "P"
-                    },
-                    "bbox": {
-                        "x": -25,
-                        "y": 50,
-                        "w": "25.0",
-                        "h": "22.0"
-                    }
-                }
-            ],
-            "parent": "",
-            "ports": []
-        }
-    }
-],
-"edges": [
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph3",
-            "target": "glyph2",
-            "portsource": "glyph3",
-            "porttarget": "glyph2"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph4",
-            "target": "glyph3",
-            "portsource": "glyph4",
-            "porttarget": "glyph3"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph3",
-            "target": "glyph5",
-            "portsource": "glyph3",
-            "porttarget": "glyph5"
-        }
-    },
-    {
-        "data": {
-            "class": "catalysis",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph1",
-            "target": "glyph3",
-            "portsource": "glyph1",
-            "porttarget": "glyph3"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph7",
-            "target": "glyph8",
-            "portsource": "glyph7",
-            "porttarget": "glyph8"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph8",
-            "target": "glyph6",
-            "portsource": "glyph8",
-            "porttarget": "glyph6"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph10",
-            "target": "glyph11",
-            "portsource": "glyph10",
-            "porttarget": "glyph11"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph11",
-            "target": "glyph12",
-            "portsource": "glyph11",
-            "porttarget": "glyph12"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph11",
-            "target": "glyph9",
-            "portsource": "glyph11",
-            "porttarget": "glyph9"
-        }
-    },
-    {
-        "data": {
-            "class": "catalysis",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph2",
-            "target": "glyph11",
-            "portsource": "glyph2",
-            "porttarget": "glyph11"
-        }
-    },
-    {
-        "data": {
-            "class": "catalysis",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph2",
-            "target": "glyph8",
-            "portsource": "glyph2",
-            "porttarget": "glyph8"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph13",
-            "target": "glyph19",
-            "portsource": "glyph13",
-            "porttarget": "glyph19"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph13",
-            "target": "glyph18",
-            "portsource": "glyph13",
-            "porttarget": "glyph18"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph14",
-            "target": "glyph16",
-            "portsource": "glyph14",
-            "porttarget": "glyph16"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph15",
-            "target": "glyph14",
-            "portsource": "glyph15",
-            "porttarget": "glyph14"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph17",
-            "target": "glyph13",
-            "portsource": "glyph17",
-            "porttarget": "glyph13"
-        }
-    },
-    {
-        "data": {
-            "class": "catalysis",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph12",
-            "target": "glyph13",
-            "portsource": "glyph12",
-            "porttarget": "glyph13"
-        }
-    },
-    {
-        "data": {
-            "class": "catalysis",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph12",
-            "target": "glyph14",
-            "portsource": "glyph12",
-            "porttarget": "glyph14"
-        }
-    },
-    {
-        "data": {
-            "class": "equivalence arc",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph19",
-            "target": "glyph20",
-            "portsource": "glyph19",
-            "porttarget": "glyph20"
-        }
-    },
-    {
-        "data": {
-            "class": "equivalence arc",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph1",
-            "target": "glyph0",
-            "portsource": "glyph1",
-            "porttarget": "glyph0"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph8",
-            "target": "glyph24",
-            "portsource": "glyph8",
-            "porttarget": "glyph24"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph24",
-            "target": "glyph11",
-            "portsource": "glyph24",
-            "porttarget": "glyph11"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph25",
-            "target": "glyph3",
-            "portsource": "glyph25",
-            "porttarget": "glyph3"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph23",
-            "target": "glyph8",
-            "portsource": "glyph23",
-            "porttarget": "glyph8"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph22",
-            "target": "glyph14",
-            "portsource": "glyph22",
-            "porttarget": "glyph14"
-        }
-    },
-    {
-        "data": {
-            "class": "consumption",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph21",
-            "target": "glyph13",
-            "portsource": "glyph21",
-            "porttarget": "glyph13"
-        }
-    },
-    {
-        "data": {
-            "class": "production",
-            "bendPointPositions": [],
-            "cardinality": 0,
-            "source": "glyph14",
-            "target": "glyph21",
-            "portsource": "glyph14",
-            "porttarget": "glyph21"
-        }
-    }
-]
-};
-
-module.exports = data;
-
-},{}],7:[function(require,module,exports){
 
 /*!
 
@@ -1380,7 +487,7 @@ SOFTWARE.
 
 'use strict';
 
-},{}],8:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var util = require( './util' );
@@ -1617,7 +724,7 @@ anifn.complete = anifn.completed;
 
 module.exports = Animation;
 
-},{"./is":89,"./promise":92,"./util":107}],9:[function(require,module,exports){
+},{"./is":87,"./promise":90,"./util":105}],7:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1815,7 +922,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":89}],10:[function(require,module,exports){
+},{"../../is":87}],8:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2011,7 +1118,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":89,"../../util":107}],11:[function(require,module,exports){
+},{"../../is":87,"../../util":105}],9:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2205,7 +1312,7 @@ elesfn.bc = elesfn.betweennessCentrality;
 
 module.exports = elesfn;
 
-},{"../../heap":87,"../../is":89}],12:[function(require,module,exports){
+},{"../../heap":85,"../../is":87}],10:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2347,7 +1454,7 @@ elesfn.dfs = elesfn.depthFirstSearch;
 
 module.exports = elesfn;
 
-},{"../../is":89}],13:[function(require,module,exports){
+},{"../../is":87}],11:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2479,7 +1586,7 @@ elesfn.ccn = elesfn.closenessCentralityNormalised = elesfn.closenessCentralityNo
 
 module.exports = elesfn;
 
-},{"../../is":89}],14:[function(require,module,exports){
+},{"../../is":87}],12:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2677,7 +1784,7 @@ elesfn.dcn = elesfn.degreeCentralityNormalised = elesfn.degreeCentralityNormaliz
 
 module.exports = elesfn;
 
-},{"../../is":89,"../../util":107}],15:[function(require,module,exports){
+},{"../../is":87,"../../util":105}],13:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2810,7 +1917,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../heap":87,"../../is":89}],16:[function(require,module,exports){
+},{"../../heap":85,"../../is":87}],14:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -3006,7 +2113,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":89}],17:[function(require,module,exports){
+},{"../../is":87}],15:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -3031,7 +2138,7 @@ var elesfn = {};
 
 module.exports = elesfn;
 
-},{"../../util":107,"./a-star":9,"./bellman-ford":10,"./betweenness-centrality":11,"./bfs-dfs":12,"./closeness-centrality":13,"./degree-centrality":14,"./dijkstra":15,"./floyd-warshall":16,"./kerger-stein":18,"./kruskal":19,"./page-rank":20}],18:[function(require,module,exports){
+},{"../../util":105,"./a-star":7,"./bellman-ford":8,"./betweenness-centrality":9,"./bfs-dfs":10,"./closeness-centrality":11,"./degree-centrality":12,"./dijkstra":13,"./floyd-warshall":14,"./kerger-stein":16,"./kruskal":17,"./page-rank":18}],16:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -3205,7 +2312,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../util":107}],19:[function(require,module,exports){
+},{"../../util":105}],17:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -3271,7 +2378,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":89}],20:[function(require,module,exports){
+},{"../../is":87}],18:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -3454,7 +2561,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":89}],21:[function(require,module,exports){
+},{"../../is":87}],19:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -3471,7 +2578,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../define":50}],22:[function(require,module,exports){
+},{"../define":48}],20:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -3620,7 +2727,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../util":107}],23:[function(require,module,exports){
+},{"../util":105}],21:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -3691,7 +2798,7 @@ elesfn.has = elesfn.contains;
 
 module.exports = elesfn;
 
-},{}],24:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -3811,7 +2918,7 @@ elesfn.ancestors = elesfn.parents;
 
 module.exports = elesfn;
 
-},{}],25:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -3900,7 +3007,7 @@ fn.removeAttr = fn.removeData;
 
 module.exports = elesfn;
 
-},{"../define":50}],26:[function(require,module,exports){
+},{"../define":48}],24:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -4023,7 +3130,7 @@ util.extend( elesfn, {
 
 module.exports = elesfn;
 
-},{"../util":107}],27:[function(require,module,exports){
+},{"../util":105}],25:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -4986,7 +4093,7 @@ fn.renderedBoundingbox = fn.renderedBoundingBox;
 
 module.exports = elesfn;
 
-},{"../define":50,"../extensions/renderer/base/node-shapes":68,"../is":89,"../math":91,"../sbgn":93,"../util":107}],28:[function(require,module,exports){
+},{"../define":48,"../extensions/renderer/base/node-shapes":66,"../is":87,"../math":89,"../sbgn":91,"../util":105}],26:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -5089,7 +4196,7 @@ var Element = function( cy, params, restore ){
 
 module.exports = Element;
 
-},{"../is":89,"../util":107}],29:[function(require,module,exports){
+},{"../is":87,"../util":105}],27:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -5120,7 +4227,7 @@ define.eventAliasesOn( elesfn );
 
 module.exports = elesfn;
 
-},{"../define":50}],30:[function(require,module,exports){
+},{"../define":48}],28:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -5505,7 +4612,7 @@ fn.complement = fn.abscomp = fn.absoluteComplement;
 
 module.exports = elesfn;
 
-},{"../is":89,"../selector":94}],31:[function(require,module,exports){
+},{"../is":87,"../selector":92}],29:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -5537,7 +4644,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{}],32:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -6271,7 +5378,7 @@ elesfn.move = function( struct ){
 
 module.exports = Collection;
 
-},{"../is":89,"../util":107,"./algorithms":17,"./animation":21,"./class":22,"./comparators":23,"./compounds":24,"./data":25,"./degree":26,"./dimensions":27,"./element":28,"./events":29,"./filter":30,"./group":31,"./index":32,"./iteration":33,"./layout":34,"./style":35,"./switch-functions":36,"./traversing":37}],33:[function(require,module,exports){
+},{"../is":87,"../util":105,"./algorithms":15,"./animation":19,"./class":20,"./comparators":21,"./compounds":22,"./data":23,"./degree":24,"./dimensions":25,"./element":26,"./events":27,"./filter":28,"./group":29,"./index":30,"./iteration":31,"./layout":32,"./style":33,"./switch-functions":34,"./traversing":35}],31:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -6408,7 +5515,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../is":89,"./zsort":38}],34:[function(require,module,exports){
+},{"../is":87,"./zsort":36}],32:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -6532,7 +5639,7 @@ elesfn.createLayout = elesfn.makeLayout;
 
 module.exports = elesfn;
 
-},{"../is":89,"../promise":92,"../util":107}],35:[function(require,module,exports){
+},{"../is":87,"../promise":90,"../util":105}],33:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -6845,7 +5952,7 @@ elesfn.pstyle = elesfn.parsedStyle;
 
 module.exports = elesfn;
 
-},{"../is":89}],36:[function(require,module,exports){
+},{"../is":87}],34:[function(require,module,exports){
 'use strict';
 
 var elesfn = {};
@@ -6998,7 +6105,7 @@ elesfn.inactive = function(){
 
 module.exports = elesfn;
 
-},{}],37:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -7439,7 +6546,7 @@ util.extend( elesfn, {
 
 module.exports = elesfn;
 
-},{"../is":89,"../util":107}],38:[function(require,module,exports){
+},{"../is":87,"../util":105}],36:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7498,7 +6605,7 @@ var zIndexSort = function( a, b ){
 
 module.exports = zIndexSort;
 
-},{}],39:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -7625,7 +6732,7 @@ var corefn = {
 
 module.exports = corefn;
 
-},{"../collection":32,"../collection/element":28,"../is":89,"../util":107}],40:[function(require,module,exports){
+},{"../collection":30,"../collection/element":26,"../is":87,"../util":105}],38:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -8224,7 +7331,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{"../define":50,"../is":89,"../util":107}],41:[function(require,module,exports){
+},{"../define":48,"../is":87,"../util":105}],39:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -8241,7 +7348,7 @@ define.eventAliasesOn( corefn );
 
 module.exports = corefn;
 
-},{"../define":50}],42:[function(require,module,exports){
+},{"../define":48}],40:[function(require,module,exports){
 'use strict';
 
 var corefn = ({
@@ -8268,7 +7375,7 @@ corefn.jpeg = corefn.jpg;
 
 module.exports = corefn;
 
-},{}],43:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -8685,7 +7792,7 @@ util.extend( corefn, {
 
 module.exports = Core;
 
-},{"../collection":32,"../define":50,"../is":89,"../promise":92,"../util":107,"../window":114,"./add-remove":39,"./animation":40,"./events":41,"./export":42,"./layout":44,"./notification":45,"./renderer":46,"./search":47,"./style":48,"./viewport":49}],44:[function(require,module,exports){
+},{"../collection":30,"../define":48,"../is":87,"../promise":90,"../util":105,"../window":112,"./add-remove":37,"./animation":38,"./events":39,"./export":40,"./layout":42,"./notification":43,"./renderer":44,"./search":45,"./style":46,"./viewport":47}],42:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -8743,7 +7850,7 @@ corefn.createLayout = corefn.makeLayout;
 
 module.exports = corefn;
 
-},{"../is":89,"../util":107}],45:[function(require,module,exports){
+},{"../is":87,"../util":105}],43:[function(require,module,exports){
 'use strict';
 
 var corefn = ({
@@ -8861,7 +7968,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{}],46:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -8946,7 +8053,7 @@ corefn.invalidateDimensions = corefn.resize;
 
 module.exports = corefn;
 
-},{"../util":107}],47:[function(require,module,exports){
+},{"../util":105}],45:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -9019,7 +8126,7 @@ corefn.elements = corefn.filter = corefn.$;
 
 module.exports = corefn;
 
-},{"../collection":32,"../is":89}],48:[function(require,module,exports){
+},{"../collection":30,"../is":87}],46:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -9059,7 +8166,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{"../is":89,"../style":99}],49:[function(require,module,exports){
+},{"../is":87,"../style":97}],47:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -9605,7 +8712,7 @@ corefn.autoungrabifyNodes = corefn.autoungrabify;
 
 module.exports = corefn;
 
-},{"../is":89}],50:[function(require,module,exports){
+},{"../is":87}],48:[function(require,module,exports){
 'use strict';
 
 // use this module to cherry pick functions into your prototype
@@ -10431,7 +9538,7 @@ var define = {
 
 module.exports = define;
 
-},{"./animation":8,"./event":51,"./is":89,"./promise":92,"./selector":94,"./util":107}],51:[function(require,module,exports){
+},{"./animation":6,"./event":49,"./is":87,"./promise":90,"./selector":92,"./util":105}],49:[function(require,module,exports){
 'use strict';
 
 /*!
@@ -10536,7 +9643,7 @@ Event.prototype = {
 
 module.exports = Event;
 
-},{}],52:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 var util = require( './util' );
@@ -10749,7 +9856,7 @@ incExts.forEach( function( group ){
 
 module.exports = extension;
 
-},{"./collection":32,"./core":43,"./define":50,"./extensions":53,"./is":89,"./util":107}],53:[function(require,module,exports){
+},{"./collection":30,"./core":41,"./define":48,"./extensions":51,"./is":87,"./util":105}],51:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -10764,7 +9871,7 @@ module.exports = [
   }
 ];
 
-},{"./layout":59,"./renderer":84}],54:[function(require,module,exports){
+},{"./layout":57,"./renderer":82}],52:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -11199,7 +10306,7 @@ BreadthFirstLayout.prototype.run = function(){
 
 module.exports = BreadthFirstLayout;
 
-},{"../../is":89,"../../math":91,"../../util":107}],55:[function(require,module,exports){
+},{"../../is":87,"../../math":89,"../../util":105}],53:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -11304,7 +10411,7 @@ CircleLayout.prototype.run = function(){
 
 module.exports = CircleLayout;
 
-},{"../../is":89,"../../math":91,"../../util":107}],56:[function(require,module,exports){
+},{"../../is":87,"../../math":89,"../../util":105}],54:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -11504,7 +10611,7 @@ ConcentricLayout.prototype.run = function(){
 
 module.exports = ConcentricLayout;
 
-},{"../../math":91,"../../util":107}],57:[function(require,module,exports){
+},{"../../math":89,"../../util":105}],55:[function(require,module,exports){
 'use strict';
 
 /*
@@ -12845,7 +11952,7 @@ var refreshPositions = function( layoutInfo, cy, options ){
 
 module.exports = CoseLayout;
 
-},{"../../is":89,"../../math":91,"../../thread":105,"../../util":107}],58:[function(require,module,exports){
+},{"../../is":87,"../../math":89,"../../thread":103,"../../util":105}],56:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -13092,7 +12199,7 @@ GridLayout.prototype.run = function(){
 
 module.exports = GridLayout;
 
-},{"../../math":91,"../../util":107}],59:[function(require,module,exports){
+},{"../../math":89,"../../util":105}],57:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -13106,7 +12213,7 @@ module.exports = [
   { name: 'random', impl: require( './random' ) }
 ];
 
-},{"./breadthfirst":54,"./circle":55,"./concentric":56,"./cose":57,"./grid":58,"./null":60,"./preset":61,"./random":62}],60:[function(require,module,exports){
+},{"./breadthfirst":52,"./circle":53,"./concentric":54,"./cose":55,"./grid":56,"./null":58,"./preset":59,"./random":60}],58:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -13160,7 +12267,7 @@ NullLayout.prototype.stop = function(){
 
 module.exports = NullLayout;
 
-},{"../../util":107}],61:[function(require,module,exports){
+},{"../../util":105}],59:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -13223,7 +12330,7 @@ PresetLayout.prototype.run = function(){
 
 module.exports = PresetLayout;
 
-},{"../../is":89,"../../util":107}],62:[function(require,module,exports){
+},{"../../is":87,"../../util":105}],60:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -13268,7 +12375,7 @@ RandomLayout.prototype.run = function(){
 
 module.exports = RandomLayout;
 
-},{"../../math":91,"../../util":107}],63:[function(require,module,exports){
+},{"../../math":89,"../../util":105}],61:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -13544,7 +12651,7 @@ BRp.registerArrowShapes = function(){
 
 module.exports = BRp;
 
-},{"../../../is":89,"../../../math":91,"../../../sbgn":93,"../../../util":107}],64:[function(require,module,exports){
+},{"../../../is":87,"../../../math":89,"../../../sbgn":91,"../../../util":105}],62:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -15720,7 +14827,7 @@ BRp.getArrowWidth = BRp.getArrowHeight = function( edgeWidth ){
 
 module.exports = BRp;
 
-},{"../../../collection/zsort":38,"../../../is":89,"../../../math":91,"../../../sbgn":93,"../../../util":107}],65:[function(require,module,exports){
+},{"../../../collection/zsort":36,"../../../is":87,"../../../math":89,"../../../sbgn":91,"../../../util":105}],63:[function(require,module,exports){
 'use strict';
 
 var BRp = {};
@@ -15758,7 +14865,7 @@ BRp.getCachedImage = function( url, crossOrigin, onLoad ){
 
 module.exports = BRp;
 
-},{}],66:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -15937,7 +15044,7 @@ BRp.destroy = function(){
 
 module.exports = BR;
 
-},{"../../../is":89,"../../../util":107,"./arrow-shapes":63,"./coord-ele-math":64,"./images":65,"./load-listeners":67,"./node-shapes":68,"./redraw":69}],67:[function(require,module,exports){
+},{"../../../is":87,"../../../util":105,"./arrow-shapes":61,"./coord-ele-math":62,"./images":63,"./load-listeners":65,"./node-shapes":66,"./redraw":67}],65:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -17917,7 +17024,7 @@ BRp.load = function(){
 
 module.exports = BRp;
 
-},{"../../../event":51,"../../../is":89,"../../../math":91,"../../../util":107}],68:[function(require,module,exports){
+},{"../../../event":49,"../../../is":87,"../../../math":89,"../../../util":105}],66:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -18172,7 +17279,7 @@ BRp.registerNodeShapes = function(){
 
 module.exports = BRp;
 
-},{"../../../math":91,"../../../sbgn":93}],69:[function(require,module,exports){
+},{"../../../math":89,"../../../sbgn":91}],67:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -18277,7 +17384,7 @@ BRp.startRenderLoop = function(){
 
 module.exports = BRp;
 
-},{"../../../util":107}],70:[function(require,module,exports){
+},{"../../../util":105}],68:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -18337,7 +17444,7 @@ CRp.arrowShapeImpl = function( name ){
 
 module.exports = CRp;
 
-},{}],71:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -18625,7 +17732,7 @@ CRp.drawArrowShape = function( edge, arrowType, context, fill, edgeWidth, shape,
 
 module.exports = CRp;
 
-},{}],72:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -18712,7 +17819,7 @@ CRp.drawLayeredElements = function( context, eles, pxRatio, extent ){
 
 module.exports = CRp;
 
-},{"../../../math":91}],73:[function(require,module,exports){
+},{"../../../math":89}],71:[function(require,module,exports){
 'use strict';
 var sbgn = require( '../../../sbgn' );
 
@@ -18881,7 +17988,7 @@ CRp.drawInscribedImage = function( context, img, node ){
 
 module.exports = CRp;
 
-},{"../../../sbgn":93}],74:[function(require,module,exports){
+},{"../../../sbgn":91}],72:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -19258,7 +18365,7 @@ CRp.drawText = function( context, ele, prefix ){
 
 module.exports = CRp;
 
-},{"../../../math":91,"../../../util":107}],75:[function(require,module,exports){
+},{"../../../math":89,"../../../util":105}],73:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -19631,7 +18738,7 @@ CRp.drawPie = function( context, node, nodeOpacity, pos ){
 
 module.exports = CRp;
 
-},{"../../../is":89,"../../../sbgn":93}],76:[function(require,module,exports){
+},{"../../../is":87,"../../../sbgn":91}],74:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -20248,7 +19355,7 @@ CRp.render = function( options ){
 
 module.exports = CRp;
 
-},{"../../../util":107}],77:[function(require,module,exports){
+},{"../../../util":105}],75:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -20339,7 +19446,7 @@ CRp.drawEllipsePath = function( context, centerX, centerY, width, height ){
 
 module.exports = CRp;
 
-},{"../../../math":91}],78:[function(require,module,exports){
+},{"../../../math":89}],76:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -20835,7 +19942,7 @@ ETCp.setupDequeueing = defs.setupDequeueing({
 
 module.exports = ElementTextureCache;
 
-},{"../../../heap":87,"../../../math":91,"../../../util":107,"./texture-cache-defs":83}],79:[function(require,module,exports){
+},{"../../../heap":85,"../../../math":89,"../../../util":105,"./texture-cache-defs":81}],77:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -20983,7 +20090,7 @@ CRp.jpg = function( options ){
 
 module.exports = CRp;
 
-},{"../../../is":89}],80:[function(require,module,exports){
+},{"../../../is":87}],78:[function(require,module,exports){
 /*
 The canvas renderer was written by Yue Dong.
 
@@ -21134,7 +20241,7 @@ CRp.usePaths = function(){
 
 module.exports = CR;
 
-},{"../../../is":89,"../../../util":107,"./arrow-shapes":70,"./drawing-edges":71,"./drawing-elements":72,"./drawing-images":73,"./drawing-label-text":74,"./drawing-nodes":75,"./drawing-redraw":76,"./drawing-shapes":77,"./ele-texture-cache":78,"./export-image":79,"./layered-texture-cache":81,"./node-shapes":82}],81:[function(require,module,exports){
+},{"../../../is":87,"../../../util":105,"./arrow-shapes":68,"./drawing-edges":69,"./drawing-elements":70,"./drawing-images":71,"./drawing-label-text":72,"./drawing-nodes":73,"./drawing-redraw":74,"./drawing-shapes":75,"./ele-texture-cache":76,"./export-image":77,"./layered-texture-cache":79,"./node-shapes":80}],79:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -21824,7 +20931,7 @@ LTCp.setupDequeueing = defs.setupDequeueing({
 
 module.exports = LayeredTextureCache;
 
-},{"../../../heap":87,"../../../is":89,"../../../math":91,"../../../util":107,"./texture-cache-defs":83}],82:[function(require,module,exports){
+},{"../../../heap":85,"../../../is":87,"../../../math":89,"../../../util":105,"./texture-cache-defs":81}],80:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -21842,7 +20949,7 @@ CRp.nodeShapeImpl = function( name, context, centerX, centerY, width, height, po
 
 module.exports = CRp;
 
-},{}],83:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -21931,7 +21038,7 @@ module.exports = {
   }
 };
 
-},{"../../../util":107}],84:[function(require,module,exports){
+},{"../../../util":105}],82:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -21940,7 +21047,7 @@ module.exports = [
   { name: 'canvas', impl: require( './canvas' ) }
 ];
 
-},{"./base":66,"./canvas":80,"./null":85}],85:[function(require,module,exports){
+},{"./base":64,"./canvas":78,"./null":83}],83:[function(require,module,exports){
 'use strict';
 
 function NullRenderer( options ){
@@ -21958,7 +21065,7 @@ NullRenderer.prototype = {
 
 module.exports = NullRenderer;
 
-},{}],86:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 /*! Weaver licensed under MIT (https://tldrlegal.com/license/mit-license), copyright Max Franz */
 
 'use strict';
@@ -22283,7 +21390,7 @@ define.eventAliasesOn( fabfn );
 
 module.exports = Fabric;
 
-},{"./define":50,"./is":89,"./promise":92,"./thread":105,"./util":107,"os":2}],87:[function(require,module,exports){
+},{"./define":48,"./is":87,"./promise":90,"./thread":103,"./util":105,"os":2}],85:[function(require,module,exports){
 /*!
 Ported by Xueqiao Xu <xueqiaoxu@gmail.com>;
 
@@ -22664,7 +21771,7 @@ Heap = (function(){
 
 module.exports = Heap;
 
-},{}],88:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 'use strict';
 
 require('./-preamble');
@@ -22727,7 +21834,7 @@ cytoscape.baseArrowShapes = baseArrowShapes;
 cytoscape.sbgn = sbgn;
 
 module.exports = cytoscape;
-},{"./-preamble":7,"./core":43,"./extension":52,"./extensions/renderer/base/arrow-shapes":63,"./extensions/renderer/base/node-shapes":68,"./fabric":86,"./is":89,"./jquery-plugin":90,"./math":91,"./sbgn":93,"./style/properties":102,"./stylesheet":104,"./thread":105,"./version.json":113,"./window":114}],89:[function(require,module,exports){
+},{"./-preamble":5,"./core":41,"./extension":50,"./extensions/renderer/base/arrow-shapes":61,"./extensions/renderer/base/node-shapes":66,"./fabric":84,"./is":87,"./jquery-plugin":88,"./math":89,"./sbgn":91,"./style/properties":100,"./stylesheet":102,"./thread":103,"./version.json":111,"./window":112}],87:[function(require,module,exports){
 'use strict';
 
 /*global HTMLElement DocumentTouch */
@@ -22910,7 +22017,7 @@ var is = {
 
 module.exports = is;
 
-},{"./window":114}],90:[function(require,module,exports){
+},{"./window":112}],88:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -22978,7 +22085,7 @@ var registerJquery = function( $, cytoscape ){
 
 module.exports = registerJquery;
 
-},{"./is":89}],91:[function(require,module,exports){
+},{"./is":87}],89:[function(require,module,exports){
 'use strict';
 
 var math = {};
@@ -24003,7 +23110,7 @@ math.getRoundRectangleRadius = function( width, height ){
 
 module.exports = math;
 
-},{}],92:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /*!
 Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
 Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
@@ -24218,14 +23325,14 @@ api.reject = function( val ){
 
 module.exports = typeof Promise !== 'undefined' ? Promise : api; // eslint-disable-line no-undef
 
-},{}],93:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 // sbgn shapes not supported by cytoscape.js this object will be exposed in cytoscape.js
 // and will be filled in sbgnviz.js
 // TODO consider filling this object here and remove related things from sbgnviz
 var sbgn = {};
 
 module.exports = sbgn;
-},{}],94:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -25124,7 +24231,7 @@ selfn.toString = selfn.selector = function(){
 
 module.exports = Selector;
 
-},{"./is":89,"./util":107}],95:[function(require,module,exports){
+},{"./is":87,"./util":105}],93:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -25775,7 +24882,7 @@ styfn.checkZOrderTrigger = function( ele, name, fromValue, toValue ){
 
 module.exports = styfn;
 
-},{"../is":89,"../util":107}],96:[function(require,module,exports){
+},{"../is":87,"../util":105}],94:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -25951,7 +25058,7 @@ styfn.removeBypasses = function( eles, props, updateTransitions ){
 
 module.exports = styfn;
 
-},{"../is":89,"../util":107}],97:[function(require,module,exports){
+},{"../is":87,"../util":105}],95:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -25981,7 +25088,7 @@ styfn.containerCss = function( propName ){
 
 module.exports = styfn;
 
-},{"../window":114}],98:[function(require,module,exports){
+},{"../window":112}],96:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -26090,7 +25197,7 @@ styfn.getPropsList = function( propsObj ){
 
 module.exports = styfn;
 
-},{"../is":89,"../util":107}],99:[function(require,module,exports){
+},{"../is":87,"../util":105}],97:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -26263,7 +25370,7 @@ Style.properties = styfn.properties;
 
 module.exports = Style;
 
-},{"../is":89,"../selector":94,"../util":107,"./apply":95,"./bypass":96,"./container":97,"./get-for-ele":98,"./json":100,"./parse":101,"./properties":102,"./string-sheet":103}],100:[function(require,module,exports){
+},{"../is":87,"../selector":92,"../util":105,"./apply":93,"./bypass":94,"./container":95,"./get-for-ele":96,"./json":98,"./parse":99,"./properties":100,"./string-sheet":101}],98:[function(require,module,exports){
 'use strict';
 
 var styfn = {};
@@ -26326,7 +25433,7 @@ styfn.json = function(){
 
 module.exports = styfn;
 
-},{}],101:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -26752,7 +25859,7 @@ styfn.parseImpl = function( name, value, propIsBypass, propIsFlat ){
 
 module.exports = styfn;
 
-},{"../is":89,"../math":91,"../util":107}],102:[function(require,module,exports){
+},{"../is":87,"../math":89,"../util":105}],100:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -27298,7 +26405,7 @@ styfn.addDefaultStylesheet = function(){
 
 module.exports = styfn;
 
-},{"../util":107}],103:[function(require,module,exports){
+},{"../util":105}],101:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -27438,7 +26545,7 @@ styfn.fromString = function( string ){
 
 module.exports = styfn;
 
-},{"../selector":94,"../util":107}],104:[function(require,module,exports){
+},{"../selector":92,"../util":105}],102:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -27533,7 +26640,7 @@ sheetfn.generateStyle = function( cy ){
 
 module.exports = Stylesheet;
 
-},{"./is":89,"./style":99,"./util":107}],105:[function(require,module,exports){
+},{"./is":87,"./style":97,"./util":105}],103:[function(require,module,exports){
 (function (__dirname){
 /*! Weaver licensed under MIT (https://tldrlegal.com/license/mit-license), copyright Max Franz */
 
@@ -28019,7 +27126,7 @@ define.eventAliasesOn( thdfn );
 module.exports = Thread;
 
 }).call(this,"/node_modules/cytoscape-for-sbgnviz/src")
-},{"./define":50,"./event":51,"./is":89,"./promise":92,"./util":107,"./window":114,"child_process":1,"path":3}],106:[function(require,module,exports){
+},{"./define":48,"./event":49,"./is":87,"./promise":90,"./util":105,"./window":112,"child_process":1,"path":3}],104:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -28314,7 +27421,7 @@ module.exports = {
   }
 };
 
-},{"../is":89}],107:[function(require,module,exports){
+},{"../is":87}],105:[function(require,module,exports){
 'use strict';
 
 /*global console */
@@ -28466,7 +27573,7 @@ util.setPrefixedProperty = function( obj, propName, prefix, value ){
 
 module.exports = util;
 
-},{"../is":89,"../math":91,"./colors":106,"./maps":108,"./memoize":109,"./regex":110,"./strings":111,"./timing":112}],108:[function(require,module,exports){
+},{"../is":87,"../math":89,"./colors":104,"./maps":106,"./memoize":107,"./regex":108,"./strings":109,"./timing":110}],106:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -28586,7 +27693,7 @@ module.exports = {
   }
 };
 
-},{"../is":89}],109:[function(require,module,exports){
+},{"../is":87}],107:[function(require,module,exports){
 'use strict';
 
 module.exports = function memoize( fn, keyFn ){
@@ -28627,7 +27734,7 @@ module.exports = function memoize( fn, keyFn ){
   return memoizedFn;
 };
 
-},{}],110:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 'use strict';
 
 var number = '(?:[-+]?(?:(?:\\d+|\\d*\\.\\d+)(?:[Ee][+-]?\\d+)?))';
@@ -28653,7 +27760,7 @@ module.exports = {
   }
 };
 
-},{}],111:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 'use strict';
 
 var memoize = require( './memoize' );
@@ -28689,7 +27796,7 @@ module.exports = {
 
 };
 
-},{"../is":89,"./memoize":109}],112:[function(require,module,exports){
+},{"../is":87,"./memoize":107}],110:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -28851,12 +27958,12 @@ util.debounce = function( func, wait, options ){ // ported lodash debounce funct
 
 module.exports = util;
 
-},{"../is":89,"../window":114}],113:[function(require,module,exports){
+},{"../is":87,"../window":112}],111:[function(require,module,exports){
 module.exports="2.7.12"
-},{}],114:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = ( typeof window === 'undefined' ? null : window ); // eslint-disable-line no-undef
 
-},{}],115:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -28944,463 +28051,7 @@ module.exports = function extend() {
 };
 
 
-},{}],116:[function(require,module,exports){
-var converter = require('./sbgnmlConverter');
-
-module.exports = function (xmlObject) {
-  return converter.convert(xmlObject);
-};
-
-},{"./sbgnmlConverter":117}],117:[function(require,module,exports){
-/* jslint browser: true */
-/* global ActiveXObject: false */
-
-var sbgnmlConverter = {
-  loadXMLFromString: function (text) {
-    var doc;
-    if (window.ActiveXObject) {
-      doc = new ActiveXObject('Microsoft.XMLDOM');
-      doc.async = 'false';
-      doc.loadXML(text);
-    } else {
-      var parser = new DOMParser();
-      doc = parser.parseFromString(text, 'text/xml');
-    }
-    return doc;
-  },
-  sbgnmlTags: {
-    'unspecified entity': true,
-    'simple chemical': true,
-    'macromolecule': true,
-    'nucleic acid feature': true,
-    'perturbing agent': true,
-    'source and sink': true,
-    'complex': true,
-    'process': true,
-    'omitted process': true,
-    'uncertain process': true,
-    'association': true,
-    'dissociation': true,
-    'phenotype': true,
-    'tag': true,
-    'consumption': true,
-    'production': true,
-    'modulation': true,
-    'stimulation': true,
-    'catalysis': true,
-    'inhibition': true,
-    'necessary stimulation': true,
-    'logic arc': true,
-    'equivalence arc': true,
-    'and operator': true,
-    'or operator': true,
-    'not operator': true,
-    'and': true,
-    'or': true,
-    'not': true,
-    'nucleic acid feature multimer': true,
-    'macromolecule multimer': true,
-    'simple chemical multimer': true,
-    'complex multimer': true,
-    'compartment': true
-  },
-  insertedNodes: {},
-  getAllCompartments: function (xmlObject) {
-    var compartments = [];
-
-    var compartmentEls = xmlObject.querySelectorAll("glyph[class='compartment']");
-
-    for (var i = 0; i < compartmentEls.length; i++) {
-      var compartment = compartmentEls[i];
-      var bbox = this.findChildNode(compartment, 'bbox');
-      compartments.push({
-        'x': parseFloat(bbox.getAttribute('x')),
-        'y': parseFloat(bbox.getAttribute('y')),
-        'w': parseFloat(bbox.getAttribute('w')),
-        'h': parseFloat(bbox.getAttribute('h')),
-        'id': compartment.getAttribute('id')
-      });
-    }
-
-    compartments.sort(function (c1, c2) {
-      if (c1.h * c1.w < c2.h * c2.w) {
-        return -1;
-      }
-      if (c1.h * c1.w > c2.h * c2.w) {
-        return 1;
-      }
-      return 0;
-    });
-
-    return compartments;
-  },
-  isInBoundingBox: function (bbox1, bbox2) {
-    if (bbox1.x > bbox2.x &&
-        bbox1.y > bbox2.y &&
-        bbox1.x + bbox1.w < bbox2.x + bbox2.w &&
-        bbox1.y + bbox1.h < bbox2.y + bbox2.h) {
-      return true;
-    }
-    return false;
-  },
-  bboxProp: function (ele) {
-    var bbox = {};
-    var bboxEl = ele.querySelector('bbox');
-
-    bbox.x = bboxEl.getAttribute('x');
-    bbox.y = bboxEl.getAttribute('y');
-    bbox.w = bboxEl.getAttribute('w');
-    bbox.h = bboxEl.getAttribute('h');
-    // set positions as center
-    bbox.x = parseFloat(bbox.x) + parseFloat(bbox.w) / 2;
-    bbox.y = parseFloat(bbox.y) + parseFloat(bbox.h) / 2;
-
-    return bbox;
-  },
-  stateAndInfoBboxProp: function (ele, parentBbox) {
-    var xPos = parseFloat(parentBbox.x);
-    var yPos = parseFloat(parentBbox.y);
-
-    var bbox = {};
-    var bboxEl = ele.querySelector('bbox');
-
-    bbox.x = bboxEl.getAttribute('x');
-    bbox.y = bboxEl.getAttribute('y');
-    bbox.w = bboxEl.getAttribute('w');
-    bbox.h = bboxEl.getAttribute('h');
-
-    // set positions as center
-    bbox.x = parseFloat(bbox.x) + parseFloat(bbox.w) / 2 - xPos;
-    bbox.y = parseFloat(bbox.y) + parseFloat(bbox.h) / 2 - yPos;
-
-    bbox.x = bbox.x / parseFloat(parentBbox.w) * 100;
-    bbox.y = bbox.y / parseFloat(parentBbox.h) * 100;
-
-    return bbox;
-  },
-  findChildNodes: function (ele, childTagName) {
-    // find child nodes at depth level of 1 relative to the element
-    var children = [];
-    for (var i = 0; i < ele.childNodes.length; i++) {
-      var child = ele.childNodes[i];
-      if (child.nodeType === 1 && child.tagName === childTagName) {
-        children.push(child);
-      }
-    }
-    return children;
-  },
-  findChildNode: function (ele, childTagName) {
-    var nodes = this.findChildNodes(ele, childTagName);
-    return nodes.length > 0 ? nodes[0] : undefined;
-  },
-  stateAndInfoProp: function (ele, parentBbox) {
-    var self = this;
-    var stateAndInfoArray = [];
-
-    var childGlyphs = this.findChildNodes(ele, 'glyph');
-
-    for (var i = 0; i < childGlyphs.length; i++) {
-      var glyph = childGlyphs[i];
-      var info = {};
-
-      if (glyph.className === 'unit of information') {
-        info.id = glyph.getAttribute('id') || undefined;
-        info.clazz = glyph.className || undefined;
-        var label = glyph.querySelector('label');
-        info.label = {
-          'text': (label && label.getAttribute('text')) || undefined
-        };
-        info.bbox = self.stateAndInfoBboxProp(glyph, parentBbox);
-        stateAndInfoArray.push(info);
-      } else if (glyph.className === 'state variable') {
-        info.id = glyph.getAttribute('id') || undefined;
-        info.clazz = glyph.className || undefined;
-        var state = glyph.querySelector('state');
-        var value = (state && state.getAttribute('value')) || undefined;
-        var variable = (state && state.getAttribute('variable')) || undefined;
-        info.state = {
-          'value': value,
-          'variable': variable
-        };
-        info.bbox = self.stateAndInfoBboxProp(glyph, parentBbox);
-        stateAndInfoArray.push(info);
-      }
-    }
-
-
-    return stateAndInfoArray;
-  },
-  addParentInfoToNode: function (ele, nodeObj, parent, compartments) {
-    var self = this;
-    var compartmentRef = ele.getAttribute('compartmentRef');
-
-    if (parent) {
-      nodeObj.parent = parent;
-      return;
-    }
-
-    if (compartmentRef) {
-      nodeObj.parent = compartmentRef;
-    } else {
-      nodeObj.parent = '';
-
-      // add compartment according to geometry
-      for (var i = 0; i < compartments.length; i++) {
-        var bboxEl = self.findChildNode(ele, 'bbox');
-        var bbox = {
-          'x': parseFloat(bboxEl.getAttribute('x')),
-          'y': parseFloat(bboxEl.getAttribute('y')),
-          'w': parseFloat(bboxEl.getAttribute('w')),
-          'h': parseFloat(bboxEl.getAttribute('h')),
-          'id': ele.getAttribute('id')
-        };
-        if (self.isInBoundingBox(bbox, compartments[i])) {
-          nodeObj.parent = compartments[i].id;
-          break;
-        }
-      }
-    }
-  },
-  addCytoscapeJsNode: function (ele, jsonArray, parent, compartments) {
-    var self = this;
-    var nodeObj = {};
-
-    // add id information
-    nodeObj.id = ele.getAttribute('id');
-    // add node bounding box information
-    nodeObj.bbox = self.bboxProp(ele);
-    // add class information
-    nodeObj.class = ele.className;
-    // add label information
-    var label = self.findChildNode(ele, 'label');
-    nodeObj.label = (label && label.getAttribute('text')) || undefined;
-    // add state and info box information
-    nodeObj.statesandinfos = self.stateAndInfoProp(ele, nodeObj.bbox);
-    // adding parent information
-    self.addParentInfoToNode(ele, nodeObj, parent, compartments);
-
-    // add clone information
-    var cloneMarkers = self.findChildNodes(ele, 'clone');
-    if (cloneMarkers.length > 0) {
-      nodeObj.clonemarker = true;
-    } else {
-      nodeObj.clonemarker = undefined;
-    }
-
-    // add port information
-    var ports = [];
-    var portElements = ele.querySelectorAll('port');
-
-    for (var i = 0; i < portElements.length; i++) {
-      var portEl = portElements[i];
-      var id = portEl.getAttribute('id');
-      var relativeXPos = parseFloat(portEl.getAttribute('x')) - nodeObj.bbox.x;
-      var relativeYPos = parseFloat(portEl.getAttribute('y')) - nodeObj.bbox.y;
-
-      relativeXPos = relativeXPos / parseFloat(nodeObj.bbox.w) * 100;
-      relativeYPos = relativeYPos / parseFloat(nodeObj.bbox.h) * 100;
-
-      ports.push({
-        id: id,
-        x: relativeXPos,
-        y: relativeYPos
-      });
-    }
-
-    nodeObj.ports = ports;
-
-    var cytoscapeJsNode = {data: nodeObj};
-    jsonArray.push(cytoscapeJsNode);
-  },
-  traverseNodes: function (ele, jsonArray, parent, compartments) {
-    var elId = ele.getAttribute('id');
-    if (!this.sbgnmlTags[ele.className]) {
-      return;
-    }
-    this.insertedNodes[elId] = true;
-    var self = this;
-    // add complex nodes here
-
-    var eleClass = ele.className;
-
-    if (eleClass === 'complex' || eleClass === 'submap') {
-      self.addCytoscapeJsNode(ele, jsonArray, parent, compartments);
-
-      var childGlyphs = self.findChildNodes(ele, 'glyph');
-      for (var i = 0; i < childGlyphs.length; i++) {
-        var glyph = childGlyphs[i];
-        var glyphClass = glyph.className;
-        if (glyphClass !== 'state variable' && glyphClass !== 'unit of information') {
-          self.traverseNodes(glyph, jsonArray, elId, compartments);
-        }
-      }
-    } else {
-      self.addCytoscapeJsNode(ele, jsonArray, parent, compartments);
-    }
-  },
-  getPorts: function (xmlObject) {
-    return ( xmlObject._cachedPorts = xmlObject._cachedPorts || xmlObject.querySelectorAll('port'));
-  },
-  getGlyphs: function (xmlObject) {
-    var glyphs = xmlObject._cachedGlyphs;
-
-    if (!glyphs) {
-      glyphs = xmlObject._cachedGlyphs = xmlObject._cachedGlyphs || xmlObject.querySelectorAll('glyph');
-
-      var id2glyph = xmlObject._id2glyph = {};
-
-      for ( var i = 0; i < glyphs.length; i++ ) {
-        var g = glyphs[i];
-        var id = g.getAttribute('id');
-
-        id2glyph[ id ] = g;
-      }
-    }
-
-    return glyphs;
-  },
-  getGlyphById: function (xmlObject, id) {
-    this.getGlyphs(xmlObject); // make sure cache is built
-
-    return xmlObject._id2glyph[id];
-  },
-  getArcSourceAndTarget: function (arc, xmlObject) {
-    // source and target can be inside of a port
-    var source = arc.getAttribute('source');
-    var target = arc.getAttribute('target');
-    var sourceNodeId;
-    var targetNodeId;
-
-    var sourceExists = this.getGlyphById(xmlObject, source);
-    var targetExists = this.getGlyphById(xmlObject, target);
-
-    if (sourceExists) {
-      sourceNodeId = source;
-    }
-
-    if (targetExists) {
-      targetNodeId = target;
-    }
-
-
-    var i;
-    var portEls = this.getPorts(xmlObject);
-    var port;
-    if (sourceNodeId === undefined) {
-      for (i = 0; i < portEls.length; i++ ) {
-        port = portEls[i];
-        if (port.getAttribute('id') === source) {
-          sourceNodeId = port.parentElement.getAttribute('id');
-        }
-      }
-    }
-
-    if (targetNodeId === undefined) {
-      for (i = 0; i < portEls.length; i++) {
-        port = portEls[i];
-        if (port.getAttribute('id') === target) {
-          targetNodeId = port.parentElement.getAttribute('id');
-        }
-      }
-    }
-
-    return {'source': sourceNodeId, 'target': targetNodeId};
-  },
-
-  getArcBendPointPositions: function (ele) {
-    var bendPointPositions = [];
-
-    var children = this.findChildNodes(ele, 'next');
-
-    for (var i = 0; i < children.length; i++) {
-      var posX = children[i].getAttribute('x');
-      var posY = children[i].getAttribute('y');
-
-      bendPointPositions.push({
-        x: posX,
-        y: posY
-      });
-    }
-
-    return bendPointPositions;
-  },
-  addCytoscapeJsEdge: function (ele, jsonArray, xmlObject) {
-    if (!this.sbgnmlTags[ele.className]) {
-      return;
-    }
-
-    var self = this;
-    var sourceAndTarget = self.getArcSourceAndTarget(ele, xmlObject);
-
-    if (!this.insertedNodes[sourceAndTarget.source] || !this.insertedNodes[sourceAndTarget.target]) {
-      return;
-    }
-
-    var edgeObj = {};
-    var bendPointPositions = self.getArcBendPointPositions(ele);
-
-    edgeObj.id = ele.getAttribute('id') || undefined;
-    edgeObj.class = ele.className;
-    edgeObj.bendPointPositions = bendPointPositions;
-
-    var glyphChildren = self.findChildNodes(ele, 'glyph');
-    var glyphDescendents = ele.querySelectorAll('glyph');
-    if (glyphDescendents.length <= 0) {
-      edgeObj.cardinality = 0;
-    } else {
-      for (var i = 0; i < glyphChildren.length; i++) {
-        if (glyphChildren[i].className === 'cardinality') {
-          var label = glyphChildren[i].querySelector('label');
-          edgeObj.cardinality = label.getAttribute('text') || undefined;
-        }
-      }
-    }
-
-    edgeObj.source = sourceAndTarget.source;
-    edgeObj.target = sourceAndTarget.target;
-
-    edgeObj.portsource = ele.getAttribute('source');
-    edgeObj.porttarget = ele.getAttribute('target');
-
-    var cytoscapeJsEdge = {data: edgeObj};
-    jsonArray.push(cytoscapeJsEdge);
-  },
-  convert: function (filestring) {
-    var self = this;
-    var cytoscapeJsNodes = [];
-    var cytoscapeJsEdges = [];
-
-    var xmlObject = this.loadXMLFromString(filestring);
-
-    var compartments = self.getAllCompartments(xmlObject);
-
-    var glyphs = self.findChildNodes(xmlObject.querySelector('map'), 'glyph');
-    var arcs = self.findChildNodes(xmlObject.querySelector('map'), 'arc');
-
-    var i;
-    for (i = 0; i < glyphs.length; i++) {
-      var glyph = glyphs[i];
-      self.traverseNodes(glyph, cytoscapeJsNodes, '', compartments);
-    }
-
-    for (i = 0; i < arcs.length; i++) {
-      var arc = arcs[i];
-      self.addCytoscapeJsEdge(arc, cytoscapeJsEdges, xmlObject);
-    }
-
-    var cytoscapeJsGraph = {};
-    cytoscapeJsGraph.nodes = cytoscapeJsNodes;
-    cytoscapeJsGraph.edges = cytoscapeJsEdges;
-
-    this.insertedNodes = {};
-
-    return cytoscapeJsGraph;
-  }
-};
-
-module.exports = sbgnmlConverter;
-
-},{}],118:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 var extend = require('extend');
 
 
@@ -31300,7 +29951,7 @@ module.exports = function (cytoscape) {
   };
 };
 
-},{"extend":115}],119:[function(require,module,exports){
+},{"extend":113}],115:[function(require,module,exports){
 var sbgnCytoscape = require('cytoscape-for-sbgnviz');
 var augmentCytoscape = require('./augmentCytoscape');
 var graphStyleSheet = require('./style/graphStyleSheet');
@@ -31385,7 +30036,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
 
 module.exports = SbgnRenderer;
 
-},{"./augmentCytoscape":118,"./style/graphStyleSheet":120,"cytoscape-for-sbgnviz":88}],120:[function(require,module,exports){
+},{"./augmentCytoscape":114,"./style/graphStyleSheet":116,"cytoscape-for-sbgnviz":86}],116:[function(require,module,exports){
 var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
@@ -31566,7 +30217,7 @@ var graphStyleSheet = function (cytoscape) {
 
 module.exports = graphStyleSheet;
 
-},{"./nodeProperties.js":121}],121:[function(require,module,exports){
+},{"./nodeProperties.js":117}],117:[function(require,module,exports){
 
 // render node properties based on SBGN
 
@@ -31715,4 +30366,5 @@ nodeProperties.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
 
 module.exports = nodeProperties;
 
-},{}]},{},[5]);
+},{}]},{},[115])(115)
+});
