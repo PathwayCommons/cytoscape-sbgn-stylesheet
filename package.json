@@ -16,7 +16,9 @@
     "sbgn",
     "network",
     "graph",
-    "visualization"
+    "visualization",
+    "cytoscape",
+    "cytoscape.js"
   ],
   "author": "Dylan Fong",
   "license": "MIT",
