@@ -2,16 +2,15 @@ var sbgnCytoscape = require('cytoscape-for-sbgnviz');
 var augmentCytoscape = require('./augmentCytoscape');
 var graphStyleSheet = require('./style/graphStyleSheet');
 
-var SbgnRenderer = function (opts, libs) {
+var SbgnRenderer = function (opts) {
 
   if (!(this instanceof SbgnRenderer)) {
     return new SbgnRenderer();
   }
 
-  augmentCytoscape(sbgnCytoscape, libs.jquery);
+  augmentCytoscape(sbgnCytoscape);
 
   this.opts = opts;
-  this.libs = libs;
 
   this.cy = sbgnCytoscape({
     container: opts.container,

@@ -478,12 +478,12 @@ $(document).ready(function () {
 
     var container = $('#sbgn-network-container');
 
-    var libs = {};
-    libs.jquery = $;
+    // var libs = {};
+    // libs.jquery = $;
 
     var renderer = new Renderer({
         container: container
-    }, libs);
+    });
 
     renderer.renderGraph(defaultData);
 
@@ -500,14 +500,9 @@ $(document).ready(function () {
       };
     })
 
-    // renderer.renderGraph(data);
-    // global.window.renderer = renderer;
-    // global.window.Renderer = Renderer;
-
-
 });
 
-},{"../src/index":118,"./test-data":6,"sbgnml-to-cytoscape":115}],6:[function(require,module,exports){
+},{"../src/index":119,"./test-data":6,"sbgnml-to-cytoscape":116}],6:[function(require,module,exports){
 var data = {
 "nodes": [
     {
@@ -28862,13 +28857,101 @@ module.exports="2.7.12"
 module.exports = ( typeof window === 'undefined' ? null : window ); // eslint-disable-line no-undef
 
 },{}],115:[function(require,module,exports){
+'use strict';
+
+var hasOwn = Object.prototype.hasOwnProperty;
+var toStr = Object.prototype.toString;
+
+var isArray = function isArray(arr) {
+	if (typeof Array.isArray === 'function') {
+		return Array.isArray(arr);
+	}
+
+	return toStr.call(arr) === '[object Array]';
+};
+
+var isPlainObject = function isPlainObject(obj) {
+	if (!obj || toStr.call(obj) !== '[object Object]') {
+		return false;
+	}
+
+	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+	// Not own constructor property must be Object
+	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+		return false;
+	}
+
+	// Own properties are enumerated firstly, so to speed up,
+	// if last one is own, then all properties are own.
+	var key;
+	for (key in obj) {/**/}
+
+	return typeof key === 'undefined' || hasOwn.call(obj, key);
+};
+
+module.exports = function extend() {
+	var options, name, src, copy, copyIsArray, clone,
+		target = arguments[0],
+		i = 1,
+		length = arguments.length,
+		deep = false;
+
+	// Handle a deep copy situation
+	if (typeof target === 'boolean') {
+		deep = target;
+		target = arguments[1] || {};
+		// skip the boolean and the target
+		i = 2;
+	} else if ((typeof target !== 'object' && typeof target !== 'function') || target == null) {
+		target = {};
+	}
+
+	for (; i < length; ++i) {
+		options = arguments[i];
+		// Only deal with non-null/undefined values
+		if (options != null) {
+			// Extend the base object
+			for (name in options) {
+				src = target[name];
+				copy = options[name];
+
+				// Prevent never-ending loop
+				if (target !== copy) {
+					// Recurse if we're merging plain objects or arrays
+					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+						if (copyIsArray) {
+							copyIsArray = false;
+							clone = src && isArray(src) ? src : [];
+						} else {
+							clone = src && isPlainObject(src) ? src : {};
+						}
+
+						// Never move original objects, clone them
+						target[name] = extend(deep, clone, copy);
+
+					// Don't bring in undefined values
+					} else if (typeof copy !== 'undefined') {
+						target[name] = copy;
+					}
+				}
+			}
+		}
+	}
+
+	// Return the modified object
+	return target;
+};
+
+
+},{}],116:[function(require,module,exports){
 var converter = require('./sbgnmlConverter');
 
 module.exports = function (xmlObject) {
   return converter.convert(xmlObject);
 };
 
-},{"./sbgnmlConverter":116}],116:[function(require,module,exports){
+},{"./sbgnmlConverter":117}],117:[function(require,module,exports){
 /* jslint browser: true */
 /* global ActiveXObject: false */
 
@@ -29317,12 +29400,14 @@ var sbgnmlConverter = {
 
 module.exports = sbgnmlConverter;
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
+var extend = require('extend');
+
 
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics
 
-module.exports = function (cytoscape, jquery) {
+module.exports = function (cytoscape) {
   var cyMath = cytoscape.math;
   var cyBaseNodeShapes = cytoscape.baseNodeShapes;
   var cyStyleProperties = cytoscape.styleProperties;
@@ -29828,9 +29913,7 @@ module.exports = function (cytoscape, jquery) {
 
   $$.sbgn.isMultimer = function (node) {
     var sbgnClass = node._private.data.class;
-    if (sbgnClass && sbgnClass.indexOf('multimer') != -1)
-      return true;
-    return false;
+    return sbgnClass && sbgnClass.indexOf('multimer') != -1;
   };
 
   //this function is created to have same corner length when
@@ -29890,7 +29973,7 @@ module.exports = function (cytoscape, jquery) {
   cyStyleProperties.types.arrowShape.enums.push('necessary stimulation');
 
   $$.sbgn.registerSbgnArrowShapes = function () {
-    cyBaseArrowShapes['necessary stimulation'] = jquery.extend({}, cyBaseArrowShapes['triangle-tee']);
+    cyBaseArrowShapes['necessary stimulation'] = extend({}, cyBaseArrowShapes['triangle-tee']);
     cyBaseArrowShapes['necessary stimulation'].pointsTee = [
       -0.18, -0.43,
       0.18, -0.43
@@ -29950,10 +30033,10 @@ module.exports = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes['omitted process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['omitted process'] = extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['omitted process'].label = '\\\\';
 
-    cyBaseNodeShapes['uncertain process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['uncertain process'] = extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['uncertain process'].label = '?';
 
     cyBaseNodeShapes["unspecified entity"] = {
@@ -31217,24 +31300,20 @@ module.exports = function (cytoscape, jquery) {
   };
 };
 
-},{}],118:[function(require,module,exports){
+},{"extend":115}],119:[function(require,module,exports){
 var sbgnCytoscape = require('cytoscape-for-sbgnviz');
 var augmentCytoscape = require('./augmentCytoscape');
 var graphStyleSheet = require('./style/graphStyleSheet');
 
-// SbgnRenderer needs specific libraries to work, but we dont want to
-// include them in the dist script so they need to be passed in.
-
-var SbgnRenderer = function (opts, libs) {
+var SbgnRenderer = function (opts) {
 
   if (!(this instanceof SbgnRenderer)) {
     return new SbgnRenderer();
   }
 
-  augmentCytoscape(sbgnCytoscape, libs.jquery);
+  augmentCytoscape(sbgnCytoscape);
 
   this.opts = opts;
-  this.libs = libs;
 
   this.cy = sbgnCytoscape({
     container: opts.container,
@@ -31306,7 +31385,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
 
 module.exports = SbgnRenderer;
 
-},{"./augmentCytoscape":117,"./style/graphStyleSheet":119,"cytoscape-for-sbgnviz":88}],119:[function(require,module,exports){
+},{"./augmentCytoscape":118,"./style/graphStyleSheet":120,"cytoscape-for-sbgnviz":88}],120:[function(require,module,exports){
 var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
@@ -31487,7 +31566,7 @@ var graphStyleSheet = function (cytoscape) {
 
 module.exports = graphStyleSheet;
 
-},{"./nodeProperties.js":120}],120:[function(require,module,exports){
+},{"./nodeProperties.js":121}],121:[function(require,module,exports){
 
 // render node properties based on SBGN
 

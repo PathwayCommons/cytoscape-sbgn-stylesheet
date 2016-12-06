@@ -27,6 +27,7 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "cytoscape-for-sbgnviz": "^2.7.12"
+    "cytoscape-for-sbgnviz": "^2.7.12",
+    "extend": "^3.0.0"
   }
 }

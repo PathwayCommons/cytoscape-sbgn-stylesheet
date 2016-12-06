@@ -18,12 +18,12 @@ $(document).ready(function () {
 
     var container = $('#sbgn-network-container');
 
-    var libs = {};
-    libs.jquery = $;
+    // var libs = {};
+    // libs.jquery = $;
 
     var renderer = new Renderer({
         container: container
-    }, libs);
+    });
 
     renderer.renderGraph(defaultData);
 

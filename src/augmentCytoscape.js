@@ -1,8 +1,10 @@
+var extend = require('extend');
+
 
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics
 
-module.exports = function (cytoscape, jquery) {
+module.exports = function (cytoscape) {
   var cyMath = cytoscape.math;
   var cyBaseNodeShapes = cytoscape.baseNodeShapes;
   var cyStyleProperties = cytoscape.styleProperties;
@@ -508,9 +510,7 @@ module.exports = function (cytoscape, jquery) {
 
   $$.sbgn.isMultimer = function (node) {
     var sbgnClass = node._private.data.class;
-    if (sbgnClass && sbgnClass.indexOf('multimer') != -1)
-      return true;
-    return false;
+    return sbgnClass && sbgnClass.indexOf('multimer') != -1;
   };
 
   //this function is created to have same corner length when
@@ -570,7 +570,7 @@ module.exports = function (cytoscape, jquery) {
   cyStyleProperties.types.arrowShape.enums.push('necessary stimulation');
 
   $$.sbgn.registerSbgnArrowShapes = function () {
-    cyBaseArrowShapes['necessary stimulation'] = jquery.extend({}, cyBaseArrowShapes['triangle-tee']);
+    cyBaseArrowShapes['necessary stimulation'] = extend({}, cyBaseArrowShapes['triangle-tee']);
     cyBaseArrowShapes['necessary stimulation'].pointsTee = [
       -0.18, -0.43,
       0.18, -0.43
@@ -630,10 +630,10 @@ module.exports = function (cytoscape, jquery) {
       }
     };
 
-    cyBaseNodeShapes['omitted process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['omitted process'] = extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['omitted process'].label = '\\\\';
 
-    cyBaseNodeShapes['uncertain process'] = jquery.extend(true, {}, cyBaseNodeShapes['process']);
+    cyBaseNodeShapes['uncertain process'] = extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['uncertain process'].label = '?';
 
     cyBaseNodeShapes["unspecified entity"] = {
