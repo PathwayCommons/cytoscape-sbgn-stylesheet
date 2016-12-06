@@ -59,3 +59,13 @@ the same as vanilla cytoscape.js.
 sbgn-renderer is designed as a light wrapper around [the modified cytoscape.js](https://github.com/cytoscape/cytoscape.js); Leveraging its power and ease of use.
 
 A large portion of the code in the renderer will make more sense by reading the cytoscape.js [documentation](http://js.cytoscape.org/) and the cytoscape.js [source code](https://github.com/cytoscape/cytoscape.js/tree/master/src).  
+
+#### SbgnRenderer.cy()
+
+A instance of cytoscape embedded in the renderer.  All cytoscape.js related actions that you want to perform on the graph can be accessed through this embedded instance.  
+
+Painting nodes, saving images, the possibilities are limited only by what cytoscape.js provides.  
+
+## Don't Repeat Yourself
+
+The sbgn renderer is a critical component in a variety of apps that are coming down the pipeline.  It will be used in a viewer app, a painter app, a searcher app, and also serve as an embeddable widget.  By doing one thing well, this component will serve as the foundation for the future.
