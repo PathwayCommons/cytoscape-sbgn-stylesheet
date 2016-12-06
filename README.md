@@ -1,16 +1,16 @@
 # sbgn-renderer
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
-# Purpose
+## Purpose
 The purpose of this library is to take json that represents biological networks i.e graphs, and display them in the browser using
 System Biology Graphical Notation.  A standard notation for describing and visually representing biological processes.
 
-# Requirements
+## Requirements
 The renderer expects cytoscape graph JSON.  To get cytoscape graph JSON, you need the following:
-1.  SBGN-ML files: xml files that represent biological networks.
-2.  A way to convert these files into graph JSON.  This is a nice [package](https://github.com/PathwayCommons/sbgnml-to-cytoscape) that does the job
+* SBGN-ML files: xml files that represent biological networks.
+* A way to convert these files into graph JSON.  This is a nice [package](https://github.com/PathwayCommons/sbgnml-to-cytoscape) that does the job
 
-# Installation
+## Installation
 There are two ways to install this module
 
 1. npm:
@@ -27,7 +27,7 @@ OR
 </html>
 ```
 
-# Usage
+## Usage
 
 ```js
 var SbgnRenderer = require('sbgn-renderer');
@@ -42,11 +42,28 @@ var renderer = new SbgnRenderer({container: myContainer});
 renderer.renderGraph(myGraph);
 
 ```
+## API
+
+### SbgnRenderer
 
 
+#### Initialization
+```js
+var renderer = new SbgnRenderer({
+  container: document.getElementById('#myContainer')
+});
+```
+#### Options
+
+```container```: A HTML DOM element in which the graph should be rendered
 
 
-# Running the Demo:
+### SbgnRenderer.renderGraph(cytoscapeGraphJson)
+
+Renders the given graph
+
+
+## Running the Demo:
 Clone this repository
 ```
 git clone https://github.com/d2fong/sbgn-renderer
