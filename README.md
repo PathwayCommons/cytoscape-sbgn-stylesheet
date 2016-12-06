@@ -46,6 +46,7 @@ renderer.renderGraph(myGraph);
 
 ### SbgnRenderer
 
+Creates new renderer instances
 
 #### Initialization
 ```js
@@ -61,6 +62,11 @@ var renderer = new SbgnRenderer({
 ### SbgnRenderer.renderGraph(cytoscapeGraphJson)
 
 Renders the given graph
+
+#### input
+```cytoscapeGraphJson```: JSON representing your biological network.  
+
+Please look at the requirements for more information on how to acquire valid input 
 
 
 ## Running the Demo:
