@@ -1,463 +1,6 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.sbgnRenderer = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 },{}],2:[function(require,module,exports){
-exports.endianness = function () { return 'LE' };
-
-exports.hostname = function () {
-    if (typeof location !== 'undefined') {
-        return location.hostname
-    }
-    else return '';
-};
-
-exports.loadavg = function () { return [] };
-
-exports.uptime = function () { return 0 };
-
-exports.freemem = function () {
-    return Number.MAX_VALUE;
-};
-
-exports.totalmem = function () {
-    return Number.MAX_VALUE;
-};
-
-exports.cpus = function () { return [] };
-
-exports.type = function () { return 'Browser' };
-
-exports.release = function () {
-    if (typeof navigator !== 'undefined') {
-        return navigator.appVersion;
-    }
-    return '';
-};
-
-exports.networkInterfaces
-= exports.getNetworkInterfaces
-= function () { return {} };
-
-exports.arch = function () { return 'javascript' };
-
-exports.platform = function () { return 'browser' };
-
-exports.tmpdir = exports.tmpDir = function () {
-    return '/tmp';
-};
-
-exports.EOL = '\n';
-
-},{}],3:[function(require,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// resolves . and .. elements in a path array with directory names there
-// must be no slashes, empty elements, or device names (c:\) in the array
-// (so also no leading and trailing slashes - it does not distinguish
-// relative and absolute paths)
-function normalizeArray(parts, allowAboveRoot) {
-  // if the path tries to go above the root, `up` ends up > 0
-  var up = 0;
-  for (var i = parts.length - 1; i >= 0; i--) {
-    var last = parts[i];
-    if (last === '.') {
-      parts.splice(i, 1);
-    } else if (last === '..') {
-      parts.splice(i, 1);
-      up++;
-    } else if (up) {
-      parts.splice(i, 1);
-      up--;
-    }
-  }
-
-  // if the path is allowed to go above the root, restore leading ..s
-  if (allowAboveRoot) {
-    for (; up--; up) {
-      parts.unshift('..');
-    }
-  }
-
-  return parts;
-}
-
-// Split a filename into [root, dir, basename, ext], unix version
-// 'root' is just a slash, or nothing.
-var splitPathRe =
-    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-var splitPath = function(filename) {
-  return splitPathRe.exec(filename).slice(1);
-};
-
-// path.resolve([from ...], to)
-// posix version
-exports.resolve = function() {
-  var resolvedPath = '',
-      resolvedAbsolute = false;
-
-  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-    var path = (i >= 0) ? arguments[i] : process.cwd();
-
-    // Skip empty and invalid entries
-    if (typeof path !== 'string') {
-      throw new TypeError('Arguments to path.resolve must be strings');
-    } else if (!path) {
-      continue;
-    }
-
-    resolvedPath = path + '/' + resolvedPath;
-    resolvedAbsolute = path.charAt(0) === '/';
-  }
-
-  // At this point the path should be resolved to a full absolute path, but
-  // handle relative paths to be safe (might happen when process.cwd() fails)
-
-  // Normalize the path
-  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
-    return !!p;
-  }), !resolvedAbsolute).join('/');
-
-  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
-};
-
-// path.normalize(path)
-// posix version
-exports.normalize = function(path) {
-  var isAbsolute = exports.isAbsolute(path),
-      trailingSlash = substr(path, -1) === '/';
-
-  // Normalize the path
-  path = normalizeArray(filter(path.split('/'), function(p) {
-    return !!p;
-  }), !isAbsolute).join('/');
-
-  if (!path && !isAbsolute) {
-    path = '.';
-  }
-  if (path && trailingSlash) {
-    path += '/';
-  }
-
-  return (isAbsolute ? '/' : '') + path;
-};
-
-// posix version
-exports.isAbsolute = function(path) {
-  return path.charAt(0) === '/';
-};
-
-// posix version
-exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
-  return exports.normalize(filter(paths, function(p, index) {
-    if (typeof p !== 'string') {
-      throw new TypeError('Arguments to path.join must be strings');
-    }
-    return p;
-  }).join('/'));
-};
-
-
-// path.relative(from, to)
-// posix version
-exports.relative = function(from, to) {
-  from = exports.resolve(from).substr(1);
-  to = exports.resolve(to).substr(1);
-
-  function trim(arr) {
-    var start = 0;
-    for (; start < arr.length; start++) {
-      if (arr[start] !== '') break;
-    }
-
-    var end = arr.length - 1;
-    for (; end >= 0; end--) {
-      if (arr[end] !== '') break;
-    }
-
-    if (start > end) return [];
-    return arr.slice(start, end - start + 1);
-  }
-
-  var fromParts = trim(from.split('/'));
-  var toParts = trim(to.split('/'));
-
-  var length = Math.min(fromParts.length, toParts.length);
-  var samePartsLength = length;
-  for (var i = 0; i < length; i++) {
-    if (fromParts[i] !== toParts[i]) {
-      samePartsLength = i;
-      break;
-    }
-  }
-
-  var outputParts = [];
-  for (var i = samePartsLength; i < fromParts.length; i++) {
-    outputParts.push('..');
-  }
-
-  outputParts = outputParts.concat(toParts.slice(samePartsLength));
-
-  return outputParts.join('/');
-};
-
-exports.sep = '/';
-exports.delimiter = ':';
-
-exports.dirname = function(path) {
-  var result = splitPath(path),
-      root = result[0],
-      dir = result[1];
-
-  if (!root && !dir) {
-    // No dirname whatsoever
-    return '.';
-  }
-
-  if (dir) {
-    // It has a dirname, strip trailing slash
-    dir = dir.substr(0, dir.length - 1);
-  }
-
-  return root + dir;
-};
-
-
-exports.basename = function(path, ext) {
-  var f = splitPath(path)[2];
-  // TODO: make this comparison case-insensitive on windows?
-  if (ext && f.substr(-1 * ext.length) === ext) {
-    f = f.substr(0, f.length - ext.length);
-  }
-  return f;
-};
-
-
-exports.extname = function(path) {
-  return splitPath(path)[3];
-};
-
-function filter (xs, f) {
-    if (xs.filter) return xs.filter(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        if (f(xs[i], i, xs)) res.push(xs[i]);
-    }
-    return res;
-}
-
-// String.prototype.substr - negative index don't work in IE8
-var substr = 'ab'.substr(-1) === 'b'
-    ? function (str, start, len) { return str.substr(start, len) }
-    : function (str, start, len) {
-        if (start < 0) start = str.length + start;
-        return str.substr(start, len);
-    }
-;
-
-}).call(this,require('_process'))
-},{"_process":4}],4:[function(require,module,exports){
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}],5:[function(require,module,exports){
 
 /*!
 
@@ -487,7 +30,7 @@ SOFTWARE.
 
 'use strict';
 
-},{}],6:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var util = require( './util' );
@@ -724,7 +267,7 @@ anifn.complete = anifn.completed;
 
 module.exports = Animation;
 
-},{"./is":87,"./promise":90,"./util":105}],7:[function(require,module,exports){
+},{"./is":84,"./promise":87,"./util":102}],4:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -922,7 +465,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":87}],8:[function(require,module,exports){
+},{"../../is":84}],5:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1118,7 +661,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":87,"../../util":105}],9:[function(require,module,exports){
+},{"../../is":84,"../../util":102}],6:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1312,7 +855,7 @@ elesfn.bc = elesfn.betweennessCentrality;
 
 module.exports = elesfn;
 
-},{"../../heap":85,"../../is":87}],10:[function(require,module,exports){
+},{"../../heap":82,"../../is":84}],7:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1454,7 +997,7 @@ elesfn.dfs = elesfn.depthFirstSearch;
 
 module.exports = elesfn;
 
-},{"../../is":87}],11:[function(require,module,exports){
+},{"../../is":84}],8:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1586,7 +1129,7 @@ elesfn.ccn = elesfn.closenessCentralityNormalised = elesfn.closenessCentralityNo
 
 module.exports = elesfn;
 
-},{"../../is":87}],12:[function(require,module,exports){
+},{"../../is":84}],9:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1784,7 +1327,7 @@ elesfn.dcn = elesfn.degreeCentralityNormalised = elesfn.degreeCentralityNormaliz
 
 module.exports = elesfn;
 
-},{"../../is":87,"../../util":105}],13:[function(require,module,exports){
+},{"../../is":84,"../../util":102}],10:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -1917,7 +1460,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../heap":85,"../../is":87}],14:[function(require,module,exports){
+},{"../../heap":82,"../../is":84}],11:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2113,7 +1656,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":87}],15:[function(require,module,exports){
+},{"../../is":84}],12:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -2138,7 +1681,7 @@ var elesfn = {};
 
 module.exports = elesfn;
 
-},{"../../util":105,"./a-star":7,"./bellman-ford":8,"./betweenness-centrality":9,"./bfs-dfs":10,"./closeness-centrality":11,"./degree-centrality":12,"./dijkstra":13,"./floyd-warshall":14,"./kerger-stein":16,"./kruskal":17,"./page-rank":18}],16:[function(require,module,exports){
+},{"../../util":102,"./a-star":4,"./bellman-ford":5,"./betweenness-centrality":6,"./bfs-dfs":7,"./closeness-centrality":8,"./degree-centrality":9,"./dijkstra":10,"./floyd-warshall":11,"./kerger-stein":13,"./kruskal":14,"./page-rank":15}],13:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -2312,7 +1855,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../util":105}],17:[function(require,module,exports){
+},{"../../util":102}],14:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2378,7 +1921,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":87}],18:[function(require,module,exports){
+},{"../../is":84}],15:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
@@ -2561,7 +2104,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../../is":87}],19:[function(require,module,exports){
+},{"../../is":84}],16:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -2578,7 +2121,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../define":48}],20:[function(require,module,exports){
+},{"../define":45}],17:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -2727,7 +2270,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../util":105}],21:[function(require,module,exports){
+},{"../util":102}],18:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -2798,7 +2341,7 @@ elesfn.has = elesfn.contains;
 
 module.exports = elesfn;
 
-},{}],22:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -2918,7 +2461,7 @@ elesfn.ancestors = elesfn.parents;
 
 module.exports = elesfn;
 
-},{}],23:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -3007,7 +2550,7 @@ fn.removeAttr = fn.removeData;
 
 module.exports = elesfn;
 
-},{"../define":48}],24:[function(require,module,exports){
+},{"../define":45}],21:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -3130,7 +2673,7 @@ util.extend( elesfn, {
 
 module.exports = elesfn;
 
-},{"../util":105}],25:[function(require,module,exports){
+},{"../util":102}],22:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -4093,7 +3636,7 @@ fn.renderedBoundingbox = fn.renderedBoundingBox;
 
 module.exports = elesfn;
 
-},{"../define":48,"../extensions/renderer/base/node-shapes":66,"../is":87,"../math":89,"../sbgn":91,"../util":105}],26:[function(require,module,exports){
+},{"../define":45,"../extensions/renderer/base/node-shapes":63,"../is":84,"../math":86,"../sbgn":88,"../util":102}],23:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -4196,7 +3739,7 @@ var Element = function( cy, params, restore ){
 
 module.exports = Element;
 
-},{"../is":87,"../util":105}],27:[function(require,module,exports){
+},{"../is":84,"../util":102}],24:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -4227,7 +3770,7 @@ define.eventAliasesOn( elesfn );
 
 module.exports = elesfn;
 
-},{"../define":48}],28:[function(require,module,exports){
+},{"../define":45}],25:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -4612,7 +4155,7 @@ fn.complement = fn.abscomp = fn.absoluteComplement;
 
 module.exports = elesfn;
 
-},{"../is":87,"../selector":92}],29:[function(require,module,exports){
+},{"../is":84,"../selector":89}],26:[function(require,module,exports){
 'use strict';
 
 var elesfn = ({
@@ -4644,7 +4187,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{}],30:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -5378,7 +4921,7 @@ elesfn.move = function( struct ){
 
 module.exports = Collection;
 
-},{"../is":87,"../util":105,"./algorithms":15,"./animation":19,"./class":20,"./comparators":21,"./compounds":22,"./data":23,"./degree":24,"./dimensions":25,"./element":26,"./events":27,"./filter":28,"./group":29,"./index":30,"./iteration":31,"./layout":32,"./style":33,"./switch-functions":34,"./traversing":35}],31:[function(require,module,exports){
+},{"../is":84,"../util":102,"./algorithms":12,"./animation":16,"./class":17,"./comparators":18,"./compounds":19,"./data":20,"./degree":21,"./dimensions":22,"./element":23,"./events":24,"./filter":25,"./group":26,"./index":27,"./iteration":28,"./layout":29,"./style":30,"./switch-functions":31,"./traversing":32}],28:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -5515,7 +5058,7 @@ var elesfn = ({
 
 module.exports = elesfn;
 
-},{"../is":87,"./zsort":36}],32:[function(require,module,exports){
+},{"../is":84,"./zsort":33}],29:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -5639,7 +5182,7 @@ elesfn.createLayout = elesfn.makeLayout;
 
 module.exports = elesfn;
 
-},{"../is":87,"../promise":90,"../util":105}],33:[function(require,module,exports){
+},{"../is":84,"../promise":87,"../util":102}],30:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -5952,7 +5495,7 @@ elesfn.pstyle = elesfn.parsedStyle;
 
 module.exports = elesfn;
 
-},{"../is":87}],34:[function(require,module,exports){
+},{"../is":84}],31:[function(require,module,exports){
 'use strict';
 
 var elesfn = {};
@@ -6105,7 +5648,7 @@ elesfn.inactive = function(){
 
 module.exports = elesfn;
 
-},{}],35:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -6546,7 +6089,7 @@ util.extend( elesfn, {
 
 module.exports = elesfn;
 
-},{"../is":87,"../util":105}],36:[function(require,module,exports){
+},{"../is":84,"../util":102}],33:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6605,7 +6148,7 @@ var zIndexSort = function( a, b ){
 
 module.exports = zIndexSort;
 
-},{}],37:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -6732,7 +6275,7 @@ var corefn = {
 
 module.exports = corefn;
 
-},{"../collection":30,"../collection/element":26,"../is":87,"../util":105}],38:[function(require,module,exports){
+},{"../collection":27,"../collection/element":23,"../is":84,"../util":102}],35:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -7331,7 +6874,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{"../define":48,"../is":87,"../util":105}],39:[function(require,module,exports){
+},{"../define":45,"../is":84,"../util":102}],36:[function(require,module,exports){
 'use strict';
 
 var define = require( '../define' );
@@ -7348,7 +6891,7 @@ define.eventAliasesOn( corefn );
 
 module.exports = corefn;
 
-},{"../define":48}],40:[function(require,module,exports){
+},{"../define":45}],37:[function(require,module,exports){
 'use strict';
 
 var corefn = ({
@@ -7375,7 +6918,7 @@ corefn.jpeg = corefn.jpg;
 
 module.exports = corefn;
 
-},{}],41:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -7792,7 +7335,7 @@ util.extend( corefn, {
 
 module.exports = Core;
 
-},{"../collection":30,"../define":48,"../is":87,"../promise":90,"../util":105,"../window":112,"./add-remove":37,"./animation":38,"./events":39,"./export":40,"./layout":42,"./notification":43,"./renderer":44,"./search":45,"./style":46,"./viewport":47}],42:[function(require,module,exports){
+},{"../collection":27,"../define":45,"../is":84,"../promise":87,"../util":102,"../window":109,"./add-remove":34,"./animation":35,"./events":36,"./export":37,"./layout":39,"./notification":40,"./renderer":41,"./search":42,"./style":43,"./viewport":44}],39:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -7850,7 +7393,7 @@ corefn.createLayout = corefn.makeLayout;
 
 module.exports = corefn;
 
-},{"../is":87,"../util":105}],43:[function(require,module,exports){
+},{"../is":84,"../util":102}],40:[function(require,module,exports){
 'use strict';
 
 var corefn = ({
@@ -7968,7 +7511,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{}],44:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -8053,7 +7596,7 @@ corefn.invalidateDimensions = corefn.resize;
 
 module.exports = corefn;
 
-},{"../util":105}],45:[function(require,module,exports){
+},{"../util":102}],42:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -8126,7 +7669,7 @@ corefn.elements = corefn.filter = corefn.$;
 
 module.exports = corefn;
 
-},{"../collection":30,"../is":87}],46:[function(require,module,exports){
+},{"../collection":27,"../is":84}],43:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -8166,7 +7709,7 @@ var corefn = ({
 
 module.exports = corefn;
 
-},{"../is":87,"../style":97}],47:[function(require,module,exports){
+},{"../is":84,"../style":94}],44:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -8712,7 +8255,7 @@ corefn.autoungrabifyNodes = corefn.autoungrabify;
 
 module.exports = corefn;
 
-},{"../is":87}],48:[function(require,module,exports){
+},{"../is":84}],45:[function(require,module,exports){
 'use strict';
 
 // use this module to cherry pick functions into your prototype
@@ -9538,7 +9081,7 @@ var define = {
 
 module.exports = define;
 
-},{"./animation":6,"./event":49,"./is":87,"./promise":90,"./selector":92,"./util":105}],49:[function(require,module,exports){
+},{"./animation":3,"./event":46,"./is":84,"./promise":87,"./selector":89,"./util":102}],46:[function(require,module,exports){
 'use strict';
 
 /*!
@@ -9643,7 +9186,7 @@ Event.prototype = {
 
 module.exports = Event;
 
-},{}],50:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 var util = require( './util' );
@@ -9856,7 +9399,7 @@ incExts.forEach( function( group ){
 
 module.exports = extension;
 
-},{"./collection":30,"./core":41,"./define":48,"./extensions":51,"./is":87,"./util":105}],51:[function(require,module,exports){
+},{"./collection":27,"./core":38,"./define":45,"./extensions":48,"./is":84,"./util":102}],48:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -9871,7 +9414,7 @@ module.exports = [
   }
 ];
 
-},{"./layout":57,"./renderer":82}],52:[function(require,module,exports){
+},{"./layout":54,"./renderer":79}],49:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -10306,7 +9849,7 @@ BreadthFirstLayout.prototype.run = function(){
 
 module.exports = BreadthFirstLayout;
 
-},{"../../is":87,"../../math":89,"../../util":105}],53:[function(require,module,exports){
+},{"../../is":84,"../../math":86,"../../util":102}],50:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -10411,7 +9954,7 @@ CircleLayout.prototype.run = function(){
 
 module.exports = CircleLayout;
 
-},{"../../is":87,"../../math":89,"../../util":105}],54:[function(require,module,exports){
+},{"../../is":84,"../../math":86,"../../util":102}],51:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -10611,7 +10154,7 @@ ConcentricLayout.prototype.run = function(){
 
 module.exports = ConcentricLayout;
 
-},{"../../math":89,"../../util":105}],55:[function(require,module,exports){
+},{"../../math":86,"../../util":102}],52:[function(require,module,exports){
 'use strict';
 
 /*
@@ -11952,7 +11495,7 @@ var refreshPositions = function( layoutInfo, cy, options ){
 
 module.exports = CoseLayout;
 
-},{"../../is":87,"../../math":89,"../../thread":103,"../../util":105}],56:[function(require,module,exports){
+},{"../../is":84,"../../math":86,"../../thread":100,"../../util":102}],53:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -12199,7 +11742,7 @@ GridLayout.prototype.run = function(){
 
 module.exports = GridLayout;
 
-},{"../../math":89,"../../util":105}],57:[function(require,module,exports){
+},{"../../math":86,"../../util":102}],54:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -12213,7 +11756,7 @@ module.exports = [
   { name: 'random', impl: require( './random' ) }
 ];
 
-},{"./breadthfirst":52,"./circle":53,"./concentric":54,"./cose":55,"./grid":56,"./null":58,"./preset":59,"./random":60}],58:[function(require,module,exports){
+},{"./breadthfirst":49,"./circle":50,"./concentric":51,"./cose":52,"./grid":53,"./null":55,"./preset":56,"./random":57}],55:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -12267,7 +11810,7 @@ NullLayout.prototype.stop = function(){
 
 module.exports = NullLayout;
 
-},{"../../util":105}],59:[function(require,module,exports){
+},{"../../util":102}],56:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -12330,7 +11873,7 @@ PresetLayout.prototype.run = function(){
 
 module.exports = PresetLayout;
 
-},{"../../is":87,"../../util":105}],60:[function(require,module,exports){
+},{"../../is":84,"../../util":102}],57:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../util' );
@@ -12375,7 +11918,7 @@ RandomLayout.prototype.run = function(){
 
 module.exports = RandomLayout;
 
-},{"../../math":89,"../../util":105}],61:[function(require,module,exports){
+},{"../../math":86,"../../util":102}],58:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -12651,7 +12194,7 @@ BRp.registerArrowShapes = function(){
 
 module.exports = BRp;
 
-},{"../../../is":87,"../../../math":89,"../../../sbgn":91,"../../../util":105}],62:[function(require,module,exports){
+},{"../../../is":84,"../../../math":86,"../../../sbgn":88,"../../../util":102}],59:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -14827,7 +14370,7 @@ BRp.getArrowWidth = BRp.getArrowHeight = function( edgeWidth ){
 
 module.exports = BRp;
 
-},{"../../../collection/zsort":36,"../../../is":87,"../../../math":89,"../../../sbgn":91,"../../../util":105}],63:[function(require,module,exports){
+},{"../../../collection/zsort":33,"../../../is":84,"../../../math":86,"../../../sbgn":88,"../../../util":102}],60:[function(require,module,exports){
 'use strict';
 
 var BRp = {};
@@ -14865,7 +14408,7 @@ BRp.getCachedImage = function( url, crossOrigin, onLoad ){
 
 module.exports = BRp;
 
-},{}],64:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -15044,7 +14587,7 @@ BRp.destroy = function(){
 
 module.exports = BR;
 
-},{"../../../is":87,"../../../util":105,"./arrow-shapes":61,"./coord-ele-math":62,"./images":63,"./load-listeners":65,"./node-shapes":66,"./redraw":67}],65:[function(require,module,exports){
+},{"../../../is":84,"../../../util":102,"./arrow-shapes":58,"./coord-ele-math":59,"./images":60,"./load-listeners":62,"./node-shapes":63,"./redraw":64}],62:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -17024,7 +16567,7 @@ BRp.load = function(){
 
 module.exports = BRp;
 
-},{"../../../event":49,"../../../is":87,"../../../math":89,"../../../util":105}],66:[function(require,module,exports){
+},{"../../../event":46,"../../../is":84,"../../../math":86,"../../../util":102}],63:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -17279,7 +16822,7 @@ BRp.registerNodeShapes = function(){
 
 module.exports = BRp;
 
-},{"../../../math":89,"../../../sbgn":91}],67:[function(require,module,exports){
+},{"../../../math":86,"../../../sbgn":88}],64:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -17384,7 +16927,7 @@ BRp.startRenderLoop = function(){
 
 module.exports = BRp;
 
-},{"../../../util":105}],68:[function(require,module,exports){
+},{"../../../util":102}],65:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -17444,7 +16987,7 @@ CRp.arrowShapeImpl = function( name ){
 
 module.exports = CRp;
 
-},{}],69:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -17732,7 +17275,7 @@ CRp.drawArrowShape = function( edge, arrowType, context, fill, edgeWidth, shape,
 
 module.exports = CRp;
 
-},{}],70:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -17819,7 +17362,7 @@ CRp.drawLayeredElements = function( context, eles, pxRatio, extent ){
 
 module.exports = CRp;
 
-},{"../../../math":89}],71:[function(require,module,exports){
+},{"../../../math":86}],68:[function(require,module,exports){
 'use strict';
 var sbgn = require( '../../../sbgn' );
 
@@ -17988,7 +17531,7 @@ CRp.drawInscribedImage = function( context, img, node ){
 
 module.exports = CRp;
 
-},{"../../../sbgn":91}],72:[function(require,module,exports){
+},{"../../../sbgn":88}],69:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -18365,7 +17908,7 @@ CRp.drawText = function( context, ele, prefix ){
 
 module.exports = CRp;
 
-},{"../../../math":89,"../../../util":105}],73:[function(require,module,exports){
+},{"../../../math":86,"../../../util":102}],70:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -18738,7 +18281,7 @@ CRp.drawPie = function( context, node, nodeOpacity, pos ){
 
 module.exports = CRp;
 
-},{"../../../is":87,"../../../sbgn":91}],74:[function(require,module,exports){
+},{"../../../is":84,"../../../sbgn":88}],71:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -19355,7 +18898,7 @@ CRp.render = function( options ){
 
 module.exports = CRp;
 
-},{"../../../util":105}],75:[function(require,module,exports){
+},{"../../../util":102}],72:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -19446,7 +18989,7 @@ CRp.drawEllipsePath = function( context, centerX, centerY, width, height ){
 
 module.exports = CRp;
 
-},{"../../../math":89}],76:[function(require,module,exports){
+},{"../../../math":86}],73:[function(require,module,exports){
 'use strict';
 
 var math = require( '../../../math' );
@@ -19942,7 +19485,7 @@ ETCp.setupDequeueing = defs.setupDequeueing({
 
 module.exports = ElementTextureCache;
 
-},{"../../../heap":85,"../../../math":89,"../../../util":105,"./texture-cache-defs":81}],77:[function(require,module,exports){
+},{"../../../heap":82,"../../../math":86,"../../../util":102,"./texture-cache-defs":78}],74:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../../is' );
@@ -20090,7 +19633,7 @@ CRp.jpg = function( options ){
 
 module.exports = CRp;
 
-},{"../../../is":87}],78:[function(require,module,exports){
+},{"../../../is":84}],75:[function(require,module,exports){
 /*
 The canvas renderer was written by Yue Dong.
 
@@ -20241,7 +19784,7 @@ CRp.usePaths = function(){
 
 module.exports = CR;
 
-},{"../../../is":87,"../../../util":105,"./arrow-shapes":68,"./drawing-edges":69,"./drawing-elements":70,"./drawing-images":71,"./drawing-label-text":72,"./drawing-nodes":73,"./drawing-redraw":74,"./drawing-shapes":75,"./ele-texture-cache":76,"./export-image":77,"./layered-texture-cache":79,"./node-shapes":80}],79:[function(require,module,exports){
+},{"../../../is":84,"../../../util":102,"./arrow-shapes":65,"./drawing-edges":66,"./drawing-elements":67,"./drawing-images":68,"./drawing-label-text":69,"./drawing-nodes":70,"./drawing-redraw":71,"./drawing-shapes":72,"./ele-texture-cache":73,"./export-image":74,"./layered-texture-cache":76,"./node-shapes":77}],76:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -20931,7 +20474,7 @@ LTCp.setupDequeueing = defs.setupDequeueing({
 
 module.exports = LayeredTextureCache;
 
-},{"../../../heap":85,"../../../is":87,"../../../math":89,"../../../util":105,"./texture-cache-defs":81}],80:[function(require,module,exports){
+},{"../../../heap":82,"../../../is":84,"../../../math":86,"../../../util":102,"./texture-cache-defs":78}],77:[function(require,module,exports){
 'use strict';
 
 var CRp = {};
@@ -20949,7 +20492,7 @@ CRp.nodeShapeImpl = function( name, context, centerX, centerY, width, height, po
 
 module.exports = CRp;
 
-},{}],81:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 var util = require( '../../../util' );
@@ -21038,7 +20581,7 @@ module.exports = {
   }
 };
 
-},{"../../../util":105}],82:[function(require,module,exports){
+},{"../../../util":102}],79:[function(require,module,exports){
 'use strict';
 
 module.exports = [
@@ -21047,7 +20590,7 @@ module.exports = [
   { name: 'canvas', impl: require( './canvas' ) }
 ];
 
-},{"./base":64,"./canvas":78,"./null":83}],83:[function(require,module,exports){
+},{"./base":61,"./canvas":75,"./null":80}],80:[function(require,module,exports){
 'use strict';
 
 function NullRenderer( options ){
@@ -21065,7 +20608,7 @@ NullRenderer.prototype = {
 
 module.exports = NullRenderer;
 
-},{}],84:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /*! Weaver licensed under MIT (https://tldrlegal.com/license/mit-license), copyright Max Franz */
 
 'use strict';
@@ -21390,7 +20933,7 @@ define.eventAliasesOn( fabfn );
 
 module.exports = Fabric;
 
-},{"./define":48,"./is":87,"./promise":90,"./thread":103,"./util":105,"os":2}],85:[function(require,module,exports){
+},{"./define":45,"./is":84,"./promise":87,"./thread":100,"./util":102,"os":111}],82:[function(require,module,exports){
 /*!
 Ported by Xueqiao Xu <xueqiaoxu@gmail.com>;
 
@@ -21771,7 +21314,7 @@ Heap = (function(){
 
 module.exports = Heap;
 
-},{}],86:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 require('./-preamble');
@@ -21834,7 +21377,7 @@ cytoscape.baseArrowShapes = baseArrowShapes;
 cytoscape.sbgn = sbgn;
 
 module.exports = cytoscape;
-},{"./-preamble":5,"./core":41,"./extension":50,"./extensions/renderer/base/arrow-shapes":61,"./extensions/renderer/base/node-shapes":66,"./fabric":84,"./is":87,"./jquery-plugin":88,"./math":89,"./sbgn":91,"./style/properties":100,"./stylesheet":102,"./thread":103,"./version.json":111,"./window":112}],87:[function(require,module,exports){
+},{"./-preamble":2,"./core":38,"./extension":47,"./extensions/renderer/base/arrow-shapes":58,"./extensions/renderer/base/node-shapes":63,"./fabric":81,"./is":84,"./jquery-plugin":85,"./math":86,"./sbgn":88,"./style/properties":97,"./stylesheet":99,"./thread":100,"./version.json":108,"./window":109}],84:[function(require,module,exports){
 'use strict';
 
 /*global HTMLElement DocumentTouch */
@@ -22017,7 +21560,7 @@ var is = {
 
 module.exports = is;
 
-},{"./window":112}],88:[function(require,module,exports){
+},{"./window":109}],85:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -22085,7 +21628,7 @@ var registerJquery = function( $, cytoscape ){
 
 module.exports = registerJquery;
 
-},{"./is":87}],89:[function(require,module,exports){
+},{"./is":84}],86:[function(require,module,exports){
 'use strict';
 
 var math = {};
@@ -23110,7 +22653,7 @@ math.getRoundRectangleRadius = function( width, height ){
 
 module.exports = math;
 
-},{}],90:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /*!
 Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
 Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
@@ -23325,14 +22868,14 @@ api.reject = function( val ){
 
 module.exports = typeof Promise !== 'undefined' ? Promise : api; // eslint-disable-line no-undef
 
-},{}],91:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 // sbgn shapes not supported by cytoscape.js this object will be exposed in cytoscape.js
 // and will be filled in sbgnviz.js
 // TODO consider filling this object here and remove related things from sbgnviz
 var sbgn = {};
 
 module.exports = sbgn;
-},{}],92:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -24231,7 +23774,7 @@ selfn.toString = selfn.selector = function(){
 
 module.exports = Selector;
 
-},{"./is":87,"./util":105}],93:[function(require,module,exports){
+},{"./is":84,"./util":102}],90:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -24882,7 +24425,7 @@ styfn.checkZOrderTrigger = function( ele, name, fromValue, toValue ){
 
 module.exports = styfn;
 
-},{"../is":87,"../util":105}],94:[function(require,module,exports){
+},{"../is":84,"../util":102}],91:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -25058,7 +24601,7 @@ styfn.removeBypasses = function( eles, props, updateTransitions ){
 
 module.exports = styfn;
 
-},{"../is":87,"../util":105}],95:[function(require,module,exports){
+},{"../is":84,"../util":102}],92:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -25088,7 +24631,7 @@ styfn.containerCss = function( propName ){
 
 module.exports = styfn;
 
-},{"../window":112}],96:[function(require,module,exports){
+},{"../window":109}],93:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -25197,7 +24740,7 @@ styfn.getPropsList = function( propsObj ){
 
 module.exports = styfn;
 
-},{"../is":87,"../util":105}],97:[function(require,module,exports){
+},{"../is":84,"../util":102}],94:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -25370,7 +24913,7 @@ Style.properties = styfn.properties;
 
 module.exports = Style;
 
-},{"../is":87,"../selector":92,"../util":105,"./apply":93,"./bypass":94,"./container":95,"./get-for-ele":96,"./json":98,"./parse":99,"./properties":100,"./string-sheet":101}],98:[function(require,module,exports){
+},{"../is":84,"../selector":89,"../util":102,"./apply":90,"./bypass":91,"./container":92,"./get-for-ele":93,"./json":95,"./parse":96,"./properties":97,"./string-sheet":98}],95:[function(require,module,exports){
 'use strict';
 
 var styfn = {};
@@ -25433,7 +24976,7 @@ styfn.json = function(){
 
 module.exports = styfn;
 
-},{}],99:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -25859,7 +25402,7 @@ styfn.parseImpl = function( name, value, propIsBypass, propIsFlat ){
 
 module.exports = styfn;
 
-},{"../is":87,"../math":89,"../util":105}],100:[function(require,module,exports){
+},{"../is":84,"../math":86,"../util":102}],97:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -26405,7 +25948,7 @@ styfn.addDefaultStylesheet = function(){
 
 module.exports = styfn;
 
-},{"../util":105}],101:[function(require,module,exports){
+},{"../util":102}],98:[function(require,module,exports){
 'use strict';
 
 var util = require( '../util' );
@@ -26545,7 +26088,7 @@ styfn.fromString = function( string ){
 
 module.exports = styfn;
 
-},{"../selector":92,"../util":105}],102:[function(require,module,exports){
+},{"../selector":89,"../util":102}],99:[function(require,module,exports){
 'use strict';
 
 var is = require( './is' );
@@ -26640,7 +26183,7 @@ sheetfn.generateStyle = function( cy ){
 
 module.exports = Stylesheet;
 
-},{"./is":87,"./style":97,"./util":105}],103:[function(require,module,exports){
+},{"./is":84,"./style":94,"./util":102}],100:[function(require,module,exports){
 (function (__dirname){
 /*! Weaver licensed under MIT (https://tldrlegal.com/license/mit-license), copyright Max Franz */
 
@@ -27126,7 +26669,7 @@ define.eventAliasesOn( thdfn );
 module.exports = Thread;
 
 }).call(this,"/node_modules/cytoscape-for-sbgnviz/src")
-},{"./define":48,"./event":49,"./is":87,"./promise":90,"./util":105,"./window":112,"child_process":1,"path":3}],104:[function(require,module,exports){
+},{"./define":45,"./event":46,"./is":84,"./promise":87,"./util":102,"./window":109,"child_process":1,"path":112}],101:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -27421,7 +26964,7 @@ module.exports = {
   }
 };
 
-},{"../is":87}],105:[function(require,module,exports){
+},{"../is":84}],102:[function(require,module,exports){
 'use strict';
 
 /*global console */
@@ -27573,7 +27116,7 @@ util.setPrefixedProperty = function( obj, propName, prefix, value ){
 
 module.exports = util;
 
-},{"../is":87,"../math":89,"./colors":104,"./maps":106,"./memoize":107,"./regex":108,"./strings":109,"./timing":110}],106:[function(require,module,exports){
+},{"../is":84,"../math":86,"./colors":101,"./maps":103,"./memoize":104,"./regex":105,"./strings":106,"./timing":107}],103:[function(require,module,exports){
 'use strict';
 
 var is = require( '../is' );
@@ -27693,7 +27236,7 @@ module.exports = {
   }
 };
 
-},{"../is":87}],107:[function(require,module,exports){
+},{"../is":84}],104:[function(require,module,exports){
 'use strict';
 
 module.exports = function memoize( fn, keyFn ){
@@ -27734,7 +27277,7 @@ module.exports = function memoize( fn, keyFn ){
   return memoizedFn;
 };
 
-},{}],108:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 'use strict';
 
 var number = '(?:[-+]?(?:(?:\\d+|\\d*\\.\\d+)(?:[Ee][+-]?\\d+)?))';
@@ -27760,7 +27303,7 @@ module.exports = {
   }
 };
 
-},{}],109:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 'use strict';
 
 var memoize = require( './memoize' );
@@ -27796,7 +27339,7 @@ module.exports = {
 
 };
 
-},{"../is":87,"./memoize":107}],110:[function(require,module,exports){
+},{"../is":84,"./memoize":104}],107:[function(require,module,exports){
 'use strict';
 
 var window = require( '../window' );
@@ -27958,12 +27501,12 @@ util.debounce = function( func, wait, options ){ // ported lodash debounce funct
 
 module.exports = util;
 
-},{"../is":87,"../window":112}],111:[function(require,module,exports){
+},{"../is":84,"../window":109}],108:[function(require,module,exports){
 module.exports="2.7.12"
-},{}],112:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = ( typeof window === 'undefined' ? null : window ); // eslint-disable-line no-undef
 
-},{}],113:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -28051,12 +27594,476 @@ module.exports = function extend() {
 };
 
 
+},{}],111:[function(require,module,exports){
+exports.endianness = function () { return 'LE' };
+
+exports.hostname = function () {
+    if (typeof location !== 'undefined') {
+        return location.hostname
+    }
+    else return '';
+};
+
+exports.loadavg = function () { return [] };
+
+exports.uptime = function () { return 0 };
+
+exports.freemem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.totalmem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.cpus = function () { return [] };
+
+exports.type = function () { return 'Browser' };
+
+exports.release = function () {
+    if (typeof navigator !== 'undefined') {
+        return navigator.appVersion;
+    }
+    return '';
+};
+
+exports.networkInterfaces
+= exports.getNetworkInterfaces
+= function () { return {} };
+
+exports.arch = function () { return 'javascript' };
+
+exports.platform = function () { return 'browser' };
+
+exports.tmpdir = exports.tmpDir = function () {
+    return '/tmp';
+};
+
+exports.EOL = '\n';
+
+},{}],112:[function(require,module,exports){
+(function (process){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+}).call(this,require('_process'))
+},{"_process":113}],113:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
 },{}],114:[function(require,module,exports){
 var extend = require('extend');
 
 
 // At the core of the renderer is cytoscape.
-// We need to augment it to render SBGN specific graphics
+// We need to augment it to render SBGN specific graphics.
+
+// At a birds eye view, these are functions are designed to
+// write sbgn shapes such as polygons, square boxes, arrows, etc. to the
+// canvas.
+
+// At the conceptual level this is bad.  It exposes cytoscape internals
+// and modifies the cytoscape object itself.
 
 module.exports = function (cytoscape) {
   var cyMath = cytoscape.math;
@@ -28243,7 +28250,7 @@ module.exports = function (cytoscape) {
             'opacity': node.css('text-opacity') * node.css('opacity'),
             'width': stateWidth, 'height': stateHeight};
 
-          if (state.clazz == "state variable") {//draw ellipse
+          if (state.clazz == 'state variable') {//draw ellipse
             drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
@@ -28251,7 +28258,7 @@ module.exports = function (cytoscape) {
 
             textProp.state = state.state;
             $$.sbgn.drawStateText(context, textProp);
-          } else if (state.clazz == "unit of information") {//draw rectangle
+          } else if (state.clazz == 'unit of information') {//draw rectangle
             drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight,
@@ -28280,29 +28287,29 @@ module.exports = function (cytoscape) {
     var stateVariable = textProp.state.variable || '';
 
     var stateLabel = stateValue + (stateVariable
-            ? "@" + stateVariable
-            : "");
+            ? '@' + stateVariable
+            : '');
 
     var fontSize = parseInt(textProp.height / 1.5);
 
-    textProp.font = fontSize + "px Arial";
+    textProp.font = fontSize + 'px Arial';
     textProp.label = stateLabel;
-    textProp.color = "#0f0f0f";
+    textProp.color = '#0f0f0f';
     $$.sbgn.drawText(context, textProp);
   };
 
   $$.sbgn.drawInfoText = function (context, textProp) {
     var fontSize = parseInt(textProp.height / 1.5);
-    textProp.font = fontSize + "px Arial";
-    textProp.color = "#0f0f0f";
+    textProp.font = fontSize + 'px Arial';
+    textProp.color = '#0f0f0f';
     $$.sbgn.drawText(context, textProp);
   };
 
   $$.sbgn.drawText = function (context, textProp, truncate) {
     var oldFont = context.font;
     context.font = textProp.font;
-    context.textAlign = "center";
-    context.textBaseline = "middle";
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
     var oldStyle = context.fillStyle;
     context.fillStyle = textProp.color;
     var oldOpacity = context.globalAlpha;
@@ -28326,9 +28333,9 @@ module.exports = function (cytoscape) {
   };
 
   $$.sbgn.colors = {
-    clone: "#a9a9a9",
-    association: "#6B6B6B",
-    port: "#6B6B6B"
+    clone: '#a9a9a9',
+    association: '#6B6B6B',
+    port: '#6B6B6B'
   };
 
 
@@ -28346,7 +28353,7 @@ module.exports = function (cytoscape) {
         'opacity': node.css('text-opacity') * node.css('opacity'),
         'width': stateWidth, 'height': stateHeight};
 
-      if (state.clazz == "state variable") {//draw ellipse
+      if (state.clazz == 'state variable') {//draw ellipse
         //var stateLabel = state.state.value;
         drawRoundRectanglePath(context, stateCenterX, stateCenterY,
                 stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
@@ -28357,7 +28364,7 @@ module.exports = function (cytoscape) {
 
         context.stroke();
 
-      } else if (state.clazz == "unit of information") {//draw rectangle
+      } else if (state.clazz == 'unit of information') {//draw rectangle
         drawRoundRectanglePath(context,
                 stateCenterX, stateCenterY,
                 stateWidth, stateHeight,
@@ -28690,7 +28697,7 @@ module.exports = function (cytoscape) {
     cyBaseNodeShapes['uncertain process'] = extend(true, {}, cyBaseNodeShapes['process']);
     cyBaseNodeShapes['uncertain process'].label = '?';
 
-    cyBaseNodeShapes["unspecified entity"] = {
+    cyBaseNodeShapes['unspecified entity'] = {
       draw: function (context, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
@@ -28728,7 +28735,7 @@ module.exports = function (cytoscape) {
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = cyBaseNodeShapes["ellipse"].intersectLine(centerX, centerY, width,
+        var nodeIntersectLines = cyBaseNodeShapes['ellipse'].intersectLine(centerX, centerY, width,
                 height, x, y, padding);
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines);
@@ -28743,7 +28750,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var nodeCheckPoint = cyBaseNodeShapes["ellipse"].checkPoint(x, y,
+        var nodeCheckPoint = cyBaseNodeShapes['ellipse'].checkPoint(x, y,
                 padding, width, height,
                 centerX, centerY);
 
@@ -29133,7 +29140,7 @@ module.exports = function (cytoscape) {
 
         drawPolygonPath(context,
                 centerX, centerY,
-                width, height, cyBaseNodeShapes["complex"].points);
+                width, height, cyBaseNodeShapes['complex'].points);
         context.fill();
 
         context.stroke();
@@ -29156,15 +29163,15 @@ module.exports = function (cytoscape) {
         var width = hasChildren ? node.outerWidth() : node.width();
         var height = hasChildren ? node.outerHeight() : node.height();
         var padding = parseInt(node.css('border-width')) / 2;
-        var multimerPadding = cyBaseNodeShapes["complex"].multimerPadding;
-        var cornerLength = cyBaseNodeShapes["complex"].cornerLength;
+        var multimerPadding = cyBaseNodeShapes['complex'].multimerPadding;
+        var cornerLength = cyBaseNodeShapes['complex'].cornerLength;
 
         var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        cyBaseNodeShapes["complex"].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyBaseNodeShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
                 width, height);
 
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
@@ -29172,7 +29179,7 @@ module.exports = function (cytoscape) {
 
         var nodeIntersectLines = cyMath.polygonIntersectLine(
                 x, y,
-                cyBaseNodeShapes["complex"].points,
+                cyBaseNodeShapes['complex'].points,
                 centerX,
                 centerY,
                 width / 2, height / 2,
@@ -29183,7 +29190,7 @@ module.exports = function (cytoscape) {
         if ($$.sbgn.isMultimer(node)) {
           multimerIntersectionLines = cyMath.polygonIntersectLine(
                   x, y,
-                  cyBaseNodeShapes["complex"].points,
+                  cyBaseNodeShapes['complex'].points,
                   centerX + multimerPadding,
                   centerY + multimerPadding,
                   width / 2, height / 2,
@@ -29201,13 +29208,13 @@ module.exports = function (cytoscape) {
         var width = (hasChildren ? node.outerWidth() : node.width()) + threshold;
         var height = (hasChildren ? node.outerHeight() : node.height()) + threshold;
         var padding = parseInt(node.css('border-width')) / 2;
-        var multimerPadding = cyBaseNodeShapes["complex"].multimerPadding;
-        var cornerLength = cyBaseNodeShapes["complex"].cornerLength;
+        var multimerPadding = cyBaseNodeShapes['complex'].multimerPadding;
+        var cornerLength = cyBaseNodeShapes['complex'].cornerLength;
 
-        cyBaseNodeShapes["complex"].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyBaseNodeShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
                 width, height);
 
-        var nodeCheckPoint = cyMath.pointInsidePolygon(x, y, cyBaseNodeShapes["complex"].points,
+        var nodeCheckPoint = cyMath.pointInsidePolygon(x, y, cyBaseNodeShapes['complex'].points,
                 centerX, centerY, width, height, [0, -1], padding);
 
         var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
@@ -29217,7 +29224,7 @@ module.exports = function (cytoscape) {
         var multimerCheckPoint = false;
         if ($$.sbgn.isMultimer(node)) {
           multimerCheckPoint = cyMath.pointInsidePolygon(x, y,
-                  cyBaseNodeShapes["complex"].points,
+                  cyBaseNodeShapes['complex'].points,
                   centerX + multimerPadding, centerY + multimerPadding,
                   width, height, [0, -1], padding);
 
@@ -29227,18 +29234,17 @@ module.exports = function (cytoscape) {
       }
     };
 
-    cyBaseNodeShapes["nucleic acid feature"] = {
+    cyBaseNodeShapes['nucleic acid feature'] = {
       points: cyMath.generateUnitNgonPointsFitToSquare(4, 0),
       multimerPadding: 5,
       draw: function (context, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        ;
         var width = node.width();
         var height = node.height();
         var label = node._private.data.label;
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
-        var multimerPadding = cyBaseNodeShapes["nucleic acid feature"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['nucleic acid feature'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
 
         //check whether sbgn class includes multimer substring or not
@@ -29282,7 +29288,7 @@ module.exports = function (cytoscape) {
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var multimerPadding = cyBaseNodeShapes["nucleic acid feature"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['nucleic acid feature'].multimerPadding;
         var width = node.width();
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
@@ -29314,7 +29320,7 @@ module.exports = function (cytoscape) {
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var multimerPadding = cyBaseNodeShapes["nucleic acid feature"].multimerPadding;
+        var multimerPadding = cyBaseNodeShapes['nucleic acid feature'].multimerPadding;
         var width = node.width();
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
@@ -29335,7 +29341,7 @@ module.exports = function (cytoscape) {
         return nodeCheckPoint || stateAndInfoCheckPoint || multimerCheckPoint;
       }
     };
-    cyBaseNodeShapes["source and sink"] = {
+    cyBaseNodeShapes['source and sink'] = {
       points: cyMath.generateUnitNgonPoints(4, 0),
       draw: function (context, node) {
         var centerX = node._private.position.x;
@@ -29344,7 +29350,7 @@ module.exports = function (cytoscape) {
         var width = node.width();
         var height = node.height();
         var label = node._private.data.label;
-        var pts = cyBaseNodeShapes["source and sink"].points;
+        var pts = cyBaseNodeShapes['source and sink'].points;
         var cloneMarker = node._private.data.clonemarker;
 
         $$.sbgn.drawEllipse(context, centerX, centerY,
@@ -29370,8 +29376,8 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
       },
-      intersectLine: cyBaseNodeShapes["ellipse"].intersectLine,
-      checkPoint: cyBaseNodeShapes["ellipse"].checkPoint
+      intersectLine: cyBaseNodeShapes['ellipse'].intersectLine,
+      checkPoint: cyBaseNodeShapes['ellipse'].checkPoint
     };
   };
 
@@ -29465,7 +29471,7 @@ module.exports = function (cytoscape) {
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
-        renderer.drawPolygon(context,
+        drawPolygonPath(context,
                 cloneX, cloneY,
                 cloneWidth, cloneHeight, markerPoints);
 
@@ -29543,7 +29549,6 @@ module.exports = function (cytoscape) {
     var nodeY = node._private.position.y;
     var width = node.width();
     var height = node.height();
-    var padding = parseInt(node.css('border-width')) / 2;
 
     for (var i = 0; i < node._private.data.ports.length; i++) {
       var port = node._private.data.ports[i];
@@ -29654,7 +29659,7 @@ module.exports = function (cytoscape) {
     // Bottom Right
     {
       var bottomRightCenterX = nodeX + halfWidth - cornerRadius;
-      var bottomRightCenterY = nodeY + halfHeight - cornerRadius
+      var bottomRightCenterY = nodeY + halfHeight - cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x, y, nodeX, nodeY,
               bottomRightCenterX, bottomRightCenterY, cornerRadius + padding);
@@ -29670,7 +29675,7 @@ module.exports = function (cytoscape) {
     // Bottom Left
     {
       var bottomLeftCenterX = nodeX - halfWidth + cornerRadius;
-      var bottomLeftCenterY = nodeY + halfHeight - cornerRadius
+      var bottomLeftCenterY = nodeY + halfHeight - cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x, y, nodeX, nodeY,
               bottomLeftCenterX, bottomLeftCenterY, cornerRadius + padding);
@@ -29761,7 +29766,7 @@ module.exports = function (cytoscape) {
     // Top Left
     {
       var topLeftCenterX = nodeX - halfWidth + cornerRadius;
-      var topLeftCenterY = nodeY - halfHeight + cornerRadius
+      var topLeftCenterY = nodeY - halfHeight + cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x1, y1, x2, y2,
               topLeftCenterX, topLeftCenterY, cornerRadius + padding);
@@ -29777,7 +29782,7 @@ module.exports = function (cytoscape) {
     // Top Right
     {
       var topRightCenterX = nodeX + halfWidth - cornerRadius;
-      var topRightCenterY = nodeY - halfHeight + cornerRadius
+      var topRightCenterY = nodeY - halfHeight + cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x1, y1, x2, y2,
               topRightCenterX, topRightCenterY, cornerRadius + padding);
@@ -29793,7 +29798,7 @@ module.exports = function (cytoscape) {
     // Bottom Right
     {
       var bottomRightCenterX = nodeX + halfWidth - cornerRadius;
-      var bottomRightCenterY = nodeY + halfHeight - cornerRadius
+      var bottomRightCenterY = nodeY + halfHeight - cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x1, y1, x2, y2,
               bottomRightCenterX, bottomRightCenterY, cornerRadius + padding);
@@ -29809,7 +29814,7 @@ module.exports = function (cytoscape) {
     // Bottom Left
     {
       var bottomLeftCenterX = nodeX - halfWidth + cornerRadius;
-      var bottomLeftCenterY = nodeY + halfHeight - cornerRadius
+      var bottomLeftCenterY = nodeY + halfHeight - cornerRadius;
       arcIntersections = cyMath.intersectLineCircle(
               x1, y1, x2, y2,
               bottomLeftCenterX, bottomLeftCenterY, cornerRadius + padding);
@@ -29880,7 +29885,7 @@ module.exports = function (cytoscape) {
       var stateCenterX = state.bbox.x * node.width() / 100 + centerX;
       var stateCenterY = state.bbox.y * node.height() / 100 + centerY;
 
-      if (state.clazz == "state variable" && stateCount < 2) {//draw ellipse
+      if (state.clazz == 'state variable' && stateCount < 2) {//draw ellipse
         var stateIntersectLines = $$.sbgn.intersectLineEllipse(x, y, centerX, centerY,
                 stateCenterX, stateCenterY, stateWidth, stateHeight, padding);
 
@@ -29888,7 +29893,7 @@ module.exports = function (cytoscape) {
           intersections = intersections.concat(stateIntersectLines);
 
         stateCount++;
-      } else if (state.clazz == "unit of information" && infoCount < 2) {//draw rectangle
+      } else if (state.clazz == 'unit of information' && infoCount < 2) {//draw rectangle
         var infoIntersectLines = $$.sbgn.roundRectangleIntersectLine(x, y, centerX, centerY,
                 stateCenterX, stateCenterY, stateWidth, stateHeight, 5, padding);
 
@@ -29920,16 +29925,16 @@ module.exports = function (cytoscape) {
       var stateCenterX = state.bbox.x * node.width() / 100 + centerX;
       var stateCenterY = state.bbox.y * node.height() / 100 + centerY;
 
-      if (state.clazz == "state variable" && stateCount < 2) {//draw ellipse
-        var stateCheckPoint = cyBaseNodeShapes["ellipse"].checkPoint(
+      if (state.clazz == 'state variable' && stateCount < 2) {//draw ellipse
+        var stateCheckPoint = cyBaseNodeShapes['ellipse'].checkPoint(
                 x, y, padding, stateWidth, stateHeight, stateCenterX, stateCenterY);
 
         if (stateCheckPoint == true)
           return true;
 
         stateCount++;
-      } else if (state.clazz == "unit of information" && infoCount < 2) {//draw rectangle
-        var infoCheckPoint = cyBaseNodeShapes["roundrectangle"].checkPoint(
+      } else if (state.clazz == 'unit of information' && infoCount < 2) {//draw rectangle
+        var infoCheckPoint = cyBaseNodeShapes['roundrectangle'].checkPoint(
                 x, y, padding, stateWidth, stateHeight, stateCenterX, stateCenterY);
 
         if (infoCheckPoint == true)
@@ -29951,7 +29956,7 @@ module.exports = function (cytoscape) {
   };
 };
 
-},{"extend":113}],115:[function(require,module,exports){
+},{"extend":110}],115:[function(require,module,exports){
 var sbgnCytoscape = require('cytoscape-for-sbgnviz');
 var augmentCytoscape = require('./augmentCytoscape');
 var graphStyleSheet = require('./style/graphStyleSheet');
@@ -29962,6 +29967,8 @@ var SbgnRenderer = function (opts) {
     return new SbgnRenderer();
   }
 
+  // we must augment cytoscape to allow us to render sbgn specific
+  // graphics
   augmentCytoscape(sbgnCytoscape);
 
   this.opts = opts;
@@ -30036,7 +30043,7 @@ SbgnRenderer.prototype.renderGraph = function (cytoscapeGraphJson) {
 
 module.exports = SbgnRenderer;
 
-},{"./augmentCytoscape":114,"./style/graphStyleSheet":116,"cytoscape-for-sbgnviz":86}],116:[function(require,module,exports){
+},{"./augmentCytoscape":114,"./style/graphStyleSheet":116,"cytoscape-for-sbgnviz":83}],116:[function(require,module,exports){
 var nodeProperties = require('./nodeProperties.js');
 
 // A function that creates a cytoscape style sheet from a given
