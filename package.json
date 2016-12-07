@@ -1,13 +1,15 @@
 {
-  "name": "sbgn-renderer",
+  "name": "sbgnviz",
   "version": "0.1.0",
-  "description": "A library that renders sbgn based xml files",
+  "description": "A library that renders SBGN",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm demo/app.js",
-    "build-demo": "browserify demo/browserify-entry.js -o demo/browserify-bundle.js",
-    "build": "browserify --standalone sbgnRenderer src/index.js -o dist/sbgnRenderer.js"
+    "clean": "rm -rf demo/browserify-bundle.js dist/*",
+    "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
+    "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
+    "build": "browserify --standalone sbgnviz -e src/index.js -o dist/sbgnviz.js -d -t [ babelify --comments false ]",
+    "watch": "watchify --standalone sbgnviz -e src/index.js -o dist/sbgnviz.js -d -t [ babelify --comments false ] --poll=50 --verbose"
   },
   "keywords": [
     "biology",
@@ -23,6 +25,8 @@
   "author": "Dylan Fong",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
     "eslint": "^3.11.1",
@@ -33,7 +37,7 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "cytoscape-for-sbgnviz": "^2.7.12",
+    "cytoscape": "https://github.com/iVis-at-Bilkent/cytoscape.js.git#v2.7.12",
     "extend": "^3.0.0"
   }
 }
