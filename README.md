@@ -119,5 +119,5 @@ Therefore, credit and recognition must be given to the team at Bilkent Universit
 
 * Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
 
-While the code is similar, PathwayCommons and i-Vis at Bilkent have different needs and different goals.  The code had to be repurposed to pivot PathwayCommons into a position that more closely aligns with these needs and goals.
+While the code is similar, PathwayCommons and i-Vis at Bilkent have different needs and different goals.  Sbgn-render exists to put PathwayCommons into a position that more closely aligns with these needs and goals.
 
