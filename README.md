@@ -89,3 +89,16 @@ Open your browser and type the following address:
 ```
 localhost:<PORT>/demo/with-plainjs.html
 ```
+
+## Building the Library
+
+The following npm scripts are available.  To run a script, type:
+
+```
+npm run <command>
+```
+
+```build```: Builds the sbgn-renderer library; Places it in the dist folder
+
+```build-demo```: Builds the browserify version of the demo app; Viewable in the demo folder
+
