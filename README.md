@@ -110,4 +110,14 @@ npm run <command>
 
 ```build-demo```: Builds the browserify version of the demo app; Viewable in the demo folder
 
+## Credits
+
+This repository borrows heavily from the code in [sbgnviz.js](https://github.com/iVis-at-Bilkent/sbgnviz.js).
+Therefore, credit and recognition must be given to the team at Bilkent University, Turkey.
+
+#### Bilkent team members:
+
+* Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
+
+While the code is similar, PathwayCommons and i-Vis at Bilkent have different needs and different goals.  The code had to be repurposed to pivot PathwayCommons into a position that more closely aligns with these needs and goals.
 
