@@ -68,6 +68,14 @@ Renders the given graph
 
 Please look at the requirements for more information on how to acquire valid input 
 
+### SbgnRenderer.cy
+
+A cytoscape instance.  Through this property, you can use the cytoscape.js API to
+
+Select elements in the graph, style the graph, etc.
+
+To learn more, please read the cytoscape [documentation](http://js.cytoscape.org/)
+
 
 ## Running the Demo:
 Clone this repository
@@ -101,4 +109,5 @@ npm run <command>
 ```build```: Builds the sbgn-renderer library; Places it in the dist folder
 
 ```build-demo```: Builds the browserify version of the demo app; Viewable in the demo folder
+
 
