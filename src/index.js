@@ -6,7 +6,7 @@ let graphStyleSheet = require('./style/graphStyleSheet');
 
 augment( Cytoscape ); // TODO should be removed eventually (just use vanilla cy)
 
-let defaults = {
+let defaultOptions = {
   style: graphStyleSheet(Cytoscape),
   boxSelectionEnabled: true,
   showOverlay: false,
@@ -18,7 +18,7 @@ let defaults = {
 
 class SBGNViz extends Cytoscape {
   constructor( options ){
-    super( defaultsDeep( {}, defaults, options ) );
+    super( defaultsDeep( {}, defaultOptions, options ) );
   }
 }
 
