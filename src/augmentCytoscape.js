@@ -1,6 +1,5 @@
 var extend = require('extend');
 
-
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics.
 
@@ -145,7 +144,7 @@ module.exports = function (cytoscape) {
     $$.sbgn.drawEllipse(context, centerX, centerY, 0, 0);
 
     var upWidth = 0, downWidth = 0;
-    var boxPadding = 10, betweenBoxPadding = 5;
+    var boxPadding = 10;
     var beginPosY = height / 2, beginPosX = width / 2;
 
     stateAndInfos.sort($$.sbgn.compareStates);
@@ -154,7 +153,6 @@ module.exports = function (cytoscape) {
       var state = stateAndInfos[i];
       var stateWidth = state.bbox.w;
       var stateHeight = state.bbox.h;
-//      var stateLabel = state.state.value;
       var relativeYPos = state.bbox.y;
       var stateCenterX, stateCenterY;
 
@@ -251,7 +249,7 @@ module.exports = function (cytoscape) {
     $$.sbgn.drawText(context, textProp);
   };
 
-  $$.sbgn.drawText = function (context, textProp, truncate) {
+  $$.sbgn.drawText = function (context, textProp) {
     var oldFont = context.font;
     context.font = textProp.font;
     context.textAlign = 'center';
@@ -270,7 +268,6 @@ module.exports = function (cytoscape) {
     context.fillStyle = oldStyle;
     context.font = oldFont;
     context.globalAlpha = oldOpacity;
-    //context.stroke();
   };
 
   cyMath.calculateDistance = function (point1, point2) {
@@ -538,7 +535,6 @@ module.exports = function (cytoscape) {
     var height = node.height();
     var centerX = node._private.position.x;
     var centerY = node._private.position.y;
-    var padding = parseInt(node.css('border-width')) / 2;
 
     for (var i = 0; i < node._private.data.ports.length; i++) {
       var port = node._private.data.ports[i];
@@ -593,7 +589,6 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var padding = parseInt(node.css('border-width')) / 2;
 
         drawPolygonPath(context,
                 centerX, centerY,
@@ -625,7 +620,7 @@ module.exports = function (cytoscape) {
                 width / 2, height / 2,
                 padding);
       },
-      checkPoint: function (x, y, node, threshold) {
+      checkPoint: function (x, y, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var width = node.width();
@@ -650,8 +645,6 @@ module.exports = function (cytoscape) {
 
         var width = node.width();
         var height = node.height();
-        var sbgnClass = node._private.data.class;
-        var label = node._private.data.label;
         var cloneMarker = node._private.data.clonemarker;
 
         $$.sbgn.drawEllipse(context, centerX, centerY, width, height);
@@ -716,7 +709,6 @@ module.exports = function (cytoscape) {
         var width = node.width();
         var height = node.height();
         var multimerPadding = cyBaseNodeShapes['simple chemical'].multimerPadding;
-        var label = node._private.data.label;
         var padding = parseInt(node.css('border-width'));
         var cloneMarker = node._private.data.clonemarker;
 
@@ -731,8 +723,6 @@ module.exports = function (cytoscape) {
                   centerX + multimerPadding, centerY + multimerPadding,
                   width - padding, height - padding, cloneMarker, true,
                   node.css('background-opacity'));
-
-          //context.stroke();
         }
 
         $$.sbgn.drawSimpleChemical(context,
@@ -744,10 +734,6 @@ module.exports = function (cytoscape) {
         $$.sbgn.cloneMarker.simpleChemical(context, centerX, centerY,
                 width - padding, height - padding, cloneMarker, false,
                 node.css('background-opacity'));
-
-//        var nodeProp = {'label': label, 'centerX': centerX, 'centerY': centerY,
-//          'opacity': node._private.style['text-opacity'].value, 'width': node.width(), 'height': node.height()};
-//        $$.sbgn.drawDynamicLabelText(context, nodeProp);
 
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
@@ -822,10 +808,8 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var label = node._private.data.label;
         var multimerPadding = cyBaseNodeShapes['macromolecule'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
-        var padding = parseInt(node.css('border-width'));
 
         //check whether sbgn class includes multimer substring or not
         if ($$.sbgn.isMultimer(node)) {
@@ -842,7 +826,6 @@ module.exports = function (cytoscape) {
                   width, height, cloneMarker, true,
                   node.css('background-opacity'));
 
-          //context.stroke();
         }
 
         drawRoundRectanglePath(context,
@@ -860,9 +843,6 @@ module.exports = function (cytoscape) {
         $$.sbgn.forceOpacityToOne(node, context);
         $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
-
-//        var nodeProp = {'label': label, 'centerX': centerX, 'centerY': centerY,
-//          'opacity': node._private.style['text-opacity'].value, 'width': node.width(), 'height': node.height()};
       },
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
@@ -933,7 +913,6 @@ module.exports = function (cytoscape) {
         var centerY = node._private.position.y;
         var width = node.width();
         var height = node.height();
-        var padding = parseInt(node.css('border-width'));
 
         cyBaseNodeShapes['ellipse'].draw(context, centerX, centerY, width, height);
         context.fill();
@@ -962,7 +941,7 @@ module.exports = function (cytoscape) {
 
         return intersect;
       },
-      checkPoint: function (x, y, node, threshold) {
+      checkPoint: function (x, y, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var width = node.width();
@@ -1030,7 +1009,7 @@ module.exports = function (cytoscape) {
                 width / 2 + padding,
                 height / 2 + padding);
       },
-      checkPoint: function (x, y, node, threshold) {
+      checkPoint: function (x, y, node) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var width = node.width();
@@ -1058,7 +1037,6 @@ module.exports = function (cytoscape) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var stateAndInfos = node._private.data.statesandinfos;
-        var label = node._private.data.label;
         var cornerLength = cyBaseNodeShapes['complex'].cornerLength;
         var multimerPadding = cyBaseNodeShapes['complex'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
@@ -1080,8 +1058,6 @@ module.exports = function (cytoscape) {
                   centerX + multimerPadding, centerY + multimerPadding,
                   width, height, cornerLength, cloneMarker, true,
                   node.css('background-opacity'));
-
-          //context.stroke();
         }
 
         drawPolygonPath(context,
@@ -1100,8 +1076,6 @@ module.exports = function (cytoscape) {
         $$.sbgn.drawComplexStateAndInfo(context, node, stateAndInfos, centerX, centerY, width, height);
         context.fillStyle = oldStyle;
       },
-//      intersectLine: cyBaseNodeShapes["roundrectangle"].intersectLine,
-//      checkPoint: cyBaseNodeShapes["roundrectangle"].checkPoint
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
@@ -1188,7 +1162,6 @@ module.exports = function (cytoscape) {
         var centerY = node._private.position.y;
         var width = node.width();
         var height = node.height();
-        var label = node._private.data.label;
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
         var multimerPadding = cyBaseNodeShapes['nucleic acid feature'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
@@ -1206,8 +1179,6 @@ module.exports = function (cytoscape) {
                   centerX + multimerPadding, centerY + multimerPadding,
                   width, height, cloneMarker, true,
                   node.css('background-opacity'));
-
-          //context.stroke();
         }
 
         $$.sbgn.drawNucAcidFeature(context, width, height, centerX,
@@ -1219,10 +1190,6 @@ module.exports = function (cytoscape) {
                 width, height, cloneMarker, false,
                 node.css('background-opacity'));
 
-//        var nodeProp = {'label': label, 'centerX': centerX, 'centerY': centerY,
-//          'opacity': node._private.style['text-opacity'].value, 'width': node.width(), 'height': node.height()};
-
-//        $$.sbgn.drawDynamicLabelText(context, nodeProp);
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
         $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
@@ -1295,7 +1262,6 @@ module.exports = function (cytoscape) {
 
         var width = node.width();
         var height = node.height();
-        var label = node._private.data.label;
         var pts = cyBaseNodeShapes['source and sink'].points;
         var cloneMarker = node._private.data.clonemarker;
 
@@ -1328,8 +1294,6 @@ module.exports = function (cytoscape) {
   };
 
   $$.sbgn.drawEllipse = function (context, x, y, width, height) {
-    //$$.sbgn.drawEllipsePath(context, x, y, width, height);
-    //context.fill();
     cyBaseNodeShapes['ellipse'].draw(context, x, y, width, height);
   };
 
@@ -1425,7 +1389,6 @@ module.exports = function (cytoscape) {
 
         context.fillStyle = oldStyle;
         context.globalAlpha = oldGlobalAlpha;
-        //context.stroke();
       }
     },
     nucleicAcidFeature: function (context, centerX, centerY,
@@ -1448,7 +1411,6 @@ module.exports = function (cytoscape) {
 
         context.fillStyle = oldStyle;
         context.globalAlpha = oldGlobalAlpha;
-        //context.stroke();
       }
     },
     macromolecule: function (context, centerX, centerY,
@@ -1481,7 +1443,6 @@ module.exports = function (cytoscape) {
         context.fillStyle = oldStyle;
         context.globalAlpha = oldGlobalAlpha;
 
-//                context.stroke();
       }
     }
   };
@@ -1862,7 +1823,6 @@ module.exports = function (cytoscape) {
     var stateAndInfos = node._private.data.statesandinfos;
 
     var stateCount = 0, infoCount = 0;
-//    threshold = parseFloat(threshold);
 
     for (var i = 0; i < stateAndInfos.length; i++) {
       var state = stateAndInfos[i];
@@ -1894,10 +1854,6 @@ module.exports = function (cytoscape) {
   };
 
   $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
-    if (totallyOverridenNodeShapes[render.getNodeShape(node)]) {
-      return true;
-    }
-
-    return false;
+    return !!(totallyOverridenNodeShapes[render.getNodeShape(node)]);
   };
 };
