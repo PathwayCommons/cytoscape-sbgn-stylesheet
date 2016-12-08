@@ -1,4 +1,4 @@
-var data = {
+var mapkCascadeData = {
 "nodes": [
     {
         "data": {
@@ -843,4 +843,4 @@ var data = {
 ]
 };
 
-module.exports = data;
+module.exports = mapkCascadeData;
