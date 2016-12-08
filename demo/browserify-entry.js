@@ -1,4 +1,7 @@
-var Renderer = require('../src/index');
+/* global $ */
+
+import Renderer from '../src/index';
+
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var defaultData = require('./test-data');
 
@@ -7,34 +10,62 @@ var readFile = function (file, renderer) {
 
   reader.onload = function (e) {
     var graph = convertSbgnml(e.target.result);
-    renderer.renderGraph(graph);
+    renderGraph(renderer, graph);
 
   };
 
   reader.readAsText(file);
 };
 
+var renderGraph = function (cy, cyGraph) {
+  cy.startBatch();
+  cy.remove('*');
+  cy.add(cyGraph);
+
+  var nodePositions = {};
+  for (var i = 0; i < cyGraph.nodes.length; i++) {
+    var xPos = cyGraph.nodes[i].data.bbox.x;
+    var yPos = cyGraph.nodes[i].data.bbox.y;
+    nodePositions[cyGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
+  }
+
+  cy.layout({
+    name: 'preset',
+    positions: nodePositions,
+    fit: true,
+    padding: 50
+  });
+
+  var compounds = cy.nodes().filter('$node > node');
+  compounds.css('padding-left', 5);
+  compounds.css('padding-right', 5);
+  compounds.css('padding-top', 5);
+  compounds.css('padding-bottom', 5);
+
+  cy.endBatch();
+  cy.style().update();
+};
+
 $(document).ready(function () {
 
-    var container = $('#sbgn-network-container');
+  var container = $('#sbgn-network-container');
 
-    var renderer = new Renderer({
-        container: container
-    });
+  var renderer = new Renderer({
+    container: container
+  });
 
-    renderer.renderGraph(defaultData);
+  renderGraph(renderer, defaultData);
 
+  $('#graph-load').click(function () {
+    $('#graph-input').trigger('click');
+  });
 
-    $('#graph-load').click(function () {
-      $('#graph-input').trigger('click');
-    });
+  $('#graph-input').change(function () {
+    if ($(this).val() != '') {
+      var file = this.files[0];
 
-    $('#graph-input').change(function () {
-      if ($(this).val() != '') {
-        var file = this.files[0];
-
-        readFile(file, renderer);
-      };
-    })
+      readFile(file, renderer);
+    }
+  });
 
 });
