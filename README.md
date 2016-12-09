@@ -27,56 +27,6 @@ OR
 </html>
 ```
 
-## Usage
-
-```js
-var SbgnRenderer = require('sbgn-renderer');
-var convertSbgnml = require('sbgnml-to-cytoscape');
-
-var myFileText = ... // some text that represents sbgnml
-var myGraph = convertSbgnml(myFileText);
-
-var myContainer = document.getElementById('#my-container');
-var renderer = new SbgnRenderer({container: myContainer});
-
-renderer.renderGraph(myGraph);
-
-```
-## API
-
-### SbgnRenderer
-
-Creates new renderer instances
-
-#### Initialization
-```js
-var renderer = new SbgnRenderer({
-  container: document.getElementById('#myContainer')
-});
-```
-#### Options
-
-```container```: A HTML DOM element in which the graph should be rendered
-
-
-### SbgnRenderer.renderGraph(cytoscapeGraphJson)
-
-Renders the given graph
-
-#### input
-```cytoscapeGraphJson```: JSON representing your biological network.  
-
-Please look at the requirements for more information on how to acquire valid input 
-
-### SbgnRenderer.cy
-
-A cytoscape instance.  Through this property, you can use the cytoscape.js API to
-
-Select elements in the graph, style the graph, etc.
-
-To learn more, please read the cytoscape [documentation](http://js.cytoscape.org/)
-
-
 ## Running the Demo:
 Clone this repository
 ```
@@ -95,7 +45,7 @@ node http-server -p <PORT>
 
 Open your browser and type the following address:
 ```
-localhost:<PORT>/demo/with-plainjs.html
+localhost:<PORT>/demo/with-browserify.html
 ```
 
 ## Building the Library
@@ -107,8 +57,10 @@ npm run <command>
 ```
 
 ```build```: Builds the sbgn-renderer library; Places it in the dist folder
-
-```build-demo```: Builds the browserify version of the demo app; Viewable in the demo folder
+```build-demo```: Builds the browserify version of the demo app in the demo folder
+```clean```: Removes the browserify demo bundle and the contents of the dist folder
+```watch```: Watches for changes in the src directory and builds the library in response
+```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
 
 ## Credits
 
