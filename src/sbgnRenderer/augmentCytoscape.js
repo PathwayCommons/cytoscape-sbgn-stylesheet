@@ -1,5 +1,11 @@
 var extend = require('extend');
 
+var sbgnColors = require('./colors');
+var draw = require('./draw');
+var sbgnShapes = require('./sbgnShapes');
+
+var pointFn = require('./point.js');
+
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics.
 
@@ -17,77 +23,9 @@ module.exports = function (cytoscape) {
   var cyBaseArrowShapes = cytoscape.baseArrowShapes;
   var $$ = cytoscape;
 
-  var drawRoundRectanglePath = function(
-    context, x, y, width, height, radius ){
-
-    var halfWidth = width / 2;
-    var halfHeight = height / 2;
-    var cornerRadius = radius || Math.min(width / 4, height / 4, 8);
-
-    if( context.beginPath ){ context.beginPath(); }
-
-    // Start at top middle
-    context.moveTo( x, y - halfHeight );
-    // Arc from middle top to right side
-    context.arcTo( x + halfWidth, y - halfHeight, x + halfWidth, y, cornerRadius );
-    // Arc from right side to bottom
-    context.arcTo( x + halfWidth, y + halfHeight, x, y + halfHeight, cornerRadius );
-    // Arc from bottom to left side
-    context.arcTo( x - halfWidth, y + halfHeight, x - halfWidth, y, cornerRadius );
-    // Arc from left side to topBorder
-    context.arcTo( x - halfWidth, y - halfHeight, x, y - halfHeight, cornerRadius );
-    // Join line
-    context.lineTo( x, y - halfHeight );
-
-
-    context.closePath();
-  };
-
-  // Taken from cytoscape.js
-  var drawPolygonPath = function(
-    context, x, y, width, height, points ){
-
-    var halfW = width / 2;
-    var halfH = height / 2;
-
-    if( context.beginPath ){ context.beginPath(); }
-
-    context.moveTo( x + halfW * points[0], y + halfH * points[1] );
-
-    for( var i = 1; i < points.length / 2; i++ ){
-      context.lineTo( x + halfW * points[ i * 2], y + halfH * points[ i * 2 + 1] );
-    }
-
-    context.closePath();
-  };
-
-  var sbgnShapes = $$.sbgn.sbgnShapes = {
-    'source and sink': true,
-    'nucleic acid feature': true,
-    'complex': true,
-    'dissociation': true,
-    'macromolecule': true,
-    'simple chemical': true,
-    'unspecified entity': true,
-    'necessary stimulation': true,
-    'process': true,
-    'uncertain process': true,
-    'omitted process': true,
-    'association': true
-  };
-
-  var totallyOverridenNodeShapes = $$.sbgn.totallyOverridenNodeShapes = {
-    'macromolecule': true,
-    'nucleic acid feature': true,
-    'simple chemical': true,
-    'complex': true,
-    'unspecified entity': true,
-    'process': true,
-    'uncertain process': true,
-    'omitted process': true,
-    'dissociation': true,
-    'association': true
-  };
+  $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
+  $$.sbgn.totallyOverridenNodeShapes = sbgnShapes.totallyOverridenNodeShapes;
+  $$.sbgn.colors = sbgnColors;
 
   $$.sbgn.addPortReplacementIfAny = function (node, edgePort) {
     var posX = node.position().x;
@@ -106,35 +44,9 @@ module.exports = function (cytoscape) {
   }
   ;
 
-  $$.sbgn.drawPortsToPolygonShape = function (context, node, points) {
-    var width = node.width();
-    var height = node.height();
-    var centerX = node._private.position.x;
-    var centerY = node._private.position.y;
-    var padding = parseInt(node.css('border-width')) / 2;
+  $$.sbgn.drawPortsToPolygonShape = draw.drawPortsToPolygonShape;
 
-    for (var i = 0; i < node._private.data.ports.length; i++) {
-      var port = node._private.data.ports[i];
-      var portX = port.x * width / 100 + centerX;
-      var portY = port.y * height / 100 + centerY;
-      var closestPoint = cyMath.polygonIntersectLine(portX, portY,
-              points, centerX, centerY, width / 2, height / 2, padding);
-      context.beginPath();
-      context.moveTo(portX, portY);
-      context.lineTo(closestPoint[0], closestPoint[1]);
-      context.stroke();
-      context.closePath();
-
-
-      //add a little black circle to ports
-      var oldStyle = context.fillStyle;
-      context.fillStyle = $$.sbgn.colors.port;
-      $$.sbgn.drawEllipse(context, portX, portY, 2, 2);
-      context.fillStyle = oldStyle;
-      context.stroke();
-    }
-  };
-
+  
   var unitOfInfoRadius = 4;
   var stateVarRadius = 15;
   $$.sbgn.drawComplexStateAndInfo = function (context, node, stateAndInfos,
@@ -166,7 +78,7 @@ module.exports = function (cytoscape) {
             'width': stateWidth, 'height': stateHeight};
 
           if (state.clazz == 'state variable') {//draw ellipse
-            drawRoundRectanglePath(context,
+            draw.drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
             context.fill();
@@ -174,7 +86,7 @@ module.exports = function (cytoscape) {
             textProp.state = state.state;
             $$.sbgn.drawStateText(context, textProp);
           } else if (state.clazz == 'unit of information') {//draw rectangle
-            drawRoundRectanglePath(context,
+            draw.drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight,
                     Math.min(stateWidth / 2, stateHeight / 2, unitOfInfoRadius));
@@ -195,7 +107,7 @@ module.exports = function (cytoscape) {
             'width': stateWidth, 'height': stateHeight};
 
           if (state.clazz == 'state variable') {//draw ellipse
-            drawRoundRectanglePath(context,
+            draw.drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
             context.fill();
@@ -203,7 +115,7 @@ module.exports = function (cytoscape) {
             textProp.state = state.state;
             $$.sbgn.drawStateText(context, textProp);
           } else if (state.clazz == 'unit of information') {//draw rectangle
-            drawRoundRectanglePath(context,
+            draw.drawRoundRectanglePath(context,
                     stateCenterX, stateCenterY,
                     stateWidth, stateHeight,
                     Math.min(stateWidth / 2, stateHeight / 2, unitOfInfoRadius));
@@ -270,18 +182,6 @@ module.exports = function (cytoscape) {
     context.globalAlpha = oldOpacity;
   };
 
-  cyMath.calculateDistance = function (point1, point2) {
-    var distance = Math.pow(point1[0] - point2[0], 2) + Math.pow(point1[1] - point2[1], 2);
-    return Math.sqrt(distance);
-  };
-
-  $$.sbgn.colors = {
-    clone: '#a9a9a9',
-    association: '#6B6B6B',
-    port: '#6B6B6B'
-  };
-
-
   $$.sbgn.drawStateAndInfos = function (node, context, centerX, centerY) {
     var stateAndInfos = node._private.data.statesandinfos;
 
@@ -298,7 +198,7 @@ module.exports = function (cytoscape) {
 
       if (state.clazz == 'state variable') {//draw ellipse
         //var stateLabel = state.state.value;
-        drawRoundRectanglePath(context, stateCenterX, stateCenterY,
+        draw.drawRoundRectanglePath(context, stateCenterX, stateCenterY,
                 stateWidth, stateHeight, Math.min(stateWidth / 2, stateHeight / 2, stateVarRadius));
 
         context.fill();
@@ -308,7 +208,7 @@ module.exports = function (cytoscape) {
         context.stroke();
 
       } else if (state.clazz == 'unit of information') {//draw rectangle
-        drawRoundRectanglePath(context,
+        draw.drawRoundRectanglePath(context,
                 stateCenterX, stateCenterY,
                 stateWidth, stateHeight,
                 Math.min(stateWidth / 2, stateHeight / 2, unitOfInfoRadius));
@@ -590,7 +490,7 @@ module.exports = function (cytoscape) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
 
-        drawPolygonPath(context,
+        draw.drawPolygonPath(context,
                 centerX, centerY,
                 width, height,
                 cyBaseNodeShapes['process'].points);
@@ -814,7 +714,7 @@ module.exports = function (cytoscape) {
         //check whether sbgn class includes multimer substring or not
         if ($$.sbgn.isMultimer(node)) {
           //add multimer shape
-          drawRoundRectanglePath(context,
+          draw.drawRoundRectanglePath(context,
                   centerX + multimerPadding, centerY + multimerPadding,
                   width, height);
 
@@ -828,7 +728,7 @@ module.exports = function (cytoscape) {
 
         }
 
-        drawRoundRectanglePath(context,
+        draw.drawRoundRectanglePath(context,
                 centerX, centerY,
                 width, height);
         context.fill();
@@ -1047,7 +947,7 @@ module.exports = function (cytoscape) {
         //check whether sbgn class includes multimer substring or not
         if ($$.sbgn.isMultimer(node)) {
           //add multimer shape
-          drawPolygonPath(context,
+          draw.drawPolygonPath(context,
                   centerX + multimerPadding, centerY + multimerPadding,
                   width, height, cyBaseNodeShapes['complex'].points);
           context.fill();
@@ -1060,7 +960,7 @@ module.exports = function (cytoscape) {
                   node.css('background-opacity'));
         }
 
-        drawPolygonPath(context,
+        draw.drawPolygonPath(context,
                 centerX, centerY,
                 width, height, cyBaseNodeShapes['complex'].points);
         context.fill();
@@ -1360,7 +1260,7 @@ module.exports = function (cytoscape) {
         var cloneWidth = width - 2 * cornerRadius;
         var cloneHeight = cornerRadius / 2;
 
-        drawPolygonPath(context, cloneX, cloneY, cloneWidth, cloneHeight, recPoints);
+        draw.drawPolygonPath(context, cloneX, cloneY, cloneWidth, cloneHeight, recPoints);
         context.fill();
         context.fillStyle = oldStyle;
         context.globalAlpha = oldGlobalAlpha;
@@ -1381,7 +1281,7 @@ module.exports = function (cytoscape) {
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
-        drawPolygonPath(context,
+        draw.drawPolygonPath(context,
                 cloneX, cloneY,
                 cloneWidth, cloneHeight, markerPoints);
 
@@ -1435,7 +1335,7 @@ module.exports = function (cytoscape) {
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
-        drawPolygonPath(context,
+        draw.drawPolygonPath(context,
                 cloneX, cloneY,
                 cloneWidth, cloneHeight, markerPoints);
         context.fill();
@@ -1476,7 +1376,8 @@ module.exports = function (cytoscape) {
 
     for (var i = 0; i < intersections.length; i = i + 2) {
       var checkPoint = [intersections[i], intersections[i + 1]];
-      var distance = cyMath.calculateDistance(point, checkPoint);
+      // var distance = point.calculateDistance(point, checkPoint);
+      var distance = pointFn.calculateDistance(point, checkPoint);
 
       if (distance < minDistance) {
         minDistance = distance;
@@ -1854,6 +1755,6 @@ module.exports = function (cytoscape) {
   };
 
   $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
-    return !!(totallyOverridenNodeShapes[render.getNodeShape(node)]);
+    return !!(sbgnShapes.totallyOverridenNodeShapes[render.getNodeShape(node)]);
   };
 };
