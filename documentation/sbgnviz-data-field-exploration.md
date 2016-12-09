@@ -67,13 +67,13 @@ SBGN edge JSON is valid JSON and takes the form similar to this example:
             }
         }
         
-```class```: Represents the relationship between the source and target
-```bendPointPositions```: Usage unknown -- assumed to be the points at which the edge can bend
-```cardinality```: Usage unknown -- not sure what cardinality means in this context
-```source```: Source node id
-```target```: Target node id
-```portsource```: At what port in the source node does the edge attach to
-```porttarget```: At what port in the target node does the edge attach to
+* ```class```: Represents the relationship between the source and target
+* ```bendPointPositions```: Usage unknown -- assumed to be the points at which the edge can bend
+* ```cardinality```: Usage unknown -- not sure what cardinality means in this context
+* ```source```: Source node id
+* ```target```: Target node id
+* ```portsource```: At what port in the source node does the edge attach to
+* ```porttarget```: At what port in the target node does the edge attach to
 
 # How the Data is Used
 
