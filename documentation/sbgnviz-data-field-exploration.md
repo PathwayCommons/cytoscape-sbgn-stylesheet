@@ -129,6 +129,10 @@ nodeProperties.getCyShape = function(cyNode) {
 Cytoscape.js renders the node with different shapes depending on the values in the node JSON.
 
 
+## Graph Rendering
+
+The fields in the graph JSON are used extensively when rendering the graph.  Please read [sbgnviz-augment-exploration](https://github.com/d2fong/sbgn-renderer/edit/master/documentation/sbgnviz-augment-exploration.md)
+
 # Thoughts and Observations
 
 ## Consistency of data fields
