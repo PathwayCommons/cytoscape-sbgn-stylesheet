@@ -35,7 +35,8 @@
     "eslint-plugin-jsx-a11y": "^3.0.1",
     "eslint-plugin-react": "^6.7.1",
     "mocha": "^3.2.0",
-    "sbgnml-to-cytoscape": "^1.1.0"
+    "sbgnml-to-cytoscape": "^1.1.0",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
     "cytoscape": "https://github.com/iVis-at-Bilkent/cytoscape.js.git#v2.7.12",
