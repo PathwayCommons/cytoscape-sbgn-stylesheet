@@ -1,4 +1,4 @@
-# sbgn-renderer
+# sbgn-renderer (Working Title.  It will most likely be merged back into SBGNViz.js)
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
 ## Purpose
@@ -15,14 +15,14 @@ There are two ways to install this module
 
 1. npm:
 ```
-npm install sbgn-renderer
+npm install sbgnviz.js
 ```
 OR
 2. Copy the pre-built library from the [dist](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnRenderer.js) folder and link it in your html file
 ```
 <html>
 ...
-<script src="sbgn-renderer.js"></script>
+<script src="sbgnviz.js"></script>
 ...
 </html>
 ```
