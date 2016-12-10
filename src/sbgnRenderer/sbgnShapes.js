@@ -1,17 +1,17 @@
-var sbgnShapes = {
-  'source and sink': true,
-  'nucleic acid feature': true,
-  'complex': true,
-  'dissociation': true,
-  'macromolecule': true,
-  'simple chemical': true,
-  'unspecified entity': true,
-  'necessary stimulation': true,
-  'process': true,
-  'uncertain process': true,
-  'omitted process': true,
-  'association': true
-};
+var sbgnShapes = [
+  'source and sink',
+  'nucleic acid feature',
+  'complex',
+  'dissociation',
+  'macromolecule',
+  'simple chemical',
+  'unspecified entity',
+  'necessary stimulation',
+  'process',
+  'uncertain process',
+  'omitted process',
+  'association'
+];
 
 var totallyOverridenNodeShapes = {
   'macromolecule': true,
