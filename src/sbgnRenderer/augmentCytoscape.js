@@ -11,6 +11,8 @@ var pointFn = require('./point');
 
 // cytoscape math
 var cyMath = require('./cyMath');
+var cyShapes = require('./cyShapes');
+
 
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics.
@@ -25,7 +27,6 @@ var cyMath = require('./cyMath');
 module.exports = function (cytoscape) {
   var cyStyleProperties = cytoscape.styleProperties;
   var cyBaseArrowShapes = cytoscape.baseArrowShapes;
-  var cyShapes = cytoscape.baseNodeShapes;
   var $$ = cytoscape;
 
   $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
@@ -80,6 +81,7 @@ module.exports = function (cytoscape) {
   $$.sbgn.drawSimpleChemical = draw.drawSimpleChemical;
   $$.sbgn.drawNucAcidFeature = draw.drawNucAcidFeature;
 
+
   // intersect
   $$.sbgn.intersectLinePorts = intersect.intersectLinePorts; 
   $$.sbgn.intersectClosestPoint = intersect.intersectClosestPoint;
@@ -91,6 +93,8 @@ module.exports = function (cytoscape) {
   // point
   $$.sbgn.checkPointStateAndInfoBoxes = pointFn.checkPointStateAndInfoBoxes;
   $$.sbgn.generateComplexShapePoints = pointFn.generateComplexShapePoints;
+
+
   $$.sbgn.nucleicAcidCheckPoint = pointFn.nucleicAcidCheckPoint;
 
 
@@ -161,11 +165,22 @@ module.exports = function (cytoscape) {
     return sbgnClass && sbgnClass.indexOf('multimer') != -1;
   };
 
-  for (var i = 0; i < sbgnShapes.sbgnShapes.length; i++) {
-    cyStyleProperties.types.nodeShape.enums.push(sbgnShapes.sbgnShapes[i]);
-  }
+  cyStyleProperties.types.nodeShape.enums.push('source and sink');
+  cyStyleProperties.types.nodeShape.enums.push('nucleic acid feature');
+  cyStyleProperties.types.nodeShape.enums.push('complex');
+  cyStyleProperties.types.nodeShape.enums.push('dissociation');
+  cyStyleProperties.types.nodeShape.enums.push('macromolecule');
+  cyStyleProperties.types.nodeShape.enums.push('simple chemical');
+  cyStyleProperties.types.nodeShape.enums.push('unspecified entity');
+  cyStyleProperties.types.nodeShape.enums.push('process');
+  cyStyleProperties.types.nodeShape.enums.push('omitted process');
+  cyStyleProperties.types.nodeShape.enums.push('uncertain process');
+  cyStyleProperties.types.nodeShape.enums.push('association');
+
   cyStyleProperties.types.lineStyle.enums.push('consumption');
   cyStyleProperties.types.lineStyle.enums.push('production');
+
+  cyStyleProperties.types.arrowShape.enums.push('necessary stimulation');
 
   $$.sbgn.registerSbgnArrowShapes = function () {
     cyBaseArrowShapes['necessary stimulation'] = extend({}, cyBaseArrowShapes['triangle-tee']);
