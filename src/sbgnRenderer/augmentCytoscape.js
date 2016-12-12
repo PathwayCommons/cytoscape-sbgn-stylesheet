@@ -12,7 +12,6 @@ var pointFn = require('./point');  // pointFn because it seems that point is use
 // cytoscape math
 var cyMath = require('./cyMath');
 
-
 // At the core of the renderer is cytoscape.
 // We need to augment it to render SBGN specific graphics.
 
@@ -29,143 +28,11 @@ module.exports = function (cytoscape) {
   var cyShapes = cytoscape.baseNodeShapes;  // we need dont want to mutate ./cyShapes.js
   var $$ = cytoscape;
 
+  // modified cytoscape.js needs these or it breaks
   $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
   $$.sbgn.totallyOverridenNodeShapes = sbgnShapes.totallyOverridenNodeShapes;
-  // $$.sbgn.sbgnColors = sbgnColors;
 
-  $$.sbgn.addPortReplacementIfAny = function (node, edgePort) {
-    var posX = node.position().x;
-    var posY = node.position().y;
-    if (typeof node._private.data.ports != 'undefined') {
-      for (var i = 0; i < node._private.data.ports.length; i++) {
-        var port = node._private.data.ports[i];
-        if (port.id == edgePort) {
-          posX = posX + port.x * node.width() / 100;
-          posY = posY + port.y * node.height() / 100;
-          break;
-        }
-      }
-    }
-    return {'x': posX, 'y': posY};
-  };
-
-  // Checks if each of the draw, intersect, and check point functions are
-  // overriden for a given node.  i.e it is a sbgn node that overrides each of
-  // the base nodes methods
-  $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
-    return !!(sbgnShapes.totallyOverridenNodeShapes[render.getNodeShape(node)]);
-  };
-
-  //we need to force opacity to 1 since we might have state and info boxes.
-  //having opaque nodes which have state and info boxes gives unpleasent results.
-  $$.sbgn.forceOpacityToOne = function (node, context) {
-    var parentOpacity = node.effectiveOpacity();
-    if (parentOpacity === 0) {
-      return;
-    }
-
-    context.fillStyle = 'rgba('
-            + node._private.style['background-color'].value[0] + ','
-            + node._private.style['background-color'].value[1] + ','
-            + node._private.style['background-color'].value[2] + ','
-            + (1 * node.css('opacity') * parentOpacity) + ')';
-  };
-
-  // draw
-  // $$.sbgn.drawPortsToEllipseShape = draw.drawPortsToEllipseShape;
-  // $$.sbgn.drawPortsToPolygonShape = draw.drawPortsToPolygonShape;
-  // $$.sbgn.drawEllipse = draw.drawEllipse;
-  // $$.sbgn.drawComplexStateAndInfo = draw.drawComplexStateAndInfo;
-  // $$.sbgn.drawStateText = draw.drawStateText;
-  // $$.sbgn.drawInfoText = draw.drawInfoText;
-  // $$.sbgn.drawText = draw.drawText;
-  // $$.sbgn.drawStateAndInfos = draw.drawStateAndInfos;
-  // $$.sbgn.drawSimpleChemicalPath = draw.drawSimpleChemicalPath;
-  // $$.sbgn.drawSimpleChemical = draw.drawSimpleChemical;
-  // $$.sbgn.drawNucAcidFeaturedraw.drawNucAcidFeature;
-
-
-  // intersect
-  // intersect.intersectLinePorts = intersect.intersectLinePorts;
-  // intersect.intersectClosestPoint = intersect.intersectClosestPoint;
-  // intersect.intersectNucleicAcidLine = intersect.intersectNucleicAcidLine;
-  // intersect.intersectRoundRectangleLine = intersect.intersectRoundRectangleLine;
-  // $$.sbgn.intersectLineEllipse = intersect.intersectLineEllipse;
-  // intersect.intersectLineStateAndInfoBoxes = intersect.intersectLineStateAndInfoBoxes;
-
-  // point
-  // pointFn.checkPointStateAndInfoBoxes = pointFn.checkPointStateAndInfoBoxes;
-  // pointFn.generateComplexShapePoints = pointFn.generateComplexShapePoints;
-  // pointFn.nucleicAcidCheckPoint = pointFn.nucleicAcidCheckPoint;
-
-
-  function simpleChemicalLeftClone(context, centerX, centerY,
-          width, height, cloneMarker, opacity) {
-    if (cloneMarker != null) {
-      var oldGlobalAlpha = context.globalAlpha;
-      context.globalAlpha = opacity;
-      var oldStyle = context.fillStyle;
-      context.fillStyle = sbgnColors.clone;
-
-      context.beginPath();
-      context.translate(centerX, centerY);
-      context.scale(width / 2, height / 2);
-
-      var markerBeginX = -1 * Math.sin(Math.PI / 3);
-      var markerBeginY = Math.cos(Math.PI / 3);
-      var markerEndX = 0;
-      var markerEndY = markerBeginY;
-
-      context.moveTo(markerBeginX, markerBeginY);
-      context.lineTo(markerEndX, markerEndY);
-      context.arc(0, 0, 1, 3 * Math.PI / 6, 5 * Math.PI / 6);
-
-      context.scale(2 / width, 2 / height);
-      context.translate(-centerX, -centerY);
-      context.closePath();
-
-      context.fill();
-      context.fillStyle = oldStyle;
-      context.globalAlpha = oldGlobalAlpha;
-    }
-  }
-
-  function simpleChemicalRightClone(context, centerX, centerY,
-          width, height, cloneMarker, opacity) {
-    if (cloneMarker != null) {
-      var oldGlobalAlpha = context.globalAlpha;
-      context.globalAlpha = opacity;
-      var oldStyle = context.fillStyle;
-      context.fillStyle = sbgnColors.clone;
-
-      context.beginPath();
-      context.translate(centerX, centerY);
-      context.scale(width / 2, height / 2);
-
-      var markerBeginX = 0;
-      var markerBeginY = Math.cos(Math.PI / 3);
-      var markerEndX = 1 * Math.sin(Math.PI / 3);
-      var markerEndY = markerBeginY;
-
-      context.moveTo(markerBeginX, markerBeginY);
-      context.lineTo(markerEndX, markerEndY);
-      context.arc(0, 0, 1, Math.PI / 6, 3 * Math.PI / 6);
-
-      context.scale(2 / width, 2 / height);
-      context.translate(-centerX, -centerY);
-      context.closePath();
-
-      context.fill();
-      context.fillStyle = oldStyle;
-      context.globalAlpha = oldGlobalAlpha;
-    }
-  }
-
-  $$.sbgn.isMultimer = function (node) {
-    var sbgnClass = node._private.data.class;
-    return sbgnClass && sbgnClass.indexOf('multimer') != -1;
-  };
-
+  // define new cytoscape shapes, line styles, arrowshapes
   cyStyleProperties.types.nodeShape.enums.push('source and sink');
   cyStyleProperties.types.nodeShape.enums.push('nucleic acid feature');
   cyStyleProperties.types.nodeShape.enums.push('complex');
@@ -266,7 +133,7 @@ module.exports = function (cytoscape) {
                 width, height, cloneMarker,
                 node.css('background-opacity'));
 
-        $$.sbgn.forceOpacityToOne(node, context);
+        forceOpacityToOne(node, context);
         draw.drawStateAndInfos(node, context, centerX, centerY);
       },
       intersectLine: function (node, x, y, portId) {
@@ -347,7 +214,7 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
         var oldStyle = context.fillStyle;
-        $$.sbgn.forceOpacityToOne(node, context);
+        forceOpacityToOne(node, context);
         draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
@@ -451,7 +318,7 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
         var oldStyle = context.fillStyle;
-        $$.sbgn.forceOpacityToOne(node, context);
+        forceOpacityToOne(node, context);
         draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
@@ -683,7 +550,7 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
         var oldStyle = context.fillStyle;
-        $$.sbgn.forceOpacityToOne(node, context);
+        forceOpacityToOne(node, context);
         draw.drawComplexStateAndInfo(context, node, stateAndInfos, centerX, centerY, width, height);
         context.fillStyle = oldStyle;
       },
@@ -802,7 +669,7 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
         var oldStyle = context.fillStyle;
-        $$.sbgn.forceOpacityToOne(node, context);
+        forceOpacityToOne(node, context);
         draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
@@ -903,6 +770,68 @@ module.exports = function (cytoscape) {
       checkPoint: cyShapes['ellipse'].checkPoint
     };
   };
+
+  function simpleChemicalLeftClone(context, centerX, centerY,
+          width, height, cloneMarker, opacity) {
+    if (cloneMarker != null) {
+      var oldGlobalAlpha = context.globalAlpha;
+      context.globalAlpha = opacity;
+      var oldStyle = context.fillStyle;
+      context.fillStyle = sbgnColors.clone;
+
+      context.beginPath();
+      context.translate(centerX, centerY);
+      context.scale(width / 2, height / 2);
+
+      var markerBeginX = -1 * Math.sin(Math.PI / 3);
+      var markerBeginY = Math.cos(Math.PI / 3);
+      var markerEndX = 0;
+      var markerEndY = markerBeginY;
+
+      context.moveTo(markerBeginX, markerBeginY);
+      context.lineTo(markerEndX, markerEndY);
+      context.arc(0, 0, 1, 3 * Math.PI / 6, 5 * Math.PI / 6);
+
+      context.scale(2 / width, 2 / height);
+      context.translate(-centerX, -centerY);
+      context.closePath();
+
+      context.fill();
+      context.fillStyle = oldStyle;
+      context.globalAlpha = oldGlobalAlpha;
+    }
+  }
+
+  function simpleChemicalRightClone(context, centerX, centerY,
+          width, height, cloneMarker, opacity) {
+    if (cloneMarker != null) {
+      var oldGlobalAlpha = context.globalAlpha;
+      context.globalAlpha = opacity;
+      var oldStyle = context.fillStyle;
+      context.fillStyle = sbgnColors.clone;
+
+      context.beginPath();
+      context.translate(centerX, centerY);
+      context.scale(width / 2, height / 2);
+
+      var markerBeginX = 0;
+      var markerBeginY = Math.cos(Math.PI / 3);
+      var markerEndX = 1 * Math.sin(Math.PI / 3);
+      var markerEndY = markerBeginY;
+
+      context.moveTo(markerBeginX, markerBeginY);
+      context.lineTo(markerEndX, markerEndY);
+      context.arc(0, 0, 1, Math.PI / 6, 3 * Math.PI / 6);
+
+      context.scale(2 / width, 2 / height);
+      context.translate(-centerX, -centerY);
+      context.closePath();
+
+      context.fill();
+      context.fillStyle = oldStyle;
+      context.globalAlpha = oldGlobalAlpha;
+    }
+  }
 
   $$.sbgn.cloneMarker = {
     unspecifiedEntity: function (context, centerX, centerY,
@@ -1052,5 +981,50 @@ module.exports = function (cytoscape) {
 
       }
     }
+  };
+
+
+  // modified cytoscape.js needs these or it breaks
+  $$.sbgn.addPortReplacementIfAny = function (node, edgePort) {
+    var posX = node.position().x;
+    var posY = node.position().y;
+    if (typeof node._private.data.ports != 'undefined') {
+      for (var i = 0; i < node._private.data.ports.length; i++) {
+        var port = node._private.data.ports[i];
+        if (port.id == edgePort) {
+          posX = posX + port.x * node.width() / 100;
+          posY = posY + port.y * node.height() / 100;
+          break;
+        }
+      }
+    }
+    return {'x': posX, 'y': posY};
+  };
+
+  // Checks if each of the draw, intersect, and check point functions are
+  // overriden for a given node.  i.e it is a sbgn node that overrides each of
+  // the base nodes methods
+  // modified cytoscape.js needs these or it breaks
+  $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
+    return !!(sbgnShapes.totallyOverridenNodeShapes[render.getNodeShape(node)]);
+  };
+
+  // modified cytoscape.js needs this or it breaks
+  $$.sbgn.isMultimer = function (node) {
+    var sbgnClass = node._private.data.class;
+    return sbgnClass && sbgnClass.indexOf('multimer') != -1;
+  };
+
+  var forceOpacityToOne = function (node, context) {
+    var parentOpacity = node.effectiveOpacity();
+    if (parentOpacity === 0) {
+      return;
+    }
+
+    context.fillStyle = 'rgba('
+            + node._private.style['background-color'].value[0] + ','
+            + node._private.style['background-color'].value[1] + ','
+            + node._private.style['background-color'].value[2] + ','
+            + (1 * node.css('opacity') * parentOpacity) + ')';
   };
 };
