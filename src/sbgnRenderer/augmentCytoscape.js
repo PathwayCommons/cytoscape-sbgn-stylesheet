@@ -72,17 +72,17 @@ module.exports = function (cytoscape) {
   };
 
   // draw
-  $$.sbgn.drawPortsToEllipseShape = draw.drawPortsToEllipseShape;
-  $$.sbgn.drawPortsToPolygonShape = draw.drawPortsToPolygonShape;
-  $$.sbgn.drawEllipse = draw.drawEllipse;
-  $$.sbgn.drawComplexStateAndInfo = draw.drawComplexStateAndInfo;
-  $$.sbgn.drawStateText = draw.drawStateText;
-  $$.sbgn.drawInfoText = draw.drawInfoText;
-  $$.sbgn.drawText = draw.drawText;
-  $$.sbgn.drawStateAndInfos = draw.drawStateAndInfos;
-  $$.sbgn.drawSimpleChemicalPath = draw.drawSimpleChemicalPath;
-  $$.sbgn.drawSimpleChemical = draw.drawSimpleChemical;
-  $$.sbgn.drawNucAcidFeature = draw.drawNucAcidFeature;
+  // $$.sbgn.drawPortsToEllipseShape = draw.drawPortsToEllipseShape;
+  // $$.sbgn.drawPortsToPolygonShape = draw.drawPortsToPolygonShape;
+  // $$.sbgn.drawEllipse = draw.drawEllipse;
+  // $$.sbgn.drawComplexStateAndInfo = draw.drawComplexStateAndInfo;
+  // $$.sbgn.drawStateText = draw.drawStateText;
+  // $$.sbgn.drawInfoText = draw.drawInfoText;
+  // $$.sbgn.drawText = draw.drawText;
+  // $$.sbgn.drawStateAndInfos = draw.drawStateAndInfos;
+  // $$.sbgn.drawSimpleChemicalPath = draw.drawSimpleChemicalPath;
+  // $$.sbgn.drawSimpleChemical = draw.drawSimpleChemical;
+  // $$.sbgn.drawNucAcidFeaturedraw.drawNucAcidFeature;
 
 
   // intersect
@@ -211,7 +211,7 @@ module.exports = function (cytoscape) {
 
         context.stroke();
 
-        $$.sbgn.drawPortsToPolygonShape(context, node, this.points);
+        draw.drawPortsToPolygonShape(context, node, this.points);
       },
       intersectLine: function (node, x, y, portId) {
         var nodeX = node._private.position.x;
@@ -269,7 +269,7 @@ module.exports = function (cytoscape) {
                 node.css('background-opacity'));
 
         $$.sbgn.forceOpacityToOne(node, context);
-        $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
+        draw.drawStateAndInfos(node, context, centerX, centerY);
       },
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
@@ -327,7 +327,7 @@ module.exports = function (cytoscape) {
 
         if ($$.sbgn.isMultimer(node)) {
           //add multimer shape
-          $$.sbgn.drawSimpleChemical(context, centerX + multimerPadding,
+          draw.drawSimpleChemical(context, centerX + multimerPadding,
                   centerY + multimerPadding, width, height);
 
           context.stroke();
@@ -338,7 +338,7 @@ module.exports = function (cytoscape) {
                   node.css('background-opacity'));
         }
 
-        $$.sbgn.drawSimpleChemical(context,
+        draw.drawSimpleChemical(context,
                 centerX, centerY,
                 width, height);
 
@@ -350,7 +350,7 @@ module.exports = function (cytoscape) {
 
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
-        $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
+        draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
       intersectLine: function (node, x, y, portId) {
@@ -454,7 +454,7 @@ module.exports = function (cytoscape) {
 
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
-        $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
+        draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
       intersectLine: function (node, x, y, portId) {
@@ -531,7 +531,7 @@ module.exports = function (cytoscape) {
         context.fill();
         context.stroke();
 
-        $$.sbgn.drawPortsToEllipseShape(context, node);
+        draw.drawPortsToEllipseShape(context, node);
       },
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
@@ -600,7 +600,7 @@ module.exports = function (cytoscape) {
 
         context.fill();
 
-        $$.sbgn.drawPortsToEllipseShape(context, node);
+        draw.drawPortsToEllipseShape(context, node);
 
       },
       intersectLine: function (node, x, y, portId) {
@@ -686,7 +686,7 @@ module.exports = function (cytoscape) {
 
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
-        $$.sbgn.drawComplexStateAndInfo(context, node, stateAndInfos, centerX, centerY, width, height);
+        draw.drawComplexStateAndInfo(context, node, stateAndInfos, centerX, centerY, width, height);
         context.fillStyle = oldStyle;
       },
       intersectLine: function (node, x, y, portId) {
@@ -782,7 +782,7 @@ module.exports = function (cytoscape) {
         //check whether sbgn class includes multimer substring or not
         if ($$.sbgn.isMultimer(node)) {
           //add multimer shape
-          $$.sbgn.drawNucAcidFeature(context, width, height,
+          draw.drawNucAcidFeature(context, width, height,
                   centerX + multimerPadding,
                   centerY + multimerPadding, cornerRadius);
 
@@ -794,7 +794,7 @@ module.exports = function (cytoscape) {
                   node.css('background-opacity'));
         }
 
-        $$.sbgn.drawNucAcidFeature(context, width, height, centerX,
+        draw.drawNucAcidFeature(context, width, height, centerX,
                 centerY, cornerRadius);
 
         context.stroke();
@@ -805,7 +805,7 @@ module.exports = function (cytoscape) {
 
         var oldStyle = context.fillStyle;
         $$.sbgn.forceOpacityToOne(node, context);
-        $$.sbgn.drawStateAndInfos(node, context, centerX, centerY);
+        draw.drawStateAndInfos(node, context, centerX, centerY);
         context.fillStyle = oldStyle;
       },
       drawPath: function (context, node) {
@@ -1015,7 +1015,7 @@ module.exports = function (cytoscape) {
 
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        $$.sbgn.drawNucAcidFeature(context, cloneWidth, cloneHeight,
+        draw.drawNucAcidFeature(context, cloneWidth, cloneHeight,
                 cloneX, cloneY, cornerRadius, opacity);
 
         context.fillStyle = oldStyle;
