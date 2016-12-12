@@ -49,6 +49,9 @@ module.exports = function (cytoscape) {
     return {'x': posX, 'y': posY};
   };
 
+  // Checks if each of the draw, intersect, and check point functions are
+  // overriden for a given node.  i.e it is a sbgn node that overrides each of
+  // the base nodes methods
   $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
     return !!(sbgnShapes.totallyOverridenNodeShapes[render.getNodeShape(node)]);
   };
