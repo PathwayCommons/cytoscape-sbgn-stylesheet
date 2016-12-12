@@ -31,7 +31,7 @@ module.exports = function (cytoscape) {
 
   $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
   $$.sbgn.totallyOverridenNodeShapes = sbgnShapes.totallyOverridenNodeShapes;
-  $$.sbgn.colors = sbgnColors;
+  // $$.sbgn.sbgnColors = sbgnColors;
 
   $$.sbgn.addPortReplacementIfAny = function (node, edgePort) {
     var posX = node.position().x;
@@ -107,7 +107,7 @@ module.exports = function (cytoscape) {
       var oldGlobalAlpha = context.globalAlpha;
       context.globalAlpha = opacity;
       var oldStyle = context.fillStyle;
-      context.fillStyle = $$.sbgn.colors.clone;
+      context.fillStyle = sbgnColors.clone;
 
       context.beginPath();
       context.translate(centerX, centerY);
@@ -138,7 +138,7 @@ module.exports = function (cytoscape) {
       var oldGlobalAlpha = context.globalAlpha;
       context.globalAlpha = opacity;
       var oldStyle = context.fillStyle;
-      context.fillStyle = $$.sbgn.colors.clone;
+      context.fillStyle = sbgnColors.clone;
 
       context.beginPath();
       context.translate(centerX, centerY);
@@ -913,7 +913,7 @@ module.exports = function (cytoscape) {
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
         var oldStyle = context.fillStyle;
-        context.fillStyle = $$.sbgn.colors.clone;
+        context.fillStyle = sbgnColors.clone;
 
         context.beginPath();
         context.translate(centerX, centerY);
@@ -959,7 +959,7 @@ module.exports = function (cytoscape) {
                 2 * cornerRadius, 2 * cornerRadius, cloneMarker, opacity);
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = $$.sbgn.colors.clone;
+        context.fillStyle = sbgnColors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -986,7 +986,7 @@ module.exports = function (cytoscape) {
         var markerPoints = [-5 / 6, -1, 5 / 6, -1, 1, 1, -1, 1];
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = $$.sbgn.colors.clone;
+        context.fillStyle = sbgnColors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -1009,7 +1009,7 @@ module.exports = function (cytoscape) {
         var cloneY = centerY + 3 * height / 8;
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = $$.sbgn.colors.clone;
+        context.fillStyle = sbgnColors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -1040,7 +1040,7 @@ module.exports = function (cytoscape) {
         var markerPoints = [-1, -1, 1, -1, 1 - cpX, 1, -1 + cpX, 1];
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = $$.sbgn.colors.clone;
+        context.fillStyle = sbgnColors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
