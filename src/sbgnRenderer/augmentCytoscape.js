@@ -4,14 +4,13 @@ var extend = require('extend');
 var sbgnColors = require('./colors');
 var sbgnShapes = require('./sbgnShapes');
 
-// rendering 
+// rendering
 var draw = require('./draw');
 var intersect = require('./intersect');
 var pointFn = require('./point');
 
 // cytoscape math
 var cyMath = require('./cyMath');
-var cyShapes = require('./cyShapes');
 
 
 // At the core of the renderer is cytoscape.
@@ -27,6 +26,7 @@ var cyShapes = require('./cyShapes');
 module.exports = function (cytoscape) {
   var cyStyleProperties = cytoscape.styleProperties;
   var cyBaseArrowShapes = cytoscape.baseArrowShapes;
+  var cyShapes = cytoscape.baseNodeShapes;  // we need dont want to mutate ./cyShapes.js
   var $$ = cytoscape;
 
   $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
@@ -83,7 +83,7 @@ module.exports = function (cytoscape) {
 
 
   // intersect
-  $$.sbgn.intersectLinePorts = intersect.intersectLinePorts; 
+  $$.sbgn.intersectLinePorts = intersect.intersectLinePorts;
   $$.sbgn.intersectClosestPoint = intersect.intersectClosestPoint;
   $$.sbgn.intersectNucleicAcidLine = intersect.intersectNucleicAcidLine;
   $$.sbgn.intersectRoundRectangleLine = intersect.intersectRoundRectangleLine;
