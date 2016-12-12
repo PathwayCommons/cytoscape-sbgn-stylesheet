@@ -86,11 +86,11 @@ module.exports = function (cytoscape) {
 
 
   // intersect
-  $$.sbgn.intersectLinePorts = intersect.intersectLinePorts;
-  $$.sbgn.intersectClosestPoint = intersect.intersectClosestPoint;
-  $$.sbgn.intersectNucleicAcidLine = intersect.intersectNucleicAcidLine;
-  $$.sbgn.intersectRoundRectangleLine = intersect.intersectRoundRectangleLine;
-  $$.sbgn.intersectLineEllipse = intersect.intersectLineEllipse;
+  // intersect.intersectLinePorts = intersect.intersectLinePorts;
+  // intersect.intersectClosestPoint = intersect.intersectClosestPoint;
+  // intersect.intersectNucleicAcidLine = intersect.intersectNucleicAcidLine;
+  // intersect.intersectRoundRectangleLine = intersect.intersectRoundRectangleLine;
+  // $$.sbgn.intersectLineEllipse = intersect.intersectLineEllipse;
   $$.sbgn.intersectLineStateAndInfoBoxes = intersect.instersectLineStateAndInfoBoxes;
 
   // point
@@ -218,7 +218,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -277,7 +277,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -289,7 +289,7 @@ module.exports = function (cytoscape) {
                 height, x, y, padding);
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines);
-        return $$.sbgn.intersectClosestPoint([x, y], intersections);
+        return intersect.intersectClosestPoint([x, y], intersections);
 
       },
       checkPoint: function (x, y, node, threshold) {
@@ -360,7 +360,7 @@ module.exports = function (cytoscape) {
         var padding = parseInt(node.css('border-width'));
         var multimerPadding = cyShapes['simple chemical'].multimerPadding;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -381,7 +381,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return $$.sbgn.intersectClosestPoint([x, y], intersections);
+        return intersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -464,7 +464,7 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['macromolecule'].multimerPadding;
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -472,7 +472,7 @@ module.exports = function (cytoscape) {
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = $$.sbgn.intersectRoundRectangleLine(
+        var nodeIntersectLines = intersect.intersectRoundRectangleLine(
                 x, y,
                 centerX, centerY,
                 centerX, centerY,
@@ -482,7 +482,7 @@ module.exports = function (cytoscape) {
         //check whether sbgn class includes multimer substring or not
         var multimerIntersectionLines = [];
         if ($$.sbgn.isMultimer(node)) {
-          multimerIntersectionLines = $$.sbgn.intersectRoundRectangleLine(
+          multimerIntersectionLines = intersect.intersectRoundRectangleLine(
                   x, y,
                   centerX, centerY,
                   centerX + multimerPadding, centerY + multimerPadding,
@@ -492,7 +492,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return $$.sbgn.intersectClosestPoint([x, y], intersections);
+        return intersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -538,7 +538,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -608,7 +608,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -697,7 +697,7 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -730,7 +730,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return $$.sbgn.intersectClosestPoint([x, y], intersections);
+        return intersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -817,7 +817,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var portIntersection = $$.sbgn.intersectLinePorts(node, x, y, portId);
+        var portIntersection = intersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -825,13 +825,13 @@ module.exports = function (cytoscape) {
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = $$.sbgn.intersectNucleicAcidLine(node,
+        var nodeIntersectLines = intersect.intersectNucleicAcidLine(node,
                 x, y, centerX, centerY, cornerRadius);
 
         //check whether sbgn class includes multimer substring or not
         var multimerIntersectionLines = [];
         if ($$.sbgn.isMultimer(node)) {
-          multimerIntersectionLines = $$.sbgn.intersectNucleicAcidLine(node,
+          multimerIntersectionLines = intersect.intersectNucleicAcidLine(node,
                   x, y, centerX + multimerPadding, centerY + multimerPadding,
                   cornerRadius);
         }
@@ -839,7 +839,7 @@ module.exports = function (cytoscape) {
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines,
                 multimerIntersectionLines);
 
-        return $$.sbgn.intersectClosestPoint([x, y], intersections);
+        return intersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
