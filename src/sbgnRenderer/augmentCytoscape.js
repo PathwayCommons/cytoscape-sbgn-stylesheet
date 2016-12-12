@@ -7,7 +7,7 @@ var sbgnShapes = require('./sbgnShapes');
 // rendering
 var draw = require('./draw');
 var intersect = require('./intersect');
-var pointFn = require('./point');
+var pointFn = require('./point');  // pointFn because it seems that point is used as a variable often
 
 // cytoscape math
 var cyMath = require('./cyMath');
@@ -94,11 +94,9 @@ module.exports = function (cytoscape) {
   $$.sbgn.intersectLineStateAndInfoBoxes = intersect.instersectLineStateAndInfoBoxes;
 
   // point
-  $$.sbgn.checkPointStateAndInfoBoxes = pointFn.checkPointStateAndInfoBoxes;
-  $$.sbgn.generateComplexShapePoints = pointFn.generateComplexShapePoints;
-
-
-  $$.sbgn.nucleicAcidCheckPoint = pointFn.nucleicAcidCheckPoint;
+  // pointFn.checkPointStateAndInfoBoxes = pointFn.checkPointStateAndInfoBoxes;
+  // pointFn.generateComplexShapePoints = pointFn.generateComplexShapePoints;
+  // pointFn.nucleicAcidCheckPoint = pointFn.nucleicAcidCheckPoint;
 
 
   function simpleChemicalLeftClone(context, centerX, centerY,
@@ -306,7 +304,7 @@ module.exports = function (cytoscape) {
                 padding, width, height,
                 centerX, centerY);
 
-        var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         return nodeCheckPoint || stateAndInfoCheckPoint;
@@ -398,7 +396,7 @@ module.exports = function (cytoscape) {
                 padding, width, height,
                 centerX, centerY);
 
-        var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -506,7 +504,7 @@ module.exports = function (cytoscape) {
 
         var nodeCheckPoint = cyShapes['roundrectangle'].checkPoint(x, y, padding,
                 width, height, centerX, centerY);
-        var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -654,7 +652,7 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
 
-        cyShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
                 width, height);
 
         //check whether sbgn class includes multimer substring or not
@@ -704,7 +702,7 @@ module.exports = function (cytoscape) {
           return portIntersection;
         }
 
-        cyShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
                 width, height);
 
         var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
@@ -744,13 +742,13 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
 
-        cyShapes['complex'].points = $$.sbgn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
                 width, height);
 
         var nodeCheckPoint = cyMath.pointInsidePolygon(x, y, cyShapes['complex'].points,
                 centerX, centerY, width, height, [0, -1], padding);
 
-        var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -851,15 +849,15 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var nodeCheckPoint = $$.sbgn.nucleicAcidCheckPoint(x, y, centerX, centerY,
+        var nodeCheckPoint = pointFn.nucleicAcidCheckPoint(x, y, centerX, centerY,
                 node, threshold, this.points, cornerRadius);
-        var stateAndInfoCheckPoint = $$.sbgn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
         var multimerCheckPoint = false;
         if ($$.sbgn.isMultimer(node)) {
-          multimerCheckPoint = $$.sbgn.nucleicAcidCheckPoint(x, y,
+          multimerCheckPoint = pointFn.nucleicAcidCheckPoint(x, y,
                   centerX + multimerPadding, centerY + multimerPadding,
                   node, threshold, this.points, cornerRadius);
         }
