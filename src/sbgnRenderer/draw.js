@@ -1,4 +1,4 @@
-var colors = require('./colors');
+var colors = require('./config').colors;
 var cyMath = require('./cyMath');
 var cyShapes = require('./cyShapes');
 
@@ -124,7 +124,7 @@ var drawText = function (context, textProp) {
   context.globalAlpha = oldOpacity;
 };
 
-var drawStateAndInfos = function (node, context, centerX, centerY) {  
+var drawStateAndInfos = function (node, context, centerX, centerY) {
   var unitOfInfoRadius = 4;
   var stateVarRadius = 15;
 

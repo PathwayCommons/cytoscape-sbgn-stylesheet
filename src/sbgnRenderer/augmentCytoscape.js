@@ -1,8 +1,7 @@
 var extend = require('extend');
 
 // sbgn constants
-var sbgnColors = require('./colors');
-var sbgnShapes = require('./sbgnShapes');
+var config = require('./config');
 
 // rendering
 var draw = require('./draw');
@@ -29,8 +28,8 @@ module.exports = function (cytoscape) {
   var $$ = cytoscape;
 
   // modified cytoscape.js needs these or it breaks
-  $$.sbgn.sbgnShapes = sbgnShapes.sbgnShapes;
-  $$.sbgn.totallyOverridenNodeShapes = sbgnShapes.totallyOverridenNodeShapes;
+  $$.sbgn.sbgnShapes = config.sbgnShapes;
+  $$.sbgn.totallyOverridenNodeShapes = config.totallyOverridenNodeShapes;
 
   // define new cytoscape shapes, line styles, arrowshapes
   cyStyleProperties.types.nodeShape.enums.push('source and sink');
@@ -777,7 +776,7 @@ module.exports = function (cytoscape) {
       var oldGlobalAlpha = context.globalAlpha;
       context.globalAlpha = opacity;
       var oldStyle = context.fillStyle;
-      context.fillStyle = sbgnColors.clone;
+      context.fillStyle = config.colors.clone;
 
       context.beginPath();
       context.translate(centerX, centerY);
@@ -808,7 +807,7 @@ module.exports = function (cytoscape) {
       var oldGlobalAlpha = context.globalAlpha;
       context.globalAlpha = opacity;
       var oldStyle = context.fillStyle;
-      context.fillStyle = sbgnColors.clone;
+      context.fillStyle = config.colors.clone;
 
       context.beginPath();
       context.translate(centerX, centerY);
@@ -840,7 +839,7 @@ module.exports = function (cytoscape) {
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
         var oldStyle = context.fillStyle;
-        context.fillStyle = sbgnColors.clone;
+        context.fillStyle = config.colors.clone;
 
         context.beginPath();
         context.translate(centerX, centerY);
@@ -886,7 +885,7 @@ module.exports = function (cytoscape) {
                 2 * cornerRadius, 2 * cornerRadius, cloneMarker, opacity);
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = sbgnColors.clone;
+        context.fillStyle = config.colors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -913,7 +912,7 @@ module.exports = function (cytoscape) {
         var markerPoints = [-5 / 6, -1, 5 / 6, -1, 1, 1, -1, 1];
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = sbgnColors.clone;
+        context.fillStyle = config.colors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -936,7 +935,7 @@ module.exports = function (cytoscape) {
         var cloneY = centerY + 3 * height / 8;
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = sbgnColors.clone;
+        context.fillStyle = config.colors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -967,7 +966,7 @@ module.exports = function (cytoscape) {
         var markerPoints = [-1, -1, 1, -1, 1 - cpX, 1, -1 + cpX, 1];
 
         var oldStyle = context.fillStyle;
-        context.fillStyle = sbgnColors.clone;
+        context.fillStyle = config.colors.clone;
         var oldGlobalAlpha = context.globalAlpha;
         context.globalAlpha = opacity;
 
@@ -1006,7 +1005,7 @@ module.exports = function (cytoscape) {
   // the base nodes methods
   // modified cytoscape.js needs these or it breaks
   $$.sbgn.isNodeShapeTotallyOverriden = function (render, node) {
-    return !!(sbgnShapes.totallyOverridenNodeShapes[render.getNodeShape(node)]);
+    return !!(config.totallyOverridenNodeShapes[render.getNodeShape(node)]);
   };
 
   // modified cytoscape.js needs this or it breaks
