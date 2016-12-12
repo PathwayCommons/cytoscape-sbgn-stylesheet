@@ -1,9 +1,5 @@
 var cyShapes = require('./cyShapes');
 var cyMath = require('./cyMath');
-var calculateDistance = function (point1, point2) {
-  var distance = Math.pow(point1[0] - point2[0], 2) + Math.pow(point1[1] - point2[1], 2);
-  return Math.sqrt(distance);
-};
 
 //this function is created to have same corner length when
 //complex's width or height is changed
@@ -107,7 +103,6 @@ var nucleicAcidCheckPoint = function (x, y, centerX, centerY, node, threshold, p
 };
 
 module.exports = {
-  calculateDistance: calculateDistance,
   generateComplexShapePoints: generateComplexShapePoints,
   checkPointStateAndInfoBoxes: checkPointStateAndInfoBoxes,
   nucleicAcidCheckPoint: nucleicAcidCheckPoint

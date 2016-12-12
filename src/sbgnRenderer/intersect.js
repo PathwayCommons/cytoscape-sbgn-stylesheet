@@ -1,7 +1,5 @@
 var cyMath = require('./cyMath');
 
-var points = require('./point');
-
 var intersectLineEllipse = function (x1, y1, x2, y2, centerX, centerY, width, height, padding) {
 
   var w = width / 2 + padding;
@@ -359,7 +357,7 @@ var intersectClosestPoint = function (point, intersections) {
 
   for (var i = 0; i < intersections.length; i = i + 2) {
     var checkPoint = [intersections[i], intersections[i + 1]];
-    var distance = points.calculateDistance(point, checkPoint);
+    var distance =  Math.sqrt(Math.pow(point[0] - checkPoint[0], 2) + Math.pow(point[1] - checkPoint[1], 2));
 
     if (distance < minDistance) {
       minDistance = distance;
