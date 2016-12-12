@@ -91,7 +91,7 @@ module.exports = function (cytoscape) {
   // intersect.intersectNucleicAcidLine = intersect.intersectNucleicAcidLine;
   // intersect.intersectRoundRectangleLine = intersect.intersectRoundRectangleLine;
   // $$.sbgn.intersectLineEllipse = intersect.intersectLineEllipse;
-  $$.sbgn.intersectLineStateAndInfoBoxes = intersect.instersectLineStateAndInfoBoxes;
+  // intersect.intersectLineStateAndInfoBoxes = intersect.intersectLineStateAndInfoBoxes;
 
   // point
   // pointFn.checkPointStateAndInfoBoxes = pointFn.checkPointStateAndInfoBoxes;
@@ -282,7 +282,7 @@ module.exports = function (cytoscape) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = intersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyShapes['ellipse'].intersectLine(centerX, centerY, width,
@@ -365,7 +365,7 @@ module.exports = function (cytoscape) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = intersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyShapes['ellipse'].intersectLine(
@@ -469,7 +469,7 @@ module.exports = function (cytoscape) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = intersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = intersect.intersectRoundRectangleLine(
@@ -705,7 +705,7 @@ module.exports = function (cytoscape) {
         cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
                 width, height);
 
-        var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = intersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyMath.polygonIntersectLine(
@@ -822,7 +822,7 @@ module.exports = function (cytoscape) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = $$.sbgn.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = intersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = intersect.intersectNucleicAcidLine(node,

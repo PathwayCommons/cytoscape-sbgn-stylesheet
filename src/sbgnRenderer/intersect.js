@@ -198,7 +198,7 @@ var intersectRoundRectangleLine = function (
   return []; // if nothing
 };
 
-var instersectLineStateAndInfoBoxes = function (node, x, y) {
+var intersectLineStateAndInfoBoxes = function (node, x, y) {
   var centerX = node._private.position.x;
   var centerY = node._private.position.y;
   var padding = parseInt(node.css('border-width')) / 2;
@@ -373,7 +373,7 @@ var intersectClosestPoint = function (point, intersections) {
 module.exports = {
   intersectLineEllipse: intersectLineEllipse,
   intersectLinePorts: intersectLinePorts,
-  instersectLineStateAndInfoBoxes: instersectLineStateAndInfoBoxes,
+  intersectLineStateAndInfoBoxes: intersectLineStateAndInfoBoxes,
   intersectNucleicAcidLine: intersectNucleicAcidLine,
   intersectRoundRectangleLine: intersectRoundRectangleLine,
   intersectClosestPoint: intersectClosestPoint
