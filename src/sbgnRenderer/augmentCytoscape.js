@@ -6,8 +6,8 @@ var sbgnShapes = require('./sbgnShapes');
 
 // rendering
 var draw = require('./draw');
-var rIntersect = require('./intersect');
-var pointFn = require('./point');  // pointFn because it seems that point is used as a variable often
+var renderIntersect = require('./intersect');
+var renderPoint = require('./point');  // rPoint because it seems that point is used as a variable often
 
 // cytoscape math
 var cyMath = require('./cyMath');
@@ -85,7 +85,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -144,19 +144,19 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = rIntersect.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = renderIntersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyShapes['ellipse'].intersectLine(centerX, centerY, width,
                 height, x, y, padding);
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines);
-        return rIntersect.intersectClosestPoint([x, y], intersections);
+        return renderIntersect.intersectClosestPoint([x, y], intersections);
 
       },
       checkPoint: function (x, y, node, threshold) {
@@ -171,7 +171,7 @@ module.exports = function (cytoscape) {
                 padding, width, height,
                 centerX, centerY);
 
-        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = renderPoint.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         return nodeCheckPoint || stateAndInfoCheckPoint;
@@ -227,12 +227,12 @@ module.exports = function (cytoscape) {
         var padding = parseInt(node.css('border-width'));
         var multimerPadding = cyShapes['simple chemical'].multimerPadding;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = rIntersect.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = renderIntersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyShapes['ellipse'].intersectLine(
@@ -248,7 +248,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return rIntersect.intersectClosestPoint([x, y], intersections);
+        return renderIntersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -263,7 +263,7 @@ module.exports = function (cytoscape) {
                 padding, width, height,
                 centerX, centerY);
 
-        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = renderPoint.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -331,15 +331,15 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['macromolecule'].multimerPadding;
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = rIntersect.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = renderIntersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = rIntersect.intersectRoundRectangleLine(
+        var nodeIntersectLines = renderIntersect.intersectRoundRectangleLine(
                 x, y,
                 centerX, centerY,
                 centerX, centerY,
@@ -349,7 +349,7 @@ module.exports = function (cytoscape) {
         //check whether sbgn class includes multimer substring or not
         var multimerIntersectionLines = [];
         if ($$.sbgn.isMultimer(node)) {
-          multimerIntersectionLines = rIntersect.intersectRoundRectangleLine(
+          multimerIntersectionLines = renderIntersect.intersectRoundRectangleLine(
                   x, y,
                   centerX, centerY,
                   centerX + multimerPadding, centerY + multimerPadding,
@@ -359,7 +359,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return rIntersect.intersectClosestPoint([x, y], intersections);
+        return renderIntersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -371,7 +371,7 @@ module.exports = function (cytoscape) {
 
         var nodeCheckPoint = cyShapes['roundrectangle'].checkPoint(x, y, padding,
                 width, height, centerX, centerY);
-        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = renderPoint.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -405,7 +405,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -475,7 +475,7 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var padding = parseInt(node.css('border-width')) / 2;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
@@ -519,7 +519,7 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cloneMarker = node._private.data.clonemarker;
 
-        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = renderPoint.generateComplexShapePoints(cornerLength,
                 width, height);
 
         //check whether sbgn class includes multimer substring or not
@@ -564,15 +564,15 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = renderPoint.generateComplexShapePoints(cornerLength,
                 width, height);
 
-        var stateAndInfoIntersectLines = rIntersect.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = renderIntersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
         var nodeIntersectLines = cyMath.polygonIntersectLine(
@@ -597,7 +597,7 @@ module.exports = function (cytoscape) {
 
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines, multimerIntersectionLines);
 
-        return rIntersect.intersectClosestPoint([x, y], intersections);
+        return renderIntersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -609,13 +609,13 @@ module.exports = function (cytoscape) {
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
 
-        cyShapes['complex'].points = pointFn.generateComplexShapePoints(cornerLength,
+        cyShapes['complex'].points = renderPoint.generateComplexShapePoints(cornerLength,
                 width, height);
 
         var nodeCheckPoint = cyMath.pointInsidePolygon(x, y, cyShapes['complex'].points,
                 centerX, centerY, width, height, [0, -1], padding);
 
-        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = renderPoint.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
@@ -684,21 +684,21 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var portIntersection = rIntersect.intersectLinePorts(node, x, y, portId);
+        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
         if (portIntersection.length > 0) {
           return portIntersection;
         }
 
-        var stateAndInfoIntersectLines = rIntersect.intersectLineStateAndInfoBoxes(
+        var stateAndInfoIntersectLines = renderIntersect.intersectLineStateAndInfoBoxes(
                 node, x, y);
 
-        var nodeIntersectLines = rIntersect.intersectNucleicAcidLine(node,
+        var nodeIntersectLines = renderIntersect.intersectNucleicAcidLine(node,
                 x, y, centerX, centerY, cornerRadius);
 
         //check whether sbgn class includes multimer substring or not
         var multimerIntersectionLines = [];
         if ($$.sbgn.isMultimer(node)) {
-          multimerIntersectionLines = rIntersect.intersectNucleicAcidLine(node,
+          multimerIntersectionLines = renderIntersect.intersectNucleicAcidLine(node,
                   x, y, centerX + multimerPadding, centerY + multimerPadding,
                   cornerRadius);
         }
@@ -706,7 +706,7 @@ module.exports = function (cytoscape) {
         var intersections = stateAndInfoIntersectLines.concat(nodeIntersectLines,
                 multimerIntersectionLines);
 
-        return rIntersect.intersectClosestPoint([x, y], intersections);
+        return renderIntersect.intersectClosestPoint([x, y], intersections);
       },
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
@@ -716,15 +716,15 @@ module.exports = function (cytoscape) {
         var height = node.height();
         var cornerRadius = cyMath.getRoundRectangleRadius(width, height);
 
-        var nodeCheckPoint = pointFn.nucleicAcidCheckPoint(x, y, centerX, centerY,
+        var nodeCheckPoint = renderPoint.nucleicAcidCheckPoint(x, y, centerX, centerY,
                 node, threshold, this.points, cornerRadius);
-        var stateAndInfoCheckPoint = pointFn.checkPointStateAndInfoBoxes(x, y, node,
+        var stateAndInfoCheckPoint = renderPoint.checkPointStateAndInfoBoxes(x, y, node,
                 threshold);
 
         //check whether sbgn class includes multimer substring or not
         var multimerCheckPoint = false;
         if ($$.sbgn.isMultimer(node)) {
-          multimerCheckPoint = pointFn.nucleicAcidCheckPoint(x, y,
+          multimerCheckPoint = renderPoint.nucleicAcidCheckPoint(x, y,
                   centerX + multimerPadding, centerY + multimerPadding,
                   node, threshold, this.points, cornerRadius);
         }
