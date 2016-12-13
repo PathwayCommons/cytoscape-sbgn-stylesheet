@@ -8,9 +8,8 @@ The purpose of this document is to explain some of changes made to Cytoscape.js.
 
 ### cytoscape/src/extensions/renderer/base/coord-ele-math.js
 
-#### Commented out code
-
 ##### checkNode -- line 268
+Remove bounding box condition checks
 ```js
 //    if(
 //      pos.x - hw <= x && x <= pos.x + hw // bb check x
@@ -37,39 +36,14 @@ BRp.getNodeShape = function( node ){
 ```
 
 
-####
+##### BRp.findNearestElements.checkNode et. al
+Conditionally perform overriden functionality if the shape implements overriden functionality.
+```js -- line 276 
+sbgn.isNodeShapeTotallyOverriden(self, node)?shape.checkPoint( x, y, node, 0 ):shape.checkPoint(x, y, 0, width, height, pos.x, pos.y)
+```
 
-### cytoscape/src/extensions/renderer/base/node-shapes.js
-
-### cytoscape/src/extensions/renderer/base/arrow-shapes.js
-
-### cytoscape/src/extensions/renderer/canvas/arrow-shapes.js
-
-### cytoscape/src/extensions/renderer/canvas/drawing-edges.js
-
-### cytoscape/src/extensions/renderer/canvas/drawing-nodes.js
-
-### cytoscape/src/extensions/renderer/canvas/index.js
-
-### cytoscape/src/collection/dimensions.js
-
-### cytoscape/src/index.js
-
-### cytoscape/src/sbgn.js
-
-
-
-
-
-In coord-ele-math.js
-    
-    In checkNode function inside findNearestElement, and BRp.findEdgeControlPoints shape.checkPoint and similar function calls are
-    replaced. An example replaced statement is "sbgn.isNodeShapeTotallyOverriden(self, node)?shape.checkPoint( x, y, node, 0 ):shape.checkPoint(x, y, 0, width, height, pos.x, pos.y)"
-
-    In BRp.findEdgeControlPoints portsource and porttarget are considered while swapping src and tgt.
-    
-    IntersectLine function calls are conditinally replaced(If the shape of that node is totally overriden).
-    An example call is here.
+Conditionally perform overriden intersection functionality if the node is a sbgn shape.
+```js -- line 1257
      "if(sbgn.isNodeShapeTotallyOverriden(this, src))
         srcOutside = srcShape.intersectLine(src, tgtPos.x, tgtPos.y, edge._private.data.porttarget);
       else
@@ -82,73 +56,58 @@ In coord-ele-math.js
           tgtPos.y,
           0
         );"
-     
-    In 'BRp.findEndpoints' 
-        add  'var porttarget = edge._private.data.porttarget;'
-             'var portsource = edge._private.data.portsource;' inside variables.
-        append
-        if(!segments){
-            var portP1 = sbgn.addPortReplacementIfAny(source, portsource);
-            var portP2 = sbgn.addPortReplacementIfAny(target, porttarget);
+```
 
-            if(portP1.x != srcPos.x || portP1.y != srcPos.y){
-              p1[0] = portP1.x;
-              p1[1] = portP1.y;
-            }
+##### BRp.findEndPoints -- line 2039-2040
+Node data port target and port source considered in the find edge points computation
+```js
+var porttarget = edge._private.data.porttarget;
+var portsource = edge._private.data.portsource;
+```
 
-            if(portP2.x != tgtPos.x || portP2.y != tgtPos.y){
-              p2[0] = portP2.x;
-              p2[1] = portP2.y;
-            }
-          }
-        to the end of 'else if( lines )'
+### cytoscape/src/extensions/renderer/base/node-shapes.js
 
-        change dx and dy while calculating vectorNorm as the following
+#### Brp -- line 8, 166, 250
+Register the custom SBGN node shapes in augmentCytoscape.js.
+Expose a nodeShapes object that gets populated with custom SBGN node shapes.
 
-        "var dy = ( tgtPos.y - srcPos.y );
-        var dx = ( tgtPos.x - srcPos.x );"
+```js -- line 250
+  sbgn.registerSbgnNodeShapes();
+```
 
-In node-shapes.js
-    In BRp.registerNodeShapes function 
-        Add "BRp.nodeShapes = {};" immediately after "var BRp = {};"
-        "var nodeShapes = this.nodeShapes = {}" => "var nodeShapes = this.nodeShapes = BRp.nodeShapes;"
-        Add "sbgn.registerSbgnNodeShapes();" statement to BRp.registerNodeShapes function.
+### cytoscape/src/extensions/renderer/base/arrow-shapes.js
+Register the custom SBGN arrow shapes in augmentCytoscape.js.
+Expose a arrowShapes object that gets populated with custom SBGN arrow shapes.
 
-In drawing-nodes.js and drawing-edges.js
-    Change draw function calls of nodeshapes.
-    An example call is 
-    "if(sbgn.sbgnShapes[this.getNodeShape(node)]){
-        r.nodeShapes[this.getNodeShape(node)].draw(
-            context,
-            node);
-    }
-    else{
-        r.nodeShapes[r.getNodeShape(node)].draw(
-          context,
-          nodeX, nodeY,
-          nodeW, nodeH);
-    }"
+```js -- line 271
+  sbgn.registerSbgnNodeShapes();
+```
 
-In extensions\renderer\canvas\index.js
-    CRp.usePaths returns false
+### cytoscape/src/extensions/renderer/canvas/arrow-shapes.js
+In 'triangle-tee' function remove 'context.beginPath()' and 'context.endPath()'
+Replace the order of drawing 'triangle' and 'tee' (triangle must come first)
+In total we use the old (Same as Cytoscape.js 2.7.5) implementation for this
 
-In index.js
-    Expose more things for sbgnviz
 
-In extensions\renderer\base\arrow-shapes.js
-    Add 'sbgn.registerSbgnArrowShapes();' to the end of 'registerArrowShapes' function
-    Add 'BRp.arrowShapes = {};' immediately after 'var BRp = {}';
-    Replace 'var arrowShapes = this.arrowShapes = {};' at the beggining of 'registerArrowShapes' function with 'var arrowShapes = this.arrowShapes = BRp.arrowShapes;'
+### cytoscape/src/extensions/renderer/canvas/drawing-edges.js
+Custom SBGN edges rendering is executed here.  
+Checks if a edge is an SBGN egde.  If it is, executes custom drawing.
 
-In extensions\renderer\canvas\arrow-shapes.js
-    In 'triangle-tee' function remove 'context.beginPath()' and 'context.endPath()'
-    Replace the order of drawing 'triangle' and 'tee' (triangle must come first)
-    In total we use the old (Same as Cytoscape.js 2.7.5) implementation for this
+### cytoscape/src/extensions/renderer/canvas/drawing-nodes.js
 
-In dimensions.js
-    consider state-infos, multimers, ports on bounding box calculation 
-    (refer to 'https://github.com/iVis-at-Bilkent/sbgnviz-js/commit/12d400fef6cec4784c33abc10f680b7efe4ca34b' and 
-    'https://github.com/iVis-at-Bilkent/sbgnviz-js/commit/9f63661e1597df4ecf8f3ea6bbb585ee3c91a301')
-    Note that nomore there is cyVariables require node-shapes under base folder and use its nodeShapes property instead of using 'cyVariables.cyNodeShapes'
+Custom SBGN node rendering is executed here.  
+Checks if a node is an SBGN node.  If it is, executes custom drawing.
 
-Add sbgn.js under src folder and require it whenever it is used.
+### cytoscape/src/extensions/renderer/canvas/index.js
+CRp.usePaths returns false
+
+### cytoscape/src/collection/dimensions.js
+Custom bounding box calculation logic for SBGN nodes.
+
+### cytoscape/src/index.js
+Exposes cymath, cyNodeShapes, cyArrowShapes, etc. for use in augmentCytoscape.js
+
+### cytoscape/src/sbgn.js
+Create and export an empty object.  This object is populated by augmentCytoscape.js.
+It is then required by multiple files.
+
