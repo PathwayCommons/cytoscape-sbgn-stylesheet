@@ -48,7 +48,7 @@ Conditionally perform overriden intersection functionality if the node is a sbgn
 
 ```js 
 line 1257
-     "if(sbgn.isNodeShapeTotallyOverriden(this, src))
+     if(sbgn.isNodeShapeTotallyOverriden(this, src))
         srcOutside = srcShape.intersectLine(src, tgtPos.x, tgtPos.y, edge._private.data.porttarget);
       else
         srcOutside = srcShape.intersectLine(
@@ -59,7 +59,7 @@ line 1257
           tgtPos.x,
           tgtPos.y,
           0
-        );"
+        );
 ```
 
 ##### BRp.findEndPoints -- line 2039-2040
