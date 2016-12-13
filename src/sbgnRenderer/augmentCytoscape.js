@@ -29,7 +29,6 @@ module.exports = function (cytoscape) {
 
   // modified cytoscape.js needs these or it breaks
   $$.sbgn.sbgnShapes = config.sbgnShapes;
-  $$.sbgn.totallyOverridenNodeShapes = config.totallyOverridenNodeShapes;
 
   // define new cytoscape shapes, line styles, arrowshapes
   cyStyleProperties.types.nodeShape.enums.push('source and sink');
