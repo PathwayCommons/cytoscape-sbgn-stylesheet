@@ -96,8 +96,75 @@ Example:
 
 Most of the functions that used to be in the modified cytoscape.sbgn namespace did not need to be there.  These were draw/intersect/point functions. However, there are a few functions that are still required to be in cytoscape.sbgn.
 
-These are the functions that are needed by the modified cytoscape.js (removing them breaks SBGNViz).  
+These are the functions and objects that are needed by the modified cytoscape.js (removing them breaks SBGNViz).  
 
+* ```sbgnShapes```: A map/object of custom sbgn shapes that were added to cytoscape's base node shapes
 * ```isNodeShapeTotallyOverriden```: Checks if the custom node implements each of {draw, intersect, checkPoint}
-* ```addPortReplacementIfAny```:  Not sure what it does exactly, but modified cytoscape throws an error if it is not defined
 * ```isMultimer```: Check if a node has the class of multimer
+* ```addPortReplacementIfAny```:  Not sure what it does exactly, but modified cytoscape throws an error if it is not defined
+
+### Where these functions are used in modified cytoscape.js
+
+
+#### $$.sbgn.isMultimer(node)
+
+* Number of times used: 1
+* Location: ```src/collection/dimensions.js```
+* line:  ```567```
+* function: ```boundingBoxImpl```
+
+```js
+      if(sbgn.isMultimer(ele)) {
+        var shape = ele.css('shape');
+        var multimerPadding =  baseNodeShapes[shape].multimerPadding;
+        ex2 += multimerPadding;
+        ey2 += multimerPadding;
+      }
+```
+
+#### $$.sbgn.isNodeShapeTotallyOverriden(node):
+
+* Number of times used: 9
+* Location: 
+  * ```src/extensions/renderer/base/coord-ele-math.js``` lines 276, 1257, 1273, 1322, 1623, 1666, 2019, 2121
+```js
+sbgn.isNodeShapeTotallyOverriden(self, node) ? shape.checkPoint(x, y, node, 0) : shape.checkPoint(x, y, 0, width, height, pos.x, pos.y)
+
+```
+
+#### $$.sbgn.sbgnShapes
+
+* Number of times used: 4
+* Locations:
+  * ```src/extensions/renderer/canvas/drawing-images.js``` lines 121, 146 ```CRp.drawInscribedImage```
+  * ```src/extensions/renderer/canvas/drawing-nodes.js``` lines 144, 189 ```CRp.drawNode```
+```js
+        if(sbgn.sbgnShapes[this.getNodeShape(node)]) {
+            this.nodeShapes[this.getNodeShape(node)].draw(context, node);
+        }
+```
+
+#### $$.sbgn.addPortReplacementIfAny
+
+* Number of times used: 2
+* Location:
+  * ```src/extensions/renderer/base/coord-ele-math.js``` lines 2068, 2069
+```js
+    if(!segments){
+      var portP1 = sbgn.addPortReplacementIfAny(source, portsource);
+      var portP2 = sbgn.addPortReplacementIfAny(target, porttarget);
+
+      if(portP1.x != srcPos.x || portP1.y != srcPos.y){
+        p1[0] = portP1.x;
+        p1[1] = portP1.y;
+      }
+
+      if(portP2.x != tgtPos.x || portP2.y != tgtPos.y){
+        p2[0] = portP2.x;
+        p2[1] = portP2.y;
+      }
+```
+
+
+
+
