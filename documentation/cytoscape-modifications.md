@@ -38,12 +38,16 @@ BRp.getNodeShape = function( node ){
 
 ##### BRp.findNearestElements.checkNode et. al
 Conditionally perform overriden functionality if the shape implements overriden functionality.
-```js -- line 276 
+
+```js
+line 276 
 sbgn.isNodeShapeTotallyOverriden(self, node)?shape.checkPoint( x, y, node, 0 ):shape.checkPoint(x, y, 0, width, height, pos.x, pos.y)
 ```
 
 Conditionally perform overriden intersection functionality if the node is a sbgn shape.
-```js -- line 1257
+
+```js 
+line 1257
      "if(sbgn.isNodeShapeTotallyOverriden(this, src))
         srcOutside = srcShape.intersectLine(src, tgtPos.x, tgtPos.y, edge._private.data.porttarget);
       else
@@ -71,7 +75,8 @@ var portsource = edge._private.data.portsource;
 Register the custom SBGN node shapes in augmentCytoscape.js.
 Expose a nodeShapes object that gets populated with custom SBGN node shapes.
 
-```js -- line 250
+```js
+  line 250
   sbgn.registerSbgnNodeShapes();
 ```
 
@@ -79,7 +84,8 @@ Expose a nodeShapes object that gets populated with custom SBGN node shapes.
 Register the custom SBGN arrow shapes in augmentCytoscape.js.
 Expose a arrowShapes object that gets populated with custom SBGN arrow shapes.
 
-```js -- line 271
+```js
+line 271
   sbgn.registerSbgnNodeShapes();
 ```
 
