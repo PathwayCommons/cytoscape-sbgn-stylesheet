@@ -507,9 +507,8 @@ module.exports = function (cytoscape) {
       multimerPadding: 5,
       cornerLength: 12,
       draw: function (context, node) {
-        var hasChildren = node.children().length > 0;
-        var width = hasChildren ? node.outerWidth() : node.width();
-        var height = hasChildren ? node.outerHeight() : node.height();
+        var width = node.outerWidth() - parseFloat(node.css('border-width'));
+        var height = node.outerHeight()- parseFloat(node.css('border-width'));
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
         var stateAndInfos = node._private.data.statesandinfos;
@@ -555,9 +554,8 @@ module.exports = function (cytoscape) {
       intersectLine: function (node, x, y, portId) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var hasChildren = node.children().length > 0;
-        var width = hasChildren ? node.outerWidth() : node.width();
-        var height = hasChildren ? node.outerHeight() : node.height();
+        var width = node.outerWidth() - parseFloat(node.css('border-width'));
+        var height = node.outerHeight()- parseFloat(node.css('border-width'));
         var padding = parseInt(node.css('border-width')) / 2;
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
@@ -600,9 +598,8 @@ module.exports = function (cytoscape) {
       checkPoint: function (x, y, node, threshold) {
         var centerX = node._private.position.x;
         var centerY = node._private.position.y;
-        var hasChildren = node.children().length > 0;
-        var width = (hasChildren ? node.outerWidth() : node.width()) + threshold;
-        var height = (hasChildren ? node.outerHeight() : node.height()) + threshold;
+        var width = node.outerWidth() - parseFloat(node.css('border-width'));
+        var height = node.outerHeight()- parseFloat(node.css('border-width'));
         var padding = parseInt(node.css('border-width')) / 2;
         var multimerPadding = cyShapes['complex'].multimerPadding;
         var cornerLength = cyShapes['complex'].cornerLength;
