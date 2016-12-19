@@ -27,6 +27,21 @@ OR
 </html>
 ```
 
+## Usage
+
+Here is an example usage.  Sbgnviz under the hood is a cytoscape instance.  Anything that cytoscape can do, sbgnviz can do.
+
+Check out the cytoscape.js [docs](http://js.cytoscape.org/#introduction)
+
+```js
+var renderer = new SBGNViz(/* opts */);
+
+renderer.nodes();    // get cytoscape graph nodes
+renderer.edges();    // get cytoscape graph edges
+// renderer.<cytoscape-api-method-here>
+
+```
+
 ## Running the Demo:
 Clone this repository
 ```
