@@ -18,7 +18,7 @@ There are two ways to install this module
 npm install sbgnviz.js
 ```
 OR
-2. Copy the pre-built library from the [dist](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnRenderer.js) folder and link it in your html file
+2. Copy the pre-built library from the [dist](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnvjz.js) folder and link it in your html file
 ```
 <html>
 ...
@@ -38,7 +38,7 @@ Change directory to the newly cloned folder
 cd sbgn-renderer
 ```
 
-Run a local server (any one will do)
+Run a local server
 ```
 node http-server -p <PORT>
 ```
