@@ -56,11 +56,11 @@ The following npm scripts are available.  To run a script, type:
 npm run <command>
 ```
 
-```build```: Builds the sbgn-renderer library; Places it in the dist folder
-```build-demo```: Builds the browserify version of the demo app in the demo folder
-```clean```: Removes the browserify demo bundle and the contents of the dist folder
-```watch```: Watches for changes in the src directory and builds the library in response
-```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
+* ```build```: Builds the sbgn-renderer library; Places it in the dist folder
+* ```build-demo```: Builds the browserify version of the demo app in the demo folder
+* ```clean```: Removes the browserify demo bundle and the contents of the dist folder
+* ```watch```: Watches for changes in the src directory and builds the library in response
+* ```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
 
 ## Credits
 
