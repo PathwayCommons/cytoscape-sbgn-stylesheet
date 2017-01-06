@@ -6,8 +6,6 @@ let graphStyleSheet = require('./style/graphStyleSheet');
 
 augment( Cytoscape ); // TODO should be removed eventually (just use vanilla cy)
 
-console.log(JSON.stringify(Cytoscape.sbgn, null, 4));
-console.log(Cytoscape.sbgn);
 let defaultOptions = {
   style: graphStyleSheet(Cytoscape),
   boxSelectionEnabled: true,
