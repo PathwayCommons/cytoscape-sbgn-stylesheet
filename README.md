@@ -41,7 +41,10 @@ renderer.edges();    // get cytoscape graph edges
 
 ```
 
-## Running the Demo:
+### Demo
+For a detailed example, refer to the code in the [demo](https://github.com/d2fong/sbgn-renderer/tree/master/demo):
+
+#### Running the Demo
 Clone this repository
 ```
 git clone https://github.com/d2fong/sbgn-renderer
