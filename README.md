@@ -2,23 +2,24 @@
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
 ## Purpose
-The purpose of this library is to take json that represents biological networks i.e graphs, and display them in the browser using
-System Biology Graphical Notation.  A standard notation for describing and visually representing biological processes.
+To render SBGN(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
 
 ## Requirements
-The renderer expects cytoscape graph JSON.  To get cytoscape graph JSON, you need the following:
-* SBGN-ML files: xml files that represent biological networks.
-* A way to convert these files into graph JSON.  This is a nice [package](https://github.com/PathwayCommons/sbgnml-to-cytoscape) that does the job
+Input needs to be formatted Cytoscape.js graph JSON.  
+
+To get Cytoscape.js graph JSON, you need the following:
+* SBGN-ML files; xml files that represent biological networks.
+* An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
 ## Installation
-There are two ways to install this module
+SBGNViz.js can be installed via npm or by downloading the dist file.
 
 1. npm:
 ```
 npm install sbgnviz.js
 ```
 OR
-2. Copy the pre-built library from the [dist](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnvjz.js) folder and link it in your html file
+2. The pre-built library from [the dist directory](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnvjz.js).
 ```
 <html>
 ...
@@ -29,9 +30,7 @@ OR
 
 ## Usage
 
-Here is an example usage.  Sbgnviz under the hood is a cytoscape instance.  Anything that cytoscape can do, sbgnviz can do.
-
-Check out the cytoscape.js [docs](http://js.cytoscape.org/#introduction)
+SBGNViz is a Cytoscape.js instance under the hood.  Learn how to use SBGNViz by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
 
 ```js
 var renderer = new SBGNViz(/* opts */);
@@ -78,13 +77,10 @@ npm run <command>
 * ```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
 
 ## Credits
-
-This repository borrows heavily from the code in [sbgnviz.js](https://github.com/iVis-at-Bilkent/sbgnviz.js).
-Therefore, credit and recognition must be given to the team at Bilkent University, Turkey.
+Most of the code in this repository is derived from [sbgnviz.js](https://github.com/iVis-at-Bilkent/sbgnviz.js).
+Credit and recognition to the team at Bilkent University, Turkey.
 
 #### Bilkent team members:
 
 * Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
-
-While the code is similar, PathwayCommons and i-Vis at Bilkent have different needs and different goals.  Sbgn-render exists to put PathwayCommons into a position that more closely aligns with these needs and goals.
 
