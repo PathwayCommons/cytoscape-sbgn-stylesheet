@@ -1,4 +1,4 @@
-# sbgn-renderer (Working Title.  It will most likely be merged back into SBGNViz.js)
+# SBGNViz.js
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
 ## Purpose
