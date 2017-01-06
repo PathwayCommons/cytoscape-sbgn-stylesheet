@@ -1,6 +1,6 @@
 /* global $ */
 
-import Renderer from '../src/index';
+import SBGNViz from '../src/index';
 
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var defaultData = require('./test-data');
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   var container = $('#sbgn-network-container');
 
-  var renderer = new Renderer({
+  var renderer = new SBGNViz({
     container: container
   });
 
