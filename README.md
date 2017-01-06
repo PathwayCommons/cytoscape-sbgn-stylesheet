@@ -1,17 +1,17 @@
 # SBGNViz.js
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
-## Purpose
+### Purpose
 To render SBGN(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
 
-## Requirements
+### Requirements
 Input needs to be formatted Cytoscape.js graph JSON.  
 
 To get Cytoscape.js graph JSON, you need the following:
 * SBGN-ML files; xml files that represent biological networks.
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
-## Installation
+### Installation
 SBGNViz.js can be installed via npm or by downloading the dist file.
 
 1. npm:
@@ -28,7 +28,7 @@ OR
 </html>
 ```
 
-## Usage
+### Usage
 
 SBGNViz is a Cytoscape.js instance under the hood.  Learn how to use SBGNViz by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
 
@@ -41,10 +41,10 @@ renderer.edges();    // get cytoscape graph edges
 
 ```
 
-### Demo
+##### Demo
 For a detailed example, refer to the code in the [demo](https://github.com/d2fong/sbgn-renderer/tree/master/demo):
 
-#### Running the Demo
+###### Running the Demo
 Clone this repository
 ```
 git clone https://github.com/d2fong/sbgn-renderer
@@ -65,7 +65,7 @@ Open your browser and type the following address:
 localhost:<PORT>/demo/with-browserify.html
 ```
 
-## Building the Library
+### Building the Library
 
 The following npm scripts are available.  To run a script, type:
 
@@ -79,11 +79,11 @@ npm run <command>
 * ```watch```: Watches for changes in the src directory and builds the library in response
 * ```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
 
-## Credits
+### Credits
 Most of the code in this repository is derived from [sbgnviz.js](https://github.com/iVis-at-Bilkent/sbgnviz.js).
 Credit and recognition to the team at Bilkent University, Turkey.
 
-#### Bilkent team members:
+##### Bilkent team members:
 
 * Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
 
