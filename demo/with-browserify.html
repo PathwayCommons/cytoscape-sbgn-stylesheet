@@ -6,41 +6,47 @@
       <title>SBGNViz - Viewer App</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
       <link rel="stylesheet" href="app.css">
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="#"><span>SBGN</span><span class="orange">Viz</span> - Viewer Proto-Demo</a>
+    <nav class="blue-grey darken-4">
+      <div class="nav-wrapper">
+        <div class="col s12">
+          <a href="#" class="brand-logo">SBGNViz - Viewer Proto-Demo</a>
+        </div>
+      </div>
     </nav>
-
     <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-4">
-          <button class="btn control" id="graph-load" href="#">Load SBGN-ML File
+      <div class="row">
+        <div class="col-4 center-align">
+          <button class="btn control blue-grey darken-3" id="graph-load" href="#">Load SBGN-ML File
           </button>
           <input id="graph-input" type="file"/>
-          <button class="btn dropdown-toggle control" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-button btn control blue-grey darken-3" href="#" data-activates="graph-samples">
             Load SBGN-ML Sample
-          </button>
-          <div id="graph-samples" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item sample-file" type="button">neuronal_muscle_signalling</button>
-            <button class="dropdown-item sample-file" type="button">CaM-CaMK_dependent_signaling_to_the_nucleus</button>
-            <button class="dropdown-item sample-file" type="button">atm_mediated_phosphorylation_of_repair_proteins</button>
-            <button class="dropdown-item sample-file" type="button">glycolysis</button>
-            <button class="dropdown-item sample-file" type="button">mapk_cascade</button>
-            <button class="dropdown-item sample-file" type="button">polyq_proteins_interference</button>
-            <button class="dropdown-item sample-file" type="button">insulin_like_growth_factor_signalling</button>
-            <button class="dropdown-item sample-file" type="button">atm_mediated_phosphorylation_of_repair_proteins</button>
-            <button class="dropdown-item sample-file" type="button">vitamins_b6_activation_to_pyridoxal_phosphate</button>
-          </div>
-          <button class="btn control" id="graph-save" href="#">Save Graph to Image
+          </a>
+
+          <ul id="graph-samples" class="dropdown-content blue-grey darken-3">
+            <li><a class="sample-file white-text" href="#">neuronal_muscle_signalling</a>
+            <li><a class="sample-file white-text" href="#">CaM-CaMK_dependent_signaling_to_the_nucleus</a>
+            <li><a class="sample-file white-text" href="#">atm_mediated_phosphorylation_of_repair_proteins</a>
+            <li><a class="sample-file white-text" href="#">glycolysis</a>
+            <li><a class="sample-file white-text" href="#">mapk_cascade</a>
+            <li><a class="sample-file white-text" href="#">polyq_proteins_interference</a>
+            <li><a class="sample-file white-text" href="#">insulin_like_growth_factor_signalling</a>
+            <li><a class="sample-file white-text" href="#">atm_mediated_phosphorylation_of_repair_proteins</a>
+            <li><a class="sample-file white-text" href="#">vitamins_b6_activation_to_pyridoxal_phosphate</a>
+          </ul>
+
+          <button class="btn control blue-grey darken-3" id="graph-save" href="#">Save Graph to Image
           </button>
 
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row white">
         <div id="sbgn-network-container"></div>
       </div>
     </div>
@@ -49,9 +55,11 @@
 
       <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
 
       <script src="browserify-bundle.js"></script>
 
