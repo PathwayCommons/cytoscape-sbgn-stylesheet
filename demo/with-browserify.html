@@ -7,20 +7,21 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <link rel="stylesheet" href="app.css">
   </head>
 
   <body>
     <nav class="navbar navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="#">SBGNViz - Viewer App</a>
+      <a class="navbar-brand" href="#"><span>SBGN</span><span class="orange">Viz</span> - Viewer Proto-Demo</a>
     </nav>
 
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-6">
-          <button class="btn" id="graph-load" href="#">Load SBGN-ML File
+        <div class="col-4">
+          <button class="btn control" id="graph-load" href="#">Load SBGN-ML File
           </button>
-          <input id="graph-input" type="file" style="display:none" />
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <input id="graph-input" type="file"/>
+          <button class="btn dropdown-toggle control" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Load SBGN-ML Sample
           </button>
           <div id="graph-samples" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
@@ -34,12 +35,13 @@
             <button class="dropdown-item sample-file" type="button">atm_mediated_phosphorylation_of_repair_proteins</button>
             <button class="dropdown-item sample-file" type="button">vitamins_b6_activation_to_pyridoxal_phosphate</button>
           </div>
-          <button class="btn" id="graph-save" href="#">Save Graph to Image
+          <button class="btn control" id="graph-save" href="#">Save Graph to Image
           </button>
 
         </div>
       </div>
-      <div class="row" id="sbgn-network-container" style="height:800px; width: 800px">
+      <div class="row justify-content-center">
+        <div id="sbgn-network-container"></div>
       </div>
     </div>
 

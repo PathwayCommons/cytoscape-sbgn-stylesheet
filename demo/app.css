@@ -1,0 +1,26 @@
+#graph-input {
+  display: none;
+}
+
+#sbgn-network-container {
+  height: 800px;
+  width: 100%;
+  border: 1px solid;
+}
+
+.control {
+  margin: 10px 2px 0px 2px;
+}
+
+.btn:hover {
+  color: #dc8832;
+}
+
+.sample-file:hover {
+  color: white;
+  background-color: #dc8832;
+}
+
+.orange {
+  color: #dc8832
+}
