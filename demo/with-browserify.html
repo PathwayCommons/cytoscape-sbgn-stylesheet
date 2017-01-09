@@ -16,12 +16,27 @@
 
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-6">
           <button class="btn" id="graph-load" href="#">Load SBGN-ML File
           </button>
           <input id="graph-input" type="file" style="display:none" />
-          <button class="btn" id="graph-save" href="#">Save as Pic
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Load SBGN-ML Sample
           </button>
+          <div id="graph-samples" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item sample-file" type="button">neuronal_muscle_signalling</button>
+            <button class="dropdown-item sample-file" type="button">CaM-CaMK_dependent_signaling_to_the_nucleus</button>
+            <button class="dropdown-item sample-file" type="button">atm_mediated_phosphorylation_of_repair_proteins</button>
+            <button class="dropdown-item sample-file" type="button">glycolysis</button>
+            <button class="dropdown-item sample-file" type="button">mapk_cascade</button>
+            <button class="dropdown-item sample-file" type="button">polyq_proteins_interference</button>
+            <button class="dropdown-item sample-file" type="button">insulin_like_growth_factor_signalling</button>
+            <button class="dropdown-item sample-file" type="button">atm_mediated_phosphorylation_of_repair_proteins</button>
+            <button class="dropdown-item sample-file" type="button">vitamins_b6_activation_to_pyridoxal_phosphate</button>
+          </div>
+          <button class="btn" id="graph-save" href="#">Save Graph to Image
+          </button>
+
         </div>
       </div>
       <div class="row" id="sbgn-network-container" style="height:800px; width: 800px">

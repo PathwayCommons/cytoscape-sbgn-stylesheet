@@ -6,6 +6,19 @@ var convertSbgnml = require('sbgnml-to-cytoscape');
 var defaultData = require('./test-data');
 var saveAs = require('file-saver').saveAs;
 
+var loadXMLDoc = function (absFilePath) {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    xhttp = new XMLHttpRequest();
+  }
+  else {
+    xhttp = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+  xhttp.open('GET', absFilePath, false);
+  xhttp.send();
+  return xhttp.responseText;
+};
+
 var readFile = function (file, renderer) {
   var reader = new FileReader();
 
@@ -102,6 +115,12 @@ $(document).ready(function () {
 
   $('#graph-save').click(function () {
     save(renderer, 'graph');
+  });
+
+  $('.sample-file').click(function () {
+    var xmlContent = loadXMLDoc('samples/' + $(this)[0].innerText + '.xml');
+    var graphJson = convertSbgnml(xmlContent);
+    renderGraph(renderer, graphJson);  
   });
 
 });
