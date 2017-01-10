@@ -6,7 +6,7 @@ var convertSbgnml = require('sbgnml-to-cytoscape');
 var defaultData = require('./test-data');
 var saveAs = require('file-saver').saveAs;
 
-var loadXMLDoc = function (absFilePath) {
+var loadFileText = function (absFilePath) {
   var xhttp;
   if (window.XMLHttpRequest) {
     xhttp = new XMLHttpRequest();
@@ -118,8 +118,8 @@ $(document).ready(function () {
   });
 
   $('.sample-file').click(function () {
-    var xmlContent = loadXMLDoc('samples/' + $(this)[0].innerText + '.xml');
-    var graphJson = convertSbgnml(xmlContent);
+    var fileText = loadFileText('samples/' + $(this)[0].innerText + '.xml');
+    var graphJson = convertSbgnml(fileText);
     renderGraph(renderer, graphJson);  
   });
 
