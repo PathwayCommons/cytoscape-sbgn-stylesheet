@@ -3,7 +3,9 @@
 
 // this is a service, when this demo grows large enough, it should go under a services module
 
+// example: http://pathwaycommons.org/biogene/retrieve.do?query=53BP1&org=human&format=json
 var pathwayCommonsUrl = 'http://wwww.pathwaycommons.org/biogene/retrieve.do';
+
 
 var getBiogeneContent = function (node) {
   var geneClass = node._private.data.class;
