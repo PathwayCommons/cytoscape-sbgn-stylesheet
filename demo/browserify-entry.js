@@ -3,8 +3,9 @@
 import SBGNViz from '../src/index';
 
 var convertSbgnml = require('sbgnml-to-cytoscape');
-var defaultData = require('./test-data');
 var saveAs = require('file-saver').saveAs;
+
+var defaultData = require('./test-data');
 
 var loadFileText = function (absFilePath) {
   var xhttp;
@@ -19,7 +20,7 @@ var loadFileText = function (absFilePath) {
   return xhttp.responseText;
 };
 
-var readFile = function (file, renderer) {
+var readFile = function (renderer, file) {
   var reader = new FileReader();
 
   reader.onload = function (e) {
@@ -109,7 +110,7 @@ $(document).ready(function () {
     if ($(this).val() != '') {
       var file = this.files[0];
 
-      readFile(file, renderer);
+      readFile(renderer, file);
     }
   });
 
