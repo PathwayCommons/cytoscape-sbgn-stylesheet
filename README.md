@@ -16,7 +16,7 @@ SBGNViz.js can be installed via npm or by downloading the dist file.
 
 1. npm:
 ```
-npm install sbgnviz.js
+npm install sbgnviz
 ```
 OR
 2. The pre-built library from [the dist directory](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnvjz.js).
@@ -33,6 +33,8 @@ OR
 SBGNViz is a Cytoscape.js instance under the hood.  Learn how to use SBGNViz by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
 
 ```js
+import SBGNViz from 'sbgnviz';
+
 var renderer = new SBGNViz(/* opts */);
 
 renderer.nodes();    // get cytoscape graph nodes
