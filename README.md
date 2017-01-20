@@ -1,4 +1,4 @@
-# SBGNViz.js
+# SBGN Renderer
 A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
 
 ### Purpose
@@ -12,30 +12,30 @@ To get Cytoscape.js graph JSON, you need the following:
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
 ### Installation
-SBGNViz.js can be installed via npm or by downloading the dist file.
+SBGN Renderer can be installed via npm or by downloading the dist file.
 
 1. npm:
 ```
-npm install sbgnviz
+npm install sbgn-renderer
 ```
 OR
-2. The pre-built library from [the dist directory](https://github.com/d2fong/sbgn-renderer/blob/master/dist/sbgnvjz.js).
+2. The pre-built library from [the dist directory](https://github.com/PathwayCommons/sbgn-renderer/blob/master/dist/sbgnvjz.js).
 ```
 <html>
 ...
-<script src="sbgnviz.js"></script>
+<script src="sbgn-renderer.js"></script>
 ...
 </html>
 ```
 
 ### Usage
 
-SBGNViz is a Cytoscape.js instance under the hood.  Learn how to use SBGNViz by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
+SBGNRenderer is a Cytoscape.js instance under the hood.  Learn how to use SBGNRenderer by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
 
 ```js
-import SBGNViz from 'sbgnviz';
+import SBGNRenderer from 'sbgn-renderer';
 
-var renderer = new SBGNViz(/* opts */);
+var renderer = new SBGNRenderer(/* opts */);
 
 renderer.nodes();    // get cytoscape graph nodes
 renderer.edges();    // get cytoscape graph edges
@@ -44,12 +44,12 @@ renderer.edges();    // get cytoscape graph edges
 ```
 
 ##### Demo
-For a detailed example, refer to the code in the [demo](https://github.com/d2fong/sbgn-renderer/tree/master/demo):
+For a detailed example, refer to the code in the [demo](https://github.com/PathwayCommons/sbgn-renderer/tree/master/demo):
 
 ###### Running the Demo
 Clone this repository
 ```
-git clone https://github.com/d2fong/sbgn-renderer
+git clone https://github.com/PathwayCommons/sbgn-renderer
 ```
 
 Change directory to the newly cloned folder
@@ -88,4 +88,3 @@ Credit and recognition to the team at Bilkent University, Turkey.
 ##### Bilkent team members:
 
 * Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
-

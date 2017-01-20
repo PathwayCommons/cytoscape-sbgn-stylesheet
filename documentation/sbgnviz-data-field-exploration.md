@@ -1,7 +1,7 @@
-# SBGNViz Data Field Exploration
+# SBGNRenderer Data Field Exploration
 
-The purpose of this document is to provide lower level details about how sbgnviz works, and how it interacts with cytoscape.js.  
-The subject of study will be the data contained in sbgn graph json, and how it is consumed by sbgnviz.
+The purpose of this document is to provide lower level details about how SBGN Renderer works, and how it interacts with cytoscape.js.  
+The subject of study will be the data contained in sbgn graph json, and how it is consumed by SBGN Renderer.
 
 ## SBGN Graph JSON
 
@@ -38,7 +38,7 @@ SBGN Node JSON is valid JSON and takes the form similar to this example:
 
 There are eight fields contained in SBGN node JSON data.
 
-They are: 
+They are:
 * ```id```: Represents the node id
 * ```bbox```: Represents the bounding box of the node -- used to calculate the initial position of the node when rendering the sbgn graph
 * ```class```: The SBGN specific graphic to be displayed e.g (simple chemical, macromolecule, etc.)
@@ -66,7 +66,7 @@ SBGN edge JSON is valid JSON and takes the form similar to this example:
                 "porttarget": "glyph67.1"
             }
         }
-        
+
 * ```class```: Represents the relationship between the source and target
 * ```bendPointPositions```: Usage unknown -- assumed to be the points at which the edge can bend
 * ```cardinality```: Usage unknown -- not sure what cardinality means in this context
@@ -77,7 +77,7 @@ SBGN edge JSON is valid JSON and takes the form similar to this example:
 
 # How the Data is Used
 
-This section will explain how the data fiels in nodes above are use in SBGNViz
+This section will explain how the data fiels in nodes above are use in SBGNRenderer
 
 ## Graph Styling
 
@@ -88,10 +88,10 @@ These fields are used to style the graph such that SBGN is approximately represe
 
 These functions map nodes to presentational values.  
 
-#### Example: 
+#### Example:
 
 graphStyleSheet.js
-```js 
+```js
 
         .selector('node[class]')
         .css({
@@ -149,5 +149,3 @@ The fields in the graph JSON are used extensively when rendering the graph.  Ple
 ## Nice to haves
 
 * A client app that can generate a large sample of sbgnml to json data, and a way to query this data.
-
-

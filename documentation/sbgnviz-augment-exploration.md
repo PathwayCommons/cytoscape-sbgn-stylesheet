@@ -1,6 +1,6 @@
-# SBGNViz Augment Exploration
+# SBGNRenderer Augment Exploration
 
-The purpose of this document is to provide lower level details about how sbgnviz works, and how it interacts with cytoscape.js
+The purpose of this document is to provide lower level details about how SBGNRenderer works, and how it interacts with cytoscape.js
 The subject of study will be the functions that are appended on to cytoscape.js via the augment function.
 
 ## Key Functions of augmentCytoscape.js
@@ -10,7 +10,7 @@ The subject of study will be the functions that are appended on to cytoscape.js 
 
 ### Registering custom node/arrow/line shapes
 
-SBGNViz exposes the cytoscape's base nodeShapes - and adds new shapes to this collection.  
+SBGNRenderer exposes the cytoscape's base nodeShapes - and adds new shapes to this collection.  
 
 Example:
 Here are the sbgn specific shapes that are being added.
@@ -96,7 +96,7 @@ Example:
 
 Most of the functions that used to be in the modified cytoscape.sbgn namespace did not need to be there.  These were draw/intersect/point functions. However, there are a few functions that are still required to be in cytoscape.sbgn.
 
-These are the functions and objects that are needed by the modified cytoscape.js (removing them breaks SBGNViz).  
+These are the functions and objects that are needed by the modified cytoscape.js (removing them breaks SBGNRenderer).  
 
 * ```sbgnShapes```: A map/object of custom sbgn shapes that were added to cytoscape's base node shapes
 * ```isNodeShapeTotallyOverriden```: Checks if the custom node implements each of {draw, intersect, checkPoint}
@@ -125,7 +125,7 @@ These are the functions and objects that are needed by the modified cytoscape.js
 #### $$.sbgn.isNodeShapeTotallyOverriden(node):
 
 * Number of times used: 9
-* Location: 
+* Location:
   * ```src/extensions/renderer/base/coord-ele-math.js``` lines 276, 1257, 1273, 1322, 1623, 1666, 2019, 2121
 ```js
 sbgn.isNodeShapeTotallyOverriden(self, node) ? shape.checkPoint(x, y, node, 0) : shape.checkPoint(x, y, 0, width, height, pos.x, pos.y)
@@ -164,7 +164,3 @@ sbgn.isNodeShapeTotallyOverriden(self, node) ? shape.checkPoint(x, y, node, 0) :
         p2[1] = portP2.y;
       }
 ```
-
-
-
-

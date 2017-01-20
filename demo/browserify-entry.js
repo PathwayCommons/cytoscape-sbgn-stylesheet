@@ -1,6 +1,6 @@
 /* global $ */
 
-import SBGNViz from '../src/index';
+import SBGNRenderer from '../src/index';
 
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var saveAs = require('file-saver').saveAs;
@@ -87,8 +87,8 @@ var b64toBlob = function (b64Data, contentType, sliceSize) {
 
 var save = function (renderer, filename) {
   var graphFileString = renderer.png({scale: 3, full: true});
-  
-  var b64Data = graphFileString.substr(graphFileString.indexOf(',') + 1); 
+
+  var b64Data = graphFileString.substr(graphFileString.indexOf(',') + 1);
   saveAs(b64toBlob(b64Data, 'image/png'), filename);
 };
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
 
   var container = $('#sbgn-network-container');
 
-  var renderer = new SBGNViz({
+  var renderer = new SBGNRenderer({
     container: container
   });
 
@@ -121,7 +121,7 @@ $(document).ready(function () {
   $('.sample-file').click(function () {
     var fileText = loadFileText('samples/' + $(this)[0].innerText + '.xml');
     var graphJson = convertSbgnml(fileText);
-    renderGraph(renderer, graphJson);  
+    renderGraph(renderer, graphJson);
   });
 
 });

@@ -1,5 +1,5 @@
 {
-  "name": "sbgnviz",
+  "name": "sbgn-renderer",
   "version": "0.1.0",
   "description": "A library that renders SBGN",
   "main": "index.js",
@@ -8,8 +8,8 @@
     "clean": "rm -rf demo/browserify-bundle.js dist/*",
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
-    "build": "browserify --standalone sbgnviz -e src/index.js -o dist/sbgnviz.js -d -t [ babelify --comments false ]",
-    "watch": "watchify --standalone sbgnviz -e src/index.js -o dist/sbgnviz.js -d -t [ babelify --comments false ] --poll=50 --verbose"
+    "build": "browserify --standalone sbgn-renderer -e src/index.js -o dist/sbgn-renderer.js -d -t [ babelify --comments false ]",
+    "watch": "watchify --standalone sbgn-renderer -e src/index.js -o dist/sbgn-renderer.js -d -t [ babelify --comments false ] --poll=50 --verbose"
   },
   "keywords": [
     "biology",
