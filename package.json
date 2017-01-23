@@ -2,14 +2,14 @@
   "name": "sbgn-renderer",
   "version": "0.1.0",
   "description": "A library that renders SBGN",
-  "main": "index.js",
+  "main": "dist/sbgn-renderer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf demo/browserify-bundle.js dist/*",
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
-    "build": "browserify --standalone sbgn-renderer -e src/index.js -o dist/sbgn-renderer.js -d -t [ babelify --comments false ]",
-    "watch": "watchify --standalone sbgn-renderer -e src/index.js -o dist/sbgn-renderer.js -d -t [ babelify --comments false ] --poll=50 --verbose"
+    "build": "browserify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/sbgn-renderer.js",
+    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose"
   },
   "keywords": [
     "biology",
@@ -29,6 +29,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
+    "derequire": "^2.0.6",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
