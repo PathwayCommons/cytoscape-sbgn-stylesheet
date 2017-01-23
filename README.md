@@ -12,9 +12,8 @@ To get Cytoscape.js graph JSON, you need the following:
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
 ### Installation
-SBGN Renderer can be installed via npm or by downloading the dist file.
+SBGN Renderer can be installed via npm
 
-1. npm:
 ```
 npm install sbgn-renderer
 ```
