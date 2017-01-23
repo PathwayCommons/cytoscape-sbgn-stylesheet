@@ -18,20 +18,24 @@ SBGN Renderer can be installed via npm or by downloading the dist file.
 ```
 npm install sbgn-renderer
 ```
-OR
-2. The pre-built library from [the dist directory](https://github.com/PathwayCommons/sbgn-renderer/blob/master/dist/sbgnvjz.js).
-```
-<html>
-...
-<script src="sbgn-renderer.js"></script>
-...
-</html>
-```
 
 ### Usage
 
-SBGNRenderer is a Cytoscape.js instance under the hood.  Learn how to use SBGNRenderer by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
+SBGNRenderer provides Cytoscape.js's API, as well as SBGN specific functions for SBGN graph analysis.
+Learn how to use SBGNRenderer by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
+Learn how to use the [SBGN API] ()
 
+
+CommonJS Usage
+```js
+var SBGNRenderer = require('sbgn-renderer').default;
+
+var renderer = new SBGNRenderer(/* opts */);
+renderer.nodes();    // get cytoscape graph nodes
+renderer.edges();    // get cytoscape graph edges
+// renderer.<cytoscape-api-method-here>
+```
+ES6 Usage
 ```js
 import SBGNRenderer from 'sbgn-renderer';
 
