@@ -20,7 +20,9 @@ var graphStyleSheet = function (cytoscape) {
           'background-color': '#f6f6f6',
           'background-opacity': 0.5,
           'text-opacity': 1,
-          'opacity': 1
+          'opacity': 1,
+          'text-wrap': 'wrap',
+          'text-max-width': 100,
         })
         .selector('node[?clonemarker][class="perturbing agent"]')
         .css({
