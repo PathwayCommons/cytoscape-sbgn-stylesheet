@@ -19,7 +19,7 @@ nodeProperties.getCyShape = function(cyNode) {
   if (_class == 'phenotype') {
     return 'hexagon';
   }
-  if (_class == 'perturbing agent' || _class == 'tag') {
+  if (_class == 'perturbing agent' || _class == 'tag' || _class == 'source and sink') {
     return 'polygon';
   }
   if ( _class == 'nucleic acid feature' || _class == 'dissociation'

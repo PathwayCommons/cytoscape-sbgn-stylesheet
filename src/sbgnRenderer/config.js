@@ -1,6 +1,5 @@
 var config = {
   sbgnShapes: {
-    'source and sink': true,
     'nucleic acid feature': true,
     'complex': true,
     'dissociation': true,

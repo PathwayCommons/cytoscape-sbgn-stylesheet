@@ -1,5 +1,5 @@
 var nodeProperties = require('./nodeProperties.js');
-var sourceAndSinkSvg = require('./sourceAndSink.js');
+var sourceAndSink = require('./sourceAndSink.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -50,15 +50,13 @@ var graphStyleSheet = function (cytoscape) {
         })
         .selector('node[class="source and sink"]')
         .css({
-          'shape': 'ellipse',
+          'shape-polygon-points':  sourceAndSink.points(),
           'background-image': () => {
-            let x = sourceAndSinkSvg();
-            return `url(${x})`;
+            return `url(${sourceAndSink.svg()})`;
           },
           'background-fit': 'none',
           'background-width': 100,
           'background-height': 100,
-          'background-opacity': 0,
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 0
