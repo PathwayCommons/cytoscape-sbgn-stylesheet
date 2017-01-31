@@ -1,13 +1,13 @@
 // QUAD4 | QUAD3
 // -------------
 // QUAD1 | QUAD2
-const quad1 = '-1, 0, -0.86, 0.5, -1, 1, -0.5, 0.86, 0, 1';
+const quad1 = '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1';
 
 const quad2 = '0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0';
 
-const quad3 = '0.86, -0.5, 1, -1, 0.5, -0.86, 0, -1';
+const quad3 = '0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1';
 
-const quad4 = '-0.5, -0.86, -0.71, -0.71, -0.86, -0.5';
+const quad4 = '-0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0,';
 
 const points = () => {
   return `${quad1}, ${quad2}, ${quad3}, ${quad4}`;
@@ -30,7 +30,7 @@ const svg2b64Str = (svg) => {
   return `data:image/svg+xml;base64,${b64Data}`;
 };
 
-const sourceAndSinkSvg = (strokeColor = 'grey' , edgeWidth = 7) => {
+const svgUri = (strokeColor = 'grey' , edgeWidth = 7) => {
   const sourceAndSink = 
   `
     <circle cx='250' cy='250' r='150' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
@@ -41,6 +41,6 @@ const sourceAndSinkSvg = (strokeColor = 'grey' , edgeWidth = 7) => {
 };
 
 module.exports = {
-  svg: sourceAndSinkSvg,
+  svgUri: svgUri,
   points: points
 };

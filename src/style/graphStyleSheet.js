@@ -52,7 +52,7 @@ var graphStyleSheet = function (cytoscape) {
         .css({
           'shape-polygon-points':  sourceAndSink.points(),
           'background-image': () => {
-            return `url(${sourceAndSink.svg()})`;
+            return `url(${sourceAndSink.svgUri()})`;
           },
           'background-fit': 'none',
           'background-width': 100,
