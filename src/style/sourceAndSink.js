@@ -21,7 +21,6 @@ const svg = (str) => {
     ${str}
     </svg>
   `;
-
   return parser.parseFromString(svgText, 'text/xml').documentElement;
 };
 
@@ -30,13 +29,30 @@ const svg2b64Str = (svg) => {
   return `data:image/svg+xml;base64,${b64Data}`;
 };
 
-const svgUri = (strokeColor = 'grey' , edgeWidth = 7) => {
+const svgUri = (node, strokeColor = 'grey' , edgeWidth = 7) => {
+  let cloneMarker = '';
+  let clipPath = '';
+  if (node.data('clonemarker')) {
+    clipPath = `
+    <defs>
+      <clipPath id="cut-off-bottom">
+        <rect x="130" y="300" width="300" height="200" />
+      </clipPath>
+    </defs>
+    `;
+    cloneMarker = `
+    <circle cx="250" cy="250" r="150" fill='#D2D2D2' stroke='grey' clip-path="url(#cut-off-bottom)" />
+    `;
+  }
+
+
   const sourceAndSink = 
   `
+    ${clipPath}
     <circle cx='250' cy='250' r='150' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
+    ${cloneMarker}
     <line x1='100' y1='400' x2='400' y2='100' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
-
   return svg2b64Str(svg(sourceAndSink));
 };
 

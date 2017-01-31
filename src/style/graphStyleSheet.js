@@ -51,8 +51,8 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node[class="source and sink"]')
         .css({
           'shape-polygon-points':  sourceAndSink.points(),
-          'background-image': () => {
-            return `url(${sourceAndSink.svgUri()})`;
+          'background-image': (node) => {
+            return `url(${sourceAndSink.svgUri(node)})`;
           },
           'background-fit': 'none',
           'background-width': 100,
