@@ -1,5 +1,6 @@
-var nodeProperties = require('./nodeProperties.js');
-var sourceAndSink = require('./sourceAndSink.js');
+const nodeProperties = require('./nodeProperties.js');
+const sourceAndSink = require('./sourceAndSink.js');
+const compartment = require('./compartment.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -61,6 +62,23 @@ var graphStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0
         })
+        .selector('node[class="compartment"]')
+        .css({
+          'shape-polygon-points': compartment.points(),
+          'background-image': (node) => {
+            return `url(${compartment.svgUri(node)})`;
+          },
+          'background-fit': 'cover',
+          // 'background-width': 100,
+          // 'background-height': 100,
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 3.75,
+          'background-opacity': 0,
+          'background-color': '#FFFFFF',
+          'text-valign': 'bottom',
+          'text-halign': 'center'
+        })
         .selector('node[class="perturbing agent"]')
         .css({
           'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1'
@@ -76,14 +94,6 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node[class="complex"]')
         .css({
           'background-color': '#F4F3EE',
-          'text-valign': 'bottom',
-          'text-halign': 'center'
-        })
-        .selector('node[class="compartment"]')
-        .css({
-          'border-width': 3.75,
-          'background-opacity': 0,
-          'background-color': '#FFFFFF',
           'text-valign': 'bottom',
           'text-halign': 'center'
         })

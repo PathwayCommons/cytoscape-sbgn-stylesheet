@@ -14,8 +14,9 @@ nodeProperties.getCyShape = function(cyNode) {
   }
 
   if (_class == 'compartment') {
-    return 'roundrectangle';
+    return 'polygon';
   }
+
   if (_class == 'phenotype') {
     return 'hexagon';
   }
