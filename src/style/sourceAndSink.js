@@ -1,3 +1,5 @@
+let svgb64Str = require('./svgUtil.js');
+
 // QUAD1  |  QUAD2
 // (-, -) |  (+, -)
 // -------------
@@ -13,22 +15,6 @@ const quad4 = '-0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0,';
 
 const points = () => {
   return `${quad1}, ${quad2}, ${quad3}, ${quad4}`;
-};
-
-const svg = (str, width = 100, height = 100) => {
-  let parser = new DOMParser();
-  let svgText = 
-  `
-    <svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='${width}' height='${height}'>
-    ${str}
-    </svg>
-  `;
-  return parser.parseFromString(svgText, 'text/xml').documentElement;
-};
-
-const svg2b64Str = (svg) => {
-  let b64Data = btoa(svg.outerHTML);
-  return `data:image/svg+xml;base64,${b64Data}`;
 };
 
 const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
@@ -54,7 +40,7 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
     ${cloneMarker}
     <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
-  return svg2b64Str(svg(sourceAndSink, node.width(), node.height()));
+  return svgb64Str(sourceAndSink, node.width(), node.height());
 };
 
 module.exports = {
