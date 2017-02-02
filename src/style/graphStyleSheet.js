@@ -74,7 +74,7 @@ var graphStyleSheet = function (cytoscape) {
           'background-height': '100%',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          // 'border-width': 0,
+          'border-width': 0,
           'background-opacity': 0,
           'background-color': '#FFFFFF',
           'text-valign': 'bottom',

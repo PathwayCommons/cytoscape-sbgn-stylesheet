@@ -12,7 +12,7 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 2.3) => {
     <circle cx='${nodeCenterX}' cy='${nodeCenterY}' r='${innerCircleRadius}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
 
   `;
-  return svgb64Str(dissociation, node.width(), node.height());
+  return svgb64Str(dissociation, node.width(), node.height(), 0, 0, node.width(), node.height());
 };
 
 module.exports = {

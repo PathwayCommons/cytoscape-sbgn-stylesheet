@@ -3,8 +3,8 @@ let svgb64Str = require('./svgUtil.js');
 // QUAD1  |  QUAD2
 // (-, -) |  (+, -)
 // -------------
-// QUAD3  | QUAD4
-// (+, +) |  (-, +)
+// QUAD4  | QUAD3
+// (-, +) |  (+, +)
 const quad1 = '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1';
 
 const quad2 = '0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0';
@@ -45,7 +45,7 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
     ${cloneMarker}
     <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
-  return svgb64Str(sourceAndSink, node.width(), node.height());
+  return svgb64Str(sourceAndSink, node.width(), node.height(), 0, 0, node.width(), node.height());
 };
 
 module.exports = {
