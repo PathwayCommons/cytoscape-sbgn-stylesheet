@@ -15,11 +15,11 @@ const points = () => {
   return `${quad1}, ${quad2}, ${quad3}, ${quad4}`;
 };
 
-const svg = (str) => {
+const svg = (str, width = 100, height = 100) => {
   let parser = new DOMParser();
   let svgText = 
   `
-    <svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='500'>
+    <svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='${width}' height='${height}'>
     ${str}
     </svg>
   `;
@@ -31,7 +31,7 @@ const svg2b64Str = (svg) => {
   return `data:image/svg+xml;base64,${b64Data}`;
 };
 
-const svgUri = (node, strokeColor = 'grey' , edgeWidth = 7) => {
+const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
   let cloneMarker = '';
   let clipPath = '';
   if (node.data('clonemarker')) {
@@ -47,15 +47,14 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 7) => {
     `;
   }
 
-
   const sourceAndSink = 
   `
     ${clipPath}
-    <circle cx='250' cy='250' r='150' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
+    <circle cx='${node.width() / 2}' cy='${node.height() / 2}' r='${(node.width() - 2) / 2}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
     ${cloneMarker}
-    <line x1='100' y1='400' x2='400' y2='100' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
+    <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
-  return svg2b64Str(svg(sourceAndSink));
+  return svg2b64Str(svg(sourceAndSink, node.width(), node.height()));
 };
 
 module.exports = {

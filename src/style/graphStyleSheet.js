@@ -56,8 +56,8 @@ var graphStyleSheet = function (cytoscape) {
             return `url(${sourceAndSink.svgUri(node)})`;
           },
           'background-fit': 'none',
-          'background-width': 100,
-          'background-height': 100,
+          'background-width': '100%',
+          'background-height': '100%',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 0
