@@ -1,6 +1,7 @@
 const nodeProperties = require('./nodeProperties.js');
 const sourceAndSink = require('./sourceAndSink.js');
 const compartment = require('./compartment.js');
+const dissociation = require('./dissociation.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -78,6 +79,19 @@ var graphStyleSheet = function (cytoscape) {
           'background-color': '#FFFFFF',
           'text-valign': 'bottom',
           'text-halign': 'center'
+        })
+        .selector('node[class="dissociation"]')
+        .css({
+          'background-image': (node) => {
+            return `url(${dissociation.svgUri(node)})`;
+          },
+          'background-fit': 'cover',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'background-opacity': 0
         })
         .selector('node[class="perturbing agent"]')
         .css({

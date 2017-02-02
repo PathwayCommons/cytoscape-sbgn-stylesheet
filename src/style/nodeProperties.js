@@ -23,7 +23,10 @@ nodeProperties.getCyShape = function(cyNode) {
   if (_class == 'perturbing agent' || _class == 'tag' || _class == 'source and sink') {
     return 'polygon';
   }
-  if ( _class == 'nucleic acid feature' || _class == 'dissociation'
+  if (_class == 'dissociation') {
+    return 'ellipse';
+  }
+  if ( _class == 'nucleic acid feature'
       || _class == 'macromolecule' || _class == 'simple chemical' || _class == 'complex'
       || _class == 'unspecified entity' || _class == 'process' || _class == 'omitted process'
       || _class == 'uncertain process' || _class == 'association') {

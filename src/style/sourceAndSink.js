@@ -20,6 +20,11 @@ const points = () => {
 const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
   let cloneMarker = '';
   let clipPath = '';
+
+  let nodeCenterX = node.width() / 2;
+  let nodeCenterY = node.height() / 2;
+  let circleRadius = (node.width() - 2) / 2;
+
   if (node.data('clonemarker')) {
     clipPath = `
     <defs>
@@ -29,14 +34,14 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
     </defs>
     `;
     cloneMarker = `
-    <circle cx="250" cy="250" r="150" fill='#D2D2D2' stroke='grey' clip-path="url(#cut-off-bottom)" />
+    <circle cx="${nodeCenterX}" cy="${nodeCenterY}" r="${circleRadius}" fill='#D2D2D2' stroke='grey' clip-path="url(#cut-off-bottom)" />
     `;
   }
 
   const sourceAndSink = 
   `
     ${clipPath}
-    <circle cx='${node.width() / 2}' cy='${node.height() / 2}' r='${(node.width() - 2) / 2}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
+    <circle cx='${nodeCenterX}' cy='${nodeCenterY}' r='${circleRadius}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
     ${cloneMarker}
     <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
