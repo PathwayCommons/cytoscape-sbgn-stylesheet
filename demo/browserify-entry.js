@@ -97,9 +97,11 @@ $(document).ready(function () {
   var container = $('#sbgn-network-container');
 
   var renderer = new SBGNRenderer({
-    container: container
+    container: container,
+    textureOnViewport: false
   });
 
+  window.renderer = renderer;
   renderGraph(renderer, defaultData);
 
   $('#graph-load').click(function () {
