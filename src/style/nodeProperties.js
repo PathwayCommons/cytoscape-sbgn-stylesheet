@@ -20,6 +20,10 @@ nodeProperties.getCyShape = function(cyNode) {
   if (_class == 'phenotype') {
     return 'hexagon';
   }
+
+  if (_class == 'complex') {
+    return _class;
+  }
   if (_class == 'perturbing agent' || _class == 'tag' || _class == 'source and sink') {
     return 'polygon';
   }
@@ -27,9 +31,10 @@ nodeProperties.getCyShape = function(cyNode) {
     return 'ellipse';
   }
   if ( _class == 'nucleic acid feature'
-      || _class == 'macromolecule' || _class == 'simple chemical' || _class == 'complex'
+      || _class == 'macromolecule' || _class == 'simple chemical'
       || _class == 'unspecified entity' || _class == 'process' || _class == 'omitted process'
-      || _class == 'uncertain process' || _class == 'association') {
+      || _class == 'uncertain process' || _class == 'association'
+    ) {
     return _class;
   }
   return 'ellipse';

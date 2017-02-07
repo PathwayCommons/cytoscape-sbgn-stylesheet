@@ -2,6 +2,7 @@ const nodeProperties = require('./nodeProperties.js');
 const sourceAndSink = require('./sourceAndSink.js');
 const compartment = require('./compartment.js');
 const dissociation = require('./dissociation.js');
+const complex = require('./complex.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -67,14 +68,22 @@ var graphStyleSheet = function (cytoscape) {
         .css({
           'shape-polygon-points': compartment.points(),
           'background-image': (node) => {
-            return `url(${compartment.svgUri(node)})`;
+            return compartment.svgUri(node, 5);
           },
+          // 'background-image': (node) => {
+          //   return node.scratch('_svg');
+          // }, // node.scratch('_svg', svgUri); // to update
           'background-fit': 'none',
-          'background-width': '120%',
-          'background-height': '120%',
+          'background-width': '101%',
+          'background-height': '101%',
+          // 'padding-top': 50,
+          // 'padding-bottom': 50,
+          // 'padding-left': 50,
+          // 'padding-right': 50,
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          'border-width': 0,
+          'border-width': 1,
+          'border-color': 'green',
           'background-opacity': 0,
           'background-color': '#FFFFFF',
           'text-valign': 'bottom',
@@ -92,6 +101,10 @@ var graphStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0,
           'background-opacity': 0
+        })
+        .selector('node[class="complex"]')
+        .css({
+          // 'shape-polygon-points': (node) => { return complex.points(node); }
         })
         .selector('node[class="perturbing agent"]')
         .css({
