@@ -74,12 +74,12 @@ var graphStyleSheet = function (cytoscape) {
           //   return node.scratch('_svg');
           // }, // node.scratch('_svg', svgUri); // to update
           'background-fit': 'none',
-          'background-width': '101%',
-          'background-height': '101%',
-          // 'padding-top': 50,
-          // 'padding-bottom': 50,
-          // 'padding-left': 50,
-          // 'padding-right': 50,
+          'background-width': '115%',
+          'background-height': '115%',
+          'padding-top': '100',
+          'padding-bottom': '100',
+          'padding-right': '100',
+          'padding-left': '100',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 1,

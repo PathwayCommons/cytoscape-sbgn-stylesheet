@@ -7,7 +7,7 @@ const place = (label, x, y, width, height, vpWidth, vpHeight) => {
   return `
   <svg prserveAspectRatio='xMidYMin meet' width='${vpWidth}' height='${vpHeight}' viewBox='0 0 ${vpWidth} ${vpHeight}'>
     <rect fill='white' stroke='black' x='${x}' y='${y}' width='${width}' height='${height}' />
-    <text text-anchor='middle' x='${x + (width/2)}' y='${height/2}'>${label}</text>
+    <text text-anchor='middle' x='${x + (width/2)}' y='${y + (height/2)}'>${label}</text>
   </svg>
   `;
 };

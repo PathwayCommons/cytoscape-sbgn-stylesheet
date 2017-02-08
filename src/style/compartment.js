@@ -26,18 +26,18 @@ const svgUri = (node, borderWidth = 3.75) => {
 
   if (node.data('statesandinfos').length > 0) {
     const info = node.data('statesandinfos')[0].label.text; // fragile
-    uInfo = unitOfInfo.place(info, (nw/2) - (.2*nw/2), 0, .2*nw, .1*nw, nw, nh);
+    uInfo = unitOfInfo.place(info, 0, nh / 2, .1*nw, 0.05*nw, nw, nh);
   }
   const compartment =
   `
   <g style="stroke: #6A6A6A; fill: none; stroke-width: ${borderWidth};">
-    <path d="M ${0*nw} ${.03*nh} L ${0*nw} ${.97*nh} Q ${0.06*nw} ${nh} ${0.25*nw} ${nh}"/>
+    <path d="M ${0.05*nw} ${.03*nh} L ${0.05*nw} ${.97*nh} Q ${0.06*nw} ${nh} ${0.25*nw} ${nh}"/>
     
     <path d="M ${0.25*nw} ${nh} L ${0.75*nw} ${nh} Q ${0.93*nw} ${nh} ${1*nw} ${.95*nh}"/>
 
     <path d="M ${1*nw} ${.95*nh} L ${1*nw} ${0.05*nh} Q ${1*nw} ${0*nh} ${0.75*nw} ${0*nh}"/>
 
-    <path d="M ${0.75*nw} ${0*nh} L ${0.25*nw} ${0*nh} Q ${0.06*nw} ${0*nh} ${0*nw} ${0.03*nh}"/>
+    <path d="M ${0.75*nw} ${0*nh} L ${0.25*nw} ${0*nh} Q ${0.06*nw} ${0*nh} ${0.05*nw} ${0.03*nh}"/>
   </g>
   ${uInfo}
   `;
