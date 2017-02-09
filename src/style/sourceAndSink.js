@@ -29,7 +29,7 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
     clipPath = `
     <defs>
       <clipPath id="cut-off-bottom">
-        <rect x="130" y="300" width="300" height="200" />
+        <rect x="0" y="${2 * node.height() / 3}" width="${node.width()}" height="${node.width()}" />
       </clipPath>
     </defs>
     `;
@@ -40,11 +40,12 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
 
   const sourceAndSink = 
   `
-    ${clipPath}
     <circle cx='${nodeCenterX}' cy='${nodeCenterY}' r='${circleRadius}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
+    ${clipPath}
     ${cloneMarker}
     <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
   `;
+
   return svgb64Str(sourceAndSink, node.width(), node.height(), 0, 0, node.width(), node.height());
 };
 
