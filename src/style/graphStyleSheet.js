@@ -77,16 +77,16 @@ var graphStyleSheet = function (cytoscape) {
           'background-width': '115%',
           'background-height': '115%',
           'padding-top': (node) => {
-            return node.height() * .5;
+            return node.height() * .2;
           },
           'padding-bottom': (node) => {
-            return node.height() * .5;
+            return node.height() * .2;
           },
           'padding-right': (node) => {
-            return node.width() * .5;
+            return node.width() * .2;
           },
           'padding-left': (node) => {
-            return node.width() * .5;
+            return node.width() * .2;
           },
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
