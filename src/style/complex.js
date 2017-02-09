@@ -3,13 +3,6 @@
 // -------------
 // QUAD4  | QUAD3
 // (-, +) |  (+, +)
-// const quad1 = '-1, -0.9, -0.9, -1';
-
-// const quad2 = '0.9, -1, 1, -0.9';
-
-// const quad3 = '1, 0.9, 0.9, 1';
-
-// const quad4 = '-0.9, 1, -1, 0.9';
 
 const staticCornerLengthPoints = (cornerLength, width, height) => {
   const cpX = cornerLength / width;

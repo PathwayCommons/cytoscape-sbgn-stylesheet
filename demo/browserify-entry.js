@@ -91,10 +91,7 @@ $(document).ready(function () {
   var container = $('#sbgn-network-container');
 
   var renderer = new SBGNRenderer({
-    container: container,
-    // zoom: 0,
-    // userZoomingEnabled: false,
-    // userPanningEnabled: false
+    container: container
   });
 
   window.r = window.cy = renderer;
