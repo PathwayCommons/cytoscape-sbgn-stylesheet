@@ -31,10 +31,8 @@ module.exports = function (cytoscape) {
   $$.sbgn.sbgnShapes = config.sbgnShapes;
 
   // define new cytoscape shapes, line styles, arrowshapes
-  cyStyleProperties.types.nodeShape.enums.push('source and sink');
   cyStyleProperties.types.nodeShape.enums.push('nucleic acid feature');
   cyStyleProperties.types.nodeShape.enums.push('complex');
-  cyStyleProperties.types.nodeShape.enums.push('dissociation');
   cyStyleProperties.types.nodeShape.enums.push('macromolecule');
   cyStyleProperties.types.nodeShape.enums.push('simple chemical');
   cyStyleProperties.types.nodeShape.enums.push('unspecified entity');
@@ -434,74 +432,6 @@ module.exports = function (cytoscape) {
       }
     };
 
-    cyShapes['dissociation'] = {
-      draw: function (context, node) {
-        var centerX = node._private.position.x;
-        var centerY = node._private.position.y;
-
-        var width = node.width();
-        var height = node.height();
-
-        context.beginPath();
-        context.translate(centerX, centerY);
-        context.scale(width / 4, height / 4);
-
-        // At origin, radius 1, 0 to 2pi
-        context.arc(0, 0, 1, 0, Math.PI * 2 * 0.999, false); // *0.999 b/c chrome rendering bug on full circle
-
-        context.closePath();
-        context.scale(4 / width, 4 / height);
-        context.translate(-centerX, -centerY);
-
-        draw.drawEllipse(context, centerX, centerY, width / 2, height / 2);
-
-        context.stroke();
-
-        draw.drawEllipse(context, centerX, centerY, width, height);
-
-        context.stroke();
-
-        context.fill();
-
-        draw.drawPortsToEllipseShape(context, node);
-
-      },
-      intersectLine: function (node, x, y, portId) {
-        var nodeX = node._private.position.x;
-        var nodeY = node._private.position.y;
-        var width = node.width();
-        var height = node.height();
-        var padding = parseInt(node.css('border-width')) / 2;
-
-        var portIntersection = renderIntersect.intersectLinePorts(node, x, y, portId);
-        if (portIntersection.length > 0) {
-          return portIntersection;
-        }
-
-        return cyMath.intersectLineEllipse(
-                x, y,
-                nodeX,
-                nodeY,
-                width / 2 + padding,
-                height / 2 + padding);
-      },
-      checkPoint: function (x, y, node) {
-        var centerX = node._private.position.x;
-        var centerY = node._private.position.y;
-        var width = node.width();
-        var height = node.height();
-        var padding = parseInt(node.css('border-width')) / 2;
-
-        x -= centerX;
-        y -= centerY;
-
-        x /= (width / 2 + padding);
-        y /= (height / 2 + padding);
-
-        return (Math.pow(x, 2) + Math.pow(y, 2) <= 1);
-      }
-    };
-
     cyShapes['complex'] = {
       points: [],
       multimerPadding: 5,
@@ -726,43 +656,6 @@ module.exports = function (cytoscape) {
 
         return nodeCheckPoint || stateAndInfoCheckPoint || multimerCheckPoint;
       }
-    };
-    cyShapes['source and sink'] = {
-      points: cyMath.generateUnitNgonPoints(4, 0),
-      draw: function (context, node) {
-        var centerX = node._private.position.x;
-        var centerY = node._private.position.y;
-
-        var width = node.width();
-        var height = node.height();
-        var pts = cyShapes['source and sink'].points;
-        var cloneMarker = node._private.data.clonemarker;
-
-        draw.drawEllipse(context, centerX, centerY,
-                width, height);
-
-        context.stroke();
-
-        context.beginPath();
-        context.translate(centerX, centerY);
-        context.scale(width * Math.sqrt(2) / 2, height * Math.sqrt(2) / 2);
-
-        context.moveTo(pts[2], pts[3]);
-        context.lineTo(pts[6], pts[7]);
-        context.closePath();
-
-        context.scale(2 / (width * Math.sqrt(2)), 2 / (height * Math.sqrt(2)));
-        context.translate(-centerX, -centerY);
-
-        context.stroke();
-
-        $$.sbgn.cloneMarker.sourceAndSink(context, centerX, centerY,
-                width, height, cloneMarker,
-                node.css('background-opacity'));
-
-      },
-      intersectLine: cyShapes['ellipse'].intersectLine,
-      checkPoint: cyShapes['ellipse'].checkPoint
     };
   };
 

@@ -1,4 +1,8 @@
-var nodeProperties = require('./nodeProperties.js');
+const nodeProperties = require('./nodeProperties.js');
+const sourceAndSink = require('./sourceAndSink.js');
+const compartment = require('./compartment.js');
+const dissociation = require('./dissociation.js');
+const complex = require('./complex.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -47,6 +51,61 @@ var graphStyleSheet = function (cytoscape) {
             return nodeProperties.getCyShape(cyNode);
           }
         })
+        .selector('node[class="source and sink"]')
+        .css({
+          'shape-polygon-points':  sourceAndSink.points(),
+          'background-image': (node) => {
+            return `url(${sourceAndSink.svgUri(node)})`;
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="compartment"]')
+        .css({
+          'shape-polygon-points': compartment.points(),
+          'background-image': (node) => {
+            return compartment.svgUri(node, 5);
+          },
+          // 'background-image': (node) => {
+          //   return node.scratch('_svg');
+          // }, // node.scratch('_svg', svgUri); // to update
+          'background-fit': 'none',
+          'background-width': '115%',
+          'background-height': '115%',
+          'padding-top': '100',
+          'padding-bottom': '100',
+          'padding-right': '100',
+          'padding-left': '100',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 1,
+          'border-color': 'green',
+          'background-opacity': 0,
+          'background-color': '#FFFFFF',
+          'text-valign': 'bottom',
+          'text-halign': 'center'
+        })
+        .selector('node[class="dissociation"]')
+        .css({
+          'background-image': (node) => {
+            return `url(${dissociation.svgUri(node)})`;
+          },
+          'background-fit': 'cover',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'background-opacity': 0
+        })
+        .selector('node[class="complex"]')
+        .css({
+          // 'shape-polygon-points': (node) => { return complex.points(node); }
+        })
         .selector('node[class="perturbing agent"]')
         .css({
           'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1'
@@ -62,14 +121,6 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node[class="complex"]')
         .css({
           'background-color': '#F4F3EE',
-          'text-valign': 'bottom',
-          'text-halign': 'center'
-        })
-        .selector('node[class="compartment"]')
-        .css({
-          'border-width': 3.75,
-          'background-opacity': 0,
-          'background-color': '#FFFFFF',
           'text-valign': 'bottom',
           'text-halign': 'center'
         })

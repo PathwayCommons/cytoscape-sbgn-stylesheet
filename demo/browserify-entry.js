@@ -51,12 +51,6 @@ var renderGraph = function (cy, cyGraph) {
     padding: 50
   });
 
-  var compounds = cy.nodes().filter('$node > node');
-  compounds.css('padding-left', 5);
-  compounds.css('padding-right', 5);
-  compounds.css('padding-top', 5);
-  compounds.css('padding-bottom', 5);
-
   cy.endBatch();
   cy.style().update();
 };
@@ -100,6 +94,7 @@ $(document).ready(function () {
     container: container
   });
 
+  window.r = window.cy = renderer;
   renderGraph(renderer, defaultData);
 
   $('#graph-load').click(function () {

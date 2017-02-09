@@ -13,19 +13,25 @@ nodeProperties.getCyShape = function(cyNode) {
     _class = _class.replace(' multimer', '');
   }
 
-  if (_class == 'compartment') {
-    return 'roundrectangle';
-  }
   if (_class == 'phenotype') {
     return 'hexagon';
   }
-  if (_class == 'perturbing agent' || _class == 'tag') {
+
+  if (_class == 'perturbing agent' || _class == 'tag' 
+    || _class == 'source and sink' || _class == 'compartment') {
     return 'polygon';
   }
-  if (_class == 'source and sink' || _class == 'nucleic acid feature' || _class == 'dissociation'
-      || _class == 'macromolecule' || _class == 'simple chemical' || _class == 'complex'
+
+  if (_class == 'dissociation') {
+    return 'ellipse';
+  }
+
+  if ( _class == 'nucleic acid feature'
+      || _class == 'complex'
+      || _class == 'macromolecule' || _class == 'simple chemical'
       || _class == 'unspecified entity' || _class == 'process' || _class == 'omitted process'
-      || _class == 'uncertain process' || _class == 'association') {
+      || _class == 'uncertain process' || _class == 'association'
+    ) {
     return _class;
   }
   return 'ellipse';

@@ -1,9 +1,7 @@
 var config = {
   sbgnShapes: {
-    'source and sink': true,
     'nucleic acid feature': true,
     'complex': true,
-    'dissociation': true,
     'macromolecule': true,
     'simple chemical': true,
     'unspecified entity': true,
@@ -22,7 +20,6 @@ var config = {
     'process': true,
     'uncertain process': true,
     'omitted process': true,
-    'dissociation': true,
     'association': true
   },
   colors:  {
