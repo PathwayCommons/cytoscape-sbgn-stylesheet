@@ -1,6 +1,3 @@
-
-// render node properties based on SBGN
-
 var elementStyle = {};
 
 elementStyle.sbgnShape = (node) => {
