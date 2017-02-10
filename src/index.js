@@ -1,10 +1,7 @@
-let Cytoscape = require('cytoscape-for-sbgnviz');
+let Cytoscape = require('cytoscape');
 let defaultsDeep = require('lodash.defaultsdeep');
 
-let augment = require('./sbgnRenderer/augmentCytoscape');
 let graphStyleSheet = require('./style/graphStyleSheet');
-
-augment( Cytoscape ); // TODO should be removed eventually (just use vanilla cy)
 
 let defaultOptions = {
   style: graphStyleSheet(Cytoscape),
@@ -28,4 +25,4 @@ class SBGNRenderer extends Cytoscape {
 //  }
 }
 
-export default SBGNRenderer;
+module.exports = SBGNRenderer;

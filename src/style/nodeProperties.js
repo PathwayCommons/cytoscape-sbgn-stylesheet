@@ -17,6 +17,10 @@ nodeProperties.getCyShape = function(cyNode) {
     return 'hexagon';
   }
 
+  if (_class == 'process') {
+    return 'square';
+  }
+
   if (_class == 'perturbing agent' || _class == 'tag' 
     || _class == 'source and sink' || _class == 'compartment') {
     return 'polygon';
@@ -29,10 +33,10 @@ nodeProperties.getCyShape = function(cyNode) {
   if ( _class == 'nucleic acid feature'
       || _class == 'complex'
       || _class == 'macromolecule' || _class == 'simple chemical'
-      || _class == 'unspecified entity' || _class == 'process' || _class == 'omitted process'
+      || _class == 'unspecified entity' || _class == 'omitted process'
       || _class == 'uncertain process' || _class == 'association'
     ) {
-    return _class;
+    return 'roundrectangle';
   }
   return 'ellipse';
 };
@@ -40,7 +44,7 @@ nodeProperties.getCyShape = function(cyNode) {
 nodeProperties.getCyArrowShape = function(cyNode) {
   var _class = cyNode.data('class');
   if (_class == 'necessary stimulation') {
-    return 'necessary stimulation';
+    return 'triangle-cross';
   }
   if (_class == 'inhibition') {
     return 'tee';
