@@ -27,7 +27,7 @@ Learn how to use the [SBGN API] ()
 
 CommonJS Usage
 ```js
-var SBGNRenderer = require('sbgn-renderer').default;
+var SBGNRenderer = require('sbgn-renderer');
 
 var renderer = new SBGNRenderer(/* opts */);
 renderer.nodes();    // get cytoscape graph nodes
