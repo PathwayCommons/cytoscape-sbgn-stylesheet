@@ -9,7 +9,8 @@
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
     "build": "browserify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/sbgn-renderer.js",
-    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose"
+    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose",
+    "build-test": "browserify test/**/*.js -o test/test-bundle.js -d"
   },
   "keywords": [
     "biology",
