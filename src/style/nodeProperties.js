@@ -3,10 +3,6 @@
 
 var nodeProperties = {};
 
-nodeProperties.getCloneMarkerImgPath = function () {
-  return '';
-};
-
 nodeProperties.getCyShape = function(cyNode) {
   var _class = cyNode.data('class');
   if (_class.endsWith(' multimer')) {
