@@ -4,7 +4,7 @@
   "description": "A library that renders SBGN",
   "main": "dist/sbgn-renderer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "clean": "rm -rf demo/browserify-bundle.js dist/*",
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
@@ -25,7 +25,9 @@
   "author": "Dylan Fong",
   "license": "MIT",
   "devDependencies": {
+    "babel-polyfill": "^6.22.0",
     "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
