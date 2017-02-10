@@ -4,12 +4,14 @@
   "description": "A library that renders SBGN",
   "main": "dist/sbgn-renderer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "clean": "rm -rf demo/browserify-bundle.js dist/*",
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] --poll=50 --verbose",
     "build": "browserify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/sbgn-renderer.js",
-    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose"
+    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose",
+    "build-test": "browserify test/*.js -o test/testenv/test-bundle.js -d",
+    "watch-test": "watchify test/*.js -o test/testenv/test-bundle.js -d --poll=50 --verbose"
   },
   "keywords": [
     "biology",
@@ -25,7 +27,9 @@
   "author": "Dylan Fong",
   "license": "MIT",
   "devDependencies": {
+    "babel-polyfill": "^6.22.0",
     "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
