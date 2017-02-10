@@ -83,11 +83,3 @@ npm run <command>
 * ```clean```: Removes the browserify demo bundle and the contents of the dist folder
 * ```watch```: Watches for changes in the src directory and builds the library in response
 * ```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
-
-### Credits
-Most of the code in this repository is derived from [sbgnviz.js](https://github.com/iVis-at-Bilkent/sbgnviz.js).
-Credit and recognition to the team at Bilkent University, Turkey.
-
-##### Bilkent team members:
-
-* Metin Can Siper, Selim Firat Yilmaz, Ugur Dogrusoz, Alper Karacelik of [i-Vis at Bilkent University](http://www.cs.bilkent.edu.tr/~ivis).
