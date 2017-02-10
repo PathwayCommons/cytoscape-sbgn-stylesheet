@@ -1,4 +1,4 @@
-let svgb64Str = require('./svgUtil.js');
+let svgb64Str = require('../util/svg.js');
 let unitOfInfo = require('./unitOfInformation.js');
 // QUAD1  |  QUAD2
 // (-, -) |  (+, -)

@@ -1,8 +1,8 @@
-const nodeProperties = require('./nodeProperties.js');
-const sourceAndSink = require('./sourceAndSink.js');
-const compartment = require('./compartment.js');
-const dissociation = require('./dissociation.js');
-const complex = require('./complex.js');
+const elementStyle = require('./element.js');
+const sourceAndSink = require('./glyph/sourceAndSink.js');
+const compartment = require('./glyph/compartment.js');
+const dissociation = require('./glyph/dissociation.js');
+const complex = require('./glyph/complex.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -12,10 +12,10 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node')
         .css({
           'content': function (cyNode) {
-            return nodeProperties.getNodeContent(cyNode);
+            return elementStyle.getNodeContent(cyNode);
           },
           'font-size': function (cyNode) {
-            return nodeProperties.getLabelTextSize(cyNode);
+            return elementStyle.getLabelTextSize(cyNode);
           },
           'text-valign': 'center',
           'text-halign': 'center',
@@ -31,7 +31,7 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node[?clonemarker][class="perturbing agent"]')
         .css({
           'background-image': function () {
-            return nodeProperties.getcloneMarkerImagePath();
+            return elementStyle.getcloneMarkerImagePath();
           },
           'background-position-x': '50%',
           'background-position-y': '100%',
@@ -48,7 +48,7 @@ var graphStyleSheet = function (cytoscape) {
         .selector('node[class]')
         .css({
           'shape': function (cyNode) {
-            return nodeProperties.getCyShape(cyNode);
+            return elementStyle.getCyShape(cyNode);
           }
         })
         .selector('node[class="source and sink"]')
@@ -202,7 +202,7 @@ var graphStyleSheet = function (cytoscape) {
           },
           'source-text-margin-y': '-10',
           'source-text-offset': function (cyNode) {
-            return nodeProperties.getCardinalityDistance(cyNode);
+            return elementStyle.getCardinalityDistance(cyNode);
           }
         })
         .selector('edge[class="production"][cardinality > 0]')
@@ -212,13 +212,13 @@ var graphStyleSheet = function (cytoscape) {
           },
           'target-text-margin-y': '-10',
           'target-text-offset': function (cyNode) {
-            return nodeProperties.getCardinalityDistance(cyNode);
+            return elementStyle.getCardinalityDistance(cyNode);
           }
         })
         .selector('edge[class]')
         .css({
           'target-arrow-shape': function (cyNode) {
-            return nodeProperties.getCyArrowShape(cyNode);
+            return elementStyle.getCyArrowShape(cyNode);
           },
           'source-arrow-shape': 'none'
         })
