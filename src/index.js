@@ -1,10 +1,10 @@
 let Cytoscape = require('cytoscape');
 let defaultsDeep = require('lodash.defaultsdeep');
 
-let graphStyleSheet = require('./style/graphStyleSheet');
+let sbgnStyleSheet = require('./sbgnStyle/graph');
 
 let defaultOptions = {
-  style: graphStyleSheet(Cytoscape),
+  style: sbgnStyleSheet(Cytoscape),
   boxSelectionEnabled: true,
   showOverlay: false,
   minZoom: false,
