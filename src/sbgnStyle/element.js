@@ -3,84 +3,84 @@
 
 var elementStyle = {};
 
-elementStyle.getCyShape = function(cyNode) {
-  var _class = cyNode.data('class');
-  if (_class.endsWith(' multimer')) {
-    _class = _class.replace(' multimer', '');
+elementStyle.sbgnShape = (node) => {
+  let sbgnClass = node.data('class');
+  if (sbgnClass.endsWith(' multimer')) {
+    sbgnClass = sbgnClass.replace(' multimer', '');
   }
 
-  if (_class == 'phenotype') {
+  if (sbgnClass == 'phenotype') {
     return 'hexagon';
   }
 
-  if (_class == 'process') {
+  if (sbgnClass == 'process') {
     return 'square';
   }
 
-  if (_class == 'perturbing agent' || _class == 'tag' 
-    || _class == 'source and sink' || _class == 'compartment') {
+  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag' 
+    || sbgnClass == 'source and sink' || sbgnClass == 'compartment') {
     return 'polygon';
   }
 
-  if (_class == 'dissociation') {
+  if (sbgnClass == 'dissociation') {
     return 'ellipse';
   }
 
-  if ( _class == 'nucleic acid feature'
-      || _class == 'complex'
-      || _class == 'macromolecule' || _class == 'simple chemical'
-      || _class == 'unspecified entity' || _class == 'omitted process'
-      || _class == 'uncertain process' || _class == 'association'
+  if ( sbgnClass == 'nucleic acid feature'
+      || sbgnClass == 'complex'
+      || sbgnClass == 'macromolecule' || sbgnClass == 'simple chemical'
+      || sbgnClass == 'unspecified entity' || sbgnClass == 'omitted process'
+      || sbgnClass == 'uncertain process' || sbgnClass == 'association'
     ) {
     return 'roundrectangle';
   }
   return 'ellipse';
 };
 
-elementStyle.getCyArrowShape = function(cyNode) {
-  var _class = cyNode.data('class');
-  if (_class == 'necessary stimulation') {
+elementStyle.sbgnArrowShape = (edge) => {
+  let sbgnClass = edge.data('class');
+  if (sbgnClass == 'necessary stimulation') {
     return 'triangle-cross';
   }
-  if (_class == 'inhibition') {
+  if (sbgnClass == 'inhibition') {
     return 'tee';
   }
-  if (_class == 'catalysis') {
+  if (sbgnClass == 'catalysis') {
     return 'circle';
   }
-  if (_class == 'stimulation' || _class == 'production') {
+  if (sbgnClass == 'stimulation' || sbgnClass == 'production') {
     return 'triangle';
   }
-  if (_class == 'modulation') {
+  if (sbgnClass == 'modulation') {
     return 'diamond';
   }
   return 'none';
 };
 
-elementStyle.getNodeContent = function(cyNode) {
-  var _class = cyNode.data('class');
+elementStyle.sbgnContent = (node) => {
+  let sbgnClass = node.data('class');
+  let content = '';
 
-  if (_class.endsWith(' multimer')) {
-    _class = _class.replace(' multimer', '');
+  if (sbgnClass.endsWith(' multimer')) {
+    sbgnClass = sbgnClass.replace(' multimer', '');
   }
 
-  var content = '';
-  if (_class == 'macromolecule' || _class == 'simple chemical'
-      || _class == 'phenotype'
-      || _class == 'unspecified entity' || _class == 'nucleic acid feature'
-      || _class == 'perturbing agent' || _class == 'tag') {
-    content = cyNode.data('label') ? cyNode.data('label') : '';
+  if (sbgnClass == 'macromolecule' || sbgnClass == 'simple chemical'
+      || sbgnClass == 'phenotype'
+      || sbgnClass == 'unspecified entity' || sbgnClass == 'nucleic acid feature'
+      || sbgnClass == 'perturbing agent' || sbgnClass == 'tag') {
+    content = node.data('label') ? node.data('label') : '';
   }
-  else if(_class == 'compartment'){
-    content = cyNode.data('label') ? cyNode.data('label') : '';
+  else if(sbgnClass == 'compartment'){
+    content = node.data('label') ? node.data('label') : '';
   }
-  else if(_class == 'complex'){
-    if(cyNode.children().length == 0){
-      if(cyNode.data('label')){
-        content = cyNode.data('label');
+  else if(sbgnClass == 'complex'){
+    if(node.children().length == 0){
+      if(node.data('label')){
+        content = node.data('label');
       }
-      else if(cyNode.data('infoLabel')){
-        content = cyNode.data('infoLabel');
+      else if(node.data('infoLabel')){
+        content = node.data('infoLabel');
       }
       else{
         content = '';
@@ -90,64 +90,60 @@ elementStyle.getNodeContent = function(cyNode) {
       content = '';
     }
   }
-  else if (_class == 'and') {
+  else if (sbgnClass == 'and') {
     content = 'AND';
   }
-  else if (_class == 'or') {
+  else if (sbgnClass == 'or') {
     content = 'OR';
   }
-  else if (_class == 'not') {
+  else if (sbgnClass == 'not') {
     content = 'NOT';
   }
-  else if (_class == 'omitted process') {
+  else if (sbgnClass == 'omitted process') {
     content = '\\\\';
   }
-  else if (_class == 'uncertain process') {
+  else if (sbgnClass == 'uncertain process') {
     content = '?';
   }
 
   return content;
 };
 
-elementStyle.getLabelTextSize = function (cyNode) {
-  var _class = cyNode.data('class');
+const dynamicLabelTextSize = (nodeHeight, sizeCoefficient = 1) => {
+  return (nodeHeight / 2.45) * sizeCoefficient;
+};
+
+elementStyle.labelTextSize = (node) => {
+  const sbgnClass = node.data('class');
+  const nh = node.height();
 
   // Dirty legacy hack.  These types of nodes are not supposed to have labels
   // but apparently they need to have a text size
-  if (_class === 'association' || _class === 'dissociation') {
+  if (sbgnClass === 'association' || sbgnClass === 'dissociation') {
     return 20;
   }
 
-  if (_class === 'and' || _class === 'or' || _class === 'not') {
-    return elementStyle.getDynamicLabelTextSize(cyNode, 1);
+  if (sbgnClass === 'and' || sbgnClass === 'or' || sbgnClass === 'not') {
+    return dynamicLabelTextSize(nh, 1);
   }
 
-  if (_class.endsWith('process')) {
-    return elementStyle.getDynamicLabelTextSize(cyNode, 1.5);
+  if (sbgnClass.endsWith('process')) {
+    return dynamicLabelTextSize(nh, 1.5);
   }
 
-  if (_class === 'complex' || _class === 'compartment') {
+  if (sbgnClass === 'complex' || sbgnClass === 'compartment') {
     return 16;
   }
 
-  return elementStyle.getDynamicLabelTextSize(cyNode);
+  return dynamicLabelTextSize(nh);
 };
 
-elementStyle.getCardinalityDistance = function (cyNode) {
-  var srcPos = cyNode.source().position();
-  var tgtPos = cyNode.target().position();
+elementStyle.cardinalityDistance = (edge) => {
+  const srcPos = edge.source().position();
+  const tgtPos = edge.target().position();
 
-  var distance = Math.sqrt(Math.pow((srcPos.x - tgtPos.x), 2) + Math.pow((srcPos.y - tgtPos.y), 2));
+  const distance = Math.sqrt(Math.pow((srcPos.x - tgtPos.x), 2) + Math.pow((srcPos.y - tgtPos.y), 2));
   return distance * 0.15;
-};
-
-elementStyle.getDynamicLabelTextSize = function (cyNode, sizeCoefficient) {
-  var labelSizeCoefficient = sizeCoefficient || 1;
-
-  var h = cyNode.height();
-  var textHeight = parseInt(h / 2.45) * labelSizeCoefficient;
-
-  return textHeight;
 };
 
 module.exports = elementStyle;

@@ -6,16 +6,16 @@ const complex = require('./glyph/complex.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
-var graphStyleSheet = function (cytoscape) {
+var sbgnStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
         .selector('node')
         .css({
-          'content': function (cyNode) {
-            return elementStyle.getNodeContent(cyNode);
+          'content': (node) => {
+            return elementStyle.sbgnContent(node);
           },
-          'font-size': function (cyNode) {
-            return elementStyle.getLabelTextSize(cyNode);
+          'font-size': (node) => {
+            return elementStyle.labelTextSize(node);
           },
           'text-valign': 'center',
           'text-halign': 'center',
@@ -28,32 +28,15 @@ var graphStyleSheet = function (cytoscape) {
           'text-wrap': 'wrap',
           'text-max-width': 100,
         })
-        .selector('node[?clonemarker][class="perturbing agent"]')
-        .css({
-          'background-image': function () {
-            return elementStyle.getcloneMarkerImagePath();
-          },
-          'background-position-x': '50%',
-          'background-position-y': '100%',
-          'background-width': '100%',
-          'background-height': '25%',
-          'background-fit': 'none',
-          'background-image-opacity': function (cyNode) {
-            if (!cyNode.data('clonemarker')) {
-              return 0;
-            }
-            return cyNode.css('background-opacity');
-          }
-        })
         .selector('node[class]')
         .css({
-          'shape': function (cyNode) {
-            return elementStyle.getCyShape(cyNode);
+          'shape': function (node) {
+            return elementStyle.sbgnShape(node);
           }
         })
         .selector('node[class="source and sink"]')
         .css({
-          'shape-polygon-points':  sourceAndSink.points(),
+          'shape-polygon-points': sourceAndSink.points(),
           'background-image': (node) => {
             return `url(${sourceAndSink.svgUri(node)})`;
           },
@@ -162,17 +145,17 @@ var graphStyleSheet = function (cytoscape) {
           'width': 1.5,
           'target-arrow-color': '#555',
           'source-arrow-color': '#555',
-          'text-border-color': function (cyNode) {
-            if (cyNode.selected()) {
+          'text-border-color': (edge) => {
+            if (edge.selected()) {
               return '#d67614';
             }
-            return cyNode.css('line-color');
+            return edge.css('line-color');
           },
-          'color': function (cyNode) {
-            if (cyNode.selected()) {
+          'color': (edge) => {
+            if (edge.selected()) {
               return '#d67614';
             }
-            return cyNode.css('line-color');
+            return edge.css('line-color');
           }
         })
         .selector('edge:selected')
@@ -197,28 +180,28 @@ var graphStyleSheet = function (cytoscape) {
         })
         .selector('edge[class="consumption"][cardinality > 0]')
         .css({
-          'source-label': function (cyNode) {
-            return '' + cyNode.data('cardinality');
+          'source-label': (edge) => {
+            return '' + edge.data('cardinality');
           },
           'source-text-margin-y': '-10',
-          'source-text-offset': function (cyNode) {
-            return elementStyle.getCardinalityDistance(cyNode);
+          'source-text-offset': (edge) => {
+            return elementStyle.cardinalitydistance(edge);
           }
         })
         .selector('edge[class="production"][cardinality > 0]')
         .css({
-          'target-label': function (cyNode) {
-            return '' + cyNode.data('cardinality');
+          'target-label': (edge) => {
+            return '' + edge.data('cardinality');
           },
           'target-text-margin-y': '-10',
-          'target-text-offset': function (cyNode) {
-            return elementStyle.getCardinalityDistance(cyNode);
+          'target-text-offset': (edge) => {
+            return elementStyle.getCardinalityDistance(edge);
           }
         })
         .selector('edge[class]')
         .css({
-          'target-arrow-shape': function (cyNode) {
-            return elementStyle.getCyArrowShape(cyNode);
+          'target-arrow-shape': (edge) => {
+            return elementStyle.sbgnArrowShape(edge);
           },
           'source-arrow-shape': 'none'
         })
@@ -237,4 +220,4 @@ var graphStyleSheet = function (cytoscape) {
         });
 };
 
-module.exports = graphStyleSheet;
+module.exports = sbgnStyleSheet;
