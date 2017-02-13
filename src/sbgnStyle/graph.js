@@ -185,7 +185,7 @@ var sbgnStyleSheet = function (cytoscape) {
           },
           'source-text-margin-y': '-10',
           'source-text-offset': (edge) => {
-            return elementStyle.cardinalitydistance(edge);
+            return elementStyle.cardinalityDistance(edge);
           }
         })
         .selector('edge[class="production"][cardinality > 0]')
@@ -195,7 +195,7 @@ var sbgnStyleSheet = function (cytoscape) {
           },
           'target-text-margin-y': '-10',
           'target-text-offset': (edge) => {
-            return elementStyle.getCardinalityDistance(edge);
+            return elementStyle.cardinalityDistance(edge);
           }
         })
         .selector('edge[class]')
