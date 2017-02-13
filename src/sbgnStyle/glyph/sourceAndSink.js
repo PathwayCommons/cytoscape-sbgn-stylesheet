@@ -1,4 +1,5 @@
 let svgb64Str = require('../util/svg.js');
+let baseShapes = require('./baseShapes.js');
 
 // QUAD1  |  QUAD2
 // (-, -) |  (+, -)
@@ -38,12 +39,17 @@ const svgUri = (node, strokeColor = 'grey' , edgeWidth = 1) => {
     `;
   }
 
+  let style = new Map()
+  .set('fill', 'none')
+  .set('stroke', strokeColor)
+  .set('stroke-width', edgeWidth);
+
   const sourceAndSink = 
   `
-    <circle cx='${nodeCenterX}' cy='${nodeCenterY}' r='${circleRadius}' fill='none' stroke='${strokeColor}' stroke-width='${edgeWidth}'  />
+    ${baseShapes.circle(nodeCenterX, nodeCenterY, circleRadius, style)}
     ${clipPath}
     ${cloneMarker}
-    <line x1='0' y1='${node.height()}' x2='${node.width()}' y2='0' stroke-width='${edgeWidth}' stroke='${strokeColor}'/>
+    ${baseShapes.line(0, node.height(), node.width(), 0, style)}
   `;
 
   return svgb64Str(sourceAndSink, node.width(), node.height(), 0, 0, node.width(), node.height());

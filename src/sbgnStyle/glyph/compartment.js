@@ -31,14 +31,14 @@ const svgUri = (node, borderWidth = 3.75) => {
     uInfo = unitOfInfo.place(info, 0, nh / 2, .1*nw, 0.05*nw, nw, nh);
   }
 
-  let style = {
-    'stroke-width': borderWidth,
-    'fill': 'none',
-    'stroke': '#6A6A6A'
-  };
+  let style = new Map()
+    .set('stroke-width', borderWidth)
+    .set('fill', 'none')
+    .set('stroke', '#6A6A6A');
+
   const compartment =
   `
-  ${baseShapes.barrel(.95*nw, .95*nh, style)}
+  ${baseShapes.barrel(nw, nh, style)}
   ${uInfo}
   `;
 

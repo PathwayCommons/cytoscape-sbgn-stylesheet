@@ -28,7 +28,7 @@ const baseShapes = {
 
       <path d="M ${0.75*width} ${0*height} L ${0.25*width} ${0*height} Q ${0.06*width} ${0*height} ${0*width} ${0.03*height}"/>
     </g>
-    
+
     `;
   },
 
@@ -56,7 +56,7 @@ const baseShapes = {
 
   ellipse(cx, cy, rx, ry, styleMap) {
     return `
-      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' cx='${ry}' style='${this.styleMap2Str(styleMap)}' />
+      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' style='${this.styleMap2Str(styleMap)}' />
     `;
   },
 
@@ -68,7 +68,7 @@ const baseShapes = {
   },
 
   line(x1, x2, y1, y2, styleMap) {
-    return `<line x1='${x1} x2='${x2} y1='${y1} y2='${y2} style='${this.styleMap2Str(styleMap)}'`;
+    return `<line x1='${x1}' x2='${x2}' y1='${y1}' y2='${y2}' style='${this.styleMap2Str(styleMap)}' />`;
   },
 
   rectangle(x, y, width, height, styleMap) {
