@@ -76,11 +76,11 @@ const baseShapes = {
   },
 
   roundBottomRectangle(x, y, width, height, styleMap) {
-    return this.baseRectangle(x, y, width, height, 0, 0, .1*width, .1*height, styleMap);
+    return this.baseRectangle(x, y, width, height, 0, 0, .3*height, .3*height, styleMap);
   },
 
   roundRectangle(x, y, width, height, styleMap) {
-    return this.baseRectangle(x, y, width, height, .1*width, .1*height, .1*width, .1*height, styleMap);
+    return this.baseRectangle(x, y, width, height, .3*height, .3*height, .3*height, .3*height, styleMap);
   },
 
   square(x, y, length, styleMap) {
