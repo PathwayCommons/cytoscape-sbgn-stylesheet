@@ -14,7 +14,7 @@ elementStyle.sbgnShape = (node) => {
     return 'square';
   }
 
-  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag' 
+  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
     || sbgnClass == 'source and sink' || sbgnClass == 'compartment') {
     return 'polygon';
   }

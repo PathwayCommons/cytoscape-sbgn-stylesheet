@@ -2,7 +2,8 @@ const elementStyle = require('./element.js');
 const sourceAndSink = require('./glyph/sourceAndSink.js');
 const compartment = require('./glyph/compartment.js');
 const dissociation = require('./glyph/dissociation.js');
-const complex = require('./glyph/complex.js');
+
+const entityPoolShapes = require('./glyph/epn.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -38,7 +39,96 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape-polygon-points': sourceAndSink.points(),
           'background-image': (node) => {
-            return `url(${sourceAndSink.svgUri(node)})`;
+            return entityPoolShapes.draw(node);
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="nucleic acid feature"]')
+        .css({
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="perturbing agent"]')
+        .css({
+          'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="complex"]')
+        .css({
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
+          },
+          'padding-top': (node) => {
+            return node.height() * .05;
+          },
+          'padding-bottom': (node) => {
+            return node.height() * .05;
+          },
+          'padding-right': (node) => {
+            return node.width() * .05;
+          },
+          'padding-left': (node) => {
+            return node.width() * .05;
+          },
+          'background-opacity': 0,
+          'background-fit': 'none',
+          'background-width': '110%',
+          'background-height': '110%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'text-valign': 'bottom',
+          'text-halign': 'center'
+        })
+        .selector('node[class="macromolecule"]')
+        .css({
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="simple chemical"]')
+        .css({
+          'shape': 'ellipse',
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
+          },
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="unspecified entity"]')
+        .css({
+          'background-image': (node) => {
+            return entityPoolShapes.draw(node);
           },
           'background-fit': 'none',
           'background-width': '100%',
@@ -53,30 +143,26 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => {
             return compartment.svgUri(node, 5);
           },
-          // 'background-image': (node) => {
-          //   return node.scratch('_svg');
-          // }, // node.scratch('_svg', svgUri); // to update
           'background-fit': 'none',
-          'background-width': '115%',
-          'background-height': '115%',
+          'background-width': '110%',
+          'background-height': '110%',
           'padding-top': (node) => {
-            return node.height() * .2;
+            return node.height() * .1;
           },
           'padding-bottom': (node) => {
-            return node.height() * .2;
+            return node.height() * .1;
           },
           'padding-right': (node) => {
-            return node.width() * .2;
+            return node.width() * .1;
           },
           'padding-left': (node) => {
-            return node.width() * .2;
+            return node.width() * .1;
           },
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 1,
           'border-color': 'green',
           'background-opacity': 0,
-          'background-color': '#FFFFFF',
           'text-valign': 'bottom',
           'text-halign': 'center'
         })
@@ -93,14 +179,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'border-width': 0,
           'background-opacity': 0
         })
-        .selector('node[class="complex"]')
-        .css({
-          // 'shape-polygon-points': (node) => { return complex.points(node); }
-        })
-        .selector('node[class="perturbing agent"]')
-        .css({
-          'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1'
-        })
         .selector('node[class="tag"]')
         .css({
           'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
@@ -109,25 +187,18 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-color': '#6B6B6B'
         })
-        .selector('node[class="complex"]')
-        .css({
-          'background-color': '#F4F3EE',
-          'text-valign': 'bottom',
-          'text-halign': 'center'
-        })
         .selector('node[bbox][class][class!="complex"][class!="compartment"][class!="submap"]')
         .css({
           'width': 'data(bbox.w)',
           'height': 'data(bbox.h)'
         })
-        .selector('node[expanded-collapsed="collapsed"]')
-        .css({
-          'width': 36,
-          'height': 36
-        })
+        // .selector('node > node, node[class][class!="complex"][class!="compartment"][class!="submap"]')
+        // .css({
+        //   'padding': 5
+        // })
         .selector('node:selected')
         .css({
-          'border-color': '#d67614',
+          'background-color': '#d67614',
           'target-arrow-color': '#000',
           'text-outline-color': '#000'
         })
