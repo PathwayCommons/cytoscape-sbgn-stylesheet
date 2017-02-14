@@ -9,12 +9,12 @@ const entityPoolNodes = {
 
     let styleMap = new Map()
     .set('stroke', '#6A6A6A')
-    .set('stroke-width', '3')
+    .set('stroke-width', '2')
     .set('fill', 'none');
 
     let unspecEntitySvg =
     `
-      ${baseShapes.ellipse(0, 0, 0.1*nw, 0.1*nh, styleMap)}
+      ${baseShapes.ellipse(nw / 2, nh / 2, ( nh - 2 ) / 2, ( nw - 2 ) / 2, styleMap)}
     `;
     return svgStr(unspecEntitySvg, nw, nh, 0, 0, nw, nh);
   },

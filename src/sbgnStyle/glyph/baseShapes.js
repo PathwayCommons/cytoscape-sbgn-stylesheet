@@ -56,7 +56,7 @@ const baseShapes = {
 
   ellipse(cx, cy, rx, ry, styleMap) {
     return `
-      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' style='${this.styleMap2Str(styleMap)}' />
+      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' ry='${ry}' style='${this.styleMap2Str(styleMap)}' />
     `;
   },
 
