@@ -2,7 +2,7 @@ const elementStyle = require('./element.js');
 const sourceAndSink = require('./glyph/sourceAndSink.js');
 const compartment = require('./glyph/compartment.js');
 const dissociation = require('./glyph/dissociation.js');
-const entityPoolShapes = require('./glyph/epn.js');
+const entityPoolShapes = require('./glyph/entityPoolNodeShapes.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
