@@ -1,6 +1,5 @@
 const parser = new DOMParser();
 
-
 const svg = (svgStr, width = 100, height = 100, vbX = 0, vbY = 0, vbWidth = 100, vbHeight = 100) => {
   let svgText =
   `

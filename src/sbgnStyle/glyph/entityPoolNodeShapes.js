@@ -3,7 +3,7 @@ const svgStr = require('../util/svg.js');
 
 const entityPoolNodes = {
 
-  unspecifiedEntity(node) {
+  unspecifiedEntity (node) {
     let nw = node.width();
     let nh = node.height();
 
@@ -19,7 +19,7 @@ const entityPoolNodes = {
     return svgStr(unspecEntitySvg, nw, nh, 0, 0, nw, nh);
   },
 
-  simpleChemical(node) {
+  simpleChemical (node) {
     let nw = node.width();
     let nh = node.height();
 
@@ -35,7 +35,7 @@ const entityPoolNodes = {
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  macromolecule(node) {
+  macromolecule (node) {
     let nw = node.width();
     let nh = node.height();
 
@@ -51,7 +51,7 @@ const entityPoolNodes = {
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  nucleicAcidFeature(node) {
+  nucleicAcidFeature (node) {
     let nw = node.width();
     let nh = node.height();
 
@@ -67,7 +67,7 @@ const entityPoolNodes = {
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  complex(node) {
+  complex (node) {
     let nw = node.outerWidth();
     let nh = node.outerHeight();
 
@@ -83,7 +83,7 @@ const entityPoolNodes = {
     return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  sourceAndSink(node) {
+  sourceAndSink (node) {
     let nodeCenterX = node.width() / 2;
     let nodeCenterY = node.height() / 2;
     let circleRadius = (node.width() - 2) / 2;
@@ -102,7 +102,7 @@ const entityPoolNodes = {
     return svgStr(sourceAndSinkSvg, node.width(), node.height(), 0, 0, node.width(), node.height());
   },
 
-  perturbingAgent(node) {
+  perturbingAgent (node) {
     let nw = node.width();
     let nh = node.height();
 
