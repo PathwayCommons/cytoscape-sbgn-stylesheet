@@ -63,12 +63,12 @@ const baseShapes = {
   hexagon(width, height, styleMap) {
     return `
     <polygon style='${this.styleMap2Str(styleMap)}'
-      points='${0}, ${0.5*width}, ${0.33*width}, ${0}, ${0.66*width}, ${0}, ${width}, ${0.5*height}, ${0.66*width}, ${height}, ${0.33*width}, ${height}'
+      points='${0}, ${0.5*height}, ${0.25*width}, ${0*height}, ${0.75*width}, ${0*height}, ${width}, ${0.5*height}, ${0.75*width}, ${height}, ${0.25*width}, ${height}'
     />`;
   },
 
-  line(x1, x2, y1, y2, styleMap) {
-    return `<line x1='${x1}' x2='${x2}' y1='${y1}' y2='${y2}' style='${this.styleMap2Str(styleMap)}' />`;
+  line(x1, y1, x2, y2, styleMap) {
+    return `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' style='${this.styleMap2Str(styleMap)}' />`;
   },
 
   rectangle(x, y, width, height, styleMap) {
