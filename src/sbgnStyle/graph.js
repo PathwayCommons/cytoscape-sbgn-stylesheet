@@ -1,8 +1,10 @@
 const elementStyle = require('./element.js');
+
 const sourceAndSink = require('./glyph/sourceAndSink.js');
 const compartment = require('./glyph/compartment.js');
-const dissociation = require('./glyph/dissociation.js');
+
 const entityPoolShapes = require('./glyph/entityPoolNodeShapes.js');
+const processNodeShapes = require('./glyph/processNodeShapes.js');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -34,12 +36,55 @@ var sbgnStyleSheet = function (cytoscape) {
             return elementStyle.sbgnShape(node);
           }
         })
+        .selector('node[class="process"]')
+        .css({
+          'shape': 'square',
+          'background-image': (node) => processNodeShapes.draw(node),
+          'background-fit': 'none',
+          'background-width': '150%',
+          'background-height': '150%',
+          'padding': (node) => Math.max(node.width(), node.height()) * 0.1,
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="association"]')
+        .css({
+          'shape': 'ellipse',
+          'background-image': (node) => processNodeShapes.draw(node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="dissociation"]')
+        .css({
+          'shape': 'ellipse',
+          'background-image': (node) => processNodeShapes.draw(node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
+        .selector('node[class="phenotype"]')
+        .css({
+          'shape': 'hexagon',
+          'background-image': (node) => processNodeShapes.draw(node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
         .selector('node[class="source and sink"]')
         .css({
           'shape-polygon-points': sourceAndSink.points(),
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -49,9 +94,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="nucleic acid feature"]')
         .css({
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -62,9 +105,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="perturbing agent"]')
         .css({
           'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -74,9 +115,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="complex"]')
         .css({
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'padding': (node) => Math.min(node.height(), node.width()) * .055,
           'background-opacity': 0,
           'background-fit': 'none',
@@ -93,9 +132,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="macromolecule"]')
         .css({
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -106,9 +143,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="simple chemical"]')
         .css({
           'shape': 'ellipse',
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -119,9 +154,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="unspecified entity"]')
         .css({
           'shape': 'ellipse',
-          'background-image': (node) => {
-            return entityPoolShapes.draw(node);
-          },
+          'background-image': (node) => entityPoolShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -152,19 +185,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'min-width': 175,
           'min-width-bias-right': '50%',
           'min-width-bias-left': '50%'
-        })
-        .selector('node[class="dissociation"]')
-        .css({
-          'background-image': (node) => {
-            return `url(${dissociation.svgUri(node)})`;
-          },
-          'background-fit': 'cover',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'background-opacity': 0
         })
         .selector('node[class="tag"]')
         .css({
