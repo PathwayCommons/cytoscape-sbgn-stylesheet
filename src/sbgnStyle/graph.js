@@ -2,7 +2,6 @@ const elementStyle = require('./element.js');
 const sourceAndSink = require('./glyph/sourceAndSink.js');
 const compartment = require('./glyph/compartment.js');
 const dissociation = require('./glyph/dissociation.js');
-
 const entityPoolShapes = require('./glyph/epn.js');
 
 // A function that creates a cytoscape style sheet from a given
@@ -78,18 +77,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => {
             return entityPoolShapes.draw(node);
           },
-          'padding-top': (node) => {
-            return node.height() * .05;
-          },
-          'padding-bottom': (node) => {
-            return node.height() * .05;
-          },
-          'padding-right': (node) => {
-            return node.width() * .05;
-          },
-          'padding-left': (node) => {
-            return node.width() * .05;
-          },
+          'padding': (node) => Math.min(node.height(), node.width()) * .055,
           'background-opacity': 0,
           'background-fit': 'none',
           'background-width': '110%',
@@ -98,7 +86,10 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0,
           'text-valign': 'bottom',
-          'text-halign': 'center'
+          'text-halign': 'center',
+          'min-height': (node) => node.width() * .75,
+          'min-height-bias-top': '50%',
+          'min-height-bias-bottom': '50%'
         })
         .selector('node[class="macromolecule"]')
         .css({
@@ -127,6 +118,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="unspecified entity"]')
         .css({
+          'shape': 'ellipse',
           'background-image': (node) => {
             return entityPoolShapes.draw(node);
           },
@@ -146,25 +138,20 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-fit': 'none',
           'background-width': '110%',
           'background-height': '110%',
-          'padding-top': (node) => {
-            return node.height() * .1;
-          },
-          'padding-bottom': (node) => {
-            return node.height() * .1;
-          },
-          'padding-right': (node) => {
-            return node.width() * .1;
-          },
-          'padding-left': (node) => {
-            return node.width() * .1;
-          },
+          'padding': (node) => Math.max(node.height(), node.width()) * .1,
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 1,
           'border-color': 'green',
           'background-opacity': 0,
           'text-valign': 'bottom',
-          'text-halign': 'center'
+          'text-halign': 'center',
+          'min-height': 100,
+          'min-height-bias-top': '50%',
+          'min-height-bias-bottom': '50%',
+          'min-width': 175,
+          'min-width-bias-right': '50%',
+          'min-width-bias-left': '50%'
         })
         .selector('node[class="dissociation"]')
         .css({
@@ -192,10 +179,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'width': 'data(bbox.w)',
           'height': 'data(bbox.h)'
         })
-        // .selector('node > node, node[class][class!="complex"][class!="compartment"][class!="submap"]')
-        // .css({
-        //   'padding': 5
-        // })
         .selector('node:selected')
         .css({
           'background-color': '#d67614',

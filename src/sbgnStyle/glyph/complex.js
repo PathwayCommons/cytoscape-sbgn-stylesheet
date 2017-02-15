@@ -10,7 +10,7 @@ const staticCornerLengthPoints = (cornerLength, width, height) => {
 
   let points = `
     ${-1 + cpX}, -1, -1,  ${-1 + cpY},
-    -1, ${1 - cpY}, ${-1 + cpX}, 1, 
+    -1, ${1 - cpY}, ${-1 + cpX}, 1,
     ${1 - cpX}, 1, 1, ${1 - cpY},
     1, ${-1 + cpY},
     ${1 - cpX}, -1
