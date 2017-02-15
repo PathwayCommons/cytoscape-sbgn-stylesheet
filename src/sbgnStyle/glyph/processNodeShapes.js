@@ -14,15 +14,14 @@ const processNodes = {
 
     const squareStyle = new Map()
     .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1')
-    .set('fill', 'none')
-    .set('fill-opacity', '1');
+    .set('stroke-width', '2')
+    .set('fill', 'none');
 
     const line = baseShapes.line(0, nh / 2, nw, nh / 2, lineStyle);
 
     const processSvg =
     `
-      ${baseShapes.square(0.1*nw, 0.1*nh, 0.8*Math.max(nw, nh), squareStyle)}
+      ${baseShapes.square(0, 0, Math.max(nw, nh), squareStyle)}
     `;
     return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -38,7 +37,9 @@ const processNodes = {
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '2')
-    .set('fill', '#6A6A6A');
+    .set('fill', '#6A6A6A')
+    .set('fill-opacity', '0');
+
 
     const line = baseShapes.line(0, nh / 2, nw, nh / 2, styleMap);
 

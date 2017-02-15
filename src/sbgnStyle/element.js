@@ -23,11 +23,7 @@ elementStyle.sbgnShape = (node) => {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature'
-      || sbgnClass == 'macromolecule' || sbgnClass == 'simple chemical'
-      || sbgnClass == 'omitted process'
-      || sbgnClass == 'uncertain process' || sbgnClass == 'association'
-    ) {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
     return 'roundrectangle';
   }
   return 'ellipse';

@@ -32,26 +32,49 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="process"]')
         .css({
+          'background-image': (node) => processNodeShapes.draw(node),
           'shape': 'square',
-          'background-image': (node) => processNodeShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '150%',
-          'background-height': '150%',
-          'padding': (node) => Math.max(node.width(), node.height()) * 0.1,
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="association"]')
-        .css({
-          'shape': 'ellipse',
-          'background-image': (node) => processNodeShapes.draw(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          'border-width': 0
+          'border-width': 0,
+        })
+        .selector('node[class="uncertain process"]')
+        .css({
+          'background-image': (node) => processNodeShapes.draw(node),
+          'shape': 'square',
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+        })
+        .selector('node[class="omitted process"]')
+        .css({
+          'background-image': (node) => processNodeShapes.draw(node),
+          'padding': (node) => Math.max(node.width(), node.height()) * 0.1,
+          'shape': 'square',
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+        })
+        .selector('node[class="association"]')
+        .css({
+          'background-image': (node) => processNodeShapes.draw(node),
+          'shape': 'ellipse',
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'background-opacity': 1
         })
         .selector('node[class="dissociation"]')
         .css({
