@@ -143,7 +143,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-image': (node) => entityPoolShapes.draw(node),
           'padding': (node) => Math.min(node.height(), node.width()) * .055,
-          'background-opacity': 0,
+          'background-opacity': .2,
           'background-fit': 'none',
           'background-width': '110%',
           'background-height': '110%',
