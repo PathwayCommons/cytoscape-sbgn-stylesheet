@@ -15,7 +15,7 @@ const processNodes = {
     const squareStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1')
-    .set('fill', 'white')
+    .set('fill', 'none')
     .set('fill-opacity', '1');
 
     const line = baseShapes.line(0, nh / 2, nw, nh / 2, lineStyle);

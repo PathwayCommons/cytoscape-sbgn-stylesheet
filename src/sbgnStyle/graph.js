@@ -107,23 +107,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0
         })
-        .selector('node[class="complex"]')
-        .css({
-          'background-image': (node) => entityPoolShapes.draw(node),
-          'padding': (node) => Math.min(node.height(), node.width()) * .055,
-          'background-opacity': 0,
-          'background-fit': 'none',
-          'background-width': '110%',
-          'background-height': '110%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'min-height': (node) => node.width() * .75,
-          'min-height-bias-top': '50%',
-          'min-height-bias-bottom': '50%'
-        })
         .selector('node[class="macromolecule"]')
         .css({
           'background-image': (node) => entityPoolShapes.draw(node),
@@ -156,19 +139,34 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0
         })
-        .selector('node[class="compartment"]')
+        .selector('node[class="complex"]')
         .css({
-          'shape-polygon-points': compartment.points(),
-          'background-image': (node) => compartment.svgUri(node, 5),
+          'background-image': (node) => entityPoolShapes.draw(node),
+          'padding': (node) => Math.min(node.height(), node.width()) * .055,
+          'background-opacity': 0,
           'background-fit': 'none',
           'background-width': '110%',
           'background-height': '110%',
-          'padding': (node) => Math.max(node.height(), node.width()) * .1,
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          'border-width': 1,
-          'border-color': 'green',
-          'background-opacity': 0,
+          'border-width': 0,
+          'text-valign': 'bottom',
+          'text-halign': 'center',
+          'min-height': (node) => node.width() * .75,
+          'min-height-bias-top': '50%',
+          'min-height-bias-bottom': '50%'
+        })
+        .selector('node[class="compartment"]')
+        .css({
+          'background-image': (node) => compartment.svgUri(node, 5),
+          'padding': (node) => Math.max(node.height(), node.width()) * .1,
+          'background-fit': 'none',
+          'background-width': '110%',
+          'background-height': '110%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
           'min-height': 100,
