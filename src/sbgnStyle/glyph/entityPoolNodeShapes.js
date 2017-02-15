@@ -113,10 +113,6 @@ const entityPoolNodes = {
   }
 };
 
-const draw = (node) => {
-  return epnMap.get(node.data('class'))(node) || '';
-};
-
 const epnMap = new Map()
 .set('source and sink', entityPoolNodes.sourceAndSink)
 .set('unspecified entity', entityPoolNodes.unspecifiedEntity)
@@ -126,6 +122,9 @@ const epnMap = new Map()
 .set('complex', entityPoolNodes.complex)
 .set('perturbing agent', entityPoolNodes.perturbingAgent);
 
+const draw = (node) => {
+  return epnMap.get(node.data('class'))(node) || '';
+};
 
 module.exports = {
   draw: draw
