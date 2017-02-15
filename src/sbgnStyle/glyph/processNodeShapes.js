@@ -3,7 +3,7 @@ const svgStr = require('../util/svg.js');
 
 const processNodes = {
 
-  process(node) {
+  process (node) {
     const nw = node.width();
     const nh = node.height();
 
@@ -26,7 +26,7 @@ const processNodes = {
     return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  association(node) {
+  association (node) {
     const nw = node.width();
     const nh = node.height();
 
@@ -50,7 +50,7 @@ const processNodes = {
     return svgStr(associationSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  dissociation(node) {
+  dissociation (node) {
     const nw = node.width();
     const nh = node.height();
 
@@ -72,7 +72,7 @@ const processNodes = {
     return svgStr(dissociationSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  phenotype(node) {
+  phenotype (node) {
     const nw = node.width();
     const nh = node.height();
 
@@ -89,18 +89,4 @@ const processNodes = {
   }
 };
 
-const processMap = new Map()
-.set('process', processNodes.process)
-.set('omitted process', processNodes.process)
-.set('uncertain process', processNodes.process)
-.set('association', processNodes.association)
-.set('dissociation', processNodes.dissociation)
-.set('phenotype', processNodes.phenotype);
-
-const draw = (node) => {
-  return processMap.get(node.data('class'))(node) || '';
-};
-
-module.exports = {
-  draw: draw
-};
+module.exports = processNodes;

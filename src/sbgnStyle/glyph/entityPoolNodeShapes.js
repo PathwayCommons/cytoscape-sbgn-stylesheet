@@ -18,6 +18,7 @@ const entityPoolNodes = {
     `;
     return svgStr(unspecEntitySvg, nw, nh, 0, 0, nw, nh);
   },
+
   simpleChemical(node) {
     let nw = node.width();
     let nh = node.height();
@@ -33,6 +34,7 @@ const entityPoolNodes = {
     `;
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
   },
+
   macromolecule(node) {
     let nw = node.width();
     let nh = node.height();
@@ -48,6 +50,7 @@ const entityPoolNodes = {
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
+
   nucleicAcidFeature(node) {
     let nw = node.width();
     let nh = node.height();
@@ -63,6 +66,7 @@ const entityPoolNodes = {
     `;
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
   },
+
   complex(node) {
     let nw = node.outerWidth();
     let nh = node.outerHeight();
@@ -78,6 +82,7 @@ const entityPoolNodes = {
     `;
     return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
   },
+
   sourceAndSink(node) {
     let nodeCenterX = node.width() / 2;
     let nodeCenterY = node.height() / 2;
@@ -96,6 +101,7 @@ const entityPoolNodes = {
     `;
     return svgStr(sourceAndSinkSvg, node.width(), node.height(), 0, 0, node.width(), node.height());
   },
+
   perturbingAgent(node) {
     let nw = node.width();
     let nh = node.height();
@@ -113,19 +119,4 @@ const entityPoolNodes = {
   }
 };
 
-const epnMap = new Map()
-.set('source and sink', entityPoolNodes.sourceAndSink)
-.set('unspecified entity', entityPoolNodes.unspecifiedEntity)
-.set('simple chemical', entityPoolNodes.simpleChemical)
-.set('macromolecule', entityPoolNodes.macromolecule)
-.set('nucleic acid feature', entityPoolNodes.nucleicAcidFeature)
-.set('complex', entityPoolNodes.complex)
-.set('perturbing agent', entityPoolNodes.perturbingAgent);
-
-const draw = (node) => {
-  return epnMap.get(node.data('class'))(node) || '';
-};
-
-module.exports = {
-  draw: draw
-};
+module.exports = entityPoolNodes;

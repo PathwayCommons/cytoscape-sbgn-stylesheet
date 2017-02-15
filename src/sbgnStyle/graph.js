@@ -1,10 +1,5 @@
 const elementStyle = require('./element.js');
-
-const sourceAndSink = require('./glyph/sourceAndSink.js');
-const compartment = require('./glyph/compartment.js');
-
-const entityPoolShapes = require('./glyph/entityPoolNodeShapes.js');
-const processNodeShapes = require('./glyph/processNodeShapes.js');
+const sbgnShapes = require('./glyph');
 
 // A function that creates a cytoscape style sheet from a given
 // cytoscape instance
@@ -32,7 +27,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="process"]')
         .css({
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'shape': 'square',
           'background-fit': 'none',
           'background-width': '100%',
@@ -43,7 +38,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="uncertain process"]')
         .css({
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'shape': 'square',
           'background-fit': 'none',
           'background-width': '100%',
@@ -54,7 +49,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="omitted process"]')
         .css({
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'padding': (node) => Math.max(node.width(), node.height()) * 0.1,
           'shape': 'square',
           'background-fit': 'none',
@@ -66,7 +61,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="association"]')
         .css({
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'shape': 'ellipse',
           'background-fit': 'none',
           'background-width': '100%',
@@ -79,7 +74,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="dissociation"]')
         .css({
           'shape': 'ellipse',
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -90,7 +85,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="phenotype"]')
         .css({
           'shape': 'hexagon',
-          'background-image': (node) => processNodeShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -100,8 +95,8 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="source and sink"]')
         .css({
-          'shape-polygon-points': sourceAndSink.points(),
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'shape-polygon-points': '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1, 0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0, 0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1, -0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0',
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -111,7 +106,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="nucleic acid feature"]')
         .css({
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -122,7 +117,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="perturbing agent"]')
         .css({
           'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -132,7 +127,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="macromolecule"]')
         .css({
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -143,7 +138,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="simple chemical"]')
         .css({
           'shape': 'ellipse',
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -154,7 +149,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="unspecified entity"]')
         .css({
           'shape': 'ellipse',
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -164,7 +159,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="complex"]')
         .css({
-          'background-image': (node) => entityPoolShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'padding': (node) => Math.min(node.height(), node.width()) * .055,
           'background-opacity': .2,
           'background-fit': 'none',
@@ -181,7 +176,7 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="compartment"]')
         .css({
-          'background-image': (node) => compartment.svgUri(node, 5),
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'padding': (node) => Math.max(node.height(), node.width()) * .1,
           'background-fit': 'none',
           'background-width': '110%',

@@ -4,6 +4,8 @@ const expect = require('chai').expect;
 
 const s = require('../src/sbgnStyle/glyph/baseShapes.js');
 
+const sbgnShapes = require('../src/sbgnStyle/glyph/');
+
 const browser = !(typeof window === 'undefined');
 
 describe('shape style', () => {
@@ -70,6 +72,18 @@ describe('shape svg', function () {
       this.skip();
     }
   });
-
 });
+
+describe('sbgn shape svg', function () {
+  it('should throw an error when a incorrect node class is specified', function () {
+    let dummyNode = {
+      data() {
+        return 'not a sbgn class';
+      }
+    };
+    expect(sbgnShapes.draw.bind(dummyNode.data('class'), dummyNode)).to.throw(TypeError);
+  });
+});
+
+
 
