@@ -1,6 +1,6 @@
 /* global $ */
 
-import SBGNRenderer from '../src/index';
+var SBGNRenderer = require('../src/');
 
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var saveAs = require('file-saver').saveAs;
