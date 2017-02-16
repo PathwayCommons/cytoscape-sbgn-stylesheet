@@ -14,8 +14,8 @@ elementStyle.sbgnShape = (node) => {
     return 'square';
   }
 
-  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag' 
-    || sbgnClass == 'source and sink' || sbgnClass == 'compartment') {
+  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
+    || sbgnClass == 'source and sink' || sbgnClass == 'compartment' || sbgnClass == 'complex') {
     return 'polygon';
   }
 
@@ -23,12 +23,7 @@ elementStyle.sbgnShape = (node) => {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature'
-      || sbgnClass == 'complex'
-      || sbgnClass == 'macromolecule' || sbgnClass == 'simple chemical'
-      || sbgnClass == 'unspecified entity' || sbgnClass == 'omitted process'
-      || sbgnClass == 'uncertain process' || sbgnClass == 'association'
-    ) {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
     return 'roundrectangle';
   }
   return 'ellipse';
