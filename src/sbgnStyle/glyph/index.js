@@ -1,6 +1,6 @@
-const containerNodes = require('./containerNodeShapes.js');
-const entityPoolNodes = require('./entityPoolNodeShapes.js');
-const processNodes = require('./processNodeShapes.js');
+const containerNodes = require('./containerNodes.js');
+const entityPoolNodes = require('./entityPoolNodes.js');
+const processNodes = require('./processNodes.js');
 
 const sbgnNodeShapeMap = new Map()
 // process nodes
