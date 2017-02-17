@@ -18,11 +18,9 @@ const processNodes = {
     .set('stroke-width', '2')
     .set('fill', 'none');
 
-    const line = baseShapes.line(0, nh / 2, nw, nh / 2, lineStyle);
-
     const processSvg =
     `
-      ${baseShapes.square(0, 0, Math.max(nw, nh), squareStyle)}
+      ${baseShapes.square(0, 0, Math.min(nw, nh) * 1, squareStyle)}
     `;
     return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -40,9 +38,6 @@ const processNodes = {
     .set('stroke-width', '2')
     .set('fill', '#6A6A6A')
     .set('fill-opacity', '0');
-
-
-    const line = baseShapes.line(0, nh / 2, nw, nh / 2, styleMap);
 
     const associationSvg =
     `

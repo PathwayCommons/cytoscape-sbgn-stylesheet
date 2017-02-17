@@ -171,8 +171,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'text-valign': 'bottom',
           'text-halign': 'center',
           'min-height': (node) => node.width() * .75,
-          'min-height-bias-top': '50%',
-          'min-height-bias-bottom': '50%'
+          'min-height-bias-top': '90%',
+          'min-height-bias-bottom': '10%'
         })
         .selector('node[class="compartment"]')
         .css({
