@@ -1,25 +1,25 @@
-const baseShapes = {
-  styleMap2Str (styleMap) {
+let baseRectangle = function (x, y, w, h, r1, r2, r3, r4, styleMap) {
+  return `
+  <path style='${styleMap2Str(styleMap)}' d='
+    M ${x + r1} ${y}
+    L ${x + w - r2} ${y} Q ${x + w} ${y} ${x + w} ${y + r2}
+    L ${x + w } ${y + h - r3} Q ${x + w} ${y + h} ${x + w - r3} ${y + h}
+    L ${x + r4} ${y + h} Q ${x} ${y + h} ${x} ${y + h - r4}
+    L ${x} ${y + r1} Q ${x} ${y} ${x + r1} ${y}
+    Z'
+  />
+  `;
+};
+
+let styleMap2Str = (styleMap) => {
     return `${[...styleMap].map(([k, v]) => `${k}: ${v};`).join(' ')}`;
-  },
+};
 
-  baseRectangle (x, y, w, h, r1, r2, r3, r4, styleMap) {
-    return `
-    <path style='${this.styleMap2Str(styleMap)}' d='
-      M ${x + r1} ${y}
-      L ${x + w - r2} ${y} Q ${x + w} ${y} ${x + w} ${y + r2}
-      L ${x + w } ${y + h - r3} Q ${x + w} ${y + h} ${x + w - r3} ${y + h}
-      L ${x + r4} ${y + h} Q ${x} ${y + h} ${x} ${y + h - r4}
-      L ${x} ${y + r1} Q ${x} ${y} ${x + r1} ${y}
-      Z'
-    />
-    `;
-  },
-
+const baseShapes = {
   barrel (width, height, styleMap) {
     return `
 
-    <g style="${this.styleMap2Str(styleMap)}">
+    <g style="${styleMap2Str(styleMap)}">
       <path d="M ${0*width} ${.03*height} L ${0*width} ${.97*height} Q ${0.06*width} ${height} ${0.25*width} ${height}"/>
 
       <path d="M ${0.25*width} ${height} L ${0.75*width} ${height} Q ${0.95*width} ${height} ${width} ${0.95*height}"/>
@@ -33,19 +33,29 @@ const baseShapes = {
   },
 
   circle (cx, cy, r, styleMap) {
-    return `<circle cx='${cx}' cy='${cy}' r='${r}' style='${this.styleMap2Str(styleMap)}' />`;
+    return `<circle cx='${cx}' cy='${cy}' r='${r}' style='${styleMap2Str(styleMap)}' />`;
   },
 
-  concaveHexagon (width, height, styleMap) {
+  clipPath (id, baseShapeFn, baseShapeFnArgs, styleMap = {}) {
     return `
-    <polygon style='${this.styleMap2Str(styleMap)}'
+      <defs>
+        <clipPath id='${id}' styleMap='${styleMap2Str(styleMap)}'>
+        ${baseShapeFn(...baseShapeFnArgs)}
+        </clipPath>
+      </defs>
+    `;
+  },
+
+  concaveHexagon (width, height, styleMap = {}) {
+    return `
+    <polygon style='${styleMap2Str(styleMap)}'
       points='${0}, ${0}, ${width}, ${0}, ${0.85*width}, ${0.5*height}, ${width}, ${height}, ${0}, ${height}, ${0.15*width}, ${0.5*height}'
     />`;
   },
 
-  cutRectangle (width, height, styleMap) {
+  cutRectangle (width, height, styleMap = {}) {
     return `
-    <polygon style='${this.styleMap2Str(styleMap)}'
+    <polygon style='${styleMap2Str(styleMap)}'
       points='
       ${0*width} ${0.05*height} ${0.05*width} ${0*height} ${0.95*width} ${0*height} ${width} ${0.05*height}
       ${width} ${0.95*height} ${0.95*width} ${height} ${0.05*width} ${height} ${0*width} ${0.95*height}
@@ -54,41 +64,41 @@ const baseShapes = {
     `;
   },
 
-  ellipse (cx, cy, rx, ry, styleMap) {
+  ellipse (cx, cy, rx, ry, styleMap = {}) {
     return `
-      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' ry='${ry}' style='${this.styleMap2Str(styleMap)}' />
+      <ellipse cx='${cx}' cy='${cy}' rx='${rx}' ry='${ry}' style='${styleMap2Str(styleMap)}' />
     `;
   },
 
-  hexagon (width, height, styleMap) {
+  hexagon (width, height, styleMap = {}) {
     return `
-    <polygon style='${this.styleMap2Str(styleMap)}'
+    <polygon style='${styleMap2Str(styleMap)}'
       points='${0}, ${0.5*height}, ${0.25*width}, ${0*height}, ${0.75*width}, ${0*height}, ${width}, ${0.5*height}, ${0.75*width}, ${height}, ${0.25*width}, ${height}'
     />`;
   },
 
-  line (x1, y1, x2, y2, styleMap) {
-    return `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' style='${this.styleMap2Str(styleMap)}' />`;
+  line (x1, y1, x2, y2, styleMap = {}) {
+    return `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' style='${styleMap2Str(styleMap)}' />`;
   },
 
-  rectangle (x, y, width, height, styleMap) {
-    return this.baseRectangle(x, y, width, height, 0, 0, 0, 0, styleMap);
+  rectangle (x, y, width, height, styleMap = {}) {
+    return baseRectangle(x, y, width, height, 0, 0, 0, 0, styleMap);
   },
 
-  roundBottomRectangle (x, y, width, height, styleMap) {
-    return this.baseRectangle(x, y, width, height, 0, 0, .3*height, .3*height, styleMap);
+  roundBottomRectangle (x, y, width, height, styleMap = {}) {
+    return baseRectangle(x, y, width, height, 0, 0, .3*height, .3*height, styleMap);
   },
 
-  roundRectangle (x, y, width, height, styleMap) {
-    return this.baseRectangle(x, y, width, height, .3*height, .3*height, .3*height, .3*height, styleMap);
+  roundRectangle (x, y, width, height, styleMap = {}) {
+    return baseRectangle(x, y, width, height, .3*height, .3*height, .3*height, .3*height, styleMap);
   },
 
-  square (x, y, length, styleMap) {
-    return this.baseRectangle(x, y, length, length, 0, 0, 0, 0, styleMap);
+  square (x, y, length, styleMap = {}) {
+    return baseRectangle(x, y, length, length, 0, 0, 0, 0, styleMap);
   },
 
-  text (t, x, y, textAnchor, styleMap) {
-    return `<text x='${x}' y='${y}' textAnchor='${textAnchor}' style='${this.styleMap2Str(styleMap)}'>${t}</text>`;
+  text (t, x, y, textAnchor, styleMap = {}) {
+    return `<text x='${x}' y='${y}' textAnchor='${textAnchor}' style='${styleMap2Str(styleMap)}'>${t}</text>`;
   }
 
 };

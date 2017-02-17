@@ -1,4 +1,5 @@
 const baseShapes = require('./baseShapes.js');
+const auxillaryItems = require('./auxillaryItems.js');
 const svgStr = require('../util/svg.js');
 
 const processNodes = {
@@ -81,9 +82,13 @@ const processNodes = {
     .set('stroke-width', '3')
     .set('fill', 'none');
 
+    const shapeArgs = [nw, nh];
+
     let phenotypeSvg =
     `
       ${baseShapes.hexagon(nw, nh, styleMap)}
+      ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.hexagon, shapeArgs) : ''}
+      ${auxillaryItems.cloneMarker(node, baseShapes.hexagon, shapeArgs)}
     `;
     return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
   }
