@@ -1,6 +1,6 @@
 const baseShapes = require('./baseShapes.js');
 const auxillaryItems = require('./auxillaryItems.js');
-const svgStr = require('../util/svg.js');
+const svgStr = require('../util/svg.js').svgStr;
 
 const processNodes = {
 

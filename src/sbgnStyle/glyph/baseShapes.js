@@ -1,3 +1,5 @@
+const styleMap2Str = require('../util/svg.js').styleMap2Str;
+
 let baseRectangle = function (x, y, w, h, r1, r2, r3, r4, styleMap) {
   return `
   <path style='${styleMap2Str(styleMap)}' d='
@@ -9,10 +11,6 @@ let baseRectangle = function (x, y, w, h, r1, r2, r3, r4, styleMap) {
     Z'
   />
   `;
-};
-
-let styleMap2Str = (styleMap) => {
-    return `${[...styleMap].map(([k, v]) => `${k}: ${v};`).join(' ')}`;
 };
 
 const baseShapes = {

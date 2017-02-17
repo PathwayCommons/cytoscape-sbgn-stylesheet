@@ -1,5 +1,4 @@
 const baseShapes = require('./baseShapes.js');
-const svgStr = require('../util/svg.js');
 
 const auxillaryItems = {
 
