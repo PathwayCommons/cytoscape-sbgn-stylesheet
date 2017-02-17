@@ -139,12 +139,20 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape': 'ellipse',
           'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
+          'padding': (node) => Math.min(node.height(), node.width()) * .1,
           'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
+          'background-width': '120%',
+          'background-height': '120%',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          'border-width': 0
+          'border-width': 0,
+          // 'min-height': (node) => node.height() + 50,
+          // 'min-height-bias-top': '50%',
+          // 'min-height-bias-bottom': '50%'
+        })
+        .selector('node[class="simple chemical multimer"]')
+        .css({
+          'padding': (node) => Math.min(node.height(), node.width()) * .055,
         })
         .selector('node[class="unspecified entity"]')
         .css({

@@ -29,8 +29,29 @@ const auxillaryItems = {
     return cloneMarkerSvg;
   },
 
-  multimer (node) {
+  multimer (node, shapeFn, shapeFnArgs) {
+    const nw = node.width();
+    const nh = node.height();
 
+    const clipId = 'multimer';
+
+    const multimerStyle = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('fill', 'none')
+    .set('stroke-width', '2')
+    .set('clip-path', `url(#${clipId})`);
+
+    // const transform = `translate(${nw*0.1}, ${nh*0.05})`;
+    const transform = '';
+
+
+    const multimerSvg =
+    `
+      ${baseShapes.clipPath(clipId, shapeFn, shapeFnArgs, new Map())}
+      ${shapeFn(...shapeFnArgs, multimerStyle, transform)}
+    `;
+    console.log(multimerSvg);
+    return multimerSvg;
   }
 };
 

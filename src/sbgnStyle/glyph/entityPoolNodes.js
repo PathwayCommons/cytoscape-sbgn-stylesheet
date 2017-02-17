@@ -29,21 +29,38 @@ const entityPoolNodes = {
     let nw = node.width();
     let nh = node.height();
 
+    let ow = node.outerWidth();
+    let oh = node.outerHeight();
+
     let styleMap = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '2')
-    .set('fill', 'none');
+    .set('fill', 'white')
+    .set('fill-opacity', '1');
 
-    const shapeArgs = [nw / 2, nh / 2, (Math.min(nw, nh) - 2) / 2];
+    const hw = nw / 2;
+    const hh = nh / 2;
+
+    // let shapeArgs = [(ow - 3) / 2, (oh - 3) / 2, (Math.min(oh, ow) - 2 - 3) / 2];
+    let shapeArgs = [(ow - 5) / 2, (oh - 5) / 2, (Math.min(oh, ow) - 2 - 5) / 2];
+
+    // if (node.class.includes('multimer')) {
+    //   shapeArgs = [nw / 3, nh / 3, Math.min(nw, nh) - 2 / 3];
+    // }
+    // shapeArgs = [hw, hh, (Math.min(nw, nh) - 2) / 2];
+
+    const multimerArgs = [(ow + 3) / 2, (ow + 3) / 2, (Math.min(ow, oh) - 3) / 2];
 
     let simpleChemicalSvg =
     `
+      ${node.data('class').includes('multimer') ? auxillaryItems.multimer(node, baseShapes.circle, shapeArgs) : ''}
+      ${auxillaryItems.multimer(node, baseShapes.circle, multimerArgs)}
       ${baseShapes.circle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs) : ''}
       ${auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs)}
 
     `;
-    return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(simpleChemicalSvg, ow, oh, 0, 0, ow, oh);
   },
 
   macromolecule (node) {
@@ -70,6 +87,9 @@ const entityPoolNodes = {
     let nw = node.width();
     let nh = node.height();
 
+    let ow = node.outerWidth();
+    let oh = node.outerHeight();
+
     let styleMap = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '3')
@@ -82,10 +102,8 @@ const entityPoolNodes = {
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.roundBottomRectangle, shapeArgs) : ''}
       ${auxillaryItems.cloneMarker(node, baseShapes.roundBottomRectangle, shapeArgs)}
-
-
     `;
-    return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(nucleicAcidFeatureSvg, ow, oh, 0, 0, ow, oh);
   },
 
   complex (node) {
