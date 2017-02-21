@@ -15,9 +15,13 @@ const sbgnNodeShapeMap = new Map()
 .set('source and sink', entityPoolNodes.sourceAndSink)
 .set('unspecified entity', entityPoolNodes.unspecifiedEntity)
 .set('simple chemical', entityPoolNodes.simpleChemical)
+.set('simple chemical multimer', entityPoolNodes.simpleChemical)
 .set('macromolecule', entityPoolNodes.macromolecule)
+.set('macromolecule multimer', entityPoolNodes.macromolecule)
 .set('nucleic acid feature', entityPoolNodes.nucleicAcidFeature)
+.set('nucleic acid feature multimer', entityPoolNodes.nucleicAcidFeature)
 .set('complex', entityPoolNodes.complex)
+.set('complex multimer', entityPoolNodes.complex)
 .set('perturbing agent', entityPoolNodes.perturbingAgent)
 
 // container nodes

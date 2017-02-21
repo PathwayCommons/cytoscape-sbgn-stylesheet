@@ -143,7 +143,7 @@ const entityPoolNodes = {
     const sourceAndSinkSvg =
     `
       ${baseShapes.circle(...shapeArgs, styleMap)}
-      ${node.data('clonemarker') ? auxillaryItems.cloneMarker(baseShapes.circle, shapeArgs) : ''}
+      ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs) : ''}
       ${auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs)}
       ${baseShapes.line(0, node.height(), node.width(), 0, styleMap)}
     `;

@@ -182,6 +182,24 @@ var sbgnStyleSheet = function (cytoscape) {
           'min-height-bias-top': '90%',
           'min-height-bias-bottom': '10%'
         })
+        .selector('node[class="complex multimer"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
+          'padding': (node) => Math.min(node.height(), node.width()) * .055,
+          'background-opacity': .2,
+          'background-fit': 'none',
+          'background-width': '110%',
+          'background-height': '110%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+          'text-valign': 'bottom',
+          'text-halign': 'center',
+          'min-height': (node) => node.width() * .75,
+          'min-height-bias-top': '90%',
+          'min-height-bias-bottom': '10%'
+        })
+
         .selector('node[class="compartment"]')
         .css({
           'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
@@ -210,7 +228,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-color': '#6B6B6B'
         })
-        .selector('node[bbox][class][class!="complex"][class!="compartment"][class!="submap"]')
+        .selector('node[bbox][class][class!="complex"][class!="compartment"][class!="submap"][class!="complex multimer"]')
         .css({
           'width': 'data(bbox.w)',
           'height': 'data(bbox.h)'

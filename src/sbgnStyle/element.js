@@ -123,7 +123,7 @@ elementStyle.labelTextSize = (node) => {
     return dynamicLabelTextSize(nh, 1.5);
   }
 
-  if (sbgnClass === 'complex' || sbgnClass === 'compartment') {
+  if (sbgnClass.includes('complex') || sbgnClass === 'compartment') {
     return 16;
   }
 
