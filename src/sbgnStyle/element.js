@@ -15,7 +15,7 @@ elementStyle.sbgnShape = (node) => {
   }
 
   if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
-    || sbgnClass == 'source and sink' || sbgnClass == 'compartment' || sbgnClass == 'complex') {
+    || sbgnClass == 'source and sink' || sbgnClass == 'compartment') {
     return 'polygon';
   }
 
@@ -23,7 +23,7 @@ elementStyle.sbgnShape = (node) => {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule' || sbgnClass == 'complex') {
     return 'roundrectangle';
   }
   return 'ellipse';

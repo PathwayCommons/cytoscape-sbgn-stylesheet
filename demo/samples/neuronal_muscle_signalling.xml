@@ -98,7 +98,7 @@
       <glyph id="glyph42" class="association" compartmentRef="glyph2">
          <bbox y="241.92937531016833" x="1680.9446371300062" w="20" h="20" />
       </glyph>
-      <glyph id="glyph38" class="complex" compartmentRef="glyph2">
+      <glyph id="glyph38" class="complex multimer" compartmentRef="glyph2">
          <bbox y="334.30565593238714" x="1526.3897609318626" w="196.5" h="136.5" />
          <glyph id="glyph38a" class="state variable">
             <state value="relaxed" />

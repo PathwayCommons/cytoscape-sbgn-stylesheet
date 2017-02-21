@@ -253,7 +253,8 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-color': '#6B6B6B'
         })
-        .selector('node[bbox][class][class!="complex"][class!="compartment"][class!="submap"][class!="complex multimer"]')
+        .selector('node[bbox][class][class!="compartment"][class!="submap"]')
+        // .selector('node[bbox][class][class!="complex"][class!="compartment"][class!="submap"][class!="complex multimer"]')
         .css({
           'width': 'data(bbox.w)',
           'height': 'data(bbox.h)'

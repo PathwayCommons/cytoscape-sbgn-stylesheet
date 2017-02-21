@@ -51,12 +51,12 @@ const baseShapes = {
     />`;
   },
 
-  cutRectangle (width, height, styleMap={}, transform='') {
+  cutRectangle (x, y, width, height, styleMap={}, transform='') {
     return `
     <polygon style='${styleMap2Str(styleMap)}' transform='${transform}'
       points='
-      ${0*width} ${0.05*height} ${0.05*width} ${0*height} ${0.95*width} ${0*height} ${width} ${0.05*height}
-      ${width} ${0.95*height} ${0.95*width} ${height} ${0.05*width} ${height} ${0*width} ${0.95*height}
+      ${x + 0*width} ${y + 0.05*height} ${x + 0.05*width} ${y + 0*height} ${x + 0.95*width} ${y + 0*height} ${x + width} ${y + 0.05*height}
+      ${x + width} ${y + 0.95*height} ${x + 0.95*width} ${y + height} ${x + 0.05*width} ${y + height} ${x + 0*width} ${y + 0.95*height}
       '
     />
     `;

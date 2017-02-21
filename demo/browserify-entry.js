@@ -99,6 +99,7 @@ $(document).ready(function () {
   });
 
   window.r = window.cy = renderer;
+  window.convert = convertSbgnml;
   renderGraph(renderer, defaultData);
 
   $('#graph-load').click(function () {
