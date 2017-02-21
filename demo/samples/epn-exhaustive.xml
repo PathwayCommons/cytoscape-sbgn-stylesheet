@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
+    <map>
+      <!-- unspecified entity -->
+      <glyph id='1' class='unspecified entity' >
+        <label text='unspecified entity' />
+        <bbox y='0' x='0' w='40' h='40' />
+      </glyph>
+      <glyph id='2' class='unspecified entity' >
+        <label text='unspecified entity clone' />
+        <bbox y='0' x='50' w='40' h='40' />
+        <clone/>
+      </glyph>
+      <!-- simple chemical  -->
+      <glyph id="3" class="simple chemical">
+         <label text="sc" />
+         <bbox y="0" x="150" w="60.0" h="60.0" />
+      </glyph>
+      <glyph id="4" class="simple chemical">
+        <label text="sc clone" />
+        <bbox y="0" x="250" w="60.0" h="60.0" />
+        <clone/>
+      </glyph>
+      <glyph id="5" class="simple chemical multimer">
+        <label text="sc m" />
+        <bbox y="0" x="350" w="60.0" h="60.0" />
+      </glyph>
+      <glyph id="6" class="simple chemical multimer">
+        <label text="sc m clone" />
+        <bbox y="0" x="450" w="60.0" h="60.0" />
+        <clone/>
+      </glyph>
+      <glyph id="7" class="simple chemical multimer">
+        <label text="sc m clone uinfo" />
+        <bbox y="0" x="550" w="60.0" h="60.0" />
+        <clone/>
+      </glyph>
+      <glyph id="8" class="simple chemical">
+        <label text="sc clone uinfo" />
+        <bbox y="0" x="650" w="60.0" h="60.0" />
+        <clone/>
+      </glyph>
+      <!-- macromolecule -->
+      <glyph id="9" class="macromolecule">
+        <label text="macrom" />
+        <bbox y="200" x="0" w="100" h="60" />
+      </glyph>
+      <glyph id="10" class="macromolecule">
+        <label text="macrom clone" />
+        <bbox y="200" x="150" w="100" h="60" />
+        <clone/>
+      </glyph>
+      <glyph id="11" class="macromolecule multimer">
+        <label text="macrom m" />
+        <bbox y="200" x="300" w="100" h="60" />
+      </glyph>
+      <glyph id="12" class="macromolecule multimer">
+        <label text="macrom m clone" />
+        <bbox y="200" x="450" w="100" h="60" />
+      </glyph>
+      <glyph id="13" class="macromolecule multimer">
+        <label text="macrom m clone uinfo svar" />
+        <bbox y="200" x="600" w="100" h="60" />
+        <glyph id="13a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='13b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+      </glyph>
+      <glyph id="14" class="macromolecule">
+        <label text="macrom clone uinfo svar" />
+        <bbox y="200" x="750" w="100" h="60" />
+        <glyph id="14a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='14b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+        <clone />
+      </glyph>
+      <!-- nucleic acid feature -->
+      <glyph id="15" class="nucleic acid feature">
+        <label text="nuc" />
+        <bbox y="400" x="0" w="120" h="60" />
+      </glyph>
+      <glyph id="16" class="nucleic acid feature">
+        <label text="nuc clone" />
+        <bbox y="400" x="150" w="120" h="60" />
+        <clone/>
+      </glyph>
+      <glyph id="17" class="nucleic acid feature multimer">
+        <label text="nuc m" />
+        <bbox y="400" x="300" w="120" h="60" />
+      </glyph>
+      <glyph id="18" class="nucleic acid feature multimer">
+        <label text="nuc m clone" />
+        <bbox y="400" x="450" w="120" h="60" />
+      </glyph>
+      <glyph id="19" class="nucleic acid feature multimer">
+        <label text="nuc m clone uinfo svar" />
+        <bbox y="400" x="600" w="120" h="60" />
+        <glyph id="19a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='19b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+      </glyph>
+      <glyph id="20" class="nucleic acid feature">
+        <label text="nuc clone uinfo svar" />
+        <bbox y="400" x="750" w="120" h="60" />
+        <glyph id="20a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='20b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+        <clone />
+      </glyph>
+      <!-- complex -->
+      <glyph id="21" class="complex">
+        <label text="complex" />
+        <bbox y="400" x="0" w="220" h="270" />
+      </glyph>
+      <glyph id="22" class="complex">
+        <label text="complex clone" />
+        <bbox y="400" x="250" w="220" h="270" />
+        <clone/>
+      </glyph>
+      <glyph id="23" class="complex multimer">
+        <label text="complex m" />
+        <bbox y="400" x="500" w="220" h="270" />
+      </glyph>
+      <glyph id="24" class="complex multimer">
+        <label text="complex m clone" />
+        <bbox y="400" x="750" w="220" h="270" />
+        <clone/>
+      </glyph>
+      <glyph id="25" class="complex multimer">
+        <label text="complex m clone uinfo svar" />
+        <bbox y="400" x="1000" w="220" h="270" />
+        <clone/>
+        <glyph id="25a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='25b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+      </glyph>
+      <glyph id="26" class="complex">
+        <label text="complex clone uinfo svar" />
+        <bbox y="400" x="1250" w="220" h="270" />
+        <glyph id="26a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='26b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+        <clone />
+      </glyph>
+      <!-- source and sink -->
+      <glyph id="27" class="source and sink" >
+        <bbox y="600" x="0" w="60.0" h="60.0" />
+      </glyph>
+      <glyph id="28" class="source and sink" >
+        <bbox y="600" x="200" w="60.0" h="60.0" />
+        <clone />
+      </glyph>
+      <!-- perturbing agent -->
+      <glyph id="29" class="perturbing agent">
+          <label text="pert agent"/>
+          <bbox y="600" x="300" h="60.0" w="180.0"/>
+      </glyph>
+      <glyph id="30" class="perturbing agent">
+          <label text="pert agent clone"/>
+          <bbox y="600" x="500" h="60.0" w="180.0"/>
+          <clone/>
+      </glyph>
+      <glyph id="31" class="perturbing agent">
+          <label text="pert agent clone uinfo"/>
+          <bbox y="600" x="800" h="60.0" w="180.0"/>
+          <clone/>
+          <glyph id='31b' class='unit of information'>
+            <label text='mt:prot' />
+            <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+          </glyph>
+      </glyph>
+      <!-- compartment -->
+      <glyph id='32' class='compartment'  >
+        <label text='compartment' />
+        <bbox y='700' x='0' w='300' h='200' />
+      </glyph>
+      <glyph id='33' class='compartment'  >
+        <label text='compartment' />
+        <bbox y='700' x='500' w='300' h='200' />
+        <glyph id='33b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
+      </glyph>
+      <!-- phenotype -->
+      <glyph id='34' class='phenotype'>
+        <label text='phenotype' />
+        <bbox y='800' x='0' w='140.0' h='60.0' />
+      </glyph>
+      <glyph id='34' class='phenotype'>
+        <label text='phenotype clone' />
+        <bbox y='800' x='200' w='140.0' h='60.0' />
+        <clone/>
+      </glyph>
+
+
+
+
+
+    </map>
+
+  </sbgn>
