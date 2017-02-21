@@ -57,10 +57,12 @@
       <glyph id="12" class="macromolecule multimer">
         <label text="macrom m clone" />
         <bbox y="200" x="450" w="100" h="60" />
+        <clone/>
       </glyph>
       <glyph id="13" class="macromolecule multimer">
         <label text="macrom m clone uinfo svar" />
         <bbox y="200" x="600" w="100" h="60" />
+        <clone/>
         <glyph id="13a" class="state variable">
            <state value="P" />
            <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
@@ -100,10 +102,12 @@
       <glyph id="18" class="nucleic acid feature multimer">
         <label text="nuc m clone" />
         <bbox y="400" x="450" w="120" h="60" />
+        <clone/>
       </glyph>
       <glyph id="19" class="nucleic acid feature multimer">
         <label text="nuc m clone uinfo svar" />
         <bbox y="400" x="600" w="120" h="60" />
+        <clone/>
         <glyph id="19a" class="state variable">
            <state value="P" />
            <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
@@ -216,7 +220,7 @@
         <label text='phenotype' />
         <bbox y='800' x='0' w='140.0' h='60.0' />
       </glyph>
-      <glyph id='34' class='phenotype'>
+      <glyph id='35' class='phenotype'>
         <label text='phenotype clone' />
         <bbox y='800' x='200' w='140.0' h='60.0' />
         <clone/>

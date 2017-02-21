@@ -114,6 +114,16 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0
         })
+        .selector('node[class="nucleic acid feature multimer"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
         .selector('node[class="perturbing agent"]')
         .css({
           'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
@@ -135,6 +145,16 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0
         })
+        .selector('node[class="macromolecule multimer"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
+        })
         .selector('node[class="simple chemical"]')
         .css({
           'shape': 'ellipse',
@@ -145,14 +165,19 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-height': '120%',
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
-          'border-width': 0,
-          // 'min-height': (node) => node.height() + 50,
-          // 'min-height-bias-top': '50%',
-          // 'min-height-bias-bottom': '50%'
+          'border-width': 0
         })
         .selector('node[class="simple chemical multimer"]')
         .css({
+          'shape': 'ellipse',
+          'background-image': (node) => sbgnShapes.draw(node.data('class'), node),
           'padding': (node) => Math.min(node.height(), node.width()) * .055,
+          'background-fit': 'none',
+          'background-width': '120%',
+          'background-height': '120%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0
         })
         .selector('node[class="unspecified entity"]')
         .css({

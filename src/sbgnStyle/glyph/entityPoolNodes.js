@@ -19,8 +19,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.ellipse(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.ellipse, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.ellipse, shapeArgs)}
-
     `;
     return svgStr(unspecEntitySvg, nw, nh, 0, 0, nw, nh);
   },
@@ -78,7 +76,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.roundRectangle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.roundRectangle, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.roundRectangle, shapeArgs)}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -101,7 +98,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.roundBottomRectangle, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.roundBottomRectangle, shapeArgs)}
     `;
     return svgStr(nucleicAcidFeatureSvg, ow, oh, 0, 0, ow, oh);
   },
@@ -121,7 +117,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.cutRectangle, shapeArgs)}
 
     `;
     return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
@@ -144,7 +139,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.circle(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.circle, shapeArgs)}
       ${baseShapes.line(0, node.height(), node.width(), 0, styleMap)}
     `;
 
@@ -166,7 +160,6 @@ const entityPoolNodes = {
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.concaveHexagon, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.concaveHexagon, shapeArgs)}
 
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);

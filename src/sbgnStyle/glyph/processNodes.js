@@ -83,7 +83,6 @@ const processNodes = {
     `
       ${baseShapes.hexagon(nw, nh, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(node, baseShapes.hexagon, shapeArgs) : ''}
-      ${auxillaryItems.cloneMarker(node, baseShapes.hexagon, shapeArgs)}
     `;
     return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
   }
