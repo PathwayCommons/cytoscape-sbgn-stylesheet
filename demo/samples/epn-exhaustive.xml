@@ -34,11 +34,27 @@
         <label text="sc m clone uinfo" />
         <bbox y="0" x="550" w="60.0" h="60.0" />
         <clone/>
+        <glyph id="13a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='13b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
       </glyph>
       <glyph id="8" class="simple chemical">
         <label text="sc clone uinfo" />
         <bbox y="0" x="650" w="60.0" h="60.0" />
         <clone/>
+        <glyph id="13a" class="state variable">
+           <state value="P" />
+           <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
+        </glyph>
+        <glyph id='13b' class='unit of information'>
+          <label text='mt:prot' />
+          <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
+        </glyph>
       </glyph>
       <!-- macromolecule -->
       <glyph id="9" class="macromolecule">
