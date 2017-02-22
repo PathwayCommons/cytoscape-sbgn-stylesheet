@@ -13,25 +13,25 @@
       </glyph>
       <!-- simple chemical  -->
       <glyph id="3" class="simple chemical">
-         <label text="sc" />
+         <label text="simple chemical" />
          <bbox y="0" x="150" w="60.0" h="60.0" />
       </glyph>
       <glyph id="4" class="simple chemical">
-        <label text="sc clone" />
+        <label text=" clone" />
         <bbox y="0" x="250" w="60.0" h="60.0" />
         <clone/>
       </glyph>
       <glyph id="5" class="simple chemical multimer">
-        <label text="sc m" />
+        <label text=" m" />
         <bbox y="0" x="350" w="60.0" h="60.0" />
       </glyph>
       <glyph id="6" class="simple chemical multimer">
-        <label text="sc m clone" />
+        <label text=" m clone" />
         <bbox y="0" x="450" w="60.0" h="60.0" />
         <clone/>
       </glyph>
       <glyph id="7" class="simple chemical multimer">
-        <label text="sc m clone uinfo" />
+        <label text=" m clone uinfo" />
         <bbox y="0" x="550" w="60.0" h="60.0" />
         <clone/>
         <glyph id="13a" class="state variable">
@@ -44,7 +44,7 @@
         </glyph>
       </glyph>
       <glyph id="8" class="simple chemical">
-        <label text="sc clone uinfo" />
+        <label text=" clone uinfo" />
         <bbox y="0" x="650" w="60.0" h="60.0" />
         <clone/>
         <glyph id="13a" class="state variable">
@@ -58,25 +58,25 @@
       </glyph>
       <!-- macromolecule -->
       <glyph id="9" class="macromolecule">
-        <label text="macrom" />
+        <label text="macromolecule" />
         <bbox y="200" x="0" w="100" h="60" />
       </glyph>
       <glyph id="10" class="macromolecule">
-        <label text="macrom clone" />
+        <label text=" clone" />
         <bbox y="200" x="150" w="100" h="60" />
         <clone/>
       </glyph>
       <glyph id="11" class="macromolecule multimer">
-        <label text="macrom m" />
+        <label text=" m" />
         <bbox y="200" x="300" w="100" h="60" />
       </glyph>
       <glyph id="12" class="macromolecule multimer">
-        <label text="macrom m clone" />
+        <label text=" m clone" />
         <bbox y="200" x="450" w="100" h="60" />
         <clone/>
       </glyph>
       <glyph id="13" class="macromolecule multimer">
-        <label text="macrom m clone uinfo svar" />
+        <label text=" m clone uinfo svar" />
         <bbox y="200" x="600" w="100" h="60" />
         <clone/>
         <glyph id="13a" class="state variable">
@@ -89,7 +89,7 @@
         </glyph>
       </glyph>
       <glyph id="14" class="macromolecule">
-        <label text="macrom clone uinfo svar" />
+        <label text=" clone uinfo svar" />
         <bbox y="200" x="750" w="100" h="60" />
         <glyph id="14a" class="state variable">
            <state value="P" />
@@ -103,25 +103,25 @@
       </glyph>
       <!-- nucleic acid feature -->
       <glyph id="15" class="nucleic acid feature">
-        <label text="nuc" />
+        <label text="nucleic acid feature" />
         <bbox y="400" x="0" w="120" h="60" />
       </glyph>
       <glyph id="16" class="nucleic acid feature">
-        <label text="nuc clone" />
+        <label text="clone" />
         <bbox y="400" x="150" w="120" h="60" />
         <clone/>
       </glyph>
       <glyph id="17" class="nucleic acid feature multimer">
-        <label text="nuc m" />
+        <label text="m" />
         <bbox y="400" x="300" w="120" h="60" />
       </glyph>
       <glyph id="18" class="nucleic acid feature multimer">
-        <label text="nuc m clone" />
+        <label text="m clone" />
         <bbox y="400" x="450" w="120" h="60" />
         <clone/>
       </glyph>
       <glyph id="19" class="nucleic acid feature multimer">
-        <label text="nuc m clone uinfo svar" />
+        <label text="m clone uinfo svar" />
         <bbox y="400" x="600" w="120" h="60" />
         <clone/>
         <glyph id="19a" class="state variable">
@@ -134,7 +134,7 @@
         </glyph>
       </glyph>
       <glyph id="20" class="nucleic acid feature">
-        <label text="nuc clone uinfo svar" />
+        <label text="clone uinfo svar" />
         <bbox y="400" x="750" w="120" h="60" />
         <glyph id="20a" class="state variable">
            <state value="P" />
@@ -149,25 +149,25 @@
       <!-- complex -->
       <glyph id="21" class="complex">
         <label text="complex" />
-        <bbox y="400" x="0" w="220" h="270" />
+        <bbox y="1000" x="0" w="220" h="270" />
       </glyph>
       <glyph id="22" class="complex">
         <label text="complex clone" />
-        <bbox y="400" x="250" w="220" h="270" />
+        <bbox y="1000" x="250" w="220" h="270" />
         <clone/>
       </glyph>
       <glyph id="23" class="complex multimer">
         <label text="complex m" />
-        <bbox y="400" x="500" w="220" h="270" />
+        <bbox y="1000" x="500" w="220" h="270" />
       </glyph>
       <glyph id="24" class="complex multimer">
         <label text="complex m clone" />
-        <bbox y="400" x="750" w="220" h="270" />
+        <bbox y="1000" x="750" w="220" h="270" />
         <clone/>
       </glyph>
       <glyph id="25" class="complex multimer">
         <label text="complex m clone uinfo svar" />
-        <bbox y="400" x="1000" w="220" h="270" />
+        <bbox y="1000" x="1000" w="220" h="270" />
         <clone/>
         <glyph id="25a" class="state variable">
            <state value="P" />
@@ -180,7 +180,7 @@
       </glyph>
       <glyph id="26" class="complex">
         <label text="complex clone uinfo svar" />
-        <bbox y="400" x="1250" w="220" h="270" />
+        <bbox y="1000" x="1250" w="220" h="270" />
         <glyph id="26a" class="state variable">
            <state value="P" />
            <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
@@ -221,7 +221,7 @@
       <!-- compartment -->
       <glyph id='32' class='compartment'  >
         <label text='compartment' />
-        <bbox y='700' x='0' w='300' h='200' />
+        <bbox y='700' x='700' w='300' h='200' />
       </glyph>
       <glyph id='33' class='compartment'  >
         <label text='compartment' />

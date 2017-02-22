@@ -52,7 +52,7 @@ var renderGraph = function (cy, cyGraph) {
     name: 'preset',
     positions: nodePositions,
     fit: true,
-    padding: 50
+    padding: 100
   });
 
   cy.endBatch();
