@@ -100,7 +100,7 @@ $(document).ready(function () {
 
   window.r = window.cy = renderer;
   window.convert = convertSbgnml;
-  renderGraph(renderer, defaultData);
+  renderGraph(renderer, defaultData.exhaustive);
 
   $('#graph-load').click(function () {
     $('#graph-input').trigger('click');

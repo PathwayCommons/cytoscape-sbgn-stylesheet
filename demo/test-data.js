@@ -843,4 +843,1124 @@ var mapkCascadeData = {
 ]
 };
 
-module.exports = mapkCascadeData;
+var exhaustiveData = {
+    "nodes": [
+        {
+            "data": {
+                "id": "1",
+                "bbox": {
+                    "x": 20,
+                    "y": 20,
+                    "w": "40",
+                    "h": "40"
+                },
+                "class": "unspecified entity",
+                "label": "unspecified entity",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "2",
+                "bbox": {
+                    "x": 120,
+                    "y": 20,
+                    "w": "40",
+                    "h": "40"
+                },
+                "class": "unspecified entity",
+                "label": "unspecified entity clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "3",
+                "bbox": {
+                    "x": 280,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical",
+                "label": "simple chemical",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "4",
+                "bbox": {
+                    "x": 530,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical",
+                "label": " clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "5",
+                "bbox": {
+                    "x": 780,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical multimer",
+                "label": " m",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "6",
+                "bbox": {
+                    "x": 1030,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical multimer",
+                "label": " m clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "7",
+                "bbox": {
+                    "x": 1280,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical multimer",
+                "label": " m clone uinfo",
+                "statesandinfos": [
+                    {
+                        "id": "13a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -1354.6949631131793,
+                            "y": 400.47884414565056,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "13b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -891.9979688146107,
+                            "y": 1108.3777362198236,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "8",
+                "bbox": {
+                    "x": 1530,
+                    "y": 30,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "simple chemical",
+                "label": " clone uinfo",
+                "statesandinfos": [
+                    {
+                        "id": "13a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -1771.361629779846,
+                            "y": 400.47884414565056,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "13b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -1308.6646354812774,
+                            "y": 1108.3777362198236,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "9",
+                "bbox": {
+                    "x": 50,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "macromolecule",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "10",
+                "bbox": {
+                    "x": 250,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": " clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "11",
+                "bbox": {
+                    "x": 450,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule multimer",
+                "label": " m",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "12",
+                "bbox": {
+                    "x": 650,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule multimer",
+                "label": " m clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "13",
+                "bbox": {
+                    "x": 850,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule multimer",
+                "label": " m clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "13a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -382.81697786790755,
+                            "y": 67.14551081231718,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "13b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -105.19878128876643,
+                            "y": 775.0444028864903,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "14",
+                "bbox": {
+                    "x": 1050,
+                    "y": 230,
+                    "w": "100",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": " clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "14a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -582.8169778679076,
+                            "y": 67.14551081231718,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "14b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -305.19878128876644,
+                            "y": 775.0444028864903,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "15",
+                "bbox": {
+                    "x": 60,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature",
+                "label": "nucleic acid feature",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "16",
+                "bbox": {
+                    "x": 260,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature",
+                "label": "clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "17",
+                "bbox": {
+                    "x": 460,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature multimer",
+                "label": "m",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "18",
+                "bbox": {
+                    "x": 660,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature multimer",
+                "label": "m clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "19",
+                "bbox": {
+                    "x": 860,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature multimer",
+                "label": "m clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "19a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -327.3474815565896,
+                            "y": -266.18782252101613,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "19b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -95.99898440730537,
+                            "y": 441.711069553157,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "20",
+                "bbox": {
+                    "x": 1060,
+                    "y": 430,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "nucleic acid feature",
+                "label": "clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "20a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -494.0141482232563,
+                            "y": -266.18782252101613,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "20b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -262.665651073972,
+                            "y": 441.711069553157,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "21",
+                "bbox": {
+                    "x": 110,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex",
+                "label": "complex",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "21a",
+                "bbox": {
+                    "x": 160,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "21",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "21b",
+                "bbox": {
+                    "x": 310,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "21",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "21c",
+                "bbox": {
+                    "x": 130,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "21",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "22",
+                "bbox": {
+                    "x": 460,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex",
+                "label": "complex clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "22a",
+                "bbox": {
+                    "x": 510,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "22",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "22b",
+                "bbox": {
+                    "x": 660,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "22",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "22c",
+                "bbox": {
+                    "x": 480,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "22",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "23",
+                "bbox": {
+                    "x": 810,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex multimer",
+                "label": "complex m",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "23a",
+                "bbox": {
+                    "x": 860,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "23",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "23b",
+                "bbox": {
+                    "x": 1010,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "23",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "23c",
+                "bbox": {
+                    "x": 830,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "23",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "24",
+                "bbox": {
+                    "x": 1160,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex multimer",
+                "label": "complex m clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "24a",
+                "bbox": {
+                    "x": 1210,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "24",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "24b",
+                "bbox": {
+                    "x": 1360,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "24",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "24c",
+                "bbox": {
+                    "x": 1180,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "24",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "25",
+                "bbox": {
+                    "x": 1510,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex multimer",
+                "label": "complex m clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "25a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -474.0077172126853,
+                            "y": -246.18988648615172,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "25b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -347.81762785853016,
+                            "y": -88.87902158077992,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "25c",
+                "bbox": {
+                    "x": 1560,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "25",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "26c",
+                "bbox": {
+                    "x": 1710,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "25",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "27c",
+                "bbox": {
+                    "x": 1530,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "25",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "26",
+                "bbox": {
+                    "x": 1860,
+                    "y": 935,
+                    "w": "220",
+                    "h": "270"
+                },
+                "class": "complex",
+                "label": "complex clone uinfo svar",
+                "statesandinfos": [
+                    {
+                        "id": "26a",
+                        "clazz": "state variable",
+                        "state": {
+                            "value": "P"
+                        },
+                        "bbox": {
+                            "x": -633.0986263035943,
+                            "y": -246.18988648615172,
+                            "w": "25.0",
+                            "h": "22.0"
+                        }
+                    },
+                    {
+                        "id": "26b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -506.9085369494393,
+                            "y": -88.87902158077992,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "glyph29",
+                "bbox": {
+                    "x": 1910,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "myosin",
+                "statesandinfos": [],
+                "parent": "26",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "glyph30",
+                "bbox": {
+                    "x": 2060,
+                    "y": 830,
+                    "w": "120",
+                    "h": "60"
+                },
+                "class": "macromolecule",
+                "label": "actin",
+                "statesandinfos": [],
+                "parent": "26",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "glyph46",
+                "bbox": {
+                    "x": 1880,
+                    "y": 930,
+                    "w": "60",
+                    "h": "60"
+                },
+                "class": "simple chemical",
+                "label": "ATP",
+                "statesandinfos": [],
+                "parent": "26",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "27",
+                "bbox": {
+                    "x": 30,
+                    "y": 630,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "source and sink",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "28",
+                "bbox": {
+                    "x": 230,
+                    "y": 630,
+                    "w": "60.0",
+                    "h": "60.0"
+                },
+                "class": "source and sink",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "29",
+                "bbox": {
+                    "x": 490,
+                    "y": 630,
+                    "w": "180.0",
+                    "h": "60.0"
+                },
+                "class": "perturbing agent",
+                "label": "pert agent",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "30",
+                "bbox": {
+                    "x": 690,
+                    "y": 630,
+                    "w": "180.0",
+                    "h": "60.0"
+                },
+                "class": "perturbing agent",
+                "label": "pert agent clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "31",
+                "bbox": {
+                    "x": 890,
+                    "y": 630,
+                    "w": "180.0",
+                    "h": "60.0"
+                },
+                "class": "perturbing agent",
+                "label": "pert agent clone uinfo",
+                "statesandinfos": [
+                    {
+                        "id": "31b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -80.66598960487025,
+                            "y": 108.37773621982365,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "32",
+                "bbox": {
+                    "x": 1250,
+                    "y": 250,
+                    "w": "300",
+                    "h": "200"
+                },
+                "class": "compartment",
+                "label": "compartment",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "33",
+                "bbox": {
+                    "x": 1450,
+                    "y": 250,
+                    "w": "300",
+                    "h": "200"
+                },
+                "class": "compartment",
+                "label": "compartment",
+                "statesandinfos": [
+                    {
+                        "id": "33b",
+                        "clazz": "unit of information",
+                        "label": {
+                            "text": "mt:prot"
+                        },
+                        "bbox": {
+                            "x": -235.06626042958882,
+                            "y": 222.5133208659471,
+                            "w": "53.0",
+                            "h": "18.0"
+                        }
+                    }
+                ],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "34",
+                "bbox": {
+                    "x": 1170,
+                    "y": 630,
+                    "w": "140.0",
+                    "h": "60.0"
+                },
+                "class": "phenotype",
+                "label": "phenotype",
+                "statesandinfos": [],
+                "parent": "",
+                "ports": []
+            }
+        },
+        {
+            "data": {
+                "id": "35",
+                "bbox": {
+                    "x": 1370,
+                    "y": 630,
+                    "w": "140.0",
+                    "h": "60.0"
+                },
+                "class": "phenotype",
+                "label": "phenotype clone",
+                "statesandinfos": [],
+                "parent": "",
+                "clonemarker": true,
+                "ports": []
+            }
+        }
+    ],
+    "edges": []
+};
+
+module.exports = {
+    mapk: mapkCascadeData,
+    exhaustive: exhaustiveData
+};
