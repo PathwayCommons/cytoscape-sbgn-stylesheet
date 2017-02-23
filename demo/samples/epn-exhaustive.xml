@@ -150,24 +150,72 @@
       <glyph id="21" class="complex">
         <label text="complex" />
         <bbox y="800" x="0" w="220" h="270" />
+        <glyph id="21a" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="100" w="120" h="60" />
+        </glyph>
+        <glyph id="21b" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="250" w="120" h="60" />
+        </glyph>
+        <glyph id="21c" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="100" w="60" h="60" />
+        </glyph>
       </glyph>
       <glyph id="22" class="complex">
         <label text="complex clone" />
-        <bbox y="800" x="250" w="220" h="270" />
+        <bbox y="800" x="350" w="220" h="270" />
         <clone/>
+        <glyph id="22a" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="450" w="120" h="60" />
+        </glyph>
+        <glyph id="22b" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="600" w="120" h="60" />
+        </glyph>
+        <glyph id="22c" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="450" w="60" h="60" />
+        </glyph>
       </glyph>
       <glyph id="23" class="complex multimer">
         <label text="complex m" />
-        <bbox y="800" x="500" w="220" h="270" />
+        <bbox y="800" x="700" w="220" h="270" />
+        <glyph id="23a" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="800" w="120" h="60" />
+        </glyph>
+        <glyph id="23b" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="950" w="120" h="60" />
+        </glyph>
+        <glyph id="23c" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="800" w="60" h="60" />
+        </glyph>
       </glyph>
       <glyph id="24" class="complex multimer">
         <label text="complex m clone" />
-        <bbox y="800" x="750" w="220" h="270" />
+        <bbox y="800" x="1050" w="220" h="270" />
         <clone/>
+        <glyph id="24a" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="1150" w="120" h="60" />
+        </glyph>
+        <glyph id="24b" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="1300" w="120" h="60" />
+        </glyph>
+        <glyph id="24c" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="1150" w="60" h="60" />
+        </glyph>
       </glyph>
       <glyph id="25" class="complex multimer">
         <label text="complex m clone uinfo svar" />
-        <bbox y="800" x="1000" w="220" h="270" />
+        <bbox y="800" x="1400" w="220" h="270" />
         <clone/>
         <glyph id="25a" class="state variable">
            <state value="P" />
@@ -177,10 +225,22 @@
           <label text='mt:prot' />
           <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
         </glyph>
+        <glyph id="25c" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="1500" w="120" h="60" />
+        </glyph>
+        <glyph id="26c" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="1650" w="120" h="60" />
+        </glyph>
+        <glyph id="27c" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="1500" w="60" h="60" />
+        </glyph>
       </glyph>
       <glyph id="26" class="complex">
         <label text="complex clone uinfo svar" />
-        <bbox y="800" x="1250" w="220" h="270" />
+        <bbox y="800" x="1750" w="220" h="270" />
         <glyph id="26a" class="state variable">
            <state value="P" />
            <bbox y="259.2873064873903" x="454.68302213209245" w="25.0" h="22.0" />
@@ -190,6 +250,18 @@
           <bbox y='686.0266417318942' x='718.3012187112336' w='53.0' h='18.0' />
         </glyph>
         <clone />
+        <glyph id="glyph29" class="macromolecule">
+           <label text="myosin" />
+           <bbox y="800" x="1850" w="120" h="60" />
+        </glyph>
+        <glyph id="glyph30" class="macromolecule">
+           <label text="actin" />
+           <bbox y="800" x="2000" w="120" h="60" />
+        </glyph>
+        <glyph id="glyph46" class="simple chemical">
+           <label text="ATP" />
+           <bbox y="900" x="1850" w="60" h="60" />
+        </glyph>
       </glyph>
       <!-- source and sink -->
       <glyph id="27" class="source and sink" >
