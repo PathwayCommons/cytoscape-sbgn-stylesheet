@@ -14,17 +14,17 @@ let baseRectangle = function (x, y, w, h, r1, r2, r3, r4, styleMap, transform) {
 };
 
 const baseShapes = {
-  barrel (width, height, styleMap={}, transform='') {
+  barrel (x, y, width, height, styleMap={}, transform='') {
     return `
 
     <g style="${styleMap2Str(styleMap)}" transform='${transform}'>
-      <path d="M ${0*width} ${.03*height} L ${0*width} ${.97*height} Q ${0.06*width} ${height} ${0.25*width} ${height}"/>
+      <path d="M ${0*width + x} ${.03*height + y} L ${0*width + x} ${.97*height + y} Q ${0.06*width + x} ${height + y} ${0.25*width + x} ${height + y}"/>
 
-      <path d="M ${0.25*width} ${height} L ${0.75*width} ${height} Q ${0.95*width} ${height} ${width} ${0.95*height}"/>
+      <path d="M ${0.25*width + x} ${height + y} L ${0.75*width + x} ${height + y} Q ${0.95*width + x} ${height + y} ${width + x} ${0.95*height + y}"/>
 
-      <path d="M ${width} ${.95*height} L ${width} ${0.05*height} Q ${width} ${0*height} ${0.75*width} ${0*height}"/>
+      <path d="M ${width + x} ${.95*height + y} L ${width + x} ${0.05*height + y} Q ${width + x} ${0*height + y} ${0.75*width + x} ${0*height + y}"/>
 
-      <path d="M ${0.75*width} ${0*height} L ${0.25*width} ${0*height} Q ${0.06*width} ${0*height} ${0*width} ${0.03*height}"/>
+      <path d="M ${0.75*width + x} ${0*height + y} L ${0.25*width + x} ${0*height + y} Q ${0.06*width + x} ${0*height + y} ${0*width + x} ${0.03*height + y}"/>
     </g>
 
     `;
@@ -44,10 +44,10 @@ const baseShapes = {
     `;
   },
 
-  concaveHexagon (width, height, styleMap={}, transform='') {
+  concaveHexagon (x, y, width, height, styleMap={}, transform='') {
     return `
     <polygon style='${styleMap2Str(styleMap)}' transform='${transform}'
-      points='${0}, ${0}, ${width}, ${0}, ${0.85*width}, ${0.5*height}, ${width}, ${height}, ${0}, ${height}, ${0.15*width}, ${0.5*height}'
+      points='${x + 0}, ${y + 0}, ${x + width}, ${y + 0}, ${x + 0.85*width}, ${y + 0.5*height}, ${x + width}, ${y + height}, ${x + 0}, ${y + height}, ${ x + 0.15*width}, ${y + 0.5*height}'
     />`;
   },
 
@@ -68,10 +68,10 @@ const baseShapes = {
     `;
   },
 
-  hexagon (width, height, styleMap={}, transform='') {
+  hexagon (x, y, width, height, styleMap={}, transform='') {
     return `
     <polygon style='${styleMap2Str(styleMap)}' transform='${transform}'
-      points='${0}, ${0.5*height}, ${0.25*width}, ${0*height}, ${0.75*width}, ${0*height}, ${width}, ${0.5*height}, ${0.75*width}, ${height}, ${0.25*width}, ${height}'
+      points='${x + 0}, ${y + 0.5*height}, ${x + 0.25*width}, ${y + 0*height}, ${x + 0.75*width}, ${y + 0*height}, ${x + width}, ${y + 0.5*height}, ${x + 0.75*width}, ${y + height}, ${x + 0.25*width}, ${y + height}'
     />`;
   },
 

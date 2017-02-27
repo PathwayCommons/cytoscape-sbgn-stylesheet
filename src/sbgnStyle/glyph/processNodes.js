@@ -81,7 +81,7 @@ const processNodes = {
 
     let phenotypeSvg =
     `
-      ${baseShapes.hexagon(nw, nh, styleMap)}
+      ${baseShapes.hexagon(0, 0, nw, nh, styleMap)}
       ${node.data('clonemarker') ? auxillaryItems.cloneMarker(nw, nh, baseShapes.hexagon, shapeArgs) : ''}
     `;
     return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);

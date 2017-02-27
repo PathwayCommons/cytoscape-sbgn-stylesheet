@@ -172,10 +172,10 @@ const entityPoolNodes = {
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
-    .set('stroke-width', '3')
+    .set('stroke-width', '2')
     .set('fill', 'none');
 
-    const shapeArgs = [nw, nh];
+    const shapeArgs = [0, 0, nw, nh];
 
     const perturbingAgentSvg =
     `
