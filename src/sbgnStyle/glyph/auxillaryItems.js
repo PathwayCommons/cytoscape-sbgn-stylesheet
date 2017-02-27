@@ -2,10 +2,42 @@ const baseShapes = require('./baseShapes.js');
 
 const auxillaryItems = {
 
-  unitOfInformation (node) {
+  stateVariable (node, x, y, radius, label) {
+    const stateVarStyle = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('stroke-width', '1.5')
+    .set('fill', 'white')
+    .set('fill-opacity', '1');
+
+    const stateVarTextStyle = new Map()
+    .set('stroke', 'black');
+
+    const statevariableSvg =
+    `
+      ${baseShapes.circle(x, y, radius, stateVarStyle)}
+      ${baseShapes.text(label, x, y, 'middle', stateVarTextStyle)}
+    `;
+
+    return statevariableSvg;
   },
 
-  stateVariable (node) {
+  unitOfInformation (node, x, y, width, height, label) {
+    const uinfoRectStyle = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('stroke-width', '1.5')
+    .set('fill', 'white')
+    .set('fill-opacity', '1');
+
+    const uinfoTextStyle = new Map()
+    .set('stroke', 'black');
+
+    const unitOfInformationSvg =
+    `
+      ${baseShapes.roundRectangle(x, y, width, height, uinfoRectStyle)}
+      ${baseShapes.text(label, (width) / 2, 3 *  height / 4, 'middle',  uinfoTextStyle)}
+    `;
+
+    return unitOfInformationSvg;
   },
 
   cloneMarker (nodeWidth, nodeHeight, shapeFn, shapeFnArgs) {
