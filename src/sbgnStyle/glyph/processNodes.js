@@ -77,12 +77,12 @@ const processNodes = {
     .set('stroke-width', '3')
     .set('fill', 'none');
 
-    const shapeArgs = [0, 0, nw, nh];
+    const shapeArgs = [1, 1, nw - 3, nh - 3];
 
     let phenotypeSvg =
     `
-      ${baseShapes.hexagon(0, 0, nw, nh, styleMap)}
-      ${node.data('clonemarker') ? auxillaryItems.cloneMarker(nw, nh, baseShapes.hexagon, shapeArgs) : ''}
+      ${baseShapes.hexagon(...shapeArgs, styleMap)}
+      ${node.data('clonemarker') ? auxillaryItems.cloneMarker(nw - 2, nh - 2, baseShapes.hexagon, shapeArgs) : ''}
     `;
     return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
   }

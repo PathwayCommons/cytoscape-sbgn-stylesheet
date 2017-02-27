@@ -97,7 +97,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-width': '110%', // will be 120% when units of information are implemented for it
           'background-height': '110%',
-          'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
+          'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
         })
         .selector('node[class="simple chemical"]')
         .css({

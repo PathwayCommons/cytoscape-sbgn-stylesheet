@@ -175,12 +175,12 @@ const entityPoolNodes = {
     .set('stroke-width', '2')
     .set('fill', 'none');
 
-    const shapeArgs = [0, 0, nw, nh];
+    const shapeArgs = [1, 1, nw - 4, nh - 2];
 
     const perturbingAgentSvg =
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.concaveHexagon, shapeArgs) : ''}
+      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
 
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);
