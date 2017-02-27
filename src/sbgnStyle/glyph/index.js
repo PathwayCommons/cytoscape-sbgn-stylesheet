@@ -27,8 +27,11 @@ const sbgnNodeShapeMap = new Map()
 // container nodes
 .set('compartment', containerNodes.compartment);
 
+const getSbgnClass = (node) => node.data('class');
 
-const draw = function (sbgnClass, node) {
+
+const draw = (node) => {
+  const sbgnClass = getSbgnClass(node);
   let shapeFn = sbgnNodeShapeMap.get(sbgnClass);
   if (shapeFn === undefined) {
     throw new TypeError(`${sbgnClass} does not have a shape implementation`);

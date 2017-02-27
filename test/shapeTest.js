@@ -50,13 +50,7 @@ describe('shape svg', function () {
       const y = 0;
       const w = 100;
       const h = 100;
-      const r1 = 0;
-      const r2 = 0;
-      const r3 = 0;
-      const r4 = 0;
 
-
-      expect(validSvg(s.baseRectangle(x, y, w, h, r1, r2, r3, r4, styleMap))).to.equal(true);
       expect(validSvg(s.rectangle(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.roundBottomRectangle(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.roundRectangle(x, y, w, h, styleMap))).to.equal(true);
@@ -64,7 +58,7 @@ describe('shape svg', function () {
       expect(validSvg(s.barrel(w, h, styleMap))).to.equal(true);
       expect(validSvg(s.circle(x, y, w, styleMap))).to.equal(true);
       expect(validSvg(s.concaveHexagon(w, h, styleMap))).to.equal(true);
-      expect(validSvg(s.cutRectangle(w, h, styleMap))).to.equal(true);
+      expect(validSvg(s.cutRectangle(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.ellipse(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.hexagon(w, h, styleMap))).to.equal(true);
       expect(validSvg(s.line(x, y, w, h, styleMap))).to.equal(true);
@@ -82,7 +76,7 @@ describe('sbgn shape svg', function () {
         return 'not a sbgn class';
       }
     };
-    expect(sbgnShapes.draw.bind(dummyNode.data('class'), dummyNode)).to.throw(TypeError);
+    expect(sbgnShapes.draw.bind(dummyNode)).to.throw(TypeError);
   });
 });
 
