@@ -845,6 +845,54 @@ var mapkCascadeData = {
 
 var exhaustiveData = {
     "nodes": [
+    {
+        "data": {
+            "id": "aa",
+            "bbox": {
+                "x": 1230,
+                "y": 430,
+                "w": "60",
+                "h": "60"
+            },
+            "class": "process",
+            "label": "process",
+            "statesandinfos": [],
+            "parent": "",
+            "ports": []
+        }
+    },
+    {
+        "data": {
+            "id": "ab",
+            "bbox": {
+                "x": 1330,
+                "y": 430,
+                "w": "60",
+                "h": "60"
+            },
+            "class": "uncertain process",
+            "label": "uncertain process",
+            "statesandinfos": [],
+            "parent": "",
+            "ports": []
+        }
+    },
+    {
+        "data": {
+            "id": "ac",
+            "bbox": {
+                "x": 1430,
+                "y": 430,
+                "w": "60",
+                "h": "60"
+            },
+            "class": "omitted process",
+            "label": "omitted process",
+            "statesandinfos": [],
+            "parent": "",
+            "ports": []
+        }
+    },
         {
             "data": {
                 "id": "1",

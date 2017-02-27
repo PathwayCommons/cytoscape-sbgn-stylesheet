@@ -146,6 +146,19 @@
         </glyph>
         <clone />
       </glyph>
+      <!-- process -->
+      <glyph id="aa" class="process">
+        <label text="process" />
+        <bbox y="400" x="1200" w="60" h="60" />
+      </glyph>
+      <glyph id="ab" class="uncertain process">
+        <label text="uncertain process" />
+        <bbox y="400" x="1300" w="60" h="60" />
+      </glyph>
+      <glyph id="ac" class="omitted process">
+        <label text="omitted process" />
+        <bbox y="400" x="1400" w="60" h="60" />
+      </glyph>
       <!-- complex -->
       <glyph id="21" class="complex">
         <label text="complex" />
