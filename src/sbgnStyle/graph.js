@@ -122,7 +122,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
           'min-width': dimensions.get('complex').w,
-          'min-height': (node) => node.width() * .7,
+          'min-height': (node) => node.outerWidth() * .7,
           'min-height-bias-top': '25%',
           'min-height-bias-bottom': '75%'
         })

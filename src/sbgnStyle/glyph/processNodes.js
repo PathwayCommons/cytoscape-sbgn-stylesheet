@@ -20,7 +20,7 @@ const processNodes = {
 
     const processSvg =
     `
-      ${baseShapes.square(0, 0, Math.min(nw, nh) * 1, squareStyle)}
+      ${baseShapes.square(1, 1, Math.min(nw, nh) - 2, squareStyle)}
     `;
     return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
   },
