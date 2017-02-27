@@ -10,16 +10,20 @@ elementStyle.sbgnShape = (node) => {
     return 'hexagon';
   }
 
-  if (sbgnClass == 'process') {
+  if (sbgnClass == 'compartment') {
+    return 'roundrectangle';
+  }
+
+  if (sbgnClass == 'process' || sbgnClass == 'omitted process' || sbgnClass == 'uncertain process') {
     return 'square';
   }
 
   if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
-    || sbgnClass == 'source and sink' || sbgnClass == 'compartment') {
+    || sbgnClass == 'source and sink') {
     return 'polygon';
   }
 
-  if (sbgnClass == 'dissociation') {
+  if (sbgnClass == 'dissociation' || sbgnClass == 'association' || sbgnClass == 'simple chemical') {
     return 'ellipse';
   }
 

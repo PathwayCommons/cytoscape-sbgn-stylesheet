@@ -6,13 +6,16 @@ const dimensions = require('./dimensions.js');
 var sbgnStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
+          // every non-compound node gets its bbox info from the node data (TODO: don't do this)
         .selector('node[bbox][class][class!="compartment"][class!="submap"][class!="complex multimer"][class!="complex"]')
         .css({
           'width': 'data(bbox.w)',
           'height': 'data(bbox.h)'
         })
+        // general node style
         .selector('node')
         .css({
+          'shape': (node) => elementStyle.sbgnShape(node),
           'content': (node) => elementStyle.sbgnContent(node),
           'font-size': (node) => elementStyle.labelTextSize(node),
           'text-valign': 'center',
@@ -26,247 +29,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'text-wrap': 'wrap',
           'text-max-width': 500,
         })
-        .selector('node[class]')
-        .css({
-          'shape': (node) => elementStyle.sbgnShape(node)
-        })
-        .selector('node[class="process"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'shape': 'square',
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-        })
-        .selector('node[class="uncertain process"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'shape': 'square',
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-        })
-        .selector('node[class="omitted process"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.max(node.width(), node.height()) * 0.1,
-          'shape': 'square',
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-        })
-        .selector('node[class="association"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'shape': 'ellipse',
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'background-opacity': 1
-        })
-        .selector('node[class="dissociation"]')
-        .css({
-          'shape': 'ellipse',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="phenotype"]')
-        .css({
-          'shape': 'hexagon',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="source and sink"]')
-        .css({
-          'shape-polygon-points': '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1, 0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0, 0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1, -0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="nucleic acid feature"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="nucleic acid feature multimer"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="perturbing agent"]')
-        .css({
-          'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="macromolecule"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.min(node.height(), node.width()) * .1,
-          'background-fit': 'none',
-          'background-width': '120%',
-          'background-height': '120%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="macromolecule multimer"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.min(node.height(), node.width()) * .1,
-          'background-fit': 'none',
-          'background-width': '120%',
-          'background-height': '120%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="simple chemical"]')
-        .css({
-          'shape': 'ellipse',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.min(node.height(), node.width()) * .1,
-          'background-fit': 'none',
-          'background-width': '120%',
-          'background-height': '120%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'width': dimensions.get('simple chemical').w,
-          'height': dimensions.get('simple chemical').h
-        })
-        .selector('node[class="simple chemical multimer"]')
-        .css({
-          'shape': 'ellipse',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.min(node.height(), node.width()) * .1,
-          'background-fit': 'none',
-          'background-width': '120%',
-          'background-height': '120%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'width': dimensions.get('simple chemical').w,
-          'height': dimensions.get('simple chemical').h
-        })
-        .selector('node[class="unspecified entity"]')
-        .css({
-          'shape': 'ellipse',
-          'background-image': (node) => sbgnShapes.draw(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0
-        })
-        .selector('node[class="complex"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'background-opacity': .2,
-          'background-fit': 'none',
-          'background-width': '110%',
-          'background-height': '110%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'min-width': dimensions.get('complex').w,
-          'min-height': (node) => node.width() * .7,
-          'min-height-bias-top': '25%',
-          'min-height-bias-bottom': '75%'
-        })
-        .selector('node[class="complex multimer"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'background-opacity': .2,
-          'background-fit': 'none',
-          'background-width': '110%',
-          'background-height': '110%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'min-width': dimensions.get('complex multimer').w,
-          'min-height': (node) => node.outerWidth() * .7,
-          'min-height-bias-top': '75%',
-          'min-height-bias-bottom': '25%',
-          'background-image-opacity': 0.8
-        })
-
-        .selector('node[class="compartment"]')
-        .css({
-          'background-image': (node) => sbgnShapes.draw(node),
-          'padding': (node) => Math.max(node.height(), node.width()) * .1,
-          'background-fit': 'none',
-          'background-width': '110%',
-          'background-height': '110%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-          'background-opacity': .2,
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'min-height': 100,
-          'min-height-bias-top': '50%',
-          'min-height-bias-bottom': '50%',
-          'min-width': 175,
-          'min-width-bias-right': '50%',
-          'min-width-bias-left': '50%'
-        })
-        .selector('node[class="tag"]')
-        .css({
-          'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
-        })
-        .selector('node[class="association"]')
-        .css({
-          'background-color': '#6B6B6B'
-        })
         .selector('node:selected')
         .css({
           'background-color': '#d67614',
@@ -277,6 +39,115 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-opacity': 0.7, 'overlay-color': '#d67614',
           'overlay-padding': '14'
+        })
+        // compound node specific style
+        .selector(`
+          node[class="complex"], node[class="complex multimer"], node[class="compartment"]
+        `)
+        .css({
+          'background-opacity': .2,
+          'background-width': '110%',
+          'background-height': '110%',
+          'text-valign': 'bottom',
+          'text-halign': 'center'
+        })
+        // every node needs these properties
+        .selector(`
+          node[class="process"], node[class="uncertain process"], node[class="omitted process"],
+          node[class="association"], node[class="dissociation"],
+          node[class="phenotype"],
+          node[class="source and sink"],
+          node[class="perturbing agent"],
+          node[class="unspecified entity"],
+          node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
+          node[class="macromolecule"], node[class="macromolecule multimer"],
+          node[class="simple chemical"], node[class="simple chemical multimer"],
+          node[class="complex"], node[class="complex multimer"],
+          node[class="compartment"]
+        `)
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
+        })
+        // process node specific style
+        .selector('node[class="association"], node[class="dissociation"]')
+        .css({
+          'background-opacity': 1
+        })
+        .selector('node[class="association"]')
+        .css({
+          'background-color': '#6B6B6B'
+        })
+        // entity pool node specific styles
+        .selector('node[class="source and sink"]')
+        .css({
+          'shape-polygon-points': '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1, 0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0, 0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1, -0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0',
+        })
+        .selector('node[class="tag"]')
+        .css({
+          'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
+        })
+        // entity pool nodes that have one or more of (units of information, state variables, multimer)
+        .selector(`
+          node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
+          node[class="macromolecule"], node[class="macromolecule multimer"],
+          node[class="simple chemical"], node[class="simple chemical multimer"],
+          node[class="complex"], node[class="complex multimer"],
+          node[class="perturbing agent"]
+        `)
+        .css({
+          'padding': (node) => Math.min(node.height(), node.width()) * .1,
+          'background-width': '120%',
+          'background-height': '120%'
+        })
+        .selector('node[class="perturbing agent"]')
+        .css({
+          'background-width': '110%', // will be 120% when units of information are implemented for it
+          'background-height': '110%',
+          'shape-polygon-points': '-1, -1,   -0.5, 0,  -1, 1,   1, 1,   0.5, 0, 1, -1',
+        })
+        .selector('node[class="simple chemical"]')
+        .css({
+          'width': dimensions.get('simple chemical').w,
+          'height': dimensions.get('simple chemical').h
+        })
+        .selector('node[class="simple chemical multimer"]')
+        .css({
+          'width': dimensions.get('simple chemical').w,
+          'height': dimensions.get('simple chemical').h
+        })
+        .selector('node[class="complex"]')
+        .css({
+          'padding': (node) => Math.max(node.height(), node.width()) * .055,
+          'min-width': dimensions.get('complex').w,
+          'min-height': (node) => node.width() * .7,
+          'min-height-bias-top': '25%',
+          'min-height-bias-bottom': '75%'
+        })
+        .selector('node[class="complex multimer"]')
+        .css({
+          'padding': (node) => Math.max(node.height(), node.width()) * .055,
+          'min-width': dimensions.get('complex multimer').w,
+          'min-height': (node) => node.outerWidth() * .7,
+          'min-height-bias-top': '75%',
+          'min-height-bias-bottom': '25%',
+          'background-image-opacity': 0.8
+        })
+
+        .selector('node[class="compartment"]')
+        .css({
+          'padding': (node) => Math.max(node.height(), node.width()) * .1,
+          'min-height': 100,
+          'min-height-bias-top': '50%',
+          'min-height-bias-bottom': '50%',
+          'min-width': 175,
+          'min-width-bias-right': '50%',
+          'min-width-bias-left': '50%'
         })
         .selector('edge')
         .css({
@@ -320,17 +191,11 @@ var sbgnStyleSheet = function (cytoscape) {
           'text-background-color': 'white',
           'text-background-opacity': '1'
         })
-        .selector('edge[class="consumption"][cardinality > 0]')
+        .selector('edge[class="consumption"][cardinality > 0], edge[class="production"][cardinality > 0]')
         .css({
           'source-label': (edge) => '' + edge.data('cardinality'),
           'source-text-margin-y': '-10',
           'source-text-offset': (edge) => elementStyle.cardinalityDistance(edge)
-        })
-        .selector('edge[class="production"][cardinality > 0]')
-        .css({
-          'target-label': (edge) => '' + edge.data('cardinality'),
-          'target-text-margin-y': '-10',
-          'target-text-offset': (edge) => elementStyle.cardinalityDistance(edge)
         })
         .selector('edge[class]')
         .css({
