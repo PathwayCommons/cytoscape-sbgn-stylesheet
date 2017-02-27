@@ -77,7 +77,7 @@ const processNodes = {
     .set('stroke-width', '3')
     .set('fill', 'none');
 
-    const shapeArgs = [nw, nh];
+    const shapeArgs = [0, 0, nw, nh];
 
     let phenotypeSvg =
     `
