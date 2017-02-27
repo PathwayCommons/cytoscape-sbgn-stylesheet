@@ -88,7 +88,7 @@ const baseShapes = {
   },
 
   roundRectangle (x, y, width, height, styleMap={}, transform='') {
-    return baseRectangle(x, y, width, height, .3*height, .3*height, .3*height, .3*height, styleMap, transform);
+    return baseRectangle(x, y, width, height, .1*width, .1*width, .1*width, .1*width, styleMap, transform);
   },
 
   square (x, y, length, styleMap={}, transform='') {
