@@ -2,7 +2,7 @@ const baseShapes = require('./baseShapes.js');
 
 const auxillaryItems = {
 
-  stateVariable (node, x, y, radius, label) {
+  stateVariable (x, y, radius, label) {
     const stateVarStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
@@ -21,7 +21,7 @@ const auxillaryItems = {
     return statevariableSvg;
   },
 
-  unitOfInformation (node, x, y, width, height, label) {
+  unitOfInformation (x, y, width, height, label) {
     const uinfoRectStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
@@ -58,13 +58,13 @@ const auxillaryItems = {
     return cloneMarkerSvg;
   },
 
-  multimer (node, shapeFn, shapeFnArgs) {
+  multimer (shapeFn, shapeFnArgs) {
     const clipId = 'multimer';
 
     const multimerStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('fill', 'none')
-    .set('stroke-width', '2')
+    .set('stroke-width', '3')
     .set('clip-path', `url(#${clipId})`);
 
     const multimerSvg =
