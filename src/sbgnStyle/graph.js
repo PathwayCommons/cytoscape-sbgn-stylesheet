@@ -40,17 +40,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': 0.7, 'overlay-color': '#d67614',
           'overlay-padding': '14'
         })
-        // compound node specific style
-        .selector(`
-          node[class="complex"], node[class="complex multimer"], node[class="compartment"]
-        `)
-        .css({
-          'background-opacity': .2,
-          'background-width': '110%',
-          'background-height': '110%',
-          'text-valign': 'bottom',
-          'text-halign': 'center'
-        })
         // every node needs these properties
         .selector(`
           node[class="process"], node[class="uncertain process"], node[class="omitted process"],
@@ -97,7 +86,6 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
           node[class="simple chemical"], node[class="simple chemical multimer"],
-          node[class="complex"], node[class="complex multimer"],
           node[class="perturbing agent"]
         `)
         .css({
@@ -121,6 +109,15 @@ var sbgnStyleSheet = function (cytoscape) {
           'width': dimensions.get('simple chemical').w,
           'height': dimensions.get('simple chemical').h
         })
+        // compound node specific style
+        .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
+        .css({
+          'background-opacity': .2,
+          'background-width': '110%',
+          'background-height': '110%',
+          'text-valign': 'bottom',
+          'text-halign': 'center'
+        })
         .selector('node[class="complex"]')
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
@@ -134,8 +131,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
           'min-width': dimensions.get('complex multimer').w,
           'min-height': (node) => node.outerWidth() * .7,
-          'min-height-bias-top': '75%',
-          'min-height-bias-bottom': '25%',
+          'min-height-bias-top': '25%',
+          'min-height-bias-bottom': '75%',
           'background-image-opacity': 0.8
         })
 
@@ -143,11 +140,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .1,
           'min-height': 100,
-          'min-height-bias-top': '50%',
-          'min-height-bias-bottom': '50%',
           'min-width': 175,
-          'min-width-bias-right': '50%',
-          'min-width-bias-left': '50%'
         })
         .selector('edge')
         .css({
