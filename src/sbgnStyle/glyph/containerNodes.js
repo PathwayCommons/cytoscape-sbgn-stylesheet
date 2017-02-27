@@ -14,7 +14,7 @@ const containerNodes = {
 
     const compartmentSvg =
     `
-      ${baseShapes.barrel(0, 0, nw, nh, style)}
+      ${baseShapes.barrel(2, 2, nw - 3, nh - 3, style)}
     `;
     return svgStr(compartmentSvg, nw, nh, 0, 0, nw, nh);
   }
