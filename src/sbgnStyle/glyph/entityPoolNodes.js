@@ -2,13 +2,13 @@ const baseShapes = require('./baseShapes.js');
 const auxillaryItems = require('./auxillaryItems.js');
 const svgStr = require('../util/svg.js').svgStr;
 
-const isMultimer = (node) => {
-  return node.data('class').includes('multimer');
-};
+const isMultimer = (node) => node.data('class').includes('multimer');
 
-const hasClonemarker = (node) => {
-  return node.data('clonemarker');
-};
+
+const hasClonemarker = (node) => node.data('clonemarker');
+
+
+const hasStateAndInfos = (node) => (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
 
 const entityPoolNodes = {
 
