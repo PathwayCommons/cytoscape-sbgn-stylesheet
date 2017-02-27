@@ -2,9 +2,9 @@ const baseShapes = require('./baseShapes.js');
 const auxillaryItems = require('./auxillaryItems.js');
 const svgStr = require('../util/svg.js').svgStr;
 
-const hasStateAndInfos = require('./util/sbgn.js').hasStateAndInfos;
-const hasClonemarker = require('./util/sbgn.js').hasClonemarker;
-const isMultimer = require('./util/sbgn.js').isMultimer;
+const hasStateAndInfos = require('../util/sbgn.js').hasStateAndInfos;
+const hasClonemarker = require('../util/sbgn.js').hasClonemarker;
+const isMultimer = require('../util/sbgn.js').isMultimer;
 
 
 const randomAuxText = () => {

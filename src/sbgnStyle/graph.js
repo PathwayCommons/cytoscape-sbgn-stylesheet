@@ -1,7 +1,7 @@
 const elementStyle = require('./element.js');
 
 const sbgnShapes = require('./glyph');
-const dimensions = require('./dimensions.js');
+const sbgnDimensions = require('./dimensions');
 
 const isMultimer = require('./util/sbgn.js').isMultimer;
 const hasStateAndInfos = require('./util/sbgn.js').hasStateAndInfos;
@@ -84,6 +84,10 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
         })
+        .selector('node[class="perturbing agent"]')
+        .css({
+          'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
+        })
         // entity pool nodes that have one or more of (units of information, state variables, multimer)
         .selector(`
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
@@ -94,21 +98,9 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'padding': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
           'background-width': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%'
-        })
-        .selector('node[class="perturbing agent"]')
-        .css({
-          'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
-        })
-        .selector('node[class="simple chemical"]')
-        .css({
-          'width': dimensions.get('simple chemical').w,
-          'height': dimensions.get('simple chemical').h
-        })
-        .selector('node[class="simple chemical multimer"]')
-        .css({
-          'width': dimensions.get('simple chemical').w,
-          'height': dimensions.get('simple chemical').h
+          'background-height': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
+          'width': (node) => sbgnDimensions.width(node),
+          'height': (node) => sbgnDimensions.height(node)
         })
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
@@ -122,7 +114,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="complex"]')
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'min-width': dimensions.get('complex').w,
+          'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => node.outerWidth() * .7,
           'min-height-bias-top': '25%',
           'min-height-bias-bottom': '75%'
@@ -130,7 +122,7 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="complex multimer"]')
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'min-width': dimensions.get('complex multimer').w,
+          'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => node.outerWidth() * .7,
           'min-height-bias-top': '25%',
           'min-height-bias-bottom': '75%',

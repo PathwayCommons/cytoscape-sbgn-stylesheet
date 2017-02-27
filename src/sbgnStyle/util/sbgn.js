@@ -1,7 +1,16 @@
-module.exports.isMultimer = (node) => node.data('class').includes('multimer');
+const sbgnDataHandler = {
+  isMultimer (node) {
+    return node.data('class').includes('multimer');
+  },
+  hasClonemarker (node) {
+    return node.data('clonemarker');
+  },
+  hasStateAndInfos (node) {
+    return (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
+  },
+  sbgnClass (node) {
+    return node.data('class');
+  }
+};
 
-
-module.exports.hasClonemarker = (node) => node.data('clonemarker');
-
-
-module.exports.hasStateAndInfos = (node) => (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
+module.exports = sbgnDataHandler;
