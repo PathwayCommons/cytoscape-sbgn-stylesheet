@@ -10,6 +10,11 @@ const hasClonemarker = (node) => node.data('clonemarker');
 
 const hasStateAndInfos = (node) => (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
 
+const randomAuxText = () => {
+  const texts = ['P', '2P', 'active', 'e:INFO', 'longthingylong', '@T287', 'P@S334'];
+  return texts[Math.floor((Math.random() * texts.length))];
+};
+
 const entityPoolNodes = {
 
   unspecifiedEntity (node) {
@@ -58,7 +63,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.circle, multimerShapeArgs) : ''}
       ${baseShapes.circle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, '') : ''}
+      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
 
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
@@ -75,9 +80,12 @@ const entityPoolNodes = {
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-    let shapeArgs = [5, 5, .9*nw, .85*nh];
     const multimerShapeArgs = [15, 10, .8*nw, .8*nh];
+    let shapeArgs = [1.5, 1.5, nw - 3, nh - 3];
 
+    if (hasStateAndInfos(node)) {
+      shapeArgs = [5, 5, .9*nw, .9*nh];
+    }
 
     if (isMultimer(node)) {
       shapeArgs = [5, 5, .83*nw, .78*nh];
@@ -87,8 +95,8 @@ const entityPoolNodes = {
     `
       ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.roundRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.roundRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 0, 0.4*nw, 0.3*nh, 'active') : ''}
+      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.roundRectangle, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
