@@ -8,8 +8,8 @@ const sbgnDataHandler = {
   hasStateAndInfos (node) {
     return (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
   },
-  sbgnClass (node) {
-    return node.data('class');
+  sbgnClass (element) {
+    return element.data('class');
   }
 };
 

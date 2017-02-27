@@ -2,6 +2,8 @@ const containerNodes = require('./containerNodes.js');
 const entityPoolNodes = require('./entityPoolNodes.js');
 const processNodes = require('./processNodes.js');
 
+const sbgnData = require('../util/sbgn.js');
+
 const sbgnNodeShapeMap = new Map()
 // process nodes
 .set('process', processNodes.process)
@@ -27,11 +29,9 @@ const sbgnNodeShapeMap = new Map()
 // container nodes
 .set('compartment', containerNodes.compartment);
 
-const getSbgnClass = (node) => node.data('class');
-
 
 const draw = (node) => {
-  const sbgnClass = getSbgnClass(node);
+  const sbgnClass = sbgnData.sbgnClass(node);
   let shapeFn = sbgnNodeShapeMap.get(sbgnClass);
   if (shapeFn === undefined) {
     throw new TypeError(`${sbgnClass} does not have a shape implementation`);

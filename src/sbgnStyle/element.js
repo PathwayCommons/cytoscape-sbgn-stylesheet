@@ -1,7 +1,8 @@
+const sbgnData = require('./util/sbgn.js');
 var elementStyle = {};
 
 elementStyle.sbgnShape = (node) => {
-  let sbgnClass = node.data('class');
+  let sbgnClass = sbgnData.sbgnClass(node);
   if (sbgnClass.endsWith(' multimer')) {
     sbgnClass = sbgnClass.replace(' multimer', '');
   }
@@ -34,7 +35,7 @@ elementStyle.sbgnShape = (node) => {
 };
 
 elementStyle.sbgnArrowShape = (edge) => {
-  let sbgnClass = edge.data('class');
+  let sbgnClass = sbgnData.sbgnClass(edge);
   if (sbgnClass == 'necessary stimulation') {
     return 'triangle-cross';
   }
@@ -54,7 +55,7 @@ elementStyle.sbgnArrowShape = (edge) => {
 };
 
 elementStyle.sbgnContent = (node) => {
-  let sbgnClass = node.data('class');
+  let sbgnClass = sbgnData.sbgnClass(node);
   let content = '';
 
   if (sbgnClass.endsWith(' multimer')) {
@@ -110,7 +111,7 @@ const dynamicLabelTextSize = (nodeHeight, sizeCoefficient = 1) => {
 };
 
 elementStyle.labelTextSize = (node) => {
-  const sbgnClass = node.data('class');
+  const sbgnClass = sbgnData.sbgnClass(node);
   const nh = node.height();
 
   // Dirty legacy hack.  These types of nodes are not supposed to have labels
