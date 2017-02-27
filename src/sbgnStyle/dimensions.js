@@ -10,11 +10,15 @@ const sbgnNodeDimensions = new Map()
 .set('nucleic acid feature multimer', {w: 100, h: 60})
 .set('complex', {w: 100, h: 50})
 .set('complex multimer', {w: 275, h: 500})
-.set('source and sink', {w: 100, h: 50})
+.set('source and sink', {w: 60, h: 60})
 .set('perturbing agent', {w: 140, h: 60})
 
 .set('phenotype', {w: 140, h: 60})
-.set('process', {w:30, h: 30})
+.set('process', {w:25, h: 25})
+.set('uncertain process', {w:25, h: 25})
+.set('omitted process', {w:25, h: 25})
+.set('association', {w:25, h: 25})
+.set('dissociation', {w:25, h: 25})
 
 .set('compartment', {w: 180, h: 100});
 

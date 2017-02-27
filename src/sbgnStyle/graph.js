@@ -9,12 +9,6 @@ const hasStateAndInfos = require('./util/sbgn.js').hasStateAndInfos;
 var sbgnStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
-          // every non-compound node gets its bbox info from the node data (TODO: don't do this)
-        .selector('node[bbox][class][class!="compartment"][class!="submap"][class!="complex multimer"][class!="complex"]')
-        .css({
-          'width': 'data(bbox.w)',
-          'height': 'data(bbox.h)'
-        })
         // general node style
         .selector('node')
         .css({
@@ -59,6 +53,8 @@ var sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'background-image': (node) => sbgnShapes.draw(node),
+          'width': (node) => sbgnDimensions.width(node),
+          'height': (node) => sbgnDimensions.height(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -99,8 +95,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'padding': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
           'background-width': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
           'background-height': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
-          'width': (node) => sbgnDimensions.width(node),
-          'height': (node) => sbgnDimensions.height(node)
         })
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
