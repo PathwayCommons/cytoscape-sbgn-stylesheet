@@ -1,8 +1,11 @@
 const elementStyle = require('./element.js');
+
 const sbgnShapes = require('./glyph');
 const dimensions = require('./dimensions.js');
-// A function that creates a cytoscape style sheet from a given
-// cytoscape instance
+
+const isMultimer = require('./util/sbgn.js').isMultimer;
+const hasStateAndInfos = require('./util/sbgn.js').hasStateAndInfos;
+
 var sbgnStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
@@ -89,14 +92,12 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="perturbing agent"]
         `)
         .css({
-          'padding': (node) => Math.min(node.height(), node.width()) * .1,
-          'background-width': '120%',
-          'background-height': '120%'
+          'padding': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
+          'background-width': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
+          'background-height': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%'
         })
         .selector('node[class="perturbing agent"]')
         .css({
-          'background-width': '110%', // will be 120% when units of information are implemented for it
-          'background-height': '110%',
           'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
         })
         .selector('node[class="simple chemical"]')
