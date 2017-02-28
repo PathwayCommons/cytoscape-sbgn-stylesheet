@@ -95,8 +95,8 @@ const baseShapes = {
     return baseRectangle(x, y, length, length, 0, 0, 0, 0, styleMap, transform);
   },
 
-  text (t, x, y, textAnchor, styleMap={}, transform='') {
-    return `<text x='${x}' y='${y}' transform='${transform}' textAnchor='${textAnchor}' style='${styleMap2Str(styleMap)}'>${t}</text>`;
+  text (t, x, y, styleMap={}, transform='') {
+    return `<text x='${x}' y='${y}' transform='${transform}' style='${styleMap2Str(styleMap)}'>${t}</text>`;
   }
 
 };

@@ -10,12 +10,14 @@ const auxillaryItems = {
     .set('fill-opacity', '1');
 
     const stateVarTextStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
     const statevariableSvg =
     `
       ${baseShapes.circle(x, y, radius, stateVarStyle)}
-      ${baseShapes.text(label, x, y, 'middle', stateVarTextStyle)}
+      ${baseShapes.text(label, x, y, stateVarTextStyle)}
     `;
 
     return statevariableSvg;
@@ -29,12 +31,14 @@ const auxillaryItems = {
     .set('fill-opacity', '1');
 
     const uinfoTextStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
     const unitOfInformationSvg =
     `
       ${baseShapes.roundRectangle(x, y, width, height, uinfoRectStyle)}
-      ${baseShapes.text(label, (width) / 2, 3 *  height / 4, 'middle',  uinfoTextStyle)}
+      ${baseShapes.text(label, x + (width / 2), y + (3 *  height / 4),  uinfoTextStyle)}
     `;
 
     return unitOfInformationSvg;

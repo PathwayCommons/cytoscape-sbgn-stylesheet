@@ -62,7 +62,7 @@ describe('shape svg', function () {
       expect(validSvg(s.ellipse(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.hexagon(w, h, styleMap))).to.equal(true);
       expect(validSvg(s.line(x, y, w, h, styleMap))).to.equal(true);
-      expect(validSvg(s.text('blah', x, y, 'middle', styleMap))).to.equal(true);
+      expect(validSvg(s.text('blah', x, y, styleMap))).to.equal(true);
     } else {
       this.skip();
     }
