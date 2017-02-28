@@ -109,9 +109,12 @@ const entityPoolNodes = {
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-
-    let shapeArgs = [5, 5, .9*nw, .85*nh];
     const multimerShapeArgs = [15, 10, .8*nw, .8*nh];
+    let shapeArgs = [1.5, 1.5, nw - 3, nh - 3];
+
+    if (hasStateAndInfos(node)) {
+      shapeArgs = [5, 5, .9*nw, .9*nh];
+    }
 
     if (isMultimer(node)) {
       shapeArgs = [5, 5, .83*nw, .78*nh];
@@ -122,7 +125,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.roundBottomRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.roundBottomRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 0, 0.4*nw, 0.2*nh, '') : ''}
+      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -160,7 +163,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxillaryItems.cloneMarker(ow, oh, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 0, uinfoW, uinfoH, '') : ''}
+      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
 
     `;
     return svgStr(complexSvg, ow, oh, 0, 0, ow, oh);
@@ -201,13 +204,17 @@ const entityPoolNodes = {
     .set('stroke-width', '2')
     .set('fill', 'none');
 
-    const shapeArgs = [1, 1, nw - 4, nh - 2];
+    let shapeArgs = [1, 1, nw - 4, nh - 2];
+
+    if (hasStateAndInfos(node)) {
+      shapeArgs = [5, 5, .9*nw, .9*nh];
+    }
 
     const perturbingAgentSvg =
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
-
+      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);
   }
