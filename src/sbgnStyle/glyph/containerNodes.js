@@ -1,7 +1,7 @@
 const baseShapes = require('./baseShapes.js');
 const svgStr = require('../util/svg.js').svgStr;
 
-const auxillaryItems = require('./auxillaryItems.js');
+const auxiliaryItems = require('./auxiliaryItems.js');
 const hasStateAndInfos = require('../util/sbgn.js').hasStateAndInfos;
 
 const randomAuxText = () => {
@@ -32,7 +32,7 @@ const containerNodes = {
     const compartmentSvg =
     `
       ${baseShapes.barrel(...shapeArgs, style)}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nh / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nh / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
     `;
     return svgStr(compartmentSvg, nw, nh, 0, 0, nw, nh);
   }

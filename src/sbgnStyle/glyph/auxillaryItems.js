@@ -1,6 +1,6 @@
 const baseShapes = require('./baseShapes.js');
 
-const auxillaryItems = {
+const auxiliaryItems = {
 
   stateVariable (x, y, radius, label) {
     const stateVarStyle = new Map()
@@ -80,4 +80,4 @@ const auxillaryItems = {
   }
 };
 
-module.exports = auxillaryItems;
+module.exports = auxiliaryItems;

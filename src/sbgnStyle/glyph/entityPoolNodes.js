@@ -1,5 +1,5 @@
 const baseShapes = require('./baseShapes.js');
-const auxillaryItems = require('./auxillaryItems.js');
+const auxiliaryItems = require('./auxiliaryItems.js');
 const svgStr = require('../util/svg.js').svgStr;
 
 const hasStateAndInfos = require('../util/sbgn.js').hasStateAndInfos;
@@ -28,7 +28,7 @@ const entityPoolNodes = {
     let unspecEntitySvg =
     `
       ${baseShapes.ellipse(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.ellipse, shapeArgs) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.ellipse, shapeArgs) : ''}
     `;
     return svgStr(unspecEntitySvg, nw, nh, 0, 0, nw, nh);
   },
@@ -57,10 +57,10 @@ const entityPoolNodes = {
 
     const simpleChemicalSvg =
     `
-      ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.circle, multimerShapeArgs) : ''}
+      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.circle, multimerShapeArgs) : ''}
       ${baseShapes.circle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
 
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
@@ -90,10 +90,10 @@ const entityPoolNodes = {
 
     let macromoleculeSvg =
     `
-      ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.roundRectangle, multimerShapeArgs) : ''}
+      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.roundRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.roundRectangle, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -122,10 +122,10 @@ const entityPoolNodes = {
 
     let nucleicAcidFeatureSvg =
     `
-      ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.roundBottomRectangle, multimerShapeArgs) : ''}
+      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundBottomRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.roundBottomRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.roundBottomRectangle, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -160,10 +160,10 @@ const entityPoolNodes = {
 
     let complexSvg =
     `
-      ${isMultimer(node) ? auxillaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
+      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(ow, oh, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(ow, oh, baseShapes.cutRectangle, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
 
     `;
     return svgStr(complexSvg, ow, oh, 0, 0, ow, oh);
@@ -188,7 +188,7 @@ const entityPoolNodes = {
     const sourceAndSinkSvg =
     `
       ${baseShapes.circle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
       ${baseShapes.line(0, nh, nw, 0, styleMap)}
     `;
 
@@ -213,8 +213,8 @@ const entityPoolNodes = {
     const perturbingAgentSvg =
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxillaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxillaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
+      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);
   }
