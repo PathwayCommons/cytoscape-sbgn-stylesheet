@@ -126,6 +126,8 @@ var sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="compartment"]')
         .css({
           'padding': (node) => Math.max(node.height(), node.width()) * .1,
+          'min-width': (node) => sbgnDimensions.width(node),
+          'min-height': (node) => sbgnDimensions.height(node)
         })
         .selector('edge')
         .css({
