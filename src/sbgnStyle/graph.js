@@ -103,29 +103,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-width': '110%',
           'background-height': '110%',
           'text-valign': 'bottom',
-          'text-halign': 'center'
-        })
-        .selector('node[class="complex"]')
-        .css({
+          'text-halign': 'center',
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': (node) => node.outerWidth() * .7,
-          'min-height-bias-top': '25%',
-          'min-height-bias-bottom': '75%'
-        })
-        .selector('node[class="complex multimer"]')
-        .css({
-          'padding': (node) => Math.max(node.height(), node.width()) * .055,
-          'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': (node) => node.outerWidth() * .7,
-          'min-height-bias-top': '25%',
-          'min-height-bias-bottom': '75%',
-          'background-image-opacity': 0.8
-        })
-
-        .selector('node[class="compartment"]')
-        .css({
-          'padding': (node) => Math.max(node.height(), node.width()) * .1,
           'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => sbgnDimensions.height(node)
         })

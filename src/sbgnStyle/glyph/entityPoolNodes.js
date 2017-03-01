@@ -140,8 +140,8 @@ const entityPoolNodes = {
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-    let shapeArgs = [1, 1, ow - 2, oh - 2];
-    const multimerShapeArgs = [15, 15, .93*ow, .93*oh];
+    let shapeArgs = [1, 1, ow - 2, oh - 2, 10];
+    const multimerShapeArgs = [15, 15, .93*ow, .93*oh, 10];
 
     if (hasStateAndInfos(node)) {
       shapeArgs[0] += 5;
@@ -151,7 +151,7 @@ const entityPoolNodes = {
     }
 
     if (isMultimer(node)) {
-      shapeArgs = [5, 10, .93*ow, .9*oh];
+      shapeArgs = [5, 10, .93*ow, .9*oh, 10];
     }
 
     const uinfoW = Math.min(100, 0.4*ow);

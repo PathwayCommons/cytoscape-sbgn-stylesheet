@@ -55,12 +55,12 @@ describe('shape svg', function () {
       expect(validSvg(s.roundBottomRectangle(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.roundRectangle(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.square(x, y, w, styleMap))).to.equal(true);
-      expect(validSvg(s.barrel(w, h, styleMap))).to.equal(true);
+      expect(validSvg(s.barrel(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.circle(x, y, w, styleMap))).to.equal(true);
-      expect(validSvg(s.concaveHexagon(w, h, styleMap))).to.equal(true);
-      expect(validSvg(s.cutRectangle(x, y, w, h, styleMap))).to.equal(true);
+      expect(validSvg(s.concaveHexagon(x, y, w, h, styleMap))).to.equal(true);
+      expect(validSvg(s.cutRectangle(x, y, w, h, 10, styleMap))).to.equal(true);
       expect(validSvg(s.ellipse(x, y, w, h, styleMap))).to.equal(true);
-      expect(validSvg(s.hexagon(w, h, styleMap))).to.equal(true);
+      expect(validSvg(s.hexagon(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.line(x, y, w, h, styleMap))).to.equal(true);
       expect(validSvg(s.text('blah', x, y, styleMap))).to.equal(true);
     } else {
