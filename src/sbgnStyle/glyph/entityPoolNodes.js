@@ -166,7 +166,7 @@ const entityPoolNodes = {
     }
 
     if (sVars.length > 0) {
-      shapeArgs[3] = .85*oh + 10;
+      shapeArgs[3] = .85*oh;
     }
 
     if (isMultimer(node)) {
@@ -175,7 +175,7 @@ const entityPoolNodes = {
 
     const uinfoW = Math.min(100, 0.4*ow);
     const uinfoH = Math.min(25, 0.2*oh);
-    const sVarRadius = Math.min(20, 0.1*oh);
+    const sVarRadius = 15;
 
     let complexSvg =
     `
@@ -183,7 +183,7 @@ const entityPoolNodes = {
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(ow, oh, baseShapes.cutRectangle, shapeArgs) : ''}
       ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.stateVariable((3 * ow / 4), oh - (0.225*oh / 2), sVarRadius, sVars[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable((3 * ow / 4), shapeArgs[3] + (sVarRadius / 2), sVarRadius, sVars[0]) : ''}
     `;
     return svgStr(complexSvg, ow, oh, 0, 0, ow, oh);
   },
