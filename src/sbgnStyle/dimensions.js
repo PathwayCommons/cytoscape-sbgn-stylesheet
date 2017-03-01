@@ -20,7 +20,9 @@ const sbgnNodeDimensions = new Map()
 .set('association', {w:25, h: 25})
 .set('dissociation', {w:25, h: 25})
 
-.set('compartment', {w: 180, h: 100});
+.set('compartment', {w: 180, h: 100})
+
+.set('tag', {w: 100, h: 65});
 
 
 const dimensions = (node) => {

@@ -78,6 +78,8 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="tag"]')
         .css({
+          'width': (node) => sbgnDimensions.width(node),
+          'height': (node) => sbgnDimensions.height(node),
           'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
         })
         .selector('node[class="perturbing agent"]')
