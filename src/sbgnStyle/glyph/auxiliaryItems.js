@@ -1,8 +1,24 @@
 const baseShapes = require('./baseShapes.js');
 
+const stateVarLabel = (stateVar) => {
+  const variable = stateVar.state.variable;
+  const value = stateVar.state.value;
+  if (value && variable) {
+    return `${value}@${variable}`;
+  }
+  if (value) {
+    return value;
+  }
+
+  if (variable) {
+    return variable;
+  }
+  return '';
+};
+
 const auxiliaryItems = {
 
-  stateVariable (x, y, radius, label) {
+  stateVariable (x, y, radius, stateVar) {
     const stateVarStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
@@ -11,19 +27,20 @@ const auxiliaryItems = {
 
     const stateVarTextStyle = new Map()
     .set('alignment-baseline', 'middle')
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
     const statevariableSvg =
     `
-      ${baseShapes.circle(x, y, radius, stateVarStyle)}
-      ${baseShapes.text(label, x, y, stateVarTextStyle)}
+      ${baseShapes.ellipse(x, y, 2*radius, radius, stateVarStyle)}
+      ${baseShapes.text(stateVarLabel(stateVar), x, y, stateVarTextStyle)}
     `;
 
     return statevariableSvg;
   },
 
-  unitOfInformation (x, y, width, height, label) {
+  unitOfInformation (x, y, width, height, unitInfo) {
     const uinfoRectStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
@@ -32,13 +49,14 @@ const auxiliaryItems = {
 
     const uinfoTextStyle = new Map()
     .set('alignment-baseline', 'middle')
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
     const unitOfInformationSvg =
     `
       ${baseShapes.roundRectangle(x, y, width, height, uinfoRectStyle)}
-      ${baseShapes.text(label, x + (width / 2), y + (3 *  height / 4),  uinfoTextStyle)}
+      ${baseShapes.text(unitInfo.label.text, x + (width / 2), y + (3 *  height / 4),  uinfoTextStyle)}
     `;
 
     return unitOfInformationSvg;
