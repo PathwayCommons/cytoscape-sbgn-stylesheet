@@ -108,7 +108,13 @@ var sbgnStyleSheet = function (cytoscape) {
           'text-halign': 'center',
           'padding': (node) => Math.max(node.height(), node.width()) * .055,
           'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': (node) => sbgnDimensions.height(node)
+          'min-height': (node) => sbgnDimensions.height(node),
+        })
+        .selector('node[class="complex"], node[class="complex multimer"]')
+        .css({
+          'min-height': (node) => node.width(),
+          'min-height-bias-bottom': '10%',
+          'min-height-bias-top': '90%'
         })
         .selector('edge')
         .css({
