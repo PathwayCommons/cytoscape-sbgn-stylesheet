@@ -101,6 +101,7 @@ var sbgnStyleSheet = function (cytoscape) {
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
+          'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
           'background-width': '110%',
           'background-height': '110%',
@@ -115,6 +116,11 @@ var sbgnStyleSheet = function (cytoscape) {
           'min-height': (node) => node.width(),
           'min-height-bias-bottom': '10%',
           'min-height-bias-top': '90%'
+        })
+        .selector('node > node')
+        .css({
+          width: (node) => .8 * sbgnDimensions.width(node),
+          height: (node) => .8 * sbgnDimensions.height(node)
         })
         .selector('edge')
         .css({
