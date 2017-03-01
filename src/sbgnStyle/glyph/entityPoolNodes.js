@@ -1,16 +1,11 @@
 const baseShapes = require('./baseShapes.js');
 const auxiliaryItems = require('./auxiliaryItems.js');
-const svgStr = require('../util/svg.js').svgStr;
 
-const hasStateAndInfos = require('../util/sbgn.js').hasStateAndInfos;
+const svgStr = require('../util/svg.js').svgStr;
+const getUnitInfos = require('../util/sbgn.js').getUnitInfos;
+const getStateVars = require('../util/sbgn.js').getStateVars;
 const hasClonemarker = require('../util/sbgn.js').hasClonemarker;
 const isMultimer = require('../util/sbgn.js').isMultimer;
-
-
-const randomAuxText = () => {
-  const texts = ['P', '2P', 'active', 'e:INFO', 'longthingylong', '@T287', 'P@S334'];
-  return texts[Math.floor((Math.random() * texts.length))];
-};
 
 const entityPoolNodes = {
 
@@ -47,7 +42,8 @@ const entityPoolNodes = {
     const multimerShapeArgs = [(nw + 3) / 2, (nh + 3) / 2, (Math.min(nw, nh) - 2 - 5) / 2];
     let shapeArgs = [(nw) / 2, (nh) / 2, (Math.min(nh, nw) - 2) / 2];
 
-    if (hasStateAndInfos(node)) {
+    const uInfos = getUnitInfos(node);
+    if (uInfos.length > 0) {
       shapeArgs = [(nw) / 2, (nh) / 2, (Math.min(nh, nw) - 2  - 5) / 2];
     }
 
@@ -60,7 +56,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.circle, multimerShapeArgs) : ''}
       ${baseShapes.circle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
     `;
 
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
@@ -78,10 +74,17 @@ const entityPoolNodes = {
     .set('fill-opacity', '1');
 
     const multimerShapeArgs = [15, 10, .8*nw, .8*nh];
-    let shapeArgs = [1.5, 1.5, nw - 3, nh - 3];
+    let shapeArgs = [5, 5, nw - 10, nh - 10];
 
-    if (hasStateAndInfos(node)) {
+    const uInfos = getUnitInfos(node);
+    const sVars = getStateVars(node);
+
+    if (uInfos.length > 0) {
       shapeArgs = [5, 5, .9*nw, .9*nh];
+    }
+
+    if (sVars.length > 0) {
+      shapeArgs[3] = .85*nh;
     }
 
     if (isMultimer(node)) {
@@ -93,7 +96,8 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.roundRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable((3 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -112,8 +116,15 @@ const entityPoolNodes = {
     const multimerShapeArgs = [15, 10, .8*nw, .8*nh];
     let shapeArgs = [1.5, 1.5, nw - 3, nh - 3];
 
-    if (hasStateAndInfos(node)) {
+    const uInfos = getUnitInfos(node);
+    const sVars = getStateVars(node);
+
+    if (uInfos.length > 0) {
       shapeArgs = [5, 5, .9*nw, .9*nh];
+    }
+
+    if (sVars.length > 0) {
+      shapeArgs[3] = .85*nh;
     }
 
     if (isMultimer(node)) {
@@ -125,7 +136,8 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundBottomRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.roundBottomRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable((3 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -143,11 +155,18 @@ const entityPoolNodes = {
     let shapeArgs = [1, 1, ow - 2, oh - 2, 10];
     const multimerShapeArgs = [15, 15, .93*ow, .93*oh, 10];
 
-    if (hasStateAndInfos(node)) {
+    const uInfos = getUnitInfos(node);
+    const sVars = getStateVars(node);
+
+    if (uInfos.length > 0) {
       shapeArgs[0] += 5;
       shapeArgs[1] += 10;
       shapeArgs[2] *= .95;
       shapeArgs[3] *= .9;
+    }
+
+    if (sVars.length > 0) {
+      shapeArgs[3] = .85*oh + 10;
     }
 
     if (isMultimer(node)) {
@@ -156,15 +175,15 @@ const entityPoolNodes = {
 
     const uinfoW = Math.min(100, 0.4*ow);
     const uinfoH = Math.min(25, 0.2*oh);
-
+    const sVarRadius = Math.min(20, 0.1*oh);
 
     let complexSvg =
     `
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(ow, oh, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, randomAuxText()) : ''}
-
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((ow / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, uInfos[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable((3 * ow / 4), oh - (0.225*oh / 2), sVarRadius, sVars[0]) : ''}
     `;
     return svgStr(complexSvg, ow, oh, 0, 0, ow, oh);
   },
@@ -206,7 +225,9 @@ const entityPoolNodes = {
 
     let shapeArgs = [1, 1, nw - 4, nh - 2];
 
-    if (hasStateAndInfos(node)) {
+    const uInfos = getUnitInfos(node);
+
+    if (uInfos.length > 0) {
       shapeArgs = [5, 5, .9*nw, .9*nh];
     }
 
@@ -214,7 +235,7 @@ const entityPoolNodes = {
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
-      ${hasStateAndInfos(node) ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, randomAuxText()) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);
   }
