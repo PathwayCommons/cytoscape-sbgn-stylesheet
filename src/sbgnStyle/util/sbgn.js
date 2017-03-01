@@ -5,7 +5,15 @@ const sbgnDataHandler = {
   hasClonemarker (node) {
     return node.data('clonemarker');
   },
-  hasStateAndInfos (node) {
+  getStateVars (node) {
+    const auxiliarys = node.data('statesandinfos');
+    return auxiliarys.filter(auxItem => auxItem.clazz === 'state variable');
+  },
+  getUnitInfos (node) {
+    const auxiliarys = node.data('statesandinfos');
+    return auxiliarys.filter(auxItem => auxItem.clazz === 'unit of information');
+  },
+  hasAuxItems (node) {
     return (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
   },
   sbgnClass (element) {

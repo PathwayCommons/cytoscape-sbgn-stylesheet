@@ -4,7 +4,7 @@ const sbgnShapes = require('./glyph');
 const sbgnDimensions = require('./dimensions');
 
 const isMultimer = require('./util/sbgn.js').isMultimer;
-const hasStateAndInfos = require('./util/sbgn.js').hasStateAndInfos;
+const hasAuxItems = require('./util/sbgn.js').hasAuxItems;
 
 var sbgnStyleSheet = function (cytoscape) {
 
@@ -94,9 +94,9 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="perturbing agent"]
         `)
         .css({
-          'padding': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
-          'background-width': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasStateAndInfos(node)) ? '120%' : '100%',
+          'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
+          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
+          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
         })
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
