@@ -33,7 +33,7 @@ const auxiliaryItems = {
 
     const statevariableSvg =
     `
-      ${baseShapes.ellipse(x, y, 2*radius, radius, stateVarStyle)}
+      ${baseShapes.ellipse(x, y, 3*radius, radius, stateVarStyle)}
       ${baseShapes.text(stateVarLabel(stateVar), x, y, stateVarTextStyle)}
     `;
 

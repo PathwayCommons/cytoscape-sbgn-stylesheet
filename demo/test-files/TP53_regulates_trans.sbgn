@@ -1,0 +1,833 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph class="compartment" id="Nucleoplasm">
+            <label text="Nucleoplasm"/>
+            <bbox w="930.0362" h="826.64325" x="898.90424" y="685.8714"/>
+        </glyph>
+        <glyph class="compartment" id="plasma_membrane">
+            <label text="plasma_membrane"/>
+            <bbox w="434.8275" h="412.00528" x="571.8337" y="36.717415"/>
+        </glyph>
+        <glyph class="compartment" id="Cytosol">
+            <label text="Cytosol"/>
+            <bbox w="438.52756" h="415.47675" x="18.789835" y="402.2907"/>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_21436b04ce86a50fc213362b9f0de343" compartmentRef="Nucleoplasm">
+            <label text="p63 tetramer"/>
+            <bbox w="52.0" h="29.0" x="1703.9404" y="1406.5146"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8e03b9422f96e2196a3edbf2815aeeee_http___pathwaycommons_org_pc2_Complex_21436b04ce86a50fc213362b9f0de343" compartmentRef="Nucleoplasm">
+                <label text="TP63"/>
+                <bbox w="48.0" h="25.0" x="1705.9404" y="1408.5146"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_8e03b9422f96e2196a3edbf2815aeeee_http___pathwaycommons_org_pc2_Complex_21436b04ce86a50fc213362b9f0de343.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 680]"/>
+                    <bbox w="35.0" h="10.0" x="1712.4404" y="1403.5146"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_4895f6f4c52c4e9751797a0c9733484e" compartmentRef="Nucleoplasm">
+            <label text="PPP1R13B"/>
+            <bbox w="48.0" h="25.0" x="1778.9404" y="1388.5146"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_4895f6f4c52c4e9751797a0c9733484e.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 1090]"/>
+                <bbox w="35.0" h="10.0" x="1785.4404" y="1383.5146"/>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae" compartmentRef="Nucleoplasm">
+            <label text="TP53I3"/>
+            <bbox w="50.0" h="25.0" x="900.90424" y="1159.2418"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="908.40424" y="1154.2418"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_46387a1f3ae255b0533423e7dca68ba0" compartmentRef="Nucleoplasm">
+            <label text="TP53BP2"/>
+            <bbox w="48.0" h="25.0" x="1778.9404" y="1463.5146"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_46387a1f3ae255b0533423e7dca68ba0.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 1128]"/>
+                <bbox w="35.0" h="10.0" x="1785.4404" y="1458.5146"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer:NDRG1 Gene"/>
+            <bbox w="89.0" h="64.0" x="1082.5559" y="1147.9906"/>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc" compartmentRef="Nucleoplasm">
+                <label text="NDRG1"/>
+                <bbox w="50.0" h="25.0" x="1084.5559" y="1184.9906"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="1092.0559" y="1179.9906"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="1084.5559" y="1149.9906"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="1089.5559" y="1144.9906"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="1109.5559" y="1169.9906"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1129.5559" y="1144.9906"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_a4cffccdf63fec5145a932c36c962b22" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53,TP63"/>
+            <bbox w="48.0" h="20.0" x="1075.9832" y="812.2906"/>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_87af0a251c0a0e35987c68bbd3c42893" compartmentRef="Nucleoplasm">
+            <label text="TP73 Tetramer"/>
+            <bbox w="52.0" h="29.0" x="1703.9404" y="1481.5146"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_72b3b025413bfcf7b4ad318a210da0b0_http___pathwaycommons_org_pc2_Complex_87af0a251c0a0e35987c68bbd3c42893" compartmentRef="Nucleoplasm">
+                <label text="TP73"/>
+                <bbox w="48.0" h="25.0" x="1705.9404" y="1483.5146"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_72b3b025413bfcf7b4ad318a210da0b0_http___pathwaycommons_org_pc2_Complex_87af0a251c0a0e35987c68bbd3c42893.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 636]"/>
+                    <bbox w="35.0" h="10.0" x="1712.4404" y="1478.5146"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer:RABGGTA Gene"/>
+            <bbox w="89.0" h="64.0" x="1309.4548" y="776.9638"/>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203" compartmentRef="Nucleoplasm">
+                <label text="RABGGTA"/>
+                <bbox w="50.0" h="25.0" x="1311.4548" y="813.9638"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="1318.9548" y="808.9638"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="1311.4548" y="778.9638"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="1316.4548" y="773.9638"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="1336.4548" y="798.9638"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1356.4548" y="773.9638"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412" compartmentRef="Nucleoplasm">
+            <label text="BCL6"/>
+            <bbox w="50.0" h="25.0" x="1349.6191" y="1229.306"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1357.1191" y="1224.306"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" compartmentRef="Nucleoplasm">
+            <label text="(p-S15,S20-TP53,TP63,TP73):(PPP1R13B,TP53BP2):TP53I3 Gene"/>
+            <bbox w="54.0" h="89.0" x="977.0664" y="1243.5667"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_f3df1e0c89f34ccaf8fab9635f625a51_http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" compartmentRef="Nucleoplasm">
+                <label text="ASPP1,ASPP2"/>
+                <bbox w="48.0" h="25.0" x="979.0664" y="1280.5667"/>
+            </glyph>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae_http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" compartmentRef="Nucleoplasm">
+                <label text="TP53I3"/>
+                <bbox w="50.0" h="25.0" x="979.0664" y="1245.5667"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae_http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="986.5664" y="1240.5667"/>
+                </glyph>
+            </glyph>
+            <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_35e69f714fd79bc44eae8fc7210b4cc3_http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" compartmentRef="Nucleoplasm">
+                <label text="p-S15,S20-TP53,TP63,TP73"/>
+                <bbox w="48.0" h="20.0" x="979.0664" y="1310.5667"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_333985989e1f6e14e66b3be9f71ddb62" compartmentRef="Nucleoplasm">
+            <label text="(p-S15,S20-TP53,TP63,TP73):(ASPP1,ASPP2)"/>
+            <bbox w="52.0" h="54.0" x="982.7152" y="1120.5596"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_f3df1e0c89f34ccaf8fab9635f625a51_http___pathwaycommons_org_pc2_Complex_333985989e1f6e14e66b3be9f71ddb62" compartmentRef="Nucleoplasm">
+                <label text="ASPP1,ASPP2"/>
+                <bbox w="48.0" h="25.0" x="984.7152" y="1122.5596"/>
+            </glyph>
+            <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_35e69f714fd79bc44eae8fc7210b4cc3_http___pathwaycommons_org_pc2_Complex_333985989e1f6e14e66b3be9f71ddb62" compartmentRef="Nucleoplasm">
+                <label text="p-S15,S20-TP53,TP63,TP73"/>
+                <bbox w="48.0" h="20.0" x="984.7152" y="1152.5596"/>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa" compartmentRef="Nucleoplasm">
+            <label text="BCL2L14"/>
+            <bbox w="50.0" h="25.0" x="1011.6926" y="992.86993"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1019.1926" y="987.86993"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4" compartmentRef="Nucleoplasm">
+            <label text="(p-S15,S20-TP53,TP63):PERP Gene"/>
+            <bbox w="54.0" h="59.0" x="1187.5702" y="950.45984"/>
+            <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_a4cffccdf63fec5145a932c36c962b22_http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4" compartmentRef="Nucleoplasm">
+                <label text="p-S15,S20-TP53,TP63"/>
+                <bbox w="48.0" h="20.0" x="1189.5702" y="987.45984"/>
+            </glyph>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1_http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4" compartmentRef="Nucleoplasm">
+                <label text="PERP"/>
+                <bbox w="50.0" h="25.0" x="1189.5702" y="952.45984"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1_http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="1197.0702" y="947.45984"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_3c8f2e2cb3782684d5a37d751d6c5766" compartmentRef="Nucleoplasm">
+            <label text="BCL6"/>
+            <bbox w="48.0" h="25.0" x="1461.9956" y="1328.241"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3c8f2e2cb3782684d5a37d751d6c5766.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 706]"/>
+                <bbox w="35.0" h="10.0" x="1468.4956" y="1323.241"/>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9" compartmentRef="Nucleoplasm">
+            <label text="NDRG1"/>
+            <bbox w="50.0" h="25.0" x="1037.7936" y="1053.8573"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1045.2936" y="1048.8573"/>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08" compartmentRef="Nucleoplasm">
+            <label text="RABGGTA"/>
+            <bbox w="50.0" h="25.0" x="1222.196" y="810.4271"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1229.696" y="805.4271"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer:BCL2L14 Gene"/>
+            <bbox w="88.99994" h="64.0" x="968.8936" y="867.92865"/>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795" compartmentRef="Nucleoplasm">
+                <label text="BCL2L14"/>
+                <bbox w="50.0" h="25.0" x="970.8936" y="904.92865"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="978.3936" y="899.92865"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="970.8936" y="869.92865"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="975.8936" y="864.92865"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="995.8936" y="889.92865"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1015.8936" y="864.92865"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer"/>
+            <bbox w="89.0" h="29.0" x="1227.8376" y="1064.542"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="1229.8376" y="1066.542"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="1234.8376" y="1061.542"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="1254.8376" y="1086.542"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1274.8376" y="1061.542"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer:BIRC5 Gene"/>
+            <bbox w="89.0" h="64.0" x="1131.5192" y="1288.6305"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="1133.5192" y="1290.6305"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="1138.5192" y="1285.6305"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="1158.5192" y="1310.6305"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1178.5192" y="1285.6305"/>
+                </glyph>
+            </glyph>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d" compartmentRef="Nucleoplasm">
+                <label text="BIRC5"/>
+                <bbox w="50.0" h="25.0" x="1133.5192" y="1325.6305"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="1141.0192" y="1320.6305"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0" compartmentRef="Nucleoplasm">
+            <label text="BIRC5"/>
+            <bbox w="50.0" h="25.0" x="1266.7584" y="1272.9545"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1274.2584" y="1267.9545"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353" compartmentRef="Nucleoplasm">
+            <label text="p-S15,S20-TP53 Tetramer:BCL6 Gene"/>
+            <bbox w="89.0" h="64.0" x="1454.6489" y="1170.5059"/>
+            <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353" compartmentRef="Nucleoplasm">
+                <label text="BCL6"/>
+                <bbox w="50.0" h="25.0" x="1456.6489" y="1207.5059"/>
+                <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353.info.1" compartmentRef="Nucleoplasm">
+                    <label text="mt:DNA"/>
+                    <bbox w="35.0" h="10.0" x="1464.1489" y="1202.5059"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353" compartmentRef="Nucleoplasm">
+                <label text="TP53"/>
+                <bbox w="85.0" h="25.0" x="1456.6489" y="1172.5059"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 393]"/>
+                    <bbox w="35.0" h="10.0" x="1461.6489" y="1167.5059"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353.state.2" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="20"/>
+                    <bbox w="35.0" h="10.0" x="1481.6489" y="1192.5059"/>
+                </glyph>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e2decd93240c777b7254aaca57c31d58_http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353.info.3" compartmentRef="Nucleoplasm">
+                    <state value="opser" variable="15"/>
+                    <bbox w="35.0" h="10.0" x="1501.6489" y="1167.5059"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="nucleic acid feature" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1" compartmentRef="Nucleoplasm">
+            <label text="PERP"/>
+            <bbox w="50.0" h="25.0" x="1146.0704" y="786.41644"/>
+            <glyph class="unit of information" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1.info.1" compartmentRef="Nucleoplasm">
+                <label text="mt:DNA"/>
+                <bbox w="35.0" h="10.0" x="1153.5704" y="781.41644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_fa70202c34dd57e6866fcf4dc54a57e1" compartmentRef="Nucleoplasm">
+            <label text="BIRC5"/>
+            <bbox w="48.0" h="25.0" x="1288.9126" y="1442.9556"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_fa70202c34dd57e6866fcf4dc54a57e1.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 142]"/>
+                <bbox w="35.0" h="10.0" x="1295.4126" y="1437.9556"/>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1205.8198" y="687.8714"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT" x="1213.3198" y="705.3714"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT" x="1213.3198" y="685.3714"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1246.1075" y="1200.1487"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT" x="1263.6075" y="1207.6487"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT" x="1243.6075" y="1207.6487"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1393.1986" y="1309.265"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT" x="1390.6986" y="1316.765"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT" x="1410.6986" y="1316.765"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="918.1329" y="983.01196"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT" x="935.6329" y="990.51196"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT" x="915.6329" y="990.51196"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1143.9922" y="1073.8082"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT" x="1151.4922" y="1071.3082"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT" x="1151.4922" y="1091.3082"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1121.3701" y="999.55524"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT" x="1128.8701" y="1017.05524"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT" x="1128.8701" y="997.05524"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="918.14624" y="1235.9231"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT" x="925.64624" y="1233.4231"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT" x="925.64624" y="1253.4231"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1295.4408" y="926.2347"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT" x="1292.9408" y="933.7347"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT" x="1312.9408" y="933.7347"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="939.4973" y="1036.6307"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT" x="946.9973" y="1054.1307"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT" x="946.9973" y="1034.1307"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1296.3488" y="1367.8678"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT" x="1303.8488" y="1365.3678"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT" x="1303.8488" y="1385.3678"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1359.6089" y="1161.5236"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT" x="1357.1089" y="1169.0236"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT" x="1377.1089" y="1169.0236"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1175.7742" y="870.9401"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT" x="1183.2742" y="868.4401"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT" x="1183.2742" y="888.4401"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="917.19525" y="1092.3098"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT" x="934.69525" y="1099.8098"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT" x="914.69525" y="1099.8098"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1113.0488" y="859.6784"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT" x="1130.5488" y="867.1784"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT" x="1110.5488" y="867.1784"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee" compartmentRef="plasma_membrane">
+            <label text="RABGGTB"/>
+            <bbox w="48.0" h="25.0" x="956.6612" y="118.809"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee.info.1" compartmentRef="plasma_membrane">
+                <state value="x[2 - 331]"/>
+                <bbox w="35.0" h="10.0" x="963.1612" y="113.809"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4" compartmentRef="plasma_membrane">
+            <label text="RABGGTA"/>
+            <bbox w="48.0" h="25.0" x="956.3869" y="219.08629"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4.info.1" compartmentRef="plasma_membrane">
+                <state value="x[1 - 567]"/>
+                <bbox w="35.0" h="10.0" x="962.8869" y="214.08629"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0554b837d254dbb7f6d28fb5fcf3ffd9" compartmentRef="plasma_membrane">
+            <label text="PERP"/>
+            <bbox w="48.0" h="25.0" x="873.16016" y="421.7227"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_0554b837d254dbb7f6d28fb5fcf3ffd9.info.1" compartmentRef="plasma_membrane">
+                <state value="x[1 - 193]"/>
+                <bbox w="35.0" h="10.0" x="879.66016" y="416.7227"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500" compartmentRef="plasma_membrane">
+            <label text="RGGT:CHM"/>
+            <bbox w="52.0" h="98.99999" x="573.8337" y="38.717415"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500" compartmentRef="plasma_membrane">
+                <label text="RABGGTB"/>
+                <bbox w="48.0" h="25.0" x="575.8337" y="40.717415"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[2 - 331]"/>
+                    <bbox w="35.0" h="10.0" x="582.3337" y="35.717415"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500" compartmentRef="plasma_membrane">
+                <label text="RABGGTA"/>
+                <bbox w="48.0" h="25.0" x="575.8337" y="75.717415"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[1 - 567]"/>
+                    <bbox w="35.0" h="10.0" x="582.3337" y="70.717415"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500" compartmentRef="plasma_membrane">
+                <label text="CHM"/>
+                <bbox w="48.0" h="25.0" x="575.8337" y="110.717415"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b_http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[1 - 653]"/>
+                    <bbox w="35.0" h="10.0" x="582.3337" y="105.717415"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790" compartmentRef="plasma_membrane">
+            <label text="RGGT"/>
+            <bbox w="52.0" h="63.999996" x="773.5131" y="52.562534"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee_http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790" compartmentRef="plasma_membrane">
+                <label text="RABGGTB"/>
+                <bbox w="48.0" h="25.0" x="775.5131" y="54.562534"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee_http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[2 - 331]"/>
+                    <bbox w="35.0" h="10.0" x="782.0131" y="49.562534"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4_http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790" compartmentRef="plasma_membrane">
+                <label text="RABGGTA"/>
+                <bbox w="48.0" h="25.0" x="775.5131" y="89.56253"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4_http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[1 - 567]"/>
+                    <bbox w="35.0" h="10.0" x="782.0131" y="84.56253"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="904.63574" y="125.59893"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT" x="922.13574" y="133.09894"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT" x="902.13574" y="133.09894"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="669.80615" y="172.00659"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT" x="677.30615" y="189.50659"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT" x="677.30615" y="169.50659"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_c1b198b73c79537c7c6d03b8dc0ea8b2" compartmentRef="Cytosol">
+            <label text="O2.-"/>
+            <bbox w="48.0" h="20.0" x="101.46324" y="692.3736"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_0fb0002d288196c00df2b3dd1f934a90" compartmentRef="Cytosol">
+            <label text="semiquinone"/>
+            <bbox w="48.0" h="20.0" x="20.789835" y="599.78284"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_7a4c22f3cd22ccc01ddbd4711b31e2b4" compartmentRef="Cytosol">
+            <label text="NDRG1"/>
+            <bbox w="48.0" h="25.0" x="407.31738" y="755.41705"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_7a4c22f3cd22ccc01ddbd4711b31e2b4.info.1" compartmentRef="Cytosol">
+                <state value="x[2 - 394]"/>
+                <bbox w="35.0" h="10.0" x="413.81738" y="750.41705"/>
+            </glyph>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_e08d7f3cb0c6d2b9821167c83c834dfe" compartmentRef="Cytosol">
+            <label text="1,2-Naphthoquinone"/>
+            <bbox w="48.0" h="20.0" x="91.50322" y="657.04407"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b" compartmentRef="Cytosol">
+            <label text="CHM"/>
+            <bbox w="48.0" h="25.0" x="367.22552" y="404.2907"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 653]"/>
+                <bbox w="35.0" h="10.0" x="373.72552" y="399.2907"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_7cc52ee9dfc12e9057c9907dc03d2752" compartmentRef="Cytosol">
+            <label text="BCL2L14"/>
+            <bbox w="48.0" h="25.0" x="406.46066" y="711.4467"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_7cc52ee9dfc12e9057c9907dc03d2752.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 327]"/>
+                <bbox w="35.0" h="10.0" x="412.96066" y="706.4467"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad" compartmentRef="Cytosol">
+            <label text="TP53I3"/>
+            <bbox w="48.0" h="25.0" x="341.9229" y="790.76746"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 332]"/>
+                <bbox w="35.0" h="10.0" x="348.4229" y="785.76746"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e" compartmentRef="Cytosol">
+            <label text="TP53I3 Dimer"/>
+            <bbox w="52.0" h="29.0" x="39.836296" y="769.3615"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad_http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e" compartmentRef="Cytosol">
+                <label text="TP53I3"/>
+                <bbox w="48.0" h="25.0" x="41.836296" y="771.3615"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad_http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e.info.1" compartmentRef="Cytosol">
+                    <state value="x[1 - 332]"/>
+                    <bbox w="35.0" h="10.0" x="48.336296" y="766.3615"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_df9006045c7f6169da4485f60c078a74http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="TPN"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="33.86699" y="570.9431"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_41612830fe1891f5de3dcaee77c42894http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="TPNH"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="84.96502" y="626.3812"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_978c69055bcd154602c36081b51906cdhttp___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="H+"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="154.5966" y="640.3025"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_e956fb6fd4ec7548a4597bfc95eef010http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="O2"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="22.700043" y="633.19165"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="42.00537" y="672.96295"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" x="59.50537" y="680.46295"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" x="39.50537" y="680.46295"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="121.77421" y="589.7273"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" x="119.27421" y="597.2273"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" x="139.27422" y="597.2273"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="199.61186" y="779.8361"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT" x="217.11186" y="787.3361"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT" x="197.11186" y="787.3361"/>
+        </glyph>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795--to--http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795" target="http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5--to--http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" target="InputPort_http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4--to--http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4" target="InputPort_http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795" source="OutputPort_http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_fd1de962ae8f60436e1a9faf401cd795">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5--to--http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" target="InputPort_http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08--to--http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08" target="InputPort_http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0--to--http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0" target="InputPort_http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1--to--http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1" target="InputPort_http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203--to--http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203" target="http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790" source="OutputPort_http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203" source="OutputPort_http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_5c87c9bce2547670845aceec96260203">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_0fb0002d288196c00df2b3dd1f934a90" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_0fb0002d288196c00df2b3dd1f934a90">
+            <glyph class="cardinality">
+                <label text="2"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_0554b837d254dbb7f6d28fb5fcf3ffd9" source="OutputPort_http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_0554b837d254dbb7f6d28fb5fcf3ffd9">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae--to--http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae" target="InputPort_http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353--to--http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353" target="http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad--to--http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_9312aead678c53cca54c3465a58929ad" target="InputPort_http___identifiers_org_reactome_R-HSA-6799466LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="2"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b--to--http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_10cad6332316aa25aedcd17b236ce60b" target="InputPort_http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_c1b198b73c79537c7c6d03b8dc0ea8b2" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_c1b198b73c79537c7c6d03b8dc0ea8b2">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa--to--http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa" target="InputPort_http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_df9006045c7f6169da4485f60c078a74http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_df9006045c7f6169da4485f60c078a74http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_0fb0002d288196c00df2b3dd1f934a90--to--http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_0fb0002d288196c00df2b3dd1f934a90" target="InputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_e08d7f3cb0c6d2b9821167c83c834dfe" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_e08d7f3cb0c6d2b9821167c83c834dfe">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e--to--http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_1666f4b775b4caa4055a2d0c012baa1e" target="http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae--to--http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_3bfe18b8bd3230796cd0194eec352eae" target="InputPort_http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9--to--http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9" target="InputPort_http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0--to--http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0" target="InputPort_http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08--to--http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_8f5d1263af06ec4eea24e46d2eca5b08" target="InputPort_http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc--to--http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc" target="http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45--to--http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" target="http___identifiers_org_reactome_R-HSA-6799441LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_e08d7f3cb0c6d2b9821167c83c834dfe--to--http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_e08d7f3cb0c6d2b9821167c83c834dfe" target="InputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="2"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_41612830fe1891f5de3dcaee77c42894http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT--to--http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_41612830fe1891f5de3dcaee77c42894http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" target="InputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4" source="OutputPort_http___identifiers_org_reactome_R-HSA-6801089LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_8adcb95abf3cc88a4d85f2acd7d5d1b4">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc" source="OutputPort_http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_8e45e5e9ae97692318782a08ab6e93fc">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_3c8f2e2cb3782684d5a37d751d6c5766" source="OutputPort_http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_3c8f2e2cb3782684d5a37d751d6c5766">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_fa70202c34dd57e6866fcf4dc54a57e1" source="OutputPort_http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_fa70202c34dd57e6866fcf4dc54a57e1">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_7a4c22f3cd22ccc01ddbd4711b31e2b4" source="OutputPort_http___identifiers_org_reactome_R-HSA-5633314LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_7a4c22f3cd22ccc01ddbd4711b31e2b4">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_7cc52ee9dfc12e9057c9907dc03d2752" source="OutputPort_http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_7cc52ee9dfc12e9057c9907dc03d2752">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="inhibition" id="http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d--to--http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d" target="http___identifiers_org_reactome_R-HSA-6797763LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d" source="OutputPort_http___identifiers_org_reactome_R-HSA-6797766LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790--to--http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_2ee44a58d50035dd22da18b9bae5e790" target="InputPort_http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_333985989e1f6e14e66b3be9f71ddb62--to--http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_333985989e1f6e14e66b3be9f71ddb62" target="InputPort_http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa--to--http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_6cc1d7131ed54996f2a938987daa99fa" target="InputPort_http___identifiers_org_reactome_R-HSA-6791323LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_e956fb6fd4ec7548a4597bfc95eef010http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT--to--http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_e956fb6fd4ec7548a4597bfc95eef010http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT" target="InputPort_http___identifiers_org_reactome_R-HSA-6799733LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9--to--http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_61a731237780e269e9427b942ea93fa9" target="InputPort_http___identifiers_org_reactome_R-HSA-5633295LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412--to--http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412" target="InputPort_http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1--to--http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_0b9a85e9032c6eecc65f14ac95af8da1" target="InputPort_http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412--to--http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Dna_4996bf0e4187816a29cc489e50fe1412" target="InputPort_http___identifiers_org_reactome_R-HSA-6800250LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500" source="OutputPort_http___identifiers_org_reactome_R-HSA-6801109LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_01b82fa842e04da97bb646817a86f500">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45" source="OutputPort_http___identifiers_org_reactome_R-HSA-6799462LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_427af6fd43fac78e8795139847d94c45">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_978c69055bcd154602c36081b51906cdhttp___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT--to--http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_978c69055bcd154602c36081b51906cdhttp___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT" target="InputPort_http___identifiers_org_reactome_R-HSA-6799722LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="stimulation" id="http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4--to--http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4" target="http___identifiers_org_reactome_R-HSA-6800816LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee--to--http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_af3d728be5df5a080096d1a8909709ee" target="InputPort_http___identifiers_org_reactome_R-HSA-6801101LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5--to--http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" target="InputPort_http___identifiers_org_reactome_R-HSA-6801087LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4" source="OutputPort_http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_ce2ab046a2e42507fc9e47a10f2f7ce4">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_a4cffccdf63fec5145a932c36c962b22--to--http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_a4cffccdf63fec5145a932c36c962b22" target="InputPort_http___identifiers_org_reactome_R-HSA-6800836LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353" source="OutputPort_http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_efe2cf906284c7a52286fb8d6881b353">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5--to--http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" target="InputPort_http___identifiers_org_reactome_R-HSA-6791327LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5--to--http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ab4b57f8765cdc0ce281453e224735b5" target="InputPort_http___identifiers_org_reactome_R-HSA-6800253LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+    </map>
+</sbgn>

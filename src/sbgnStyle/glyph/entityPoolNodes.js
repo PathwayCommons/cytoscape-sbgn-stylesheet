@@ -120,7 +120,7 @@ const entityPoolNodes = {
     const sVars = getStateVars(node);
 
     if (uInfos.length > 0) {
-      shapeArgs = [5, 5, .9*nw, .9*nh];
+      shapeArgs = [5, 5, .9*nw, .88*nh];
     }
 
     if (sVars.length > 0) {
@@ -183,7 +183,7 @@ const entityPoolNodes = {
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.cutRectangle, shapeArgs) : ''}
       ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), shapeArgs[3] + (sVarRadius / 2), sVarRadius, sVars[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), shapeArgs[3] + shapeArgs[1] - 5, sVarRadius, sVars[0]) : ''}
     `;
     return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
   },
