@@ -1,9 +1,13 @@
 /* global $ */
 
-import SBGNRenderer from '../src/index';
+var SBGNRenderer = require('../src/');
 
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var saveAs = require('file-saver').saveAs;
+
+var ec = require('cytoscape-expand-collapse');
+
+ec(SBGNRenderer.__proto__, $);
 
 var defaultData = require('./test-data');
 
@@ -48,7 +52,7 @@ var renderGraph = function (cy, cyGraph) {
     name: 'preset',
     positions: nodePositions,
     fit: true,
-    padding: 50
+    padding: 100
   });
 
   cy.endBatch();
@@ -95,7 +99,8 @@ $(document).ready(function () {
   });
 
   window.r = window.cy = renderer;
-  renderGraph(renderer, defaultData);
+  window.convert = convertSbgnml;
+  renderGraph(renderer, defaultData.exhaustive);
 
   $('#graph-load').click(function () {
     $('#graph-input').trigger('click');

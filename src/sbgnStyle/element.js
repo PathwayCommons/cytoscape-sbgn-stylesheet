@@ -1,7 +1,8 @@
+const sbgnData = require('./util/sbgn.js');
 var elementStyle = {};
 
 elementStyle.sbgnShape = (node) => {
-  let sbgnClass = node.data('class');
+  let sbgnClass = sbgnData.sbgnClass(node);
   if (sbgnClass.endsWith(' multimer')) {
     sbgnClass = sbgnClass.replace(' multimer', '');
   }
@@ -10,27 +11,31 @@ elementStyle.sbgnShape = (node) => {
     return 'hexagon';
   }
 
-  if (sbgnClass == 'process') {
+  if (sbgnClass == 'compartment') {
+    return 'roundrectangle';
+  }
+
+  if (sbgnClass == 'process' || sbgnClass == 'omitted process' || sbgnClass == 'uncertain process') {
     return 'square';
   }
 
   if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
-    || sbgnClass == 'source and sink' || sbgnClass == 'compartment' || sbgnClass == 'complex') {
+    || sbgnClass == 'source and sink') {
     return 'polygon';
   }
 
-  if (sbgnClass == 'dissociation') {
+  if (sbgnClass == 'dissociation' || sbgnClass == 'association' || sbgnClass == 'simple chemical') {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule' || sbgnClass == 'complex') {
     return 'roundrectangle';
   }
   return 'ellipse';
 };
 
 elementStyle.sbgnArrowShape = (edge) => {
-  let sbgnClass = edge.data('class');
+  let sbgnClass = sbgnData.sbgnClass(edge);
   if (sbgnClass == 'necessary stimulation') {
     return 'triangle-cross';
   }
@@ -50,7 +55,7 @@ elementStyle.sbgnArrowShape = (edge) => {
 };
 
 elementStyle.sbgnContent = (node) => {
-  let sbgnClass = node.data('class');
+  let sbgnClass = sbgnData.sbgnClass(node);
   let content = '';
 
   if (sbgnClass.endsWith(' multimer')) {
@@ -106,7 +111,7 @@ const dynamicLabelTextSize = (nodeHeight, sizeCoefficient = 1) => {
 };
 
 elementStyle.labelTextSize = (node) => {
-  const sbgnClass = node.data('class');
+  const sbgnClass = sbgnData.sbgnClass(node);
   const nh = node.height();
 
   // Dirty legacy hack.  These types of nodes are not supposed to have labels
@@ -123,7 +128,7 @@ elementStyle.labelTextSize = (node) => {
     return dynamicLabelTextSize(nh, 1.5);
   }
 
-  if (sbgnClass === 'complex' || sbgnClass === 'compartment') {
+  if (sbgnClass.includes('complex') || sbgnClass === 'compartment') {
     return 16;
   }
 

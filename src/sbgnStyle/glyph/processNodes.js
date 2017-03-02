@@ -1,5 +1,6 @@
 const baseShapes = require('./baseShapes.js');
-const svgStr = require('../util/svg.js');
+const auxiliaryItems = require('./auxiliaryItems.js');
+const svgStr = require('../util/svg.js').svgStr;
 
 const processNodes = {
 
@@ -17,11 +18,9 @@ const processNodes = {
     .set('stroke-width', '2')
     .set('fill', 'none');
 
-    const line = baseShapes.line(0, nh / 2, nw, nh / 2, lineStyle);
-
     const processSvg =
     `
-      ${baseShapes.square(0, 0, Math.max(nw, nh), squareStyle)}
+      ${baseShapes.square(1, 1, Math.min(nw, nh) - 2, squareStyle)}
     `;
     return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
   },
@@ -39,9 +38,6 @@ const processNodes = {
     .set('stroke-width', '2')
     .set('fill', '#6A6A6A')
     .set('fill-opacity', '0');
-
-
-    const line = baseShapes.line(0, nh / 2, nw, nh / 2, styleMap);
 
     const associationSvg =
     `
@@ -81,9 +77,12 @@ const processNodes = {
     .set('stroke-width', '3')
     .set('fill', 'none');
 
+    const shapeArgs = [1, 1, nw - 3, nh - 3];
+
     let phenotypeSvg =
     `
-      ${baseShapes.hexagon(nw, nh, styleMap)}
+      ${baseShapes.hexagon(...shapeArgs, styleMap)}
+      ${node.data('clonemarker') ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.hexagon, shapeArgs) : ''}
     `;
     return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
   }
