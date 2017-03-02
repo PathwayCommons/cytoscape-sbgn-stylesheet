@@ -5,9 +5,9 @@ var SBGNRenderer = require('../src/');
 var convertSbgnml = require('sbgnml-to-cytoscape');
 var saveAs = require('file-saver').saveAs;
 
-var ec = require('cytoscape-expand-collapse');
+// var ec = require('cytoscape-expand-collapse');
 
-ec(SBGNRenderer.__proto__, $);
+// ec(SBGNRenderer.__proto__, $);
 
 var defaultData = require('./test-data');
 

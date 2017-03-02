@@ -27,6 +27,7 @@ const auxiliaryItems = {
 
     const stateVarTextStyle = new Map()
     .set('alignment-baseline', 'middle')
+    .set('font-size', '12')
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
@@ -49,6 +50,7 @@ const auxiliaryItems = {
 
     const uinfoTextStyle = new Map()
     .set('alignment-baseline', 'middle')
+    .set('font-size', '12')
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
