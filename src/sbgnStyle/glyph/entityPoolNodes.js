@@ -56,7 +56,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.circle, multimerShapeArgs) : ''}
       ${baseShapes.circle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.circle, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 2) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
     `;
 
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
@@ -96,7 +96,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.roundRectangle, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
@@ -136,7 +136,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.roundBottomRectangle, multimerShapeArgs) : ''}
       ${baseShapes.roundBottomRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.roundBottomRectangle, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(nucleicAcidFeatureSvg, nw, nh, 0, 0, nw, nh);
@@ -182,7 +182,7 @@ const entityPoolNodes = {
       ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
       ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, uInfos[0]) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, uinfoW, uinfoH, uInfos[0]) : ''}
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), shapeArgs[3] + shapeArgs[1] - 5, sVarRadius, sVars[0]) : ''}
     `;
     return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
@@ -235,7 +235,7 @@ const entityPoolNodes = {
     `
       ${baseShapes.concaveHexagon(...shapeArgs, styleMap)}
       ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.concaveHexagon, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3) - (0.4*nw / 2), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
+      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, 0.4*nw, 0.2*nh, uInfos[0]) : ''}
     `;
     return svgStr(perturbingAgentSvg, nw, nh, 0, 0, nw, nh);
   }

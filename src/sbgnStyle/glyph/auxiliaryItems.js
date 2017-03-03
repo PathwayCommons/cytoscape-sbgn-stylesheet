@@ -1,3 +1,5 @@
+const textWidth = require('text-width');
+
 const baseShapes = require('./baseShapes.js');
 
 const stateVarLabel = (stateVar) => {
@@ -19,46 +21,59 @@ const stateVarLabel = (stateVar) => {
 const auxiliaryItems = {
 
   stateVariable (x, y, radius, stateVar) {
+
+    const fontSize = 12;
+
     const stateVarStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-    const stateVarTextStyle = new Map()
+    const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', '12')
+    .set('font-size', `${fontSize}`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
+    const stateVarWidth = textWidth(
+      stateVarLabel(stateVar),
+      { family: textStyle.get('font-family'), size: fontSize});
+
     const statevariableSvg =
     `
-      ${baseShapes.ellipse(x, y, 3*radius, radius, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x, y, stateVarTextStyle)}
+      ${baseShapes.ellipse(x, y, stateVarWidth, radius, stateVarStyle)}
+      ${baseShapes.text(stateVarLabel(stateVar), x, y, textStyle)}
     `;
 
     return statevariableSvg;
   },
 
   unitOfInformation (x, y, width, height, unitInfo) {
+
+    const fontSize = 12;
+    const text = unitInfo.label.text;
+
     const uinfoRectStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '1.5')
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-    const uinfoTextStyle = new Map()
+    const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', '12')
+    .set('font-size', `${fontSize}`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
+    const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
+
     const unitOfInformationSvg =
     `
-      ${baseShapes.roundRectangle(x, y, width, height, uinfoRectStyle)}
-      ${baseShapes.text(unitInfo.label.text, x + (width / 2), y + (3 *  height / 4),  uinfoTextStyle)}
+      ${baseShapes.roundRectangle(x - (uInfoWidth / 2), y, uInfoWidth, height, uinfoRectStyle)}
+      ${baseShapes.text(unitInfo.label.text, x, y + ( height / 2),  textStyle)}
     `;
 
     return unitOfInformationSvg;

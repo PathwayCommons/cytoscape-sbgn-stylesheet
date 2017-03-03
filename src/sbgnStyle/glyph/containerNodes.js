@@ -28,7 +28,7 @@ const containerNodes = {
     const compartmentSvg =
     `
       ${baseShapes.barrel(...shapeArgs, style)}
-      ${unitInfos.length > 0 ? auxiliaryItems.unitOfInformation((nh / 3) - (uinfoW / 2), 1, uinfoW, uinfoH, unitInfos[0]) : ''}
+      ${unitInfos.length > 0 ? auxiliaryItems.unitOfInformation((nh / 3), 1, uinfoW, uinfoH, unitInfos[0]) : ''}
     `;
     return svgStr(compartmentSvg, nw, nh, 0, 0, nw, nh);
   }
