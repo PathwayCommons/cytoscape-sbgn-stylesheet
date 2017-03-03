@@ -56,7 +56,7 @@ var renderGraph = function renderGraph(cy, cyGraph) {
     name: 'preset',
     positions: nodePositions,
     fit: true,
-    padding: 100
+    padding: 50
   });
 
   cy.endBatch();
@@ -12235,7 +12235,7 @@ var defaults = {
   avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
   height: undefined, // height of layout area (overrides container height)
   width: undefined, // width of layout area (overrides container width)
-  spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up  
+  spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
   concentric: function( node ){ // returns numeric value for each node, placing higher nodes in levels towards the centre
     return node.degree();
   },
