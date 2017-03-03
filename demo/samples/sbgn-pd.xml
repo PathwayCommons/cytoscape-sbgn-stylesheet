@@ -326,11 +326,28 @@
         <bbox y='600' x='1300' w='140.0' h='60.0' />
         <clone/>
       </glyph>
+      <!-- logical operators -->
+      <glyph id="36" class="and">
+         <bbox y="1200" x="0" w="42.0" h="42.0" />
+      </glyph>
+      <glyph id="37" class="or">
+         <bbox y="1200" x="100" w="42.0" h="42.0" />
+      </glyph>
+      <glyph id="38" class="not">
+         <bbox y="1200" x="200" w="42.0" h="42.0" />
+      </glyph>
 
+      <glyph id="39" class="tag">
+         <label text="tag" />
+         <bbox y="1200" x="300" w="100.0" h="60.0" />
+      </glyph>
 
-
-
-
+      <glyph id="40" class="association">
+         <bbox y="1200" x="500" w="100.0" h="60.0" />
+      </glyph>
+      <glyph id="41" class="dissociation">
+         <bbox y="1200" x="400" w="100.0" h="60.0" />
+      </glyph>
     </map>
 
   </sbgn>
