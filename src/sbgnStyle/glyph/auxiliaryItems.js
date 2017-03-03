@@ -37,9 +37,8 @@ const auxiliaryItems = {
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
-    const stateVarWidth = textWidth(
-      stateVarLabel(stateVar),
-      { family: textStyle.get('font-family'), size: fontSize});
+    const tw = textWidth(stateVarLabel(stateVar, { family: textStyle.get('font-family'), size: fontSize}), 20);
+    const stateVarWidth = Math.max(tw * .5, 20);
 
     const statevariableSvg =
     `
