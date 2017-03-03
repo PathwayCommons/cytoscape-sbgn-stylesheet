@@ -37,7 +37,9 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': 0.7, 'overlay-color': '#d67614',
           'overlay-padding': '14'
         })
-        // every node needs these properties
+
+
+        // every process/entity pool node needs these properties
         .selector(`
           node[class="process"], node[class="uncertain process"], node[class="omitted process"],
           node[class="association"], node[class="dissociation"],
@@ -62,6 +64,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-repeat': 'no-repeat',
           'border-width': 0,
         })
+
+
         // process node specific style
         .selector('node[class="association"], node[class="dissociation"]')
         .css({
@@ -71,6 +75,8 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-color': '#6B6B6B'
         })
+
+
         // entity pool node specific styles
         .selector('node[class="source and sink"]')
         .css({
@@ -86,6 +92,8 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
         })
+
+
         // entity pool nodes that have one or more of (units of information, state variables, multimer)
         .selector(`
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
@@ -98,6 +106,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
           'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
         })
+
+
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
@@ -117,11 +127,17 @@ var sbgnStyleSheet = function (cytoscape) {
           'min-height-bias-bottom': '10%',
           'min-height-bias-top': '90%'
         })
+
+
+        // make child nodes smaller
         .selector('node > node')
         .css({
           width: (node) => .8 * sbgnDimensions.width(node),
           height: (node) => .8 * sbgnDimensions.height(node)
         })
+
+
+        // edge styling
         .selector('edge')
         .css({
           'curve-style': 'bezier',
@@ -183,6 +199,9 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'target-arrow-fill': 'filled'
         })
+
+
+        // core
         .selector('core')
         .css({
           'selection-box-color': '#d67614',
