@@ -1,3 +1,5 @@
+const memoize = require('lodash.memoize');
+
 const baseShapes = require('./baseShapes.js');
 const auxiliaryItems = require('./auxiliaryItems.js');
 
@@ -62,7 +64,7 @@ const entityPoolNodes = {
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  macromolecule (node) {
+  macromolecule: memoize( function(node) {
     const nw = node.outerWidth();
     const nh = node.outerHeight();
 
@@ -100,7 +102,13 @@ const entityPoolNodes = {
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
-  },
+  }, function macromoleculeShapeKey( node ){
+    return '' +
+      node.outerWidth() + '$' +
+      node.outerHeight() + '$' +
+      JSON.stringify( node.data() )
+    ;
+  } ),
 
   nucleicAcidFeature (node) {
     const nw = node.width();

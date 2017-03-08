@@ -8,11 +8,6 @@ const processNodes = {
     const nw = node.width();
     const nh = node.height();
 
-    const lineStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1')
-    .set('fill', 'none');
-
     const squareStyle = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '2')
