@@ -48,6 +48,7 @@
     "cytoscape": "https://github.com/cytoscape/cytoscape.js.git#unstable",
     "extend": "^3.0.0",
     "lodash.defaultsdeep": "^4.6.0",
+    "lodash.memoize": "^4.1.2",
     "text-width": "^1.2.0"
   }
 }
