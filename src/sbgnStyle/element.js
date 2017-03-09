@@ -112,7 +112,7 @@ const dynamicLabelTextSize = (nodeHeight, sizeCoefficient = 1) => {
 
 elementStyle.labelTextSize = (node) => {
   const sbgnClass = sbgnData.sbgnClass(node);
-  const nh = node.height();
+  const nh = 40; // dont use node.width() leads to expensive cyclic updates
 
   // Dirty legacy hack.  These types of nodes are not supposed to have labels
   // but apparently they need to have a text size

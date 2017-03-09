@@ -4,7 +4,6 @@ let defaultsDeep = require('lodash.defaultsdeep');
 let sbgnStyleSheet = require('./sbgnStyle/graph');
 
 let defaultOptions = {
-  style: sbgnStyleSheet(Cytoscape),
   boxSelectionEnabled: true,
   showOverlay: false,
   minZoom: false,
@@ -15,6 +14,12 @@ let defaultOptions = {
 
 class SBGNRenderer extends Cytoscape {
   constructor( options ){
+    options = defaultsDeep( {}, defaultOptions, options );
+
+    if( !options.style ){
+      options.style = sbgnStyleSheet(Cytoscape);
+    }
+
     super( defaultsDeep( {}, defaultOptions, options ) );
   }
 //   TODO: Initial sbgn-renderer api
@@ -24,5 +29,9 @@ class SBGNRenderer extends Cytoscape {
 //   ...; // export  to sbgnml file or picture
 //  }
 }
+
+SBGNRenderer.stylesheet = function(){
+  return sbgnStyleSheet(Cytoscape);
+};
 
 module.exports = SBGNRenderer;

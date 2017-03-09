@@ -34,10 +34,10 @@ $(document).ready(function () {
 
   $('#graph-input').change(function () {
     if ($(this).val() != '') {
-      var file = this.files[0];
+      var f = this.files[0];
 
-      file.readFile(renderer, file, function (file) {
-        renderGraph(renderer, file.target.result);
+      file.readFile(renderer, f, function (ft) {
+        renderGraph(renderer, ft.target.result);
       });
     }
   });

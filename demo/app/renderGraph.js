@@ -1,38 +1,16 @@
 const convertSbgnml = require('sbgnml-to-cytoscape');
 
-const trimGraph = (graphJSON) => {
-  // get all complex ids into a set
-  // for each node, if it's parent is in this set, remove it
-  const complexes = graphJSON.nodes.filter((node) => {
-    return node.data.class.includes('complex');
-  });
-  const complexSet = new Set(complexes);
-
-  const filteredChildren = graphJSON.nodes.filter((node) => {
-    return !complexSet.has(node.data.parent);
-  });
-  const childrenSet = new Set(filteredChildren);
-
-  const filteredEdges = graphJSON.edges.filter((edge) => {
-    return !childrenSet.has(edge.source) || !childrenSet.has(edge.target);
-  });
-
-  return {
-    nodes: filteredChildren,
-    edges: filteredEdges
-  };
-  // return graphJSON;
-};
+const initGraphManager = (cy) => {
+  const complexChildren = cy.nodes('[class="complex"], [class="complex multimer"]').descendants();
+  // cy.remove(complexChildren);
+}
 
 const renderGraph = (cy, fileText) => {
   const graphJSON = convertSbgnml(fileText);
-  const trimmedGraph = trimGraph(graphJSON);
+  const trimmedGraph = graphJSON;
 
-  cy.startBatch();
   cy.remove('*');
   cy.add(trimmedGraph);
-
-
 
   var nodePositions = {};
   for (var i = 0; i < trimmedGraph.nodes.length; i++) {
@@ -40,20 +18,15 @@ const renderGraph = (cy, fileText) => {
     var yPos = trimmedGraph.nodes[i].data.bbox.y;
     nodePositions[trimmedGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
   }
-
   cy.layout({
     name: 'preset',
     positions: nodePositions,
     fit: true,
     padding: 100
-  });
+  })
+  .run();
 
-  cy.endBatch();
-  cy.style().update();
-
-  // const ecAPI = cy.expandCollapse();
-  // ecAPI.collapseRecursively(cy.nodes('[class="complex"]'));
-  // ecAPI.collapseRecursively(cy.nodes('[class="complex multimer"]'));
+  initGraphManager(cy);
 };
 
 module.exports = renderGraph;
