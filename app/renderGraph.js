@@ -9,7 +9,6 @@ const renderGraph = (cy, fileText) => {
   const graphJSON = convertSbgnml(fileText);
   const trimmedGraph = graphJSON;
 
-  cy.startBatch();
   cy.remove('*');
   cy.add(trimmedGraph);
 
@@ -19,20 +18,15 @@ const renderGraph = (cy, fileText) => {
     var yPos = trimmedGraph.nodes[i].data.bbox.y;
     nodePositions[trimmedGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
   }
-
   cy.layout({
     name: 'preset',
     positions: nodePositions,
     fit: true,
     padding: 100
-  });
-
+  })
+  .run();
 
   initGraphManager(cy);
-
-  cy.endBatch();
-  cy.style().update();
-
 };
 
 module.exports = renderGraph;
