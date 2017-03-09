@@ -147,22 +147,14 @@ var sbgnStyleSheet = function (cytoscape) {
           'width': 1.5,
           'target-arrow-color': '#555',
           'source-arrow-color': '#555',
-          'text-border-color': (edge) => {
-            if (edge.selected()) {
-              return '#d67614';
-            }
-            return edge.css('line-color');
-          },
-          'color': (edge) => {
-            if (edge.selected()) {
-              return '#d67614';
-            }
-            return edge.css('line-color');
-          }
+          'text-border-color': '#555',
+          'color': '#555'
         })
         .selector('edge:selected')
         .css({
+          'color': '#d67614',
           'line-color': '#d67614',
+          'text-border-color': '#d67614',
           'source-arrow-color': '#d67614',
           'target-arrow-color': '#d67614'
         })
