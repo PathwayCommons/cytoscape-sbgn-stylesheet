@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph class="compartment" id="early_endosome_membrane">
+            <label text="early_endosome_membrane"/>
+            <bbox w="703.9912" h="670.54517" x="387.17578" y="1297.3315"/>
+        </glyph>
+        <glyph class="compartment" id="Nucleoplasm">
+            <label text="Nucleoplasm"/>
+            <bbox w="600.5831" h="483.11008" x="1118.4579" y="37.31069"/>
+        </glyph>
+        <glyph class="compartment" id="extracellular_region">
+            <label text="extracellular_region"/>
+            <bbox w="516.36194" h="495.85406" x="1888.2074" y="971.6911"/>
+        </glyph>
+        <glyph class="compartment" id="plasma_membrane">
+            <label text="plasma_membrane"/>
+            <bbox w="914.2997" h="946.56177" x="1338.1014" y="1595.8213"/>
+        </glyph>
+        <glyph class="compartment" id="Cytosol">
+            <label text="Cytosol"/>
+            <bbox w="774.3456" h="716.3556" x="38.68012" y="463.56436"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122" compartmentRef="early_endosome_membrane">
+            <label text="ZFYVE16"/>
+            <bbox w="48.0" h="25.0" x="1041.167" y="1912.477"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122.info.1" compartmentRef="early_endosome_membrane">
+                <state value="x[1 - 1539]"/>
+                <bbox w="35.0" h="10.0" x="1047.667" y="1907.477"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+            <label text="BMP:p-BMPR:Endofin:SMAD1/5/8"/>
+            <bbox w="105.0" h="129.0" x="821.6365" y="1836.8767"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="823.6365" y="1908.8767"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="823.6365" y="1838.8767"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="830.1365" y="1833.8767"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+                <label text="SMAD1/5/8"/>
+                <bbox w="48.0" h="25.0" x="823.6365" y="1938.8767"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+                <label text="ZFYVE16"/>
+                <bbox w="48.0" h="25.0" x="823.6365" y="1873.8767"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[1 - 1539]"/>
+                    <bbox w="35.0" h="10.0" x="830.1365" y="1868.8767"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" compartmentRef="early_endosome_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="876.6365" y="1838.8767"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" compartmentRef="early_endosome_membrane">
+            <label text="BMP:p-BMPR:Endofin"/>
+            <bbox w="52.0" h="129.0" x="389.17578" y="1299.3315"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" compartmentRef="early_endosome_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="391.17578" y="1371.3315"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" compartmentRef="early_endosome_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="391.17578" y="1301.3315"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="397.67578" y="1296.3315"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" compartmentRef="early_endosome_membrane">
+                <label text="ZFYVE16"/>
+                <bbox w="48.0" h="25.0" x="391.17578" y="1336.3315"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[1 - 1539]"/>
+                    <bbox w="35.0" h="10.0" x="397.67578" y="1331.3315"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" compartmentRef="early_endosome_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="391.17578" y="1401.3315"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+            <label text="BMP:p-BMPR:Endofin:p-2S-SMAD1/5/8"/>
+            <bbox w="105.0" h="129.0" x="555.464" y="1676.931"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="557.464" y="1748.931"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="557.464" y="1678.931"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="563.964" y="1673.931"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+                <label text="p-2S-SMAD1/5/8"/>
+                <bbox w="48.0" h="25.0" x="557.464" y="1778.931"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+                <label text="ZFYVE16"/>
+                <bbox w="48.0" h="25.0" x="557.464" y="1713.931"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376.info.1" compartmentRef="early_endosome_membrane">
+                    <state value="x[1 - 1539]"/>
+                    <bbox w="35.0" h="10.0" x="563.964" y="1708.931"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" compartmentRef="early_endosome_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="610.464" y="1678.931"/>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT" compartmentRef="early_endosome_membrane">
+            <bbox w="15.0" h="15.0" x="478.44458" y="1462.6045"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT" x="485.94458" y="1480.1045"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT" x="485.94458" y="1460.1045"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT" compartmentRef="early_endosome_membrane">
+            <bbox w="15.0" h="15.0" x="848.90735" y="1726.1724"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT" x="866.40735" y="1733.6724"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT" x="846.40735" y="1733.6724"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" compartmentRef="early_endosome_membrane">
+            <bbox w="15.0" h="15.0" x="751.1879" y="1630.078"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" x="768.6879" y="1637.578"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" x="748.6879" y="1637.578"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_91518303be58fe764428ccf1f01ac76b" compartmentRef="Nucleoplasm">
+            <label text="SMAD5"/>
+            <bbox w="85.0" h="25.0" x="1616.041" y="39.31069"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_91518303be58fe764428ccf1f01ac76b.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[2 - 465]"/>
+                <bbox w="35.0" h="10.0" x="1621.041" y="34.31069"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_91518303be58fe764428ccf1f01ac76b.state.2" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="1641.041" y="59.31069"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_91518303be58fe764428ccf1f01ac76b.info.3" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="463"/>
+                <bbox w="35.0" h="10.0" x="1661.041" y="34.31069"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1" compartmentRef="Nucleoplasm">
+            <label text="SKI"/>
+            <bbox w="48.0" h="25.0" x="1209.4128" y="355.24344"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 728]"/>
+                <bbox w="35.0" h="10.0" x="1215.9128" y="350.24344"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f" compartmentRef="Nucleoplasm">
+            <label text="p-2S-SMAD1/5/8:SMAD4:SKI"/>
+            <bbox w="52.0" h="99.0" x="1345.4199" y="419.42078"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_2eff6866d62cd6c7437d98d8c842ebf4_http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f" compartmentRef="Nucleoplasm">
+                <label text="SMAD4"/>
+                <bbox w="48.0" h="25.0" x="1347.4199" y="421.42078"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_2eff6866d62cd6c7437d98d8c842ebf4_http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 552]"/>
+                    <bbox w="35.0" h="10.0" x="1353.9199" y="416.42078"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1_http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f" compartmentRef="Nucleoplasm">
+                <label text="SKI"/>
+                <bbox w="48.0" h="25.0" x="1347.4199" y="456.42078"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1_http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 728]"/>
+                    <bbox w="35.0" h="10.0" x="1353.9199" y="451.42078"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_efa9911a829a6f6a9afbc9f64987065d_http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f" compartmentRef="Nucleoplasm">
+                <label text="Phospho-R-SMAD1/5/9"/>
+                <bbox w="48.0" h="25.0" x="1347.4199" y="491.42078"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" compartmentRef="Nucleoplasm">
+            <label text="p-2S-SMAD1/5/8:SMAD4"/>
+            <bbox w="52.0" h="64.0" x="1209.9509" y="236.16708"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_2eff6866d62cd6c7437d98d8c842ebf4_http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" compartmentRef="Nucleoplasm">
+                <label text="SMAD4"/>
+                <bbox w="48.0" h="25.0" x="1211.9509" y="238.16708"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_2eff6866d62cd6c7437d98d8c842ebf4_http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da.info.1" compartmentRef="Nucleoplasm">
+                    <state value="x[1 - 552]"/>
+                    <bbox w="35.0" h="10.0" x="1218.4509" y="233.16708"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_efa9911a829a6f6a9afbc9f64987065d_http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" compartmentRef="Nucleoplasm">
+                <label text="Phospho-R-SMAD1/5/9"/>
+                <bbox w="48.0" h="25.0" x="1211.9509" y="273.16708"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_035481f4255c4ea3e809025dbb8dac97" compartmentRef="Nucleoplasm">
+            <label text="SMAD9"/>
+            <bbox w="85.0" h="25.0" x="1616.041" y="74.31069"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_035481f4255c4ea3e809025dbb8dac97.info.1" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="467"/>
+                <bbox w="35.0" h="10.0" x="1621.041" y="69.31069"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_035481f4255c4ea3e809025dbb8dac97.state.2" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="1641.041" y="94.31069"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_035481f4255c4ea3e809025dbb8dac97.info.3" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 467]"/>
+                <bbox w="35.0" h="10.0" x="1661.041" y="69.31069"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_16b2739cec6395cb4d8b65d2583d4c82" compartmentRef="Nucleoplasm">
+            <label text="SMAD1"/>
+            <bbox w="85.0" h="25.0" x="1616.041" y="109.31069"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_16b2739cec6395cb4d8b65d2583d4c82.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 465]"/>
+                <bbox w="35.0" h="10.0" x="1621.041" y="104.31069"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_16b2739cec6395cb4d8b65d2583d4c82.state.2" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="1641.041" y="129.3107"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_16b2739cec6395cb4d8b65d2583d4c82.info.3" compartmentRef="Nucleoplasm">
+                <state value="opser" variable="463"/>
+                <bbox w="35.0" h="10.0" x="1661.041" y="104.31069"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_4d2b3e1c3133818bfae0b43b20b467ff" compartmentRef="Nucleoplasm">
+            <label text="Nuclear ubiquitin ligase"/>
+            <bbox w="48.0" h="25.0" x="1371.9502" y="194.87488"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0792231f2b66f578c2b3ff6b4a8ca6b2" compartmentRef="Nucleoplasm">
+            <label text="UBE2D3"/>
+            <bbox w="48.0" h="25.0" x="1616.041" y="144.3107"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_0792231f2b66f578c2b3ff6b4a8ca6b2.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 147]"/>
+                <bbox w="35.0" h="10.0" x="1622.541" y="139.3107"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e8d4ddbd8b27d28014b758874e6ec374" compartmentRef="Nucleoplasm">
+            <label text="UBE2D1"/>
+            <bbox w="48.0" h="25.0" x="1669.041" y="144.3107"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e8d4ddbd8b27d28014b758874e6ec374.info.1" compartmentRef="Nucleoplasm">
+                <state value="x[1 - 147]"/>
+                <bbox w="35.0" h="10.0" x="1675.541" y="139.3107"/>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1120.4579" y="330.77985"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT" x="1117.9579" y="338.27985"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT" x="1137.9579" y="338.27985"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1352.736" y="274.33987"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT" x="1350.236" y="281.83987"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT" x="1370.236" y="281.83987"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT" compartmentRef="Nucleoplasm">
+            <bbox w="15.0" h="15.0" x="1317.4952" y="343.6058"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT" x="1314.9952" y="351.1058"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT" x="1334.9952" y="351.1058"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_33d3d5a689d377f6f45ccf33ceb1cab9" compartmentRef="extracellular_region">
+            <label text="CHRDL1"/>
+            <bbox w="48.0" h="25.0" x="2301.5693" y="973.6911"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_33d3d5a689d377f6f45ccf33ceb1cab9.info.1" compartmentRef="extracellular_region">
+                <state value="x[22 - 450]"/>
+                <bbox w="35.0" h="10.0" x="2308.0693" y="968.6911"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_c0fc78119bb2cc162233cdcdb512f142" compartmentRef="extracellular_region">
+            <label text="FSTL1"/>
+            <bbox w="48.0" h="25.0" x="2301.5693" y="1008.6911"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_c0fc78119bb2cc162233cdcdb512f142.info.1" compartmentRef="extracellular_region">
+                <state value="x[21 - 308]"/>
+                <bbox w="35.0" h="10.0" x="2308.0693" y="1003.6911"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85" compartmentRef="extracellular_region">
+            <label text="BMP2 dimer"/>
+            <bbox w="52.0" h="29.0" x="1890.2074" y="1356.1777"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85" compartmentRef="extracellular_region">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1892.2074" y="1358.1777"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85.info.1" compartmentRef="extracellular_region">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1898.7074" y="1353.1777"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_6c7378610b40920f6a139e9d3a829333" compartmentRef="extracellular_region">
+            <label text="NOG"/>
+            <bbox w="48.0" h="25.0" x="2301.5693" y="1043.6912"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_6c7378610b40920f6a139e9d3a829333.info.1" compartmentRef="extracellular_region">
+                <state value="x[28 - 232]"/>
+                <bbox w="35.0" h="10.0" x="2308.0693" y="1038.6912"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_82cd74b56de44d8e270024a7be9d79e6" compartmentRef="extracellular_region">
+            <label text="CER1"/>
+            <bbox w="48.0" h="25.0" x="2301.5693" y="1078.6912"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_82cd74b56de44d8e270024a7be9d79e6.info.1" compartmentRef="extracellular_region">
+                <state value="x[18 - 267]"/>
+                <bbox w="35.0" h="10.0" x="2308.0693" y="1073.6912"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_092dafb1e607bc6e722e3bafc24f07f0" compartmentRef="extracellular_region">
+            <label text="Ligand Trap"/>
+            <bbox w="48.0" h="25.0" x="1987.9814" y="1341.5951"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_837ac0f3a0ab18c3b5fdeef9ab835214" compartmentRef="extracellular_region">
+            <label text="GREM2"/>
+            <bbox w="48.0" h="25.0" x="2354.5693" y="973.6911"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_837ac0f3a0ab18c3b5fdeef9ab835214.info.1" compartmentRef="extracellular_region">
+                <state value="x[22 - 168]"/>
+                <bbox w="35.0" h="10.0" x="2361.0693" y="968.6911"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d" compartmentRef="extracellular_region">
+            <label text="Ligand Trap:BMP2"/>
+            <bbox w="52.0" h="64.0" x="1917.7789" y="1129.2719"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d" compartmentRef="extracellular_region">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1919.7789" y="1131.2719"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d.info.1" compartmentRef="extracellular_region">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1926.2789" y="1126.2719"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_092dafb1e607bc6e722e3bafc24f07f0_http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d" compartmentRef="extracellular_region">
+                <label text="Ligand Trap"/>
+                <bbox w="48.0" h="25.0" x="1919.7789" y="1166.2719"/>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT" compartmentRef="extracellular_region">
+            <bbox w="15.0" h="15.0" x="1998.3118" y="1450.5452"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT" x="2005.8118" y="1448.0452"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT" x="2005.8118" y="1468.0452"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT" compartmentRef="extracellular_region">
+            <bbox w="15.0" h="15.0" x="1972.313" y="1270.4683"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT" x="1979.813" y="1287.9683"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT" x="1979.813" y="1267.9683"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8" compartmentRef="plasma_membrane">
+            <label text="BMPR1A"/>
+            <bbox w="85.0" h="25.0" x="2149.4011" y="2410.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8.info.1" compartmentRef="plasma_membrane">
+                <state value="opser" variable="218"/>
+                <bbox w="35.0" h="10.0" x="2154.4011" y="2405.383"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8.state.2" compartmentRef="plasma_membrane">
+                <state value="x[24 - 532]"/>
+                <bbox w="35.0" h="10.0" x="2154.4011" y="2430.383"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8.info.3" compartmentRef="plasma_membrane">
+                <state value="opser" variable="215"/>
+                <bbox w="35.0" h="10.0" x="2194.4011" y="2405.383"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8.state.4" compartmentRef="plasma_membrane">
+                <state value="opser" variable="220"/>
+                <bbox w="35.0" h="10.0" x="2194.4011" y="2430.383"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_3fdb2226158c1b5b7c4d3b400c8c88f8.info.5" compartmentRef="plasma_membrane">
+                <state value="opser" variable="216"/>
+                <bbox w="35.0" h="10.0" x="2224.4011" y="2403.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_b88994cd51a2befd1dac54c7565cb73a" compartmentRef="plasma_membrane">
+            <label text="BMPR1B"/>
+            <bbox w="48.0" h="25.0" x="2149.4011" y="2445.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_b88994cd51a2befd1dac54c7565cb73a.info.1" compartmentRef="plasma_membrane">
+                <state value="x[14 - 502]"/>
+                <bbox w="35.0" h="10.0" x="2155.9011" y="2440.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+            <label text="BMP:p-BMPR:I-SMAD:SMURF"/>
+            <bbox w="105.0" h="124.0" x="1481.294" y="1597.8213"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="1483.294" y="1634.8213"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1483.294" y="1599.8213"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1489.794" y="1594.8213"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8edb21880923d29b363259e2b3c814e8_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+                <label text="SMURF"/>
+                <bbox w="48.0" h="25.0" x="1483.294" y="1664.8213"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+                <label text="I-SMAD"/>
+                <bbox w="48.0" h="25.0" x="1483.294" y="1694.8213"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="1536.294" y="1599.8213"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_0a06530908bb2b4f145f14b67e31fed5" compartmentRef="plasma_membrane">
+            <label text="BMPRI dimer"/>
+            <bbox w="52.0" h="29.0" x="2152.367" y="2187.051"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0efdabc05e726bc6c5684c047f5b1a9d_http___pathwaycommons_org_pc2_Complex_0a06530908bb2b4f145f14b67e31fed5" compartmentRef="plasma_membrane">
+                <label text="Type I receptor"/>
+                <bbox w="48.0" h="25.0" x="2154.367" y="2189.051"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_bbbc2082593a7b4665e3174b884d6119" compartmentRef="plasma_membrane">
+            <label text="BMPRII dimer"/>
+            <bbox w="52.0" h="29.0" x="2180.409" y="2265.275"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_bbbc2082593a7b4665e3174b884d6119" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="2182.409" y="2267.275"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb" compartmentRef="plasma_membrane">
+            <label text="BMPRII:BMPRI"/>
+            <bbox w="52.0" h="59.0" x="2156.8113" y="1935.5079"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="2158.8113" y="1937.5079"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0efdabc05e726bc6c5684c047f5b1a9d_http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb" compartmentRef="plasma_membrane">
+                <label text="Type I receptor"/>
+                <bbox w="48.0" h="25.0" x="2158.8113" y="1967.5079"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" compartmentRef="plasma_membrane">
+            <label text="BMP:BMPRII:P-BMPRI"/>
+            <bbox w="52.0" h="94.0" x="1359.6548" y="1799.891"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" compartmentRef="plasma_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="1361.6548" y="1836.891"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" compartmentRef="plasma_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1361.6548" y="1801.891"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1368.1548" y="1796.891"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="1361.6548" y="1866.891"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_ba0c6a9b0a8948bf9c42052f5075cd67" compartmentRef="plasma_membrane">
+            <label text="BMPR2"/>
+            <bbox w="48.0" h="25.0" x="2149.4011" y="2480.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_ba0c6a9b0a8948bf9c42052f5075cd67.info.1" compartmentRef="plasma_membrane">
+                <state value="x[27 - 1038]"/>
+                <bbox w="35.0" h="10.0" x="2155.9011" y="2475.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" compartmentRef="plasma_membrane">
+            <label text="BMP2:BMP type II receptor:Phospho-BMP type I receptor:I-SMAD"/>
+            <bbox w="52.0" h="124.0" x="1455.1305" y="1846.1683"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_88c058cc72c8d9c33437527d57578c8c_http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" compartmentRef="plasma_membrane">
+                <label text="p-4S-BMPRI"/>
+                <bbox w="48.0" h="25.0" x="1457.1305" y="1883.1683"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" compartmentRef="plasma_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1457.1305" y="1848.1683"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1463.6305" y="1843.1683"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d_http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" compartmentRef="plasma_membrane">
+                <label text="I-SMAD"/>
+                <bbox w="48.0" h="25.0" x="1457.1305" y="1913.1683"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="1457.1305" y="1943.1683"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_f27a1e7ce09582cfbe5b26a00d999ced" compartmentRef="plasma_membrane">
+            <label text="ACVR2B"/>
+            <bbox w="48.0" h="25.0" x="2149.4011" y="2515.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_f27a1e7ce09582cfbe5b26a00d999ced.info.1" compartmentRef="plasma_membrane">
+                <state value="x[19 - 512]"/>
+                <bbox w="35.0" h="10.0" x="2155.9011" y="2510.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" compartmentRef="plasma_membrane">
+            <label text="BMP:BMPR"/>
+            <bbox w="52.0" h="94.0" x="1530.9788" y="1700.1598"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" compartmentRef="plasma_membrane">
+                <label text="BMP2"/>
+                <bbox w="48.0" h="25.0" x="1532.9788" y="1702.1598"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_607d6d3222076241f69a7f421933b1cf_http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876.info.1" compartmentRef="plasma_membrane">
+                    <state value="x[283 - 396]"/>
+                    <bbox w="35.0" h="10.0" x="1539.4788" y="1697.1598"/>
+                </glyph>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_519d98d39c17e3101fad32d1bed5f2c4_http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" compartmentRef="plasma_membrane">
+                <label text="Type II receptor"/>
+                <bbox w="48.0" h="25.0" x="1532.9788" y="1737.1598"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0efdabc05e726bc6c5684c047f5b1a9d_http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" compartmentRef="plasma_membrane">
+                <label text="Type I receptor"/>
+                <bbox w="48.0" h="25.0" x="1532.9788" y="1767.1598"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_6d28b6e8c31ef69e374231fc4e3c1772" compartmentRef="plasma_membrane">
+            <label text="BMPR1A"/>
+            <bbox w="48.0" h="25.0" x="2202.4011" y="2445.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_6d28b6e8c31ef69e374231fc4e3c1772.info.1" compartmentRef="plasma_membrane">
+                <state value="x[24 - 532]"/>
+                <bbox w="35.0" h="10.0" x="2208.9011" y="2440.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_0c16d9c8d2817dc901070d51d767fc90" compartmentRef="plasma_membrane">
+            <label text="ACVR2A"/>
+            <bbox w="48.0" h="25.0" x="2202.4011" y="2480.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_0c16d9c8d2817dc901070d51d767fc90.info.1" compartmentRef="plasma_membrane">
+                <state value="x[20 - 513]"/>
+                <bbox w="35.0" h="10.0" x="2208.9011" y="2475.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_7a1685a2c892cf0ebfe5e09e7a1dacb1" compartmentRef="plasma_membrane">
+            <label text="BMPR1B"/>
+            <bbox w="48.0" h="25.0" x="2202.4011" y="2515.383"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_7a1685a2c892cf0ebfe5e09e7a1dacb1.info.1" compartmentRef="plasma_membrane">
+                <state value="x[14 - 502]"/>
+                <bbox w="35.0" h="10.0" x="2208.9011" y="2510.383"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_7a1685a2c892cf0ebfe5e09e7a1dacb1.state.2" compartmentRef="plasma_membrane">
+                <state value="opser"/>
+                <bbox w="30.0" h="10.0" x="2211.4011" y="2535.383"/>
+            </glyph>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="1361.1953" y="1689.7859"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" x="1368.6953" y="1687.2859"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" x="1368.6953" y="1707.2859"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="2194.0593" y="2116.4578"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT" x="2201.5593" y="2133.9578"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT" x="2201.5593" y="2113.9578"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="1407.7865" y="1653.3013"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT" x="1405.2865" y="1660.8013"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT" x="1425.2865" y="1660.8013"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT" compartmentRef="plasma_membrane">
+            <bbox w="15.0" h="15.0" x="1340.1014" y="1743.3265"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT" x="1337.6014" y="1750.8265"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT" x="1357.6014" y="1750.8265"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c" compartmentRef="Cytosol">
+            <label text="p-2S-SMAD1/5/8"/>
+            <bbox w="48.0" h="25.0" x="263.3748" y="853.91724"/>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_c3e5e9b34045b84ebe3db6d7288efdc8" compartmentRef="Cytosol">
+            <label text="I-SMAD:p-2S-SMAD1/5/8"/>
+            <bbox w="52.0" h="59.0" x="282.26782" y="630.2093"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c_http___pathwaycommons_org_pc2_Complex_c3e5e9b34045b84ebe3db6d7288efdc8" compartmentRef="Cytosol">
+                <label text="p-2S-SMAD1/5/8"/>
+                <bbox w="48.0" h="25.0" x="284.26782" y="632.2093"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d_http___pathwaycommons_org_pc2_Complex_c3e5e9b34045b84ebe3db6d7288efdc8" compartmentRef="Cytosol">
+                <label text="I-SMAD"/>
+                <bbox w="48.0" h="25.0" x="284.26782" y="662.2093"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b" compartmentRef="Cytosol">
+            <label text="SMAD1/5/8"/>
+            <bbox w="48.0" h="25.0" x="386.68652" y="1106.9281"/>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_30bb0cb49913e6a49630d6a490b17bdd" compartmentRef="Cytosol">
+            <label text="SMURF1"/>
+            <bbox w="48.0" h="25.0" x="40.68012" y="570.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_30bb0cb49913e6a49630d6a490b17bdd.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 757]"/>
+                <bbox w="35.0" h="10.0" x="47.180115" y="565.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_e9d84df7771fbce4b303714185eb6913" compartmentRef="Cytosol">
+            <label text="SMAD1"/>
+            <bbox w="48.0" h="25.0" x="93.680115" y="570.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_e9d84df7771fbce4b303714185eb6913.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 465]"/>
+                <bbox w="35.0" h="10.0" x="100.180115" y="565.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_95a43db2c727e47741bd6763e01ef452" compartmentRef="Cytosol">
+            <label text="SMAD1"/>
+            <bbox w="85.0" h="25.0" x="40.68012" y="465.56436"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_95a43db2c727e47741bd6763e01ef452.info.1" compartmentRef="Cytosol">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="45.68012" y="460.56436"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_95a43db2c727e47741bd6763e01ef452.state.2" compartmentRef="Cytosol">
+                <state value="x[1 - 465]"/>
+                <bbox w="35.0" h="10.0" x="65.680115" y="485.56436"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_95a43db2c727e47741bd6763e01ef452.info.3" compartmentRef="Cytosol">
+                <state value="opser" variable="463"/>
+                <bbox w="35.0" h="10.0" x="85.680115" y="460.56436"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_98685a619321744ea1c3e9983ca4a786" compartmentRef="Cytosol">
+            <label text="SMURF2"/>
+            <bbox w="48.0" h="25.0" x="40.68012" y="605.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_98685a619321744ea1c3e9983ca4a786.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 748]"/>
+                <bbox w="35.0" h="10.0" x="47.180115" y="600.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_7b350e1108544c197b552904f38f80cd" compartmentRef="Cytosol">
+            <label text="SMAD6"/>
+            <bbox w="48.0" h="25.0" x="93.680115" y="605.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_7b350e1108544c197b552904f38f80cd.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 496]"/>
+                <bbox w="35.0" h="10.0" x="100.180115" y="600.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_157909f46f1db1bcf8849a8a14397b62" compartmentRef="Cytosol">
+            <label text="SMAD7"/>
+            <bbox w="48.0" h="25.0" x="130.68011" y="465.56436"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_157909f46f1db1bcf8849a8a14397b62.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 426]"/>
+                <bbox w="35.0" h="10.0" x="137.18011" y="460.56436"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_fe3f3a573931f5c18ff7e9cbb953b8e2" compartmentRef="Cytosol">
+            <label text="SMAD9"/>
+            <bbox w="48.0" h="25.0" x="130.68011" y="500.56436"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_fe3f3a573931f5c18ff7e9cbb953b8e2.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 467]"/>
+                <bbox w="35.0" h="10.0" x="137.18011" y="495.56436"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_ed521c0faffb480b03236aa7c805f965" compartmentRef="Cytosol">
+            <label text="SMAD5"/>
+            <bbox w="48.0" h="25.0" x="130.68011" y="535.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_ed521c0faffb480b03236aa7c805f965.info.1" compartmentRef="Cytosol">
+                <state value="x[2 - 465]"/>
+                <bbox w="35.0" h="10.0" x="137.18011" y="530.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d" compartmentRef="Cytosol">
+            <label text="I-SMAD"/>
+            <bbox w="48.0" h="25.0" x="615.2499" y="1083.2896"/>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9" compartmentRef="Cytosol">
+            <label text="p-2S-SMAD1/5/8:SMAD4"/>
+            <bbox w="52.0" h="64.00003" x="472.5285" y="481.24185"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c_http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9" compartmentRef="Cytosol">
+                <label text="p-2S-SMAD1/5/8"/>
+                <bbox w="48.0" h="25.0" x="474.5285" y="518.2419"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42_http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9" compartmentRef="Cytosol">
+                <label text="SMAD4"/>
+                <bbox w="48.0" h="25.0" x="474.5285" y="483.24185"/>
+                <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42_http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9.info.1" compartmentRef="Cytosol">
+                    <state value="x[1 - 552]"/>
+                    <bbox w="35.0" h="10.0" x="481.0285" y="478.24185"/>
+                </glyph>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42" compartmentRef="Cytosol">
+            <label text="SMAD4"/>
+            <bbox w="48.0" h="25.0" x="162.14249" y="677.4113"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42.info.1" compartmentRef="Cytosol">
+                <state value="x[1 - 552]"/>
+                <bbox w="35.0" h="10.0" x="168.64249" y="672.4113"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_367c4c69c7fe934553564971c41937a6" compartmentRef="Cytosol">
+            <label text="SMAD5"/>
+            <bbox w="85.0" h="25.0" x="40.68012" y="500.56436"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_367c4c69c7fe934553564971c41937a6.info.1" compartmentRef="Cytosol">
+                <state value="x[2 - 465]"/>
+                <bbox w="35.0" h="10.0" x="45.68012" y="495.56436"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_367c4c69c7fe934553564971c41937a6.state.2" compartmentRef="Cytosol">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="65.680115" y="520.56433"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_367c4c69c7fe934553564971c41937a6.info.3" compartmentRef="Cytosol">
+                <state value="opser" variable="463"/>
+                <bbox w="35.0" h="10.0" x="85.680115" y="495.56436"/>
+            </glyph>
+        </glyph>
+        <glyph class="complex" id="http___pathwaycommons_org_pc2_Complex_799d05e962f94c7c03a6871fd7320d2b" compartmentRef="Cytosol">
+            <label text="I-SMAD:SMURF"/>
+            <bbox w="52.0" h="59.0" x="686.9909" y="1093.609"/>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8edb21880923d29b363259e2b3c814e8_http___pathwaycommons_org_pc2_Complex_799d05e962f94c7c03a6871fd7320d2b" compartmentRef="Cytosol">
+                <label text="SMURF"/>
+                <bbox w="48.0" h="25.0" x="688.9909" y="1095.609"/>
+            </glyph>
+            <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d_http___pathwaycommons_org_pc2_Complex_799d05e962f94c7c03a6871fd7320d2b" compartmentRef="Cytosol">
+                <label text="I-SMAD"/>
+                <bbox w="48.0" h="25.0" x="688.9909" y="1125.609"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_d2edfa539306388d718b083aaa7e5043" compartmentRef="Cytosol">
+            <label text="SMAD9"/>
+            <bbox w="85.0" h="25.0" x="40.68012" y="535.5644"/>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_d2edfa539306388d718b083aaa7e5043.info.1" compartmentRef="Cytosol">
+                <state value="opser" variable="467"/>
+                <bbox w="35.0" h="10.0" x="45.68012" y="530.5644"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_d2edfa539306388d718b083aaa7e5043.state.2" compartmentRef="Cytosol">
+                <state value="opser" variable="465"/>
+                <bbox w="35.0" h="10.0" x="65.680115" y="555.5644"/>
+            </glyph>
+            <glyph class="state variable" id="http___pathwaycommons_org_pc2_Protein_d2edfa539306388d718b083aaa7e5043.info.3" compartmentRef="Cytosol">
+                <state value="x[1 - 467]"/>
+                <bbox w="35.0" h="10.0" x="85.680115" y="530.5644"/>
+            </glyph>
+        </glyph>
+        <glyph class="macromolecule" id="http___pathwaycommons_org_pc2_Protein_8edb21880923d29b363259e2b3c814e8" compartmentRef="Cytosol">
+            <label text="SMURF"/>
+            <bbox w="48.0" h="25.0" x="107.07336" y="743.8882"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="ADP"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="451.28348" y="1111.7179"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="ATP"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="766.0257" y="1088.495"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="ADP"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="748.6567" y="1162.9199"/>
+        </glyph>
+        <glyph class="simple chemical" id="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <label text="ATP"/>
+            <clone/>
+            <bbox w="45.0" h="15.0" x="508.47855" y="1119.3091"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="209.524" y="904.1537"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT" x="227.024" y="911.6537"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT" x="207.024" y="911.6537"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="385.21475" y="830.9455"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT" x="392.71475" y="848.4455"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT" x="392.71475" y="828.4455"/>
+        </glyph>
+        <glyph class="process" id="http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT" compartmentRef="Cytosol">
+            <bbox w="15.0" h="15.0" x="253.68211" y="617.769"/>
+            <port id="InputPort_http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT" x="261.1821" y="635.269"/>
+            <port id="OutputPort_http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT" x="261.1821" y="615.269"/>
+        </glyph>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9" source="OutputPort_http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_0a06530908bb2b4f145f14b67e31fed5--to--http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_0a06530908bb2b4f145f14b67e31fed5" target="InputPort_http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85--to--http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85" target="http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" source="OutputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c--to--http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c" target="InputPort_http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876--to--http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" target="InputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841" source="OutputPort_http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_bfbec38aec18585aeb17641c1b8f6841">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c" source="OutputPort_http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" source="OutputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42--to--http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_50baf78508272a3536a117bddaa45d42" target="InputPort_http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761--to--http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" target="InputPort_http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" source="OutputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="2"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d--to--http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d" target="InputPort_http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" source="OutputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_799d05e962f94c7c03a6871fd7320d2b--to--http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_799d05e962f94c7c03a6871fd7320d2b" target="InputPort_http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b--to--http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b" target="InputPort_http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT--to--http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" target="InputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="8"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761--to--http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" target="InputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d--to--http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_a6f751c4d1cb4ea06321ada6de213b1d" target="InputPort_http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da--to--http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" target="InputPort_http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb--to--http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb" target="InputPort_http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3" source="OutputPort_http___identifiers_org_reactome_R-HSA-201821LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_1ad19bc2c8e6069532a5bbae079a6bc3">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c--to--http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_a96dc2dbb65e93026a64f52379f04c0c" target="InputPort_http___identifiers_org_reactome_R-HSA-201422LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876--to--http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" target="http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_c3e5e9b34045b84ebe3db6d7288efdc8" source="OutputPort_http___identifiers_org_reactome_R-HSA-202626LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_c3e5e9b34045b84ebe3db6d7288efdc8">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da--to--http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" target="InputPort_http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b--to--http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_551eb065b57a0adcb6eeaee7152e156b" target="InputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85--to--http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85" target="InputPort_http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d" source="OutputPort_http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_c4398e975103fbca58de24b36d22861d">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_092dafb1e607bc6e722e3bafc24f07f0--to--http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_092dafb1e607bc6e722e3bafc24f07f0" target="InputPort_http___identifiers_org_reactome_R-HSA-201810LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1--to--http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_2126462faf058906f41eeb2dd55226c1" target="InputPort_http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761--to--http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" target="InputPort_http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb" source="OutputPort_http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_8144cb7f2385e6327ed393616a4263bb">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876" source="OutputPort_http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_01d3e439bda1a81d76312ad6faac1876">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376--to--http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_e9f4df379e9ac187f28783655cb2f376" target="InputPort_http___identifiers_org_reactome_R-HSA-201453LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da" source="OutputPort_http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_67e385c83392aebb20cfaed64cb604da">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122--to--http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Protein_be99774a55a8265c4d1c9b56c4819122" target="InputPort_http___identifiers_org_reactome_R-HSA-201648LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f" source="OutputPort_http___identifiers_org_reactome_R-HSA-201423LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_8a024b17e691f3c11fca7a95a6153d1f">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec" source="OutputPort_http___identifiers_org_reactome_R-HSA-201475LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_Complex_6a2cbf47e64ecdbf8f0f8ae8ff0e86ec">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Protein_8edb21880923d29b363259e2b3c814e8--to--http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Protein_8edb21880923d29b363259e2b3c814e8" target="http___identifiers_org_reactome_R-HSA-201445LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761--to--http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Complex_493d0698c410b3155d8edc9a8be64761" target="http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9--to--http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_47b40f3c07861fe278cca379440b09f9" target="InputPort_http___identifiers_org_reactome_R-HSA-201472LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT--to--http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_SmallMolecule_d0f5223d3271f1a1459cab70d70af3abhttp___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT" target="InputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="2"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85--to--http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_ba5af9c28bc7f66ca059881332e36a85" target="InputPort_http___identifiers_org_reactome_R-HSA-201457LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="production" id="http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT-output--to--http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" source="OutputPort_http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT" target="http___pathwaycommons_org_pc2_SmallMolecule_1f6431bab98da72b6d68e7a207839591http___identifiers_org_reactome_R-HSA-201443LEFT_TO_RIGHT">
+            <glyph class="cardinality">
+                <label text="8"/>
+            </glyph>
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_bbbc2082593a7b4665e3174b884d6119--to--http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_bbbc2082593a7b4665e3174b884d6119" target="InputPort_http___identifiers_org_reactome_R-HSA-202604LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="consumption" id="http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979--to--http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT-input" source="http___pathwaycommons_org_pc2_Complex_9645428d17f9ccecd38bf9659abb3979" target="InputPort_http___identifiers_org_reactome_R-HSA-201476LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+        <arc class="catalysis" id="http___pathwaycommons_org_pc2_Protein_4d2b3e1c3133818bfae0b43b20b467ff--to--http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT" source="http___pathwaycommons_org_pc2_Protein_4d2b3e1c3133818bfae0b43b20b467ff" target="http___identifiers_org_reactome_R-HSA-201425LEFT_TO_RIGHT">
+            <start x="0.0" y="0.0"/>
+            <end x="0.0" y="0.0"/>
+        </arc>
+    </map>
+</sbgn>

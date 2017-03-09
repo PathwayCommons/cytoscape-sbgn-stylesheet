@@ -1,119 +1,44 @@
 /* global $ */
-
-var SBGNRenderer = require('../src/');
-
-var convertSbgnml = require('sbgnml-to-cytoscape');
-var saveAs = require('file-saver').saveAs;
+// for testing
+const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
-
 window.textWidth = textWidth;
+window.convertSbgnml = convertSbgnml;
 
-// var ec = require('cytoscape-expand-collapse');
 
-// ec(SBGNRenderer.__proto__, $);
+const SBGNRenderer = require('../src/');
 
-var defaultData = require('./test-data');
+const file = require('./app/file');
+const save = require('./app/save');
+const renderGraph = require('./app/renderGraph');
 
-var loadFileText = function (absFilePath) {
-  var xhttp;
-  if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-  }
-  else {
-    xhttp = new ActiveXObject('Microsoft.XMLHTTP');
-  }
-  xhttp.open('GET', absFilePath, false);
-  xhttp.send();
-  return xhttp.responseText;
-};
+const ec = require('cytoscape-expand-collapse');
+ec(SBGNRenderer.__proto__, $);
 
-var readFile = function (renderer, file) {
-  var reader = new FileReader();
-
-  reader.onload = function (e) {
-    var graph = convertSbgnml(e.target.result);
-    renderGraph(renderer, graph);
-
-  };
-
-  reader.readAsText(file);
-};
-
-var renderGraph = function (cy, cyGraph) {
-  cy.startBatch();
-  cy.remove('*');
-  cy.add(cyGraph);
-
-  var nodePositions = {};
-  for (var i = 0; i < cyGraph.nodes.length; i++) {
-    var xPos = cyGraph.nodes[i].data.bbox.x;
-    var yPos = cyGraph.nodes[i].data.bbox.y;
-    nodePositions[cyGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
-  }
-
-  cy.layout({
-    name: 'preset',
-    positions: nodePositions,
-    fit: true,
-    padding: 100
-  });
-
-  cy.endBatch();
-  cy.style().update();
-};
-
-var b64toBlob = function (b64Data, contentType, sliceSize) {
-  contentType = contentType || '';
-  sliceSize = sliceSize || 512;
-
-  var byteCharacters = atob(b64Data);
-  var byteArrays = [];
-
-  for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-    var byteNumbers = new Array(slice.length);
-    for (var i = 0; i < slice.length; i++) {
-      byteNumbers[i] = slice.charCodeAt(i);
-    }
-
-    var byteArray = new Uint8Array(byteNumbers);
-
-    byteArrays.push(byteArray);
-  }
-
-  var blob = new Blob(byteArrays, {type: contentType});
-  return blob;
-};
-
-var save = function (renderer, filename) {
-  var graphFileString = renderer.png({scale: 3, full: true});
-
-  var b64Data = graphFileString.substr(graphFileString.indexOf(',') + 1);
-  saveAs(b64toBlob(b64Data, 'image/png'), filename);
-};
 
 $(document).ready(function () {
 
+  // init the renderer
   var container = $('#sbgn-network-container');
-
   var renderer = new SBGNRenderer({
     container: container
   });
-
   window.r = window.cy = renderer;
-  window.convert = convertSbgnml;
-  renderGraph(renderer, defaultData.exhaustive);
+  renderGraph(renderer, file.loadFileText('samples/pc_signallingByBMP.sbgn.xml'));
 
+
+  // glue events
   $('#graph-load').click(function () {
     $('#graph-input').trigger('click');
   });
 
   $('#graph-input').change(function () {
     if ($(this).val() != '') {
-      var file = this.files[0];
+      var f = this.files[0];
 
-      readFile(renderer, file);
+      file.readFile(renderer, f, function (ft) {
+        renderGraph(renderer, ft.target.result);
+      });
     }
   });
 
@@ -122,9 +47,8 @@ $(document).ready(function () {
   });
 
   $('.sample-file').click(function () {
-    var fileText = loadFileText('samples/' + $(this)[0].innerText + '.xml');
-    var graphJson = convertSbgnml(fileText);
-    renderGraph(renderer, graphJson);
+    var fileText = file.loadFileText('samples/' + $(this)[0].innerText + '.xml');
+    renderGraph(renderer, fileText);
   });
 
 });
