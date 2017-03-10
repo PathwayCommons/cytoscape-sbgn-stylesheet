@@ -1,8 +1,8 @@
-const svgStr = require('../util/svg.js').svgStr;
-const sbgnData = require('../util/sbgn.js');
+const svgStr = require('../util/svg').svgStr;
+const sbgnData = require('../util/sbgn');
 
-const auxiliaryItems = require('./auxiliaryItems.js');
-const baseShapes = require('./baseShapes.js');
+const auxiliaryItems = require('./auxiliaryItems');
+const baseShapes = require('./baseShapes');
 
 const containerNodes = {
 

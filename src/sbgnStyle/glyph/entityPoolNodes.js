@@ -1,19 +1,20 @@
 const memoize = require('lodash.memoize');
 
-const baseShapes = require('./baseShapes.js');
-const auxiliaryItems = require('./auxiliaryItems.js');
+const baseShapes = require('./baseShapes');
+const auxiliaryItems = require('./auxiliaryItems');
 
-const svgStr = require('../util/svg.js').svgStr;
-const getUnitInfos = require('../util/sbgn.js').getUnitInfos;
-const getStateVars = require('../util/sbgn.js').getStateVars;
-const hasClonemarker = require('../util/sbgn.js').hasClonemarker;
-const isMultimer = require('../util/sbgn.js').isMultimer;
+const svgStr = require('../util/svg').svgStr;
+const getUnitInfos = require('../util/sbgn').getUnitInfos;
+const getStateVars = require('../util/sbgn').getStateVars;
+const hasClonemarker = require('../util/sbgn').hasClonemarker;
+const isMultimer = require('../util/sbgn').isMultimer;
+const dimensions = require('../dimensions');
+
 
 const entityPoolNodes = {
 
   unspecifiedEntity (node) {
-    const nw = node.width();
-    const nh = node.height();
+    const {w: nw, h: nh} = dimensions.get(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -31,8 +32,8 @@ const entityPoolNodes = {
   },
 
   simpleChemical (node) {
-    const nw = node.outerWidth();
-    const nh = node.outerHeight();
+    const {w: nw, h: nh} = dimensions.get(node);
+
 
 
     const styleMap = new Map()
@@ -65,8 +66,7 @@ const entityPoolNodes = {
   },
 
   macromolecule: memoize( function(node) {
-    const nw = node.outerWidth();
-    const nh = node.outerHeight();
+    const {w: nw, h: nh} = dimensions.get(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -111,8 +111,8 @@ const entityPoolNodes = {
   } ),
 
   nucleicAcidFeature (node) {
-    const nw = node.width();
-    const nh = node.height();
+    const {w: nw, h: nh} = dimensions.get(node);
+
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -197,8 +197,8 @@ const entityPoolNodes = {
   },
 
   sourceAndSink (node) {
-    const nw = node.width();
-    const nh = node.height();
+    const {w: nw, h: nh} = dimensions.get(node);
+
 
     const centerX = node.width() / 2;
     const centerY = node.height() / 2;
@@ -223,8 +223,7 @@ const entityPoolNodes = {
   },
 
   perturbingAgent (node) {
-    const nw = node.width();
-    const nh = node.height();
+    const {w: nw, h: nh} = dimensions.get(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')

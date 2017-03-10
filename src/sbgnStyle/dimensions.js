@@ -29,7 +29,7 @@ const sbgnNodeDimensions = new Map()
 
 
 
-const dimensions = (node) => {
+const get = (node) => {
   const sbgnClass = sbgnData.sbgnClass(node);
   const dim = sbgnNodeDimensions.get(sbgnClass);
   if (dim === undefined) {
@@ -39,14 +39,15 @@ const dimensions = (node) => {
 };
 
 const width = (node) => {
-  return dimensions(node).w;
+  return get(node).w;
 };
 
 const height = (node) => {
-  return dimensions(node).h;
+  return get(node).h;
 };
 
 module.exports = {
   height: height,
-  width: width
+  width: width,
+  get: get
 };
