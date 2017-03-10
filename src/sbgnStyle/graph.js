@@ -22,9 +22,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-color': '#f6f6f6',
           'background-opacity': 0.5,
           'text-opacity': 1,
-          'opacity': 1,
-          'text-wrap': 'wrap',
-          'text-max-width': 500,
+          'opacity': 1
         })
         .selector('node:selected')
         .css({
@@ -102,7 +100,7 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="perturbing agent"]
         `)
         .css({
-          'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? Math.min(node.height(), node.width()) * .1 : 0,
+          'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? 5 : 0,
           'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
           'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
         })
@@ -117,17 +115,11 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-height': '110%',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'padding': (node) => Math.max(node.height(), node.width()) * .055,
+          'padding': '10%',
+          'padding-relative-to': 'max',
           'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => sbgnDimensions.height(node),
         })
-        .selector('node[class="complex"], node[class="complex multimer"]')
-        .css({
-          'min-height': (node) => node.width(),
-          'min-height-bias-bottom': '10%',
-          'min-height-bias-top': '90%'
-        })
-
 
         // make child nodes smaller
         .selector('node > node')

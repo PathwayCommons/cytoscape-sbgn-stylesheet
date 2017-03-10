@@ -19,16 +19,16 @@ const containerNodes = {
     const uinfoW = Math.min(100, 0.4*nw);
     const uinfoH = Math.min(25, 0.2*nh);
 
-    let shapeArgs = [2, 2, nw - 3, nh - 3];
+    let shapeArgs = [10, 5, nw - 20, nh - 10];
 
     if (unitInfos.length > 0) {
-      shapeArgs = [2, uinfoH / 2, nw*.95, nh*.9];
+      shapeArgs = [10, (uinfoH / 2), nw - 20, nh - 10];
     }
 
     const compartmentSvg =
     `
       ${baseShapes.barrel(...shapeArgs, style)}
-      ${unitInfos.length > 0 ? auxiliaryItems.unitOfInformation((nh / 3), 1, uinfoW, uinfoH, unitInfos[0]) : ''}
+      ${unitInfos.length > 0 ? auxiliaryItems.unitOfInformation((nh / 3), 5, uinfoW, uinfoH, unitInfos[0]) : ''}
     `;
     return svgStr(compartmentSvg, nw, nh, 0, 0, nw, nh);
   }

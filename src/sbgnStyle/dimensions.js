@@ -9,7 +9,7 @@ const sbgnNodeDimensions = new Map()
 .set('nucleic acid feature', {w: 100, h: 60})
 .set('nucleic acid feature multimer', {w: 100, h: 60})
 .set('complex', {w: 45, h: 45})
-.set('complex multimer', {w: 225, h: 225})
+.set('complex multimer', {w: 250, h: 250})
 .set('source and sink', {w: 60, h: 60})
 .set('perturbing agent', {w: 140, h: 60})
 
@@ -20,7 +20,7 @@ const sbgnNodeDimensions = new Map()
 .set('association', {w:25, h: 25})
 .set('dissociation', {w:25, h: 25})
 
-.set('compartment', {w: 180, h: 100})
+.set('compartment', {w: 200, h: 100})
 
 .set('tag', {w: 100, h: 65})
 .set('and', {w: 40, h: 40})
