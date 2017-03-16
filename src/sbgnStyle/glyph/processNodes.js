@@ -44,8 +44,8 @@ const processNodes = {
   dissociation (node) {
     const {w: nw, h: nh} = dimensions.get(node);
 
-    const centerX = node.width() / 2;
-    const centerY = node.height() / 2;
+    const centerX = nw / 2;
+    const centerY = nh / 2;
     const outerRadius = (Math.min(nw, nh) - 2) / 2;
     const innerRadius = (Math.min(nw, nh) - 2) / 3;
 

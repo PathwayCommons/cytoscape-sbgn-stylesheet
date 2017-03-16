@@ -200,9 +200,9 @@ const entityPoolNodes = {
     const {w: nw, h: nh} = dimensions.get(node);
 
 
-    const centerX = node.width() / 2;
-    const centerY = node.height() / 2;
-    const radius = (node.width() - 2) / 2;
+    const centerX = nw / 2;
+    const centerY = nh / 2;
+    const radius = (nw - 2) / 2;
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
