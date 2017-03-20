@@ -6,15 +6,13 @@ const sbgnDataHandler = {
     return node.data('clonemarker');
   },
   getStateVars (node) {
-    const auxiliarys = node.data('statesandinfos');
-    return auxiliarys.filter(auxItem => auxItem.clazz === 'state variable');
+    return node.data('stateVariables');
   },
   getUnitInfos (node) {
-    const auxiliarys = node.data('statesandinfos');
-    return auxiliarys.filter(auxItem => auxItem.clazz === 'unit of information');
+    return node.data('unitsOfInformation');
   },
   hasAuxItems (node) {
-    return (node.data('statesandinfos') && node.data('statesandinfos').length > 0);
+    return (node.data('stateVariables').length + node.data('unitsOfInformation').length > 0);
   },
   sbgnClass (element) {
     return element.data('class');
