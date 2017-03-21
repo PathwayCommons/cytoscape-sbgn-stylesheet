@@ -9,8 +9,6 @@ const renderGraph = (cy, fileText) => {
   const graphJSON = convertSbgnml(fileText);
   const trimmedGraph = graphJSON;
 
-  console.log(graphJSON);
-
   cy.batch(function(){
     cy.remove('*');
     cy.add(trimmedGraph);
