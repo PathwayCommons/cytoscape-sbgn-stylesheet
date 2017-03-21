@@ -12,10 +12,6 @@ const file = require('./app/file');
 const save = require('./app/save');
 const renderGraph = require('./app/renderGraph');
 
-const ec = require('cytoscape-expand-collapse');
-ec(SBGNRenderer.__proto__, $);
-
-
 $(document).ready(function () {
 
   // init the renderer
