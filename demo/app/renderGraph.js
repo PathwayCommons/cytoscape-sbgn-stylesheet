@@ -1,12 +1,39 @@
 const convertSbgnml = require('sbgnml-to-cytoscape');
 
-const initGraphManager = (cy) => {
-  const complexChildren = cy.nodes('[class="complex"], [class="complex multimer"]').descendants();
-  // cy.remove(complexChildren);
-}
+const removeDisconnectedNodes = (cy) => {
+  const compartmentChildren = cy.nodes('[class="compartment"]').children();
+  compartmentChildren.filterFn((ele) => ele.neighborhood().length === 0).remove();
+};
 
-const renderGraph = (cy, fileText) => {
-  const graphJSON = convertSbgnml(fileText);
+const expandCollapseComplexNodes = (cy) => {
+  const complexChildrenMap = new Map();
+
+  const complexes = cy.nodes('[class="complex"], [class="complex multimer"]');
+  complexes.forEach((ele) => {
+    complexChildrenMap.set(ele.id(), ele.descendants());
+  });
+  complexes.descendants().remove();
+
+  cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', {}, (evt) => {
+
+    const node = evt.target;
+    const children = complexChildrenMap.get(node.id());
+    if (children.removed()) {
+      children.restore();
+    } else {
+      children.remove();
+    }
+  });
+};
+
+const reduceGraphComplexity = (cy) => {
+
+  removeDisconnectedNodes(cy);
+  expandCollapseComplexNodes(cy);
+};
+
+const renderGraph = (cy, sbgnmlText) => {
+  const graphJSON = convertSbgnml(sbgnmlText);
   const trimmedGraph = graphJSON;
 
   cy.batch(function(){
@@ -24,11 +51,11 @@ const renderGraph = (cy, fileText) => {
       name: 'preset',
       positions: nodePositions,
       fit: true,
-      padding: 100
+      padding: 50
     }).run();
   });
 
-  initGraphManager(cy);
+  reduceGraphComplexity(cy);
 };
 
 module.exports = renderGraph;
