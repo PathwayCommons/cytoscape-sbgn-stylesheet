@@ -1,6 +1,6 @@
 {
   "name": "sbgn-renderer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A library that renders SBGN",
   "main": "dist/sbgn-renderer.js",
   "scripts": {
