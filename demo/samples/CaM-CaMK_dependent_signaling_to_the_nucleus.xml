@@ -7,7 +7,7 @@
             </label>
             <bbox y="180.0" x="75.0" h="1720.0" w="1610.0"/>
         </glyph>
-        <glyph compartmentOrder="-69.0" id="glyph1" class="compartment">
+        <glyph compartmentOrder="-69.0" id="glyph1" class="compartment" compartmentRef="glyph0">
             <label text="nucleus">
                 <bbox y="738.0" x="831.0" h="18.0" w="58.0"/>
             </label>
