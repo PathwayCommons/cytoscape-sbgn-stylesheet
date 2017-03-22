@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <title>SBGNRenderer - Demo App</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+      <link rel="stylesheet" href="app.css">
+  </head>
+
+  <body>
+    <nav class="blue-grey darken-4">
+      <div class="nav-wrapper">
+        <div class="col s12">
+          <a href="#" class="brand-logo">SBGNRenderer - Proto-Demo</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 center-align">
+          <button class="btn control blue-grey" id="graph-load" href="#">Load SBGN-ML File
+          </button>
+          <input id="graph-input" type="file"/>
+          <a class="dropdown-button btn control blue-grey" href="#" data-activates="graph-samples">
+            Load SBGN-ML Sample
+          </a>
+
+          <ul id="graph-samples" class="dropdown-content blue-grey">
+            <li><a class="sample-file white-text" href="#">pc_signallingByBMP.sbgn</a>
+            <li><a class="sample-file white-text" href="#">ERK_cascade_(_EGF_si.sbgn</a>
+            <li><a class="sample-file white-text" href="#">p53-Dependent_G1_DNA.sbgn</a>
+            <li><a class="sample-file white-text" href="#">TP53_regulates_trans.sbgn</a>
+            <li><a class="sample-file white-text" href="#">sbgn-pd</a>
+            <li><a class="sample-file white-text" href="#">neuronal_muscle_signalling</a>
+            <li><a class="sample-file white-text" href="#">CaM-CaMK_dependent_signaling_to_the_nucleus</a>
+            <li><a class="sample-file white-text" href="#">atm_mediated_phosphorylation_of_repair_proteins</a>
+            <li><a class="sample-file white-text" href="#">glycolysis</a>
+            <li><a class="sample-file white-text" href="#">mapk_cascade</a>
+            <li><a class="sample-file white-text" href="#">polyq_proteins_interference</a>
+            <li><a class="sample-file white-text" href="#">insulin-like_growth_factor_signaling</a>
+            <li><a class="sample-file white-text" href="#">activated_stat1alpha_induction_of_the_irf1_gene</a>
+            <li><a class="sample-file white-text" href="#">vitamins_b6_activation_to_pyridoxal_phosphate</a>
+          </ul>
+
+          <button class="btn control blue-grey" id="graph-save" href="#">Save Graph to Image
+          </button>
+
+        </div>
+      </div>
+      <div class="row white">
+        <div id="sbgn-network-container"></div>
+      </div>
+    </div>
+
+
+
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+
+      <script src="browserify-bundle.js"></script>
+
+  </body>
+</html>
