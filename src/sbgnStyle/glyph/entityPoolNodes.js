@@ -160,7 +160,7 @@ const entityPoolNodes = {
     .set('fill', 'white')
     .set('fill-opacity', '1');
 
-    let shapeArgs = [1, 1, nw - 2, nh - 2, 10];
+    let shapeArgs = [1, 2, nw - 2, nh - 5, 10];
     const multimerShapeArgs = [15, 15, .93*nw, .93*nh, 10];
 
     const uInfos = getUnitInfos(node);
