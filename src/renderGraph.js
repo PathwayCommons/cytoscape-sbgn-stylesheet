@@ -18,10 +18,12 @@ const expandCollapseComplexNodes = (cy) => {
 
     const node = evt.target;
     const children = complexChildrenMap.get(node.id());
-    if (children.removed()) {
-      children.restore();
-    } else {
-      children.remove();
+    if (children) {
+      if (children.removed()) {
+        children.restore();
+      } else {
+        children.remove();
+      }
     }
   });
 };
