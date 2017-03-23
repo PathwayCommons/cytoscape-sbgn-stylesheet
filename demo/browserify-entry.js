@@ -10,7 +10,10 @@ const SBGNRenderer = require('../src/');
 
 const file = require('./app/file');
 const save = require('./app/save');
-const renderGraph = require('./app/renderGraph');
+
+const renderGraph = (renderer, sbgnmlText) => {
+  SBGNRenderer.renderGraph(renderer, sbgnmlText);
+};
 
 $(document).ready(function () {
 
@@ -19,9 +22,10 @@ $(document).ready(function () {
   var renderer = new SBGNRenderer({
     container: container
   });
+  window.SBGNRenderer = SBGNRenderer;
   window.r = window.cy = renderer;
-  renderGraph(renderer, file.loadFileText('samples/pc_signallingByBMP.sbgn.xml'));
-
+  const sbgnmlText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
+  renderGraph(renderer, sbgnmlText);
 
   // glue events
   $('#graph-load').click(function () {

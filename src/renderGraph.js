@@ -33,18 +33,17 @@ const reduceGraphComplexity = (cy) => {
 };
 
 const renderGraph = (cy, sbgnmlText) => {
-  const graphJSON = convertSbgnml(sbgnmlText);
-  const trimmedGraph = graphJSON;
+  const graphJSON = convertSbgnml(sbgnmlText)
 
   cy.batch(function(){
     cy.remove('*');
-    cy.add(trimmedGraph);
+    cy.add(graphJSON);
 
     var nodePositions = {};
-    for (var i = 0; i < trimmedGraph.nodes.length; i++) {
-      var xPos = trimmedGraph.nodes[i].data.bbox.x;
-      var yPos = trimmedGraph.nodes[i].data.bbox.y;
-      nodePositions[trimmedGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
+    for (var i = 0; i < graphJSON.nodes.length; i++) {
+      var xPos = graphJSON.nodes[i].data.bbox.x;
+      var yPos = graphJSON.nodes[i].data.bbox.y;
+      nodePositions[graphJSON.nodes[i].data.id] = {'x': xPos, 'y': yPos};
     }
 
     cy.layout({
