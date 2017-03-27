@@ -16,8 +16,8 @@ describe('shape style', () => {
     .set('fill', 'none')
     .set('stroke', '#6A6A6A');
 
-    const styleString = 'stroke-width: 3; fill: none; stroke: #6A6A6A;';
-
+    // const styleString = 'stroke-width: 3; fill: none; stroke: #6A6A6A;';
+    const styleString = 'stroke-width: 3; fill: none; stroke: #6A6A6A; ';
     expect(svgUtil.styleMap2Str(styleMap)).to.equal(styleString);
   });
   it('should produce an empty string for an empty map', () => {
@@ -79,6 +79,3 @@ describe('sbgn shape svg', function () {
     expect(sbgnShapes.draw.bind(dummyNode)).to.throw(TypeError);
   });
 });
-
-
-
