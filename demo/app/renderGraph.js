@@ -1,4 +1,5 @@
 const convertSbgnml = require('sbgnml-to-cytoscape');
+const layout = require('./layout');
 
 const removeDisconnectedNodes = (cy) => {
   const compartmentChildren = cy.nodes('[class="compartment"]').children();
@@ -41,11 +42,15 @@ const renderGraph = (cy, sbgnmlText) => {
     cy.add(trimmedGraph);
 
     var nodePositions = {};
+    //var newTrimmedGraph = layout.asdf(trimmedGraph.nodes);
+    console.log(trimmedGraph);
+    //console.log(newTrimmedGraph);
     for (var i = 0; i < trimmedGraph.nodes.length; i++) {
       var xPos = trimmedGraph.nodes[i].data.bbox.x;
       var yPos = trimmedGraph.nodes[i].data.bbox.y;
       nodePositions[trimmedGraph.nodes[i].data.id] = {'x': xPos, 'y': yPos};
     }
+
 
     cy.layout({
       name: 'preset',
