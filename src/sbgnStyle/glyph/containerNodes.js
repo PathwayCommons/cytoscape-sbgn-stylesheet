@@ -11,7 +11,7 @@ const containerNodes = {
     const nw = node.outerWidth();
 
     const style = new Map()
-      .set('stroke-width', '3.75px')
+      .set('stroke-width', '3.75')
       .set('fill', 'none')
       .set('stroke', '#6A6A6A');
 
