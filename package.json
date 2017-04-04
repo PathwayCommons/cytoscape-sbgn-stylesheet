@@ -33,6 +33,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
+    "cytoscape-expand-collapse": "^3.0.2",
     "derequire": "^2.0.6",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",

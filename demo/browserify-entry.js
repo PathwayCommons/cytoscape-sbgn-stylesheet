@@ -1,12 +1,15 @@
-/* global $ */
+
 // for testing
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
 window.textWidth = textWidth;
 window.convertSbgnml = convertSbgnml;
 
-
+const ec = require('cytoscape-expand-collapse');
+const $ = require('jquery');
 const SBGNRenderer = require('../src/');
+ec(SBGNRenderer.__proto__, $);
+
 
 const file = require('./app/file');
 const save = require('./app/save');
@@ -22,6 +25,7 @@ $(document).ready(function () {
   var renderer = new SBGNRenderer({
     container: container
   });
+
   window.SBGNRenderer = SBGNRenderer;
   window.r = window.cy = renderer;
   const sbgnmlText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
