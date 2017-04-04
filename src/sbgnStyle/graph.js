@@ -47,9 +47,7 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="unspecified entity"],
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
-          node[class="simple chemical"], node[class="simple chemical multimer"],
-          node[class="complex"], node[class="complex multimer"],
-          node[class="compartment"]
+          node[class="simple chemical"], node[class="simple chemical multimer"]
         `)
         .css({
           'background-image': (node) => sbgnShapes.draw(node),
@@ -111,23 +109,17 @@ var sbgnStyleSheet = function (cytoscape) {
         .css({
           'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
-          'background-width': '110%',
-          'background-height': '110%',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'padding': '10%',
-          'padding-relative-to': 'max',
           'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => sbgnDimensions.height(node),
         })
 
-        // make child nodes smaller
-        .selector('node > node')
+        .selector('node[class="compartment"]')
         .css({
-          width: (node) => .8 * sbgnDimensions.width(node),
-          height: (node) => .8 * sbgnDimensions.height(node)
+          'padding': '10%',
+          'padding-relative-to': 'max',
         })
-
 
         // edge styling
         .selector('edge')

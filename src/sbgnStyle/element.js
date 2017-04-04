@@ -12,7 +12,7 @@ elementStyle.sbgnShape = (node) => {
   }
 
   if (sbgnClass == 'compartment') {
-    return 'roundrectangle';
+    return 'barrel';
   }
 
   if (sbgnClass == 'process' || sbgnClass == 'omitted process' || sbgnClass == 'uncertain process') {
@@ -28,8 +28,12 @@ elementStyle.sbgnShape = (node) => {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule' || sbgnClass == 'complex') {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
     return 'roundrectangle';
+  }
+
+  if (sbgnClass == 'complex') {
+    return 'cutrectangle';
   }
   return 'ellipse';
 };
@@ -133,7 +137,7 @@ elementStyle.labelTextSize = (node) => {
   }
 
   if (sbgnClass === 'compartment') {
-    return 30;
+    return 50;
   }
 
   return dynamicLabelTextSize(nh);
