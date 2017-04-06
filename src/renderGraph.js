@@ -10,7 +10,7 @@ const removeDisconnectedNodes = (cy) => {
 
 const expandCollapseComplexNodesBilkent = (cy) => {
   cy.expandCollapse({
-    fisheye: false,
+    fisheye: true,
     animate: true,
     undoable: false,
     cueEnabled: false
@@ -24,6 +24,7 @@ const expandCollapseComplexNodesBilkent = (cy) => {
       fit: 'false',
       avoidOverlap: true,
       condense: true,
+      animate: true,
       rows: node.children().size() / 2,
       cols: node.children().size() / 2,
       boundingBox: node.boundingBox()
@@ -36,13 +37,47 @@ const expandCollapseComplexNodesBilkent = (cy) => {
 
   api.collapse(complexes);
 
-  cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', {}, (evt) => {
+  cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', (evt) => {
 
     const node = evt.target;
     if (api.isCollapsible(node)) {
       api.collapseRecursively(node);
     } else {
       api.expand(node);
+    }
+  });
+};
+
+const expandCollapseComplexNodes = (cy) => {
+  const complexChildrenMap = new Map();
+
+  const complexes = cy.nodes('[class="complex"], [class="complex multimer"]');
+  complexes.forEach((ele) => {
+    complexChildrenMap.set(ele.id(), ele.descendants());
+  });
+  complexes.descendants().remove();
+  cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', (evt) => {
+
+    const node = evt.target;
+    const children = complexChildrenMap.get(node.id());
+
+    if (children) {
+      if (children.removed()) {
+        cy.zoomingEnabled(false);
+        children.layout({
+          name: 'grid',
+          condense: true,
+          avoidOverlap: true,
+          animate: true,
+          rows: children.size() / 2,
+          cols: children.size() / 2,
+          boundingBox: node.boundingBox()
+        }).run();
+        children.restore();
+        cy.zoomingEnabled(true);
+      } else {
+        children.remove();
+      }
     }
   });
 };
