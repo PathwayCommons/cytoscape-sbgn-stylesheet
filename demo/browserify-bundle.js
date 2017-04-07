@@ -13,21 +13,6 @@
   'window.location.reload();});'].join('\n')
   document.head.appendChild(socket)
 }());
-(function () {
-  var socket = document.createElement('script')
-  var script = document.createElement('script')
-  socket.setAttribute('src', 'http://127.0.0.1:30303/socket.io/socket.io.js')
-  script.type = 'text/javascript'
-
-  socket.onload = function () {
-    document.head.appendChild(script)
-  }
-  script.text = ['window.socket = io("http://127.0.0.1:30303");',
-  'socket.on("bundle", function() {',
-  'console.log("livereaload triggered")',
-  'window.location.reload();});'].join('\n')
-  document.head.appendChild(socket)
-}());
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
@@ -1716,7 +1701,21 @@ of the Software, and to permit persons to whom the Software is furnished to do
 so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies o,6:[function(require,module,exports){
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
+'use strict';
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var util = require( './util' );
@@ -2221,24 +2220,6 @@ var elesfn = ({
     var predEdge = [];
 
     for( var i = 0; i < numNodes; i++ ){
-      if( nodes[ i ].id() === source.id() ){
-        cost[ i ] = 0;
-      } else {
-        cost[ i ] = Infinity;
-      }
-      predecessor[ i ] = undefined;
-    }
-
-    // Edges relaxation
-    var flag = false;
-    for( var i = 1; i < numNodes; i++ ){
-      flag = false;
-      for( var e = 0; e < edges.length; e++ ){
-        var sourceIndex = id2position[ edges[ e ].source().id() ];
-        var targetIndex = id2position[ edges[ e ].target().id() ];
-        var weight = weightFn( edges[ e ] );
-
-        va; i < numNodes; i++ ){
       if( nodes[ i ].id() === source.id() ){
         cost[ i ] = 0;
       } else {
@@ -2815,7 +2796,29 @@ var elesfn = ({
 
     var nodes = this.nodes();
     for( var i = 0; i < nodes.length; i++ ){
-   ,12:[function(require,module,exports){
+      if( nodes[ i ].id() != root.id() ){
+        var d = dijkstra.distanceTo( nodes[ i ] );
+
+        if( harmonic ){
+          totalDistance += 1 / d;
+        } else {
+          totalDistance += d;
+        }
+      }
+    }
+
+    return harmonic ? totalDistance : 1 / totalDistance;
+  } // closenessCentrality
+
+}); // elesfn
+
+// nice, short mathemathical alias
+elesfn.cc = elesfn.closenessCentrality;
+elesfn.ccn = elesfn.closenessCentralityNormalised = elesfn.closenessCentralityNormalized;
+
+module.exports = elesfn;
+
+},{"../../is":86}],12:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
