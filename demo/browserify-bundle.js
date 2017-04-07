@@ -13,21 +13,6 @@
   'window.location.reload();});'].join('\n')
   document.head.appendChild(socket)
 }());
-(function () {
-  var socket = document.createElement('script')
-  var script = document.createElement('script')
-  socket.setAttribute('src', 'http://127.0.0.1:30303/socket.io/socket.io.js')
-  script.type = 'text/javascript'
-
-  socket.onload = function () {
-    document.head.appendChild(script)
-  }
-  script.text = ['window.socket = io("http://127.0.0.1:30303");',
-  'socket.on("bundle", function() {',
-  'console.log("livereaload triggered")',
-  'window.location.reload();});'].join('\n')
-  document.head.appendChild(socket)
-}());
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
@@ -127,12 +112,50 @@ $(document).ready(function () {
 
   window.SBGNRenderer = SBGNRenderer;
   window.r = window.cy = renderer;
-  var sbgnmlText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
-  renderGraph(renderer, sbgnmlText);
 
   renderer.on('tap', 'node', function (evt) {
     console.log(evt.target);
   });
+  var opts = {
+    fisheye: true,
+    animate: true,
+    undoable: false,
+    cueEnabled: false
+  };
+  renderer.expandCollapse(opts);
+
+  renderer.on('expandcollapse.afterexpand', function (evt) {
+    var node = evt.target;
+    renderer.zoomingEnabled(false);
+    node.children().layout({
+      name: 'grid',
+      fit: 'false',
+      avoidOverlap: true,
+      condense: true,
+      animate: true,
+      rows: node.children().size() / 2,
+      cols: node.children().size() / 2,
+      boundingBox: node.boundingBox()
+    }).run();
+    renderer.zoomingEnabled(true);
+  });
+
+  var complexes = renderer.nodes('[class="complex"], [class="complex multimer"]');
+  var api = renderer.expandCollapse('get');
+  api.collapse(complexes);
+
+  renderer.on('tap', 'node[class="complex"], node[class="complex multimer"]', function (evt) {
+    evt.preventDefault();
+    var node = evt.target;
+    if (api.isCollapsible(node, opts)) {
+      api.collapse(node);
+    } else {
+      api.expand(node, opts);
+    }
+  });
+
+  var sbgnmlText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
+  renderGraph(renderer, sbgnmlText);
 
   // glue events
   $('#graph-load').click(function () {
@@ -1749,25 +1772,6 @@ var Animation = function( target, opts, opts2 ){
   _p.target = target;
   _p.style = _p.style || _p.css;
   _p.started = false;
-  _p.playing =,6:[function(require,module,exports){
-'use strict';
-
-var util = require( './util' );
-var is = require( './is' );
-var Promise = require( './promise' );
-
-var Animation = function( target, opts, opts2 ){
-  if( !(this instanceof Animation) ){
-    return new Animation( target, opts, opts2 );
-  }
-
-  var _p = this._private = util.extend( {
-    duration: 1000
-  }, opts, opts2 );
-
-  _p.target = target;
-  _p.style = _p.style || _p.css;
-  _p.started = false;
   _p.playing = false;
   _p.hooked = false;
   _p.applying = false;
@@ -2234,7 +2238,26 @@ var elesfn = ({
         var source = options.root[0];
       }
     } else {
-      return unde; i < numNodes; i++ ){
+      return undefined;
+    }
+
+    var cy = this._private.cy;
+    var edges = this.edges().stdFilter( function( e ){ return !e.isLoop(); } );
+    var nodes = this.nodes();
+    var numNodes = nodes.length;
+
+    // mapping: node id -> position in nodes array
+    var id2position = {};
+    for( var i = 0; i < numNodes; i++ ){
+      id2position[ nodes[ i ].id() ] = i;
+    }
+
+    // Initializations
+    var cost = [];
+    var predecessor = [];
+    var predEdge = [];
+
+    for( var i = 0; i < numNodes; i++ ){
       if( nodes[ i ].id() === source.id() ){
         cost[ i ] = 0;
       } else {
@@ -2834,29 +2857,6 @@ elesfn.ccn = elesfn.closenessCentralityNormalised = elesfn.closenessCentralityNo
 module.exports = elesfn;
 
 },{"../../is":86}],12:[function(require,module,exports){
-'use strict';
-
-var is = require( '../../is' );
-var util = require( '../../util' );
-
-var elesfn = ({
-
-  degreeCentralityNormalized: function( options ){
-    options = options || {};
-
-    var cy = this.cy();
-
-    // directed - optional
-    if( options.directed != null ){
-      var directed = options.directed;
-    } else {
-      var directed = false;
-    }
-
-    var nodes = this.nodes();
-    var numNodes = nodes.length;
-
-    if,12:[function(require,module,exports){
 'use strict';
 
 var is = require( '../../is' );
