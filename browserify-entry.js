@@ -31,6 +31,10 @@ $(document).ready(function () {
   const sbgnmlText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
   renderGraph(renderer, sbgnmlText);
 
+  renderer.on('tap', 'node', function (evt) {
+    console.log(evt.target);
+  });
+
   // glue events
   $('#graph-load').click(function () {
     $('#graph-input').trigger('click');
