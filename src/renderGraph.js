@@ -9,12 +9,13 @@ const removeDisconnectedNodes = (cy) => {
 };
 
 const expandCollapseComplexNodesBilkent = (cy) => {
-  cy.expandCollapse({
+  const opts = {
     fisheye: true,
     animate: true,
     undoable: false,
     cueEnabled: false
-  });
+  };
+  cy.expandCollapse(opts);
 
   cy.nodes().on('expandcollapse.afterexpand', function (evt) {
     const node = evt.target;
@@ -34,16 +35,15 @@ const expandCollapseComplexNodesBilkent = (cy) => {
 
   const complexes = cy.nodes('[class="complex"], [class="complex multimer"]');
   const api = cy.expandCollapse('get');
-
   api.collapse(complexes);
 
   cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', (evt) => {
-
+    evt.preventDefault();
     const node = evt.target;
-    if (api.isCollapsible(node)) {
-      api.collapseRecursively(node);
+    if (api.isCollapsible(node, opts)) {
+      api.collapse(node);
     } else {
-      api.expand(node);
+      api.expand(node, opts);
     }
   });
 };
@@ -53,7 +53,7 @@ const expandCollapseComplexNodes = (cy) => {
 
   const complexes = cy.nodes('[class="complex"], [class="complex multimer"]');
   complexes.forEach((ele) => {
-    complexChildrenMap.set(ele.id(), ele.descendants());
+    complexChildrenMap.set(ele.id(), {nodes: ele.descendants(), edges: ele.descendants().connectedEdges()});
   });
   complexes.descendants().remove();
   cy.on('tap', 'node[class="complex"], node[class="complex multimer"]', (evt) => {
@@ -62,21 +62,23 @@ const expandCollapseComplexNodes = (cy) => {
     const children = complexChildrenMap.get(node.id());
 
     if (children) {
-      if (children.removed()) {
+      if (children.nodes.removed()) {
         cy.zoomingEnabled(false);
-        children.layout({
+        children.nodes.layout({
           name: 'grid',
           condense: true,
           avoidOverlap: true,
           animate: true,
-          rows: children.size() / 2,
-          cols: children.size() / 2,
+          rows: 4,
+          cols: 4,
           boundingBox: node.boundingBox()
         }).run();
-        children.restore();
+        children.nodes.restore();
+        children.edges.restore();
         cy.zoomingEnabled(true);
       } else {
-        children.remove();
+        children.nodes.remove();
+        children.edges.remove();
       }
     }
   });
@@ -85,7 +87,8 @@ const expandCollapseComplexNodes = (cy) => {
 
 const reduceGraphComplexity = (cy) => {
   removeDisconnectedNodes(cy);
-  expandCollapseComplexNodesBilkent(cy);
+  expandCollapseComplexNodes(cy);
+  // expandCollapseComplexNodesBilkent(cy);
 };
 
 const renderGraph = (cy, sbgnmlText) => {
