@@ -107,6 +107,7 @@ var sbgnStyleSheet = function (cytoscape) {
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
+          'border-width': 4,
           'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
           'text-valign': 'bottom',
