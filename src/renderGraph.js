@@ -1,5 +1,7 @@
 const convertSbgnml = require('sbgnml-to-cytoscape');
 
+const biologyLayout = require('./layout');
+
 const removeDisconnectedNodes = (cy) => {
   const compartmentChildren = cy.nodes('[class="compartment"]').children();
   compartmentChildren.filterFn((ele) => ele.neighborhood().length === 0).remove();
@@ -39,9 +41,12 @@ const renderGraph = (cy, sbgnmlText) => {
       fit: true,
       padding: 50
     }).run();
+
+    reduceGraphComplexity(cy);
+    biologyLayout(cy);
+
   });
 
-  reduceGraphComplexity(cy);
 };
 
 module.exports = renderGraph;
