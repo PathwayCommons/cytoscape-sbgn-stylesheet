@@ -8,22 +8,26 @@ const ontologyOrderMap = new Map()
 const ontologyLabelOrder = (ontologyLabel) => ontologyOrderMap.get(ontologyLabel);
 
 const generateCompartmentRegions = (cy) => {
+  const compartments = cy.nodes('[class="compartment"]');
+  const totalChildren = compartments.children().size() ? compartments.children().size() : 1;
+
   let compartmentRegionX = 100;
   let compartmentRegionY = 100;
-  const compartmentRegionW = 1000;
-  const compartmentRegionH = 500;
+  const compartmentRegionW = 1.25 * cy.width();
+  const compartmentRegionH = cy.height();
 
-  const compartments = cy.nodes('[class="compartment"]');
   return compartments
   .sort((a, b) => ontologyLabelOrder(a.data('id')) - ontologyLabelOrder(b.data('id')))
-  .map((_) => {
+  .map((compartment) => {
+    const childrenProportion = compartment.children().size() / totalChildren;
+    const regionH = childrenProportion * compartmentRegionH;
     const region = {
       x: compartmentRegionX,
       y: compartmentRegionY,
       w: compartmentRegionW,
-      h: compartmentRegionH
+      h: regionH
     };
-    compartmentRegionY += 800;
+    compartmentRegionY += regionH +  200;
     return region;
   });
 };
@@ -67,6 +71,7 @@ module.exports = function (cy) {
         children.positions(function (child) {
           return childPosMap.get(child.data('id'));
         });
+        cy.fit();
       }
     }).run();
   });

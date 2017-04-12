@@ -118,8 +118,8 @@ var sbgnStyleSheet = function (cytoscape) {
 
         .selector('node[class="compartment"]')
         .css({
-          'padding': '10%',
-          'padding-relative-to': 'max',
+          'padding': '5%',
+          'padding-relative-to': 'average',
         })
 
         // edge styling
