@@ -151,49 +151,32 @@ const entityPoolNodes = {
   },
 
   complex (node) {
-    let nw = node.width();
-    let nh = node.height();
-
-    let styleMap = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    let shapeArgs = [1, 2, nw - 2, nh - 5, 10];
-    const multimerShapeArgs = [15, 15, .93*nw, .93*nh, 10];
-
+    const nw = 60;
+    const nh = 38;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
-
-    if (uInfos.length > 0) {
-      shapeArgs[0] += 5;
-      shapeArgs[1] += 10;
-      shapeArgs[2] *= .95;
-      shapeArgs[3] *= .9;
-    }
-
-    if (sVars.length > 0) {
-      shapeArgs[3] = .85*nh;
-    }
-
-    if (isMultimer(node)) {
-      shapeArgs = [5, 10, .93*nw, .9*nh, 10];
-    }
 
     const uinfoW = Math.min(100, 0.4*nw);
     const uinfoH = Math.min(25, 0.2*nh);
     const sVarRadius = 15;
 
+    const style = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('stroke-width', '2')
+    .set('fill', 'none')
+    .set('fill', 'white')
+    .set('fill-opacity', '1');
+
+
     let complexSvg =
     `
-      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
-      ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.cutRectangle, shapeArgs) : ''}
+      ${baseShapes.line(0, 0, nw, 0, style)}
       ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), shapeArgs[3] + shapeArgs[1] - 5, sVarRadius, sVars[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.stateVariable(30, 20, sVarRadius, sVars[0]) : ''}
     `;
-    return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
+    const svgOut = svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
+
+    return [svgOut, svgOut];
   },
 
   sourceAndSink (node) {
