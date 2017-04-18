@@ -120,7 +120,7 @@ var sbgnStyleSheet = function (cytoscape) {
 
         .selector('node[class="complex"], node[class="complex multimer"]')
         .css({
-          'background-image': (node) => sbgnShapes.draw(node),
+          'background-image': (node) => sbgnShapes.draw(node), // cache this
           'background-width': ['100%'],
           // 'background-height': ['15%', '15%'],
           'background-position-x': ['20%', '10%', '80%'],
