@@ -91,6 +91,10 @@ const baseShapes = {
     return baseRectangle(x, y, width, height, .1*width, .1*width, .1*width, .1*width, styleMap);
   },
 
+  stadium (x, y, width, height, styleMap) {
+    return baseRectangle(x, y, width, height, .3*width, .3*width, .3*width, .3*width, styleMap);
+  },
+
   square (x, y, length, styleMap) {
     return baseRectangle(x, y, length, length, 0, 0, 0, 0, styleMap);
   },
