@@ -112,19 +112,22 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'min-width': (node) => sbgnDimensions.width(node),
+          // 'min-width': (node) => sbgnDimensions.width(node),
           'min-height': 200,
           'min-height-bias-bottom': '0%',
           'min-height-bias-top': '100%',
+        })
+
+        .selector('node[class="complex"], node[class="complex multimer"]')
+        .css({
           'background-image': (node) => sbgnShapes.draw(node),
-          'background-image-width': ['100%', '100%'],
-          'background-image-height': ['15%', '15%'],
-          'background-position-x': ['20%', '70%'],
-          'background-position-y': ['100%', '100%'],
-          'background-fit': 'none',
-          'background-clip': 'none',
-          // 'padding': '10%',
-          'background-image-opacity': 1,
+          'background-width': ['100%'],
+          // 'background-height': ['15%', '15%'],
+          'background-position-x': ['20%', '10%', '80%'],
+          'background-position-y': ['100%', '100%', '100%'],
+          'background-fit': ['contain', 'none', 'none'],
+          'background-clip': ['none'],
+          'padding': 0
         })
 
         .selector('node[class="compartment"]')

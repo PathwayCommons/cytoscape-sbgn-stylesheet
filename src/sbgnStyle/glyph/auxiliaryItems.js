@@ -20,6 +20,34 @@ const stateVarLabel = (stateVar) => {
 
 const auxiliaryItems = {
 
+  compoundStateVar (x, y, width, height, stateVar) {
+    const fontSize = 14;
+
+    const stateVarStyle = new Map()
+    .set('stroke', '#555555')
+    .set('stroke-width', '4')
+    .set('fill', 'none');
+
+
+    const textStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('font-size', `${fontSize}`)
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
+    .set('text-anchor', 'middle')
+    .set('stroke', 'black');
+
+    const tw = textWidth(stateVarLabel(stateVar, { family: textStyle.get('font-family'), size: fontSize}), 20);
+    const w = Math.max(tw, 30);
+    const statevariableSvg =
+    `
+      ${baseShapes.stadium(x, y, w, height, stateVarStyle)}
+      ${baseShapes.text(stateVarLabel(stateVar), x + tw / 2, y + height / 2, textStyle)}
+    `;
+
+    return statevariableSvg;
+  },
+
+
   stateVariable (x, y, radius, stateVar) {
 
     const fontSize = 12;

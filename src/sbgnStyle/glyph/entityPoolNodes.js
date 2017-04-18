@@ -65,7 +65,7 @@ const entityPoolNodes = {
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  macromolecule: memoize( function(node) {
+  macromolecule(node) {
     const {w: nw, h: nh} = dimensions.get(node);
 
     const styleMap = new Map()
@@ -102,13 +102,7 @@ const entityPoolNodes = {
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
-  }, function macromoleculeShapeKey( node ){
-    return '' +
-      node.outerWidth() + '$' +
-      node.outerHeight() + '$' +
-      JSON.stringify( node.data() )
-    ;
-  } ),
+  },
 
   nucleicAcidFeature (node) {
     const {w: nw, h: nh} = dimensions.get(node);
@@ -161,22 +155,22 @@ const entityPoolNodes = {
     const sVarRadius = 15;
 
     const style = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', 'none')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
+    .set('stroke', '#555555')
+    .set('stroke-width', '6');
 
 
     let complexSvg =
     `
-      ${baseShapes.line(0, 0, nw, 0, style)}
       ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.stateVariable(30, 20, sVarRadius, sVars[0]) : ''}
+      ${sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 2, nw - 5, nh - 4, sVars[0]) : ''}
     `;
     const svgOut = svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
-
-    return [svgOut, svgOut];
+    let lineSvg =
+    `
+      ${baseShapes.line(0, 0, nw, 0, style)}
+    `;
+    const lineSvgOut = svgStr(lineSvg, nw, nh, 0, 0, nw, nh);
+    return [lineSvgOut, svgOut, svgOut];
   },
 
   sourceAndSink (node) {
