@@ -5,10 +5,12 @@ const textWidth = require('text-width');
 window.textWidth = textWidth;
 window.convertSbgnml = convertSbgnml;
 
-const ec = require('cytoscape-expand-collapse');
+const expandCollapse = require('cytoscape-expand-collapse');
+const coseBilkent = require('cytoscape-cose-bilkent');
 const $ = require('jquery');
 const SBGNRenderer = require('../src/');
-ec(SBGNRenderer.__proto__, $);
+expandCollapse(SBGNRenderer.__proto__, $);
+coseBilkent(SBGNRenderer.__proto__);
 
 
 const file = require('./app/file');

@@ -34,6 +34,7 @@
     "browserify": "^13.1.1",
     "browserify-livereload": "^1.0.10",
     "chai": "^3.5.0",
+    "cytoscape-cose-bilkent": "^1.6.4",
     "cytoscape-expand-collapse": "^3.0.2",
     "derequire": "^2.0.6",
     "eslint": "^3.11.1",
