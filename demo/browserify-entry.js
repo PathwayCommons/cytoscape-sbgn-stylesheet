@@ -2,24 +2,27 @@
 // for testing
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
-window.textWidth = textWidth;
-window.convertSbgnml = convertSbgnml;
-
 const expandCollapse = require('cytoscape-expand-collapse');
 const coseBilkent = require('cytoscape-cose-bilkent');
 const $ = require('jquery');
+
 const SBGNRenderer = require('../src/');
 expandCollapse(SBGNRenderer.__proto__, $);
 coseBilkent(SBGNRenderer.__proto__);
 
+window.textWidth = textWidth;
+window.convertSbgnml = convertSbgnml;
 
 const file = require('./app/file');
 const save = require('./app/save');
 
 const defaultText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
 const loadInEach = (renderers, sbgnmlText) => {
+  const layouts = ['default', 'stratified', 'stratified-bilkent'];
+  let i = 0;
   for (let r of renderers) {
-    SBGNRenderer.renderGraph(r, sbgnmlText);
+    SBGNRenderer.renderGraph(r, sbgnmlText, layouts[i]);
+    i ++;
   }
 };
 
