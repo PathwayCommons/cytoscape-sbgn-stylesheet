@@ -6,12 +6,23 @@
   min-width: 350px;
 }
 
-#sbgn-network-container {
+#default-layout {
   height: 800px;
   width: 100%;
   border: 1px solid;
 }
 
+#signalling-layout {
+  height: 800px;
+  width: 100%;
+  border: 1px solid;
+}
+
+#cose-bilkent-layout {
+  height: 800px;
+  width: 100%;
+  border: 1px solid;
+}
 
 .control {
   margin-top: 30px;
