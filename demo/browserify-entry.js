@@ -27,11 +27,12 @@ $(document).ready(function () {
 
   const containers = ['#default-layout', '#signalling-layout','#cose-bilkent-layout'];
   const renderers = containers.map((container, index) => {
-    console.log(container, index);
     const renderer = new SBGNRenderer({container: $(container)});
+
     renderer.on('tap', 'node', function (evt) {
       console.log(evt.target);
     });
+
     const opts = {
       fisheye: true,
       animate: true,
