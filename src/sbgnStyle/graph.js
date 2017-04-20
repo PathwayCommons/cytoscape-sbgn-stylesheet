@@ -99,8 +99,8 @@ var sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? 5 : 0,
-          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
+          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
+          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
         })
 
 
@@ -123,7 +123,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnShapes.draw(node), // cache this
           'background-width': ['100%'],
           // 'background-height': ['15%', '15%'],
-          'background-position-x': ['20%', '10%', '80%'],
+          'background-position-x': ['0%', '20%', '80%'],
           'background-position-y': ['100%', '100%', '100%'],
           'background-fit': ['contain', 'none', 'none'],
           'background-clip': ['none'],
