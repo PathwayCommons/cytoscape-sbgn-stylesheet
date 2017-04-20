@@ -36,12 +36,12 @@ const auxiliaryItems = {
     .set('text-anchor', 'middle')
     .set('stroke', 'black');
 
-    const tw = textWidth(stateVarLabel(stateVar, { family: textStyle.get('font-family'), size: fontSize}), 20);
+    const tw = textWidth(stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize});
     const w = Math.max(tw, 30);
     const statevariableSvg =
     `
       ${baseShapes.stadium(x, y, w, height, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x + tw / 2, y + height / 2, textStyle)}
+      ${baseShapes.text(stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
     `;
 
     return statevariableSvg;
