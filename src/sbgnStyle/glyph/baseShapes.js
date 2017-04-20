@@ -88,11 +88,11 @@ const baseShapes = {
   },
 
   roundRectangle (x, y, width, height, styleMap) {
-    return baseRectangle(x, y, width, height, .1*width, .1*width, .1*width, .1*width, styleMap);
+    return baseRectangle(x, y, width, height, .04*width, .04*width, .04*width, .04*width, styleMap);
   },
 
   stadium (x, y, width, height, styleMap) {
-    return baseRectangle(x, y, width, height, .3*width, .3*width, .3*width, .3*width, styleMap);
+    return baseRectangle(x, y, width, height, .32*width, .32*width, .32*width, .32*width, styleMap);
   },
 
   square (x, y, length, styleMap) {

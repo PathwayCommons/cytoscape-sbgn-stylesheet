@@ -112,8 +112,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-          // 'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': 200,
+          'min-width': (node) => sbgnDimensions.width(node),
+          'min-height': (node) => sbgnDimensions.height(node),
           'min-height-bias-bottom': '0%',
           'min-height-bias-top': '100%',
         })
@@ -123,7 +123,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnShapes.draw(node), // cache this
           'background-width': ['100%'],
           // 'background-height': ['15%', '15%'],
-          'background-position-x': ['0%', '20%', '80%'],
+          'background-position-x': ['0%', '25%', '88%'],
           'background-position-y': ['100%', '100%', '100%'],
           'background-fit': ['contain', 'none', 'none'],
           'background-clip': ['none'],
