@@ -20,6 +20,34 @@ const stateVarLabel = (stateVar) => {
 
 const auxiliaryItems = {
 
+
+  compoundUnitOfInformation (x, y, width, height, uInfo) {
+    const fontSize = 14;
+    const text = uInfo.label.text;
+    const uinfoRectStyle = new Map()
+    .set('stroke', '#555555')
+    .set('stroke-width', '4')
+    .set('fill', 'none');
+
+
+    const textStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('font-size', `${fontSize}`)
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
+    .set('text-anchor', 'middle')
+    .set('stroke', 'black');
+
+    const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
+
+    const unitOfInformationSvg =
+    `
+      ${baseShapes.roundRectangle(x, y, uInfoWidth, height, uinfoRectStyle)}
+      ${baseShapes.text(text, x + (uInfoWidth / 2), y + ( height / 2),  textStyle)}
+    `;
+
+    return unitOfInformationSvg;
+  },
+
   compoundStateVar (x, y, width, height, stateVar) {
     const fontSize = 14;
 
@@ -100,7 +128,7 @@ const auxiliaryItems = {
     const unitOfInformationSvg =
     `
       ${baseShapes.roundRectangle(x - (uInfoWidth / 2), y, uInfoWidth, height, uinfoRectStyle)}
-      ${baseShapes.text(unitInfo.label.text, x, y + ( height / 2),  textStyle)}
+      ${baseShapes.text(text, x, y + ( height / 2),  textStyle)}
     `;
 
     return unitOfInformationSvg;

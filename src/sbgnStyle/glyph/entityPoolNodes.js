@@ -34,8 +34,6 @@ const entityPoolNodes = {
   simpleChemical (node) {
     const {w: nw, h: nh} = dimensions.get(node);
 
-
-
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '2')
@@ -150,27 +148,25 @@ const entityPoolNodes = {
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
-    const uinfoW = Math.min(100, 0.4*nw);
-    const uinfoH = Math.min(25, 0.2*nh);
-    const sVarRadius = 15;
-
     const style = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', '6');
 
+    const uInfoSvg = svgStr(
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 2, nw - 5, nh - 4, uInfos[0]) : '',
+      nw, nh, 0, 0, nw, nh
+    );
 
-    let complexSvg =
-    `
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 2, nw - 5, nh - 4, sVars[0]) : ''}
-    `;
-    const svgOut = svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
-    let lineSvg =
-    `
-      ${baseShapes.line(0, 0, nw, 0, style)}
-    `;
-    const lineSvgOut = svgStr(lineSvg, nw, nh, 0, 0, nw, nh);
-    return [lineSvgOut, svgOut, svgOut];
+    const sVarSvg = svgStr(
+      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 2, nw - 5, nh - 4, sVars[0]) : '',
+      nw, nh, 0, 0, nw, nh
+    );
+
+    let lineSvg = svgStr(
+      baseShapes.line(0, 0, nw, 0, style),
+      nw, nh, 0, 0, nw, nh
+    );
+    return [lineSvg, uInfoSvg, sVarSvg];
   },
 
   sourceAndSink (node) {
