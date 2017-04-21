@@ -144,7 +144,7 @@ const entityPoolNodes = {
 
   complex (node) {
     const nw = 60;
-    const nh = 38;
+    const nh = 40;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -152,13 +152,18 @@ const entityPoolNodes = {
     .set('stroke', '#555555')
     .set('stroke-width', '6');
 
+    const cloneMarkerSvg = svgStr(
+      hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, nw, nh - 3) : '',
+      nw, nh, 0, 0, nw, nh
+    );
+
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 2, nw - 5, nh - 4, uInfos[0]) : '',
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, nw - 5, nh, uInfos[0]) : '',
       nw, nh, 0, 0, nw, nh
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 2, nw - 5, nh - 4, sVars[0]) : '',
+      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, nw - 5, nh, sVars[0]) : '',
       nw, nh, 0, 0, nw, nh
     );
 
@@ -166,7 +171,7 @@ const entityPoolNodes = {
       baseShapes.line(0, 0, nw, 0, style),
       nw, nh, 0, 0, nw, nh
     );
-    return [lineSvg, uInfoSvg, sVarSvg];
+    return [lineSvg, lineSvg, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
 
   sourceAndSink (node) {

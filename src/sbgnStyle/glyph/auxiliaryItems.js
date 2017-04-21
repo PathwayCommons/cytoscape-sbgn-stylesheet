@@ -20,6 +20,16 @@ const stateVarLabel = (stateVar) => {
 
 const auxiliaryItems = {
 
+  compoundCloneMarker (x, y, width, height) {
+
+    const cloneStyle = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('stroke-width', '1')
+    .set('fill', '#D2D2D2');
+
+    return baseShapes.rectangle(x, y, width, height, cloneStyle);
+  },
+
 
   compoundUnitOfInformation (x, y, width, height, uInfo) {
     const fontSize = 14;
@@ -27,7 +37,7 @@ const auxiliaryItems = {
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', '4')
-    .set('fill', 'none');
+    .set('fill', '#FDFDFD');
 
 
     const textStyle = new Map()
