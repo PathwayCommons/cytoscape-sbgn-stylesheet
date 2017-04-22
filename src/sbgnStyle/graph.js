@@ -112,10 +112,10 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'min-width': (node) => sbgnDimensions.width(node),
+          // 'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => sbgnDimensions.height(node),
-          'min-height-bias-bottom': '85%',
-          'min-height-bias-top': '15%',
+          // 'min-height-bias-bottom': '85%',
+          // 'min-height-bias-top': '15%',
         })
 
         .selector('node[class="complex"], node[class="complex multimer"]')
@@ -125,8 +125,9 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, clonemarker, uinfo, svar
           'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
-          'background-clip': 'none',
-          'padding': 0
+          'background-clip': 'contain',
+          'padding': '16%',
+          'padding-relative-to': 'max'
         })
 
         .selector('node[class="complex"], node[class="complex multimer"]')
