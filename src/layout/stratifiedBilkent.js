@@ -1,4 +1,6 @@
 module.exports = (cy) => {
+  // TODO fold compartments as necessary 
+
   cy.layout({
     name: 'cose-bilkent',
     nodeRepulsion: 4500,
