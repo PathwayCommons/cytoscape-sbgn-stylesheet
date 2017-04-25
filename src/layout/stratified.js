@@ -26,13 +26,14 @@ module.exports = function (cy) {
   });
   bridgeEdges.remove();
 
+  let maxY = 0;
+
   const compartments = cy.nodes('[class="compartment"]')
     .sort((a, b) => ontologyLabelOrder(a.data('id')) - ontologyLabelOrder(b.data('id')));
   const totalChildren = compartments.children().size() ? compartments.children().size() : 1;
-
   let compartmentRegionX = 100;
   let compartmentRegionY = 100;
-  const compartmentRegionW = 1.25 * cy.width();
+  const compartmentRegionW = cy.width();
   const compartmentRegionH = cy.height();  // TODO: this seems buggy, lots of compartments => not enough height
 
 
@@ -48,6 +49,7 @@ module.exports = function (cy) {
       h: regionH
     };
     compartmentRegionY += regionH +  200;
+    maxY = compartmentRegionY;
     children = children.move({parent: null});
 
     children.positions(function (i, ele) {
@@ -66,7 +68,16 @@ module.exports = function (cy) {
       stop: function () {
         const childPosMap = new Map();
         children.nodes().forEach(function (child) {
-          childPosMap.set(child.data('id'), child.position());
+          let childPos = child.position();
+
+          // sometimes the cose doesnt work for a single node run in the bounding box
+          if (isNaN(childPos.x) || isNaN(childPos.y)) {
+            childPos = {
+              x: compartmentRegion.x + (compartmentRegion.w / 2),
+              y: compartmentRegion.y + (compartmentRegion.h / 2)
+            };
+          }
+          childPosMap.set(child.data('id'), childPos);
         });
 
         children = children.move({parent: compartment.data('id')});
@@ -79,5 +90,25 @@ module.exports = function (cy) {
   });
 
   bridgeEdges.restore();
+
+  const floatNodesRegion = {
+    x: -1200,
+    y: 100,
+    w: 1000,
+    h: maxY - 100
+  };
+
+  const floatingNodes = cy.nodes().filter((node) => {
+    return node.data('class') !== 'compartment' && !node.isChild();
+  });
+  floatingNodes.layout({
+    name: 'cose',
+    boundingBox: {
+      x1: floatNodesRegion.x,
+      y1: floatNodesRegion.y,
+      w: floatNodesRegion.w,
+      h: floatNodesRegion.h
+    }
+  }).run();
 
 };
