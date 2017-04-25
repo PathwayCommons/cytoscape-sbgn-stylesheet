@@ -120,10 +120,22 @@ var sbgnStyleSheet = function (cytoscape) {
 
         .selector('node[class="complex"], node[class="complex multimer"]')
         .css({
-          'background-image': (node) => sbgnShapes.draw(node), // cache this
+          'background-image': (node) => sbgnShapes.draw(node),
           'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, clonemarker, uinfo, svar
+          'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
           'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
+          'background-fit': ['contain', 'contain', 'none', 'none'],
+          'background-clip': 'contain',
+          'padding': '16%',
+          'padding-relative-to': 'max'
+        })
+
+        .selector('node[class="compartment"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node), // cache this
+          'background-width': ['100%', '100%'],
+          'background-position-x': ['0%', '0%', '25%'],          // order: line, line, uinfo
+          'background-position-y': ['100%', '38px', '0%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
           'background-clip': 'contain',
           'padding': '16%',
