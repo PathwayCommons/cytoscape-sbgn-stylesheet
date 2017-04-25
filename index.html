@@ -30,6 +30,14 @@
           </a>
 
           <ul id="graph-samples" class="dropdown-content blue-grey">
+            <li><a class="sample-file white-text" href="#">metabolic1.sbgn</a>
+            <li><a class="sample-file white-text" href="#">metabolic2.sbgn</a>
+            <li><a class="sample-file white-text" href="#">metabolic3.sbgn</a>
+            <li><a class="sample-file white-text" href="#">metabolic4.sbgn</a>
+            <li><a class="sample-file white-text" href="#">signalling1.sbgn</a>
+            <li><a class="sample-file white-text" href="#">signalling2.sbgn</a>
+            <li><a class="sample-file white-text" href="#">signalling3.sbgn</a>
+            <li><a class="sample-file white-text" href="#">signalling4.sbgn</a>
             <li><a class="sample-file white-text" href="#">pc_signallingByBMP.sbgn</a>
             <li><a class="sample-file white-text" href="#">ERK_cascade_(_EGF_si.sbgn</a>
             <li><a class="sample-file white-text" href="#">p53-Dependent_G1_DNA.sbgn</a>
@@ -46,13 +54,22 @@
             <li><a class="sample-file white-text" href="#">vitamins_b6_activation_to_pyridoxal_phosphate</a>
           </ul>
 
-          <button class="btn control blue-grey" id="graph-save" href="#">Save Graph to Image
+          <button class="btn control blue-grey disabled" id="graph-save" href="#">Save Graph to Image
           </button>
 
         </div>
       </div>
       <div class="row white">
-        <div id="sbgn-network-container"></div>
+          <h5>Pathway Commons Server-Side Layout</h5>
+          <div id="default-layout"></div>
+      </div>
+      <div>
+          <h5>Stratified Signalling Layout (DIY)</h5>
+          <div id="signalling-layout"></div>
+      </div>
+      <div>
+          <h5>Stratified Signalling Layout (CoSE-Bilkent)</h5>
+          <div id="cose-bilkent-layout"></div>
       </div>
     </div>
 
