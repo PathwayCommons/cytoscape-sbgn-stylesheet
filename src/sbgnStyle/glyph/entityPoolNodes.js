@@ -167,11 +167,17 @@ const entityPoolNodes = {
       nw, nh, 0, 0, nw, nh
     );
 
-    let lineSvg = svgStr(
-      baseShapes.line(0, 0, nw, 0, style),
+    const topLine = svgStr(
+      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, nw, 0, style) : '',
       nw, nh, 0, 0, nw, nh
     );
-    return [lineSvg, lineSvg, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
+
+    const bottomLine = svgStr(
+      hasClonemarker(node) ? baseShapes.line(0, 0, nw, 0, style) : '',
+      nw, nh, 0, 0, nw, nh
+    );
+
+    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
 
   sourceAndSink (node) {

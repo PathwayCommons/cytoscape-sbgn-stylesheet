@@ -22,11 +22,11 @@ const containerNodes = {
     );
 
     let lineSvg = svgStr(
-      baseShapes.line(0, 0, nw, 0, style),
+      uInfos.length > 0 ? baseShapes.line(0, 0, nw, 0, style) : '',
       nw, nh, 0, 0, nw, nh
     );
 
-    return [lineSvg, lineSvg, uInfoSvg]; // ordering of svg images matters
+    return [lineSvg, uInfoSvg]; // ordering of svg images matters
   }
 };
 
