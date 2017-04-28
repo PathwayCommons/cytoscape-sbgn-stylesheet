@@ -163,6 +163,7 @@ var sbgnStyleSheet = function (cytoscape) {
         // edge styling
         .selector('edge')
         .css({
+          'arrow-scale': 1.75,
           'curve-style': 'bezier',
           'line-color': '#555',
           'target-arrow-fill': 'hollow',
