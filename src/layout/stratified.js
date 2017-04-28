@@ -1,42 +1,24 @@
 const ontologyOrderMap = new Map()
 .set('extracellular_region', 0)
 .set('plasma_membrane', 1)
-.set('Cytosol', 2)
-.set('early_endosome_membrane', 3)
-.set('Nucleoplasm', 4)
-.set('Mitochondrial_Matrix', 5);
+.set('cytoplasm', 2)
+.set('cytosol', 3)
+.set('Cytosol', 3)
+.set('integral_to_membrane', 4)
+.set('membrane_raft', 5)
+.set('endosome', 7)
+.set('early_endosome_membrane', 6)
+.set('late_endosome', 8)
+.set('nucleus', 9)
+.set('Nucleoplasm', 10)
+.set('mitochondria', 11)
+.set('mitochondrial_outer_membrane', 12)
+.set('mitochondrial_inner_membrane', 13)
+.set('mitochondrial matrix', 14)
+.set('golgi_apparatus', 15)
+.set('peroxisome_membrane', 16);
 
 const ontologyLabelOrder = (ontologyLabel) => ontologyOrderMap.get(ontologyLabel);
-
-const geneOntologySortedCompartments = (compartments) => {
-  return compartments.sort((a, b) => {
-    return ontologyLabelOrder(a.data('id')) - ontologyLabelOrder(b.data('id'));
-  });
-};
-
-const generateCompartmentRegions = (cy) => {
-  const compartments = cy.nodes('[class="compartment"]');
-  const totalChildren = compartments.children().size() ? compartments.children().size() : 1;
-
-  let compartmentRegionX = 100;
-  let compartmentRegionY = 100;
-  const compartmentRegionW = 1.25 * cy.width();
-  const compartmentRegionH = cy.height();
-
-  return geneOntologySortedCompartments(compartments)
-  .map((compartment) => {
-    const childrenProportion = compartment.children().size() / totalChildren;
-    const regionH = childrenProportion * compartmentRegionH;
-    const region = {
-      x: compartmentRegionX,
-      y: compartmentRegionY,
-      w: compartmentRegionW,
-      h: regionH
-    };
-    compartmentRegionY += regionH +  200;
-    return region;
-  });
-};
 
 module.exports = function (cy) {
   const bridgeEdges = cy.edges().filter((edge) => {
@@ -44,20 +26,37 @@ module.exports = function (cy) {
   });
   bridgeEdges.remove();
 
-  const compartmentRegions = generateCompartmentRegions(cy);
+  let maxY = 0;
 
-  const compartments = geneOntologySortedCompartments(cy.nodes('[class="compartment"]'));
+  const compartments = cy.nodes('[class="compartment"]')
+    .sort((a, b) => ontologyLabelOrder(a.data('id')) - ontologyLabelOrder(b.data('id')));
+  const totalChildren = compartments.children().size() ? compartments.children().size() : 1;
+  let compartmentRegionX = 100;
+  let compartmentRegionY = 100;
+  const compartmentRegionW = cy.width();
+  const compartmentRegionH = cy.height();  // TODO: this seems buggy, lots of compartments => not enough height
 
-  compartments.forEach(function (compartment, index) {
+
+  compartments.forEach(function (compartment) {
     let children = compartment.children();
-    const compartmentId = compartment.data('id');
-    const compartmentRegion = compartmentRegions[index];
+    const childrenProportion = compartment.children().size() / totalChildren;
+    const regionH = Math.max(childrenProportion * compartmentRegionH, 100);
+
+    const compartmentRegion = {
+      x: compartmentRegionX,
+      y: compartmentRegionY,
+      w: compartmentRegionW,
+      h: regionH
+    };
+    compartmentRegionY += regionH +  200;
+    maxY = compartmentRegionY;
     children = children.move({parent: null});
 
     children.positions(function (i, ele) {
       const position = {x: compartmentRegion.x + 10, y: compartmentRegion.y + 10};
       return position;
     });
+
     children.layout({
       name: 'cose',
       boundingBox: {
@@ -66,23 +65,19 @@ module.exports = function (cy) {
         w: compartmentRegion.w,
         h: compartmentRegion.h
       },
-      // nodeRepulsion: function (node) {
-      //   // if (node.data('class').includes('process')) {
-      //   //   return 200;
-      //   // }
-      //   return 1000;
-      // },
-      // idealEdgeLength: 10,
-      // edgeElasticity: 100,
-      // nestingFactor: 0.1,
-      // gravity: 0.25,
-      // numIter: 2500,
-      // randomize: true,
-
       stop: function () {
         const childPosMap = new Map();
         children.nodes().forEach(function (child) {
-          childPosMap.set(child.data('id'), child.position());
+          let childPos = child.position();
+
+          // sometimes the cose doesnt work for a single node run in the bounding box
+          if (isNaN(childPos.x) || isNaN(childPos.y)) {
+            childPos = {
+              x: compartmentRegion.x + (compartmentRegion.w / 2),
+              y: compartmentRegion.y + (compartmentRegion.h / 2)
+            };
+          }
+          childPosMap.set(child.data('id'), childPos);
         });
 
         children = children.move({parent: compartment.data('id')});
@@ -95,5 +90,25 @@ module.exports = function (cy) {
   });
 
   bridgeEdges.restore();
+
+  const floatNodesRegion = {
+    x: -1200,
+    y: 100,
+    w: 1000,
+    h: maxY - 100
+  };
+
+  const floatingNodes = cy.nodes().filter((node) => {
+    return node.data('class') !== 'compartment' && !node.isChild();
+  });
+  floatingNodes.layout({
+    name: 'cose',
+    boundingBox: {
+      x1: floatNodesRegion.x,
+      y1: floatNodesRegion.y,
+      w: floatNodesRegion.w,
+      h: floatNodesRegion.h
+    }
+  }).run();
 
 };
