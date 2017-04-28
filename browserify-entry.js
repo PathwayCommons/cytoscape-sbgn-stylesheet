@@ -2,8 +2,12 @@
 // for testing
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
+window.textWidth = textWidth;
+window.convertSbgnml = convertSbgnml;
+
 const expandCollapse = require('cytoscape-expand-collapse');
 const coseBilkent = require('cytoscape-cose-bilkent');
+const $ = require('jquery');
 
 const SBGNRenderer = require('../src/');
 expandCollapse(SBGNRenderer.__proto__, $);
@@ -17,7 +21,7 @@ const save = require('./app/save');
 
 const defaultText = file.loadFileText('samples/pc_signallingByBMP.sbgn.xml');
 const loadInEach = (renderers, sbgnmlText) => {
-  const layouts = ['default', 'stratified', 'stratified-bilkent'];
+  const layouts = ['default', 'stratified'];
   let i = 0;
   for (let r of renderers) {
     SBGNRenderer.renderGraph(r, sbgnmlText, layouts[i]);
@@ -27,7 +31,7 @@ const loadInEach = (renderers, sbgnmlText) => {
 
 $(document).ready(function () {
 
-  const containers = ['#default-layout', '#signalling-layout','#cose-bilkent-layout'];
+  const containers = ['#default-layout', '#signalling-layout'];
   const renderers = containers.map((container, index) => {
     const renderer = new SBGNRenderer({container: $(container)});
 
