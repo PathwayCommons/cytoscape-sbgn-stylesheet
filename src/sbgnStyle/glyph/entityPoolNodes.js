@@ -34,8 +34,6 @@ const entityPoolNodes = {
   simpleChemical (node) {
     const {w: nw, h: nh} = dimensions.get(node);
 
-
-
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
     .set('stroke-width', '2')
@@ -65,7 +63,7 @@ const entityPoolNodes = {
     return svgStr(simpleChemicalSvg, nw, nh, 0, 0, nw, nh);
   },
 
-  macromolecule: memoize( function(node) {
+  macromolecule(node) {
     const {w: nw, h: nh} = dimensions.get(node);
 
     const styleMap = new Map()
@@ -102,13 +100,7 @@ const entityPoolNodes = {
       ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), nh - (0.225*nh / 2), 0.1*nh, sVars[0]) : ''}
     `;
     return svgStr(macromoleculeSvg, nw, nh, 0, 0, nw, nh);
-  }, function macromoleculeShapeKey( node ){
-    return '' +
-      node.outerWidth() + '$' +
-      node.outerHeight() + '$' +
-      JSON.stringify( node.data() )
-    ;
-  } ),
+  },
 
   nucleicAcidFeature (node) {
     const {w: nw, h: nh} = dimensions.get(node);
@@ -151,49 +143,41 @@ const entityPoolNodes = {
   },
 
   complex (node) {
-    let nw = node.width();
-    let nh = node.height();
-
-    let styleMap = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    let shapeArgs = [1, 2, nw - 2, nh - 5, 10];
-    const multimerShapeArgs = [15, 15, .93*nw, .93*nh, 10];
-
+    const auxItemWidth = 60;
+    const auxItemHeight = 40;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
-    if (uInfos.length > 0) {
-      shapeArgs[0] += 5;
-      shapeArgs[1] += 10;
-      shapeArgs[2] *= .95;
-      shapeArgs[3] *= .9;
-    }
+    const style = new Map()
+    .set('stroke', '#555555')
+    .set('stroke-width', '6');
 
-    if (sVars.length > 0) {
-      shapeArgs[3] = .85*nh;
-    }
+    const cloneMarkerSvg = svgStr(
+      hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    if (isMultimer(node)) {
-      shapeArgs = [5, 10, .93*nw, .9*nh, 10];
-    }
+    const uInfoSvg = svgStr(
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    const uinfoW = Math.min(100, 0.4*nw);
-    const uinfoH = Math.min(25, 0.2*nh);
-    const sVarRadius = 15;
+    const sVarSvg = svgStr(
+      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight, sVars[0]) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    let complexSvg =
-    `
-      ${isMultimer(node) ? auxiliaryItems.multimer(baseShapes.cutRectangle, multimerShapeArgs) : ''}
-      ${baseShapes.cutRectangle(...shapeArgs, styleMap)}
-      ${hasClonemarker(node) ? auxiliaryItems.cloneMarker(nw, nh, baseShapes.cutRectangle, shapeArgs) : ''}
-      ${uInfos.length > 0 ? auxiliaryItems.unitOfInformation((nw / 3), 1, uinfoW, uinfoH, uInfos[0]) : ''}
-      ${sVars.length > 0 ? auxiliaryItems.stateVariable((2 * nw / 4), shapeArgs[3] + shapeArgs[1] - 5, sVarRadius, sVars[0]) : ''}
-    `;
-    return svgStr(complexSvg, nw, nh, 0, 0, nw, nh);
+    const topLine = svgStr(
+      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    const bottomLine = svgStr(
+      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
 
   sourceAndSink (node) {

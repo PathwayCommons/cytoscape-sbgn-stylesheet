@@ -20,6 +20,72 @@ const stateVarLabel = (stateVar) => {
 
 const auxiliaryItems = {
 
+  compoundCloneMarker (x, y, width, height) {
+
+    const cloneStyle = new Map()
+    .set('stroke', '#6A6A6A')
+    .set('stroke-width', '1')
+    .set('fill', '#D2D2D2');
+
+    return baseShapes.rectangle(x, y, width, height, cloneStyle);
+  },
+
+
+  compoundUnitOfInformation (x, y, width, height, uInfo) {
+    const fontSize = 14;
+    const text = uInfo.label.text;
+    const uinfoRectStyle = new Map()
+    .set('stroke', '#555555')
+    .set('stroke-width', '4')
+    .set('fill', '#FDFDFD');
+
+
+    const textStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('font-size', `${fontSize}`)
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
+    .set('text-anchor', 'middle')
+    .set('stroke', 'black');
+
+    const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
+
+    const unitOfInformationSvg =
+    `
+      ${baseShapes.roundRectangle(x, y, uInfoWidth, height, uinfoRectStyle)}
+      ${baseShapes.text(text, x + (uInfoWidth / 2), y + ( height / 2),  textStyle)}
+    `;
+
+    return unitOfInformationSvg;
+  },
+
+  compoundStateVar (x, y, width, height, stateVar) {
+    const fontSize = 14;
+
+    const stateVarStyle = new Map()
+    .set('stroke', '#555555')
+    .set('stroke-width', '4')
+    .set('fill', 'none');
+
+
+    const textStyle = new Map()
+    .set('alignment-baseline', 'middle')
+    .set('font-size', `${fontSize}`)
+    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
+    .set('text-anchor', 'middle')
+    .set('stroke', 'black');
+
+    const tw = textWidth(stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
+    const w = Math.max(tw, 30);
+    const statevariableSvg =
+    `
+      ${baseShapes.stadium(x, y, w, height, stateVarStyle)}
+      ${baseShapes.text(stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
+    `;
+
+    return statevariableSvg;
+  },
+
+
   stateVariable (x, y, radius, stateVar) {
 
     const fontSize = 12;
@@ -72,7 +138,7 @@ const auxiliaryItems = {
     const unitOfInformationSvg =
     `
       ${baseShapes.roundRectangle(x - (uInfoWidth / 2), y, uInfoWidth, height, uinfoRectStyle)}
-      ${baseShapes.text(unitInfo.label.text, x, y + ( height / 2),  textStyle)}
+      ${baseShapes.text(text, x, y + ( height / 2),  textStyle)}
     `;
 
     return unitOfInformationSvg;

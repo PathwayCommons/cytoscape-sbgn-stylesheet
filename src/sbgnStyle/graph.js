@@ -99,8 +99,8 @@ var sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? 5 : 0,
-          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
+          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
+          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
         })
 
 
@@ -112,8 +112,46 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'min-width': (node) => sbgnDimensions.width(node),
+          // 'min-width': (node) => sbgnDimensions.width(node),
           'min-height': (node) => sbgnDimensions.height(node),
+          // 'min-height-bias-bottom': '85%',
+          // 'min-height-bias-top': '15%',
+        })
+
+        .selector('node[class="complex"], node[class="complex multimer"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
+          'background-fit': ['contain', 'contain', 'none', 'none'],
+          'background-clip': 'node',
+          'padding': '16%',
+          'padding-relative-to': 'max'
+        })
+
+        .selector('node[class="compartment"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node), // cache this
+          'background-width': ['100%'],
+          'background-position-x': ['0%', '25%'],          // order: line, line, uinfo
+          'background-position-y': ['38px', '0%'],
+          'background-fit': ['contain', 'none'],
+          'background-clip': 'node',
+          'padding': '16%',
+          'padding-relative-to': 'max'
+        })
+
+        .selector('node[class="complex"], node[class="complex multimer"]')
+        .css({
+          // function that generates the bg image and properties
+          // 'background-image': (node) => sbgnShapes.draw(node).images, // generate img and img properties
+          // 'background-width': (node) => sbgnShapes.draw(node).widths
+          // 'background-height': (node) => sbgnShapes.draw(node).heights
+          // 'background-position-x': (node) => sbgnShapes.draw(node).xPositions
+          // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
+          // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
+          // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
         })
 
         .selector('node[class="compartment"]')
