@@ -40,12 +40,13 @@ module.exports = function (cy) {
   compartments.forEach(function (compartment) {
     let children = compartment.children();
     const childrenProportion = compartment.children().size() / totalChildren;
-    const regionH = Math.max(childrenProportion * compartmentRegionH, 100);
+    const regionH = Math.max(childrenProportion * compartmentRegionH, 100, childrenProportion * 100, children.size() * 10);
+    const regionW = Math.min(children.size() * 100, compartmentRegionW);
 
     const compartmentRegion = {
       x: compartmentRegionX,
       y: compartmentRegionY,
-      w: compartmentRegionW,
+      w: regionW,
       h: regionH
     };
     compartmentRegionY += regionH +  200;
@@ -65,6 +66,9 @@ module.exports = function (cy) {
         w: compartmentRegion.w,
         h: compartmentRegion.h
       },
+      padding: 0,
+      randomize: true,
+      nodeRepulsion: 100000,
       stop: function () {
         const childPosMap = new Map();
         children.nodes().forEach(function (child) {
@@ -85,6 +89,7 @@ module.exports = function (cy) {
           return childPosMap.get(child.data('id'));
         });
         cy.fit();
+        cy.edges().style({opacity: 0.5});
       }
     }).run();
   });
@@ -110,5 +115,35 @@ module.exports = function (cy) {
       h: floatNodesRegion.h
     }
   }).run();
+
+  cy.on('mouseover', 'edge', function (evt) {
+    const edge = evt.target;
+    edge.style({
+      'line-color': 'orange',
+      'opacity': 1
+    });
+
+    edge.source().style({
+      'background-color': 'blue'
+    });
+    edge.target().style({
+      'background-color': 'blue'
+    });
+  });
+
+  cy.on('mouseout', 'edge', function (evt) {
+    const edge = evt.target;
+    edge.style({
+      'line-color': 'black',
+      'opacity': 0.3
+    });
+
+    edge.source().style({
+      'background-color': 'white'
+    });
+    edge.target().style({
+      'background-color': 'white'
+    });
+  });
 
 };
