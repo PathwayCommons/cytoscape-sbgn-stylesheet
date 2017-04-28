@@ -18,7 +18,7 @@ const collapseComplexNodes = (cy) => {
 
 const reduceGraphComplexity = (cy) => {
   removeDisconnectedNodes(cy);
-  // collapseComplexNodes(cy);
+  collapseComplexNodes(cy);
 };
 
 const renderGraph = (cy, sbgnmlText, layout='default') => {

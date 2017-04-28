@@ -8,8 +8,8 @@ const baseShapes = require('./baseShapes');
 const containerNodes = {
 
   compartment (node) {
-    const nw = 60;
-    const nh = 40;
+    const auxItemWidth = 60;
+    const auxItemHeight = 40;
     const uInfos = sbgnData.getUnitInfos(node);
 
     const style = new Map()
@@ -17,13 +17,13 @@ const containerNodes = {
     .set('stroke-width', '6');
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, nw - 5, nh, uInfos[0]) : '',
-      nw, nh, 0, 0, nw, nh
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
     let lineSvg = svgStr(
-      uInfos.length > 0 ? baseShapes.line(0, 0, nw, 0, style) : '',
-      nw, nh, 0, 0, nw, nh
+      uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
     return [lineSvg, uInfoSvg]; // ordering of svg images matters
