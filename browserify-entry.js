@@ -2,6 +2,9 @@
 // for testing
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
+window.textWidth = textWidth;
+window.convertSbgnml = convertSbgnml;
+
 const expandCollapse = require('cytoscape-expand-collapse');
 const coseBilkent = require('cytoscape-cose-bilkent');
 const $ = require('jquery');
