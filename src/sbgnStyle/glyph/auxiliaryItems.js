@@ -37,7 +37,7 @@ const auxiliaryItems = {
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', '4')
-    .set('fill', '#FDFDFD');
+    .set('fill', 'none');
 
 
     const textStyle = new Map()

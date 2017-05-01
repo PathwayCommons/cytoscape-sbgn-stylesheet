@@ -113,7 +113,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'text-valign': 'bottom',
           'text-halign': 'center',
           // 'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': (node) => sbgnDimensions.height(node),
+          // 'min-height': (node) => sbgnDimensions.height(node),
           // 'min-height-bias-bottom': '85%',
           // 'min-height-bias-top': '15%',
         })
@@ -126,8 +126,8 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
           'background-clip': 'node',
-          'padding': '16%',
-          'padding-relative-to': 'max'
+          'padding': '16%',   // TODO make this not a magic number
+          'padding-reltive-to': 'max'
         })
 
         .selector('node[class="compartment"]')
@@ -139,7 +139,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-fit': ['contain', 'none'],
           'background-clip': 'node',
           'padding': '16%',
-          'padding-relative-to': 'max'
+          'padding-reltive-to': 'max'
         })
 
         .selector('node[class="complex"], node[class="complex multimer"]')
@@ -152,12 +152,6 @@ var sbgnStyleSheet = function (cytoscape) {
           // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
           // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
           // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
-        })
-
-        .selector('node[class="compartment"]')
-        .css({
-          'padding': '5%',
-          'padding-relative-to': 'average',
         })
 
         // edge styling
