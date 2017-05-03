@@ -27,6 +27,18 @@ The following node JSON structure is required:
         "unitsOfInformation": [],          // an array of units of information
       }
 ```
+The following edge JSON structure is required:
+```
+      "data": {
+        "id": "glyph19-glyph5",            // id
+        "class": "production",             // sbgn class
+        "cardinality": 0,                  // cardinality
+        "source": "glyph19",               // source node id
+        "target": "glyph5",                // target node id
+        "portSource": "glyph19",           // port of the source
+        "portTarget": "glyph5"             // port of the target
+      }
+```
 
 To get Cytoscape.js graph JSON, you need the following:
 * SBGN-ML files; xml files that represent biological networks.
