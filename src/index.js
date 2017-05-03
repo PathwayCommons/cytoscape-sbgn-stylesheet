@@ -2,7 +2,6 @@ let Cytoscape = require('cytoscape');
 let defaultsDeep = require('lodash.defaultsdeep');
 
 let sbgnStyleSheet = require('./sbgnStyle/graph');
-let renderGraph = require('./renderGraph');
 
 let defaultOptions = {
 };
@@ -23,7 +22,6 @@ SBGNRenderer.stylesheet = function(){
   return sbgnStyleSheet(Cytoscape);
 };
 
-SBGNRenderer.renderGraph = renderGraph;
 
 
 module.exports = SBGNRenderer;

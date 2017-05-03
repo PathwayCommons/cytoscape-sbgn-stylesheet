@@ -122,8 +122,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
           'background-clip': 'node',
-          'padding': '16%',
-          'padding-reltive-to': 'max'
+          'padding': '38px'
         })
 
         .selector('node[class="compartment"]')
@@ -134,10 +133,10 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-position-y': ['38px', '0%'],
           'background-fit': ['contain', 'none'],
           'background-clip': 'node',
-          'padding': '16%',
-          'padding-reltive-to': 'max'
+          'padding': '38px'
         })
 
+        // TODO: cached version of multi-img compounds
         // .selector('node[class="complex"], node[class="complex multimer"]')
         // .css({
         //   // function that generates the bg image and properties
