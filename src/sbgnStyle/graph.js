@@ -112,10 +112,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-          // 'min-width': (node) => sbgnDimensions.width(node),
-          // 'min-height': (node) => sbgnDimensions.height(node),
-          // 'min-height-bias-bottom': '85%',
-          // 'min-height-bias-top': '15%',
         })
 
         .selector('node[class="complex"], node[class="complex multimer"]')
@@ -126,7 +122,7 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
           'background-clip': 'node',
-          'padding': '16%',   // TODO make this not a magic number
+          'padding': '16%',
           'padding-reltive-to': 'max'
         })
 
@@ -142,17 +138,17 @@ var sbgnStyleSheet = function (cytoscape) {
           'padding-reltive-to': 'max'
         })
 
-        .selector('node[class="complex"], node[class="complex multimer"]')
-        .css({
-          // function that generates the bg image and properties
-          // 'background-image': (node) => sbgnShapes.draw(node).images, // generate img and img properties
-          // 'background-width': (node) => sbgnShapes.draw(node).widths
-          // 'background-height': (node) => sbgnShapes.draw(node).heights
-          // 'background-position-x': (node) => sbgnShapes.draw(node).xPositions
-          // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
-          // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
-          // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
-        })
+        // .selector('node[class="complex"], node[class="complex multimer"]')
+        // .css({
+        //   // function that generates the bg image and properties
+        //   // 'background-image': (node) => sbgnShapes.draw(node).images, // generate img and img properties
+        //   // 'background-width': (node) => sbgnShapes.draw(node).widths
+        //   // 'background-height': (node) => sbgnShapes.draw(node).heights
+        //   // 'background-position-x': (node) => sbgnShapes.draw(node).xPositions
+        //   // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
+        //   // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
+        //   // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
+        // })
 
         // edge styling
         .selector('edge')
