@@ -144,7 +144,7 @@ const entityPoolNodes = {
 
   complex (node) {
     const auxItemWidth = 60;
-    const auxItemHeight = 40;
+    const auxItemHeight = 24;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 

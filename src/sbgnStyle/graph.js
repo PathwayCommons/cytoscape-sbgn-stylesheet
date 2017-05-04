@@ -119,10 +119,12 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnShapes.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '38px', '100%', '0%', '0%'],
+          'background-position-y': ['100%', '22px', '100%', '0%', '0%'],
           'background-fit': ['contain', 'contain', 'none', 'none'],
           'background-clip': 'node',
-          'padding': '38px'
+          'padding': '22px',
+          'height': '5px',
+          'width': '5px'
         })
 
         .selector('node[class="compartment"]')
