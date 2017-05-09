@@ -12,7 +12,7 @@ elementStyle.sbgnShape = (node) => {
   }
 
   if (sbgnClass == 'compartment') {
-    return 'roundrectangle';
+    return 'barrel';
   }
 
   if (sbgnClass == 'process' || sbgnClass == 'omitted process' || sbgnClass == 'uncertain process') {
@@ -28,8 +28,12 @@ elementStyle.sbgnShape = (node) => {
     return 'ellipse';
   }
 
-  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule' || sbgnClass == 'complex') {
+  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
     return 'roundrectangle';
+  }
+
+  if (sbgnClass == 'complex') {
+    return 'cutrectangle';
   }
   return 'ellipse';
 };
@@ -62,81 +66,56 @@ elementStyle.sbgnContent = (node) => {
     sbgnClass = sbgnClass.replace(' multimer', '');
   }
 
-  if (sbgnClass == 'macromolecule' || sbgnClass == 'simple chemical'
-      || sbgnClass == 'phenotype'
-      || sbgnClass == 'unspecified entity' || sbgnClass == 'nucleic acid feature'
-      || sbgnClass == 'perturbing agent' || sbgnClass == 'tag') {
+  if (sbgnClass === 'macromolecule' || sbgnClass === 'simple chemical'
+      || sbgnClass === 'phenotype'
+      || sbgnClass === 'unspecified entity' || sbgnClass === 'nucleic acid feature'
+      || sbgnClass === 'perturbing agent' || sbgnClass === 'tag'
+      || sbgnClass === 'compartment' || sbgnClass === 'complex') {
     content = node.data('label') ? node.data('label') : '';
   }
-  else if(sbgnClass == 'compartment'){
-    content = node.data('label') ? node.data('label') : '';
-  }
-  else if(sbgnClass == 'complex'){
-    if(node.children().length == 0){
-      if(node.data('label')){
-        content = node.data('label');
-      }
-      else if(node.data('infoLabel')){
-        content = node.data('infoLabel');
-      }
-      else{
-        content = '';
-      }
-    }
-    else{
-      content = '';
-    }
-  }
-  else if (sbgnClass == 'and') {
+  if (sbgnClass == 'and') {
     content = 'AND';
   }
-  else if (sbgnClass == 'or') {
+  if (sbgnClass == 'or') {
     content = 'OR';
   }
-  else if (sbgnClass == 'not') {
+  if (sbgnClass == 'not') {
     content = 'NOT';
   }
-  else if (sbgnClass == 'omitted process') {
+  if (sbgnClass == 'omitted process') {
     content = '\\\\';
   }
-  else if (sbgnClass == 'uncertain process') {
+  if (sbgnClass == 'uncertain process') {
     content = '?';
   }
 
   return content;
 };
 
-const dynamicLabelTextSize = (nodeHeight, sizeCoefficient = 1) => {
-  return (nodeHeight / 2.45) * sizeCoefficient;
+const scaledTextSize = (height, sizeCoefficient = 1) => {
+  return (height / 2.45) * sizeCoefficient;
 };
 
 elementStyle.labelTextSize = (node) => {
   const sbgnClass = sbgnData.sbgnClass(node);
-  const nh = 40; // dont use node.width() leads to expensive cyclic updates
+  const textScalingConstant = 40;
 
-  // Dirty legacy hack.  These types of nodes are not supposed to have labels
-  // but apparently they need to have a text size
   if (sbgnClass === 'association' || sbgnClass === 'dissociation') {
     return 20;
   }
-
-  if (sbgnClass === 'and' || sbgnClass === 'or' || sbgnClass === 'not') {
-    return dynamicLabelTextSize(nh, 1);
-  }
-
-  if (sbgnClass.endsWith('process')) {
-    return dynamicLabelTextSize(nh, 1.5);
-  }
-
   if (sbgnClass.includes('complex')) {
     return 16;
   }
 
   if (sbgnClass === 'compartment') {
-    return 30;
+    return 50;
   }
 
-  return dynamicLabelTextSize(nh);
+  if (sbgnClass.endsWith('process')) {
+    return scaledTextSize(textScalingConstant, 1.5);
+  }
+
+  return scaledTextSize(textScalingConstant);
 };
 
 elementStyle.cardinalityDistance = (edge) => {

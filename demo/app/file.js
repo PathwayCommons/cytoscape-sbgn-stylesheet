@@ -11,7 +11,7 @@ var loadFileText = function (absFilePath) {
   return xhttp.responseText;
 };
 
-var readFile = function (renderer, file, cb) {
+var readFile = function (file, cb) {
   var reader = new FileReader();
 
   reader.onload = function (e) {

@@ -47,9 +47,7 @@ var sbgnStyleSheet = function (cytoscape) {
           node[class="unspecified entity"],
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
-          node[class="simple chemical"], node[class="simple chemical multimer"],
-          node[class="complex"], node[class="complex multimer"],
-          node[class="compartment"]
+          node[class="simple chemical"], node[class="simple chemical multimer"]
         `)
         .css({
           'background-image': (node) => sbgnShapes.draw(node),
@@ -101,37 +99,62 @@ var sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? 5 : 0,
-          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '120%' : '100%',
+          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
+          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
         })
 
 
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
+          'border-width': 4,
           'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
-          'background-width': '110%',
-          'background-height': '110%',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'padding': '10%',
-          'padding-relative-to': 'max',
-          'min-width': (node) => sbgnDimensions.width(node),
-          'min-height': (node) => sbgnDimensions.height(node),
         })
 
-        // make child nodes smaller
-        .selector('node > node')
+        .selector('node[class="complex"], node[class="complex multimer"]')
         .css({
-          width: (node) => .8 * sbgnDimensions.width(node),
-          height: (node) => .8 * sbgnDimensions.height(node)
+          'background-image': (node) => sbgnShapes.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '22px', '100%', '0%', '0%'],
+          'background-fit': ['contain', 'contain', 'none', 'none'],
+          'background-clip': 'node',
+          'padding': '22px',
+          'height': '5px',
+          'width': '5px'
         })
 
+        .selector('node[class="compartment"]')
+        .css({
+          'background-image': (node) => sbgnShapes.draw(node), // cache this
+          'background-width': ['100%'],
+          'background-position-x': ['0%', '25%'],          // order: line, line, uinfo
+          'background-position-y': ['38px', '0%'],
+          'background-fit': ['contain', 'none'],
+          'background-clip': 'node',
+          'padding': '38px'
+        })
+
+        // TODO: cached version of multi-img compounds
+        // .selector('node[class="complex"], node[class="complex multimer"]')
+        // .css({
+        //   // function that generates the bg image and properties
+        //   // 'background-image': (node) => sbgnShapes.draw(node).images, // generate img and img properties
+        //   // 'background-width': (node) => sbgnShapes.draw(node).widths
+        //   // 'background-height': (node) => sbgnShapes.draw(node).heights
+        //   // 'background-position-x': (node) => sbgnShapes.draw(node).xPositions
+        //   // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
+        //   // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
+        //   // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
+        // })
 
         // edge styling
         .selector('edge')
         .css({
+          'arrow-scale': 1.75,
           'curve-style': 'bezier',
           'line-color': '#555',
           'target-arrow-fill': 'hollow',

@@ -1,36 +1,32 @@
 const svgStr = require('../util/svg').svgStr;
 const sbgnData = require('../util/sbgn');
 
+
 const auxiliaryItems = require('./auxiliaryItems');
 const baseShapes = require('./baseShapes');
 
 const containerNodes = {
 
   compartment (node) {
-    const nh = node.outerHeight();
-    const nw = node.outerWidth();
+    const auxItemWidth = 60;
+    const auxItemHeight = 40;
+    const uInfos = sbgnData.getUnitInfos(node);
 
     const style = new Map()
-      .set('stroke-width', '3.75')
-      .set('fill', 'none')
-      .set('stroke', '#6A6A6A');
+    .set('stroke', '#555555')
+    .set('stroke-width', '6');
 
-    const unitInfos = sbgnData.getUnitInfos(node);
-    const uinfoW = Math.min(100, 0.4*nw);
-    const uinfoH = Math.min(25, 0.2*nh);
+    const uInfoSvg = svgStr(
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    let shapeArgs = [10, 5, nw - 20, nh - 10];
+    let lineSvg = svgStr(
+      uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    if (unitInfos.length > 0) {
-      shapeArgs = [10, (uinfoH / 2), nw - 20, nh - 10];
-    }
-
-    const compartmentSvg =
-    `
-      ${baseShapes.barrel(...shapeArgs, style)}
-      ${unitInfos.length > 0 ? auxiliaryItems.unitOfInformation((nh / 3), 5, uinfoW, uinfoH, unitInfos[0]) : ''}
-    `;
-    return svgStr(compartmentSvg, nw, nh, 0, 0, nw, nh);
+    return [lineSvg, uInfoSvg]; // ordering of svg images matters
   }
 };
 
