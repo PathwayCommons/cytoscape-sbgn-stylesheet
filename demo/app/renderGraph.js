@@ -8,7 +8,6 @@ module.exports = (cy, sbgnmlText) => {
     cy.add(graphJSON);
 
     var nodePositions = {};
-
     for (var i = 0; i < graphJSON.nodes.length; i++) {
       var xPos = graphJSON.nodes[i].data.bbox.x;
       var yPos = graphJSON.nodes[i].data.bbox.y;

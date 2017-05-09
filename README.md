@@ -7,9 +7,43 @@ To render SBGN(Systems Biology Graphical Notation) graphs -- a visual language f
 ### Requirements
 Input needs to be formatted Cytoscape.js graph JSON.  
 
+The following graph JSON structure is required:
+```
+{
+  nodes: [],  // array of nodes
+  edges: []   // array of edges
+}
+```
+
+The following node JSON structure is required:
+```
+      "data": {
+        "id": "glyph23",                   // id of the node
+        "class": "simple chemical",        // class of the node (see classes section for a list of supported sbgn glyphs
+        "label": "Ca2+",                   // label to be displayed on the node
+        "parent": "glyph2",                // parent node id if any
+        "clonemarker": false,              // whether the node has a clonemarker or not
+        "stateVariables": [],              // an array of state variables
+        "unitsOfInformation": [],          // an array of units of information
+      }
+```
+The following edge JSON structure is required:
+```
+      "data": {
+        "id": "glyph19-glyph5",            // id
+        "class": "production",             // sbgn class
+        "cardinality": 0,                  // cardinality
+        "source": "glyph19",               // source node id
+        "target": "glyph5",                // target node id
+        "portSource": "glyph19",           // port of the source
+        "portTarget": "glyph5"             // port of the target
+      }
+```
+
 To get Cytoscape.js graph JSON, you need the following:
 * SBGN-ML files; xml files that represent biological networks.
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
+
 
 ### Installation
 SBGN Renderer can be installed via npm
@@ -24,7 +58,6 @@ SBGNRenderer provides Cytoscape.js's API, as well as SBGN specific functions for
 Learn how to use SBGNRenderer by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
 Learn how to use the [SBGN API] ()
 
-
 CommonJS Usage
 ```js
 var SBGNRenderer = require('sbgn-renderer');
@@ -33,17 +66,6 @@ var renderer = new SBGNRenderer(/* opts */);
 renderer.nodes();    // get cytoscape graph nodes
 renderer.edges();    // get cytoscape graph edges
 // renderer.<cytoscape-api-method-here>
-```
-ES6 Usage
-```js
-import SBGNRenderer from 'sbgn-renderer';
-
-var renderer = new SBGNRenderer(/* opts */);
-
-renderer.nodes();    // get cytoscape graph nodes
-renderer.edges();    // get cytoscape graph edges
-// renderer.<cytoscape-api-method-here>
-
 ```
 
 ##### Demo
@@ -67,7 +89,7 @@ node http-server -p <PORT>
 
 Open your browser and type the following address:
 ```
-localhost:<PORT>/demo/with-browserify.html
+localhost:<PORT>/demo/
 ```
 
 ### Building the Library
