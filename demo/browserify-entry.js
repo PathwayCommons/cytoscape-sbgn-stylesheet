@@ -1,15 +1,11 @@
-
-// for testing
+const cytoscape = require('cytoscape');
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
-window.textWidth = textWidth;
-window.convertSbgnml = convertSbgnml;
-
 const $ = require('jquery');
 
-const SBGNRenderer = require('../src/');
+window.convertSbgnml = convertSbgnml;
+const sbgnStyleSheet = require('../src/');
 
-window.textWidth = textWidth;
 window.convertSbgnml = convertSbgnml;
 
 const file = require('./app/file');
@@ -21,8 +17,9 @@ $(document).ready(function () {
 
   // init the renderer
   var container = $('#sbgn-network-container');
-  var renderer = new SBGNRenderer({
-    container: container
+  var renderer = cytoscape({
+    container: container,
+    style: sbgnStyleSheet(cytoscape)
   });
   window.r = window.cy = renderer;
   renderGraph(renderer, defaultText);
