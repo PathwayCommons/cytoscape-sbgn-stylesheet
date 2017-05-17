@@ -22,7 +22,10 @@ var sbgnStyleSheet = function (cytoscape) {
           'background-color': '#f6f6f6',
           'background-opacity': 0.5,
           'text-opacity': 1,
-          'opacity': 1
+          'opacity': 1,
+          'text-outline-color': 'white',
+          'text-outline-opacity': 1,
+          'text-outline-width': 0.75
         })
         .selector('node:selected')
         .css({
