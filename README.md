@@ -15,6 +15,39 @@ The following graph JSON structure is required:
 }
 ```
 
+#### Supported SBGN classes
+Nodes:
+* simple chemical
+* simple chemical multimer
+* macromolecule
+* macromolecule multimer
+* nucleic acid feature
+* nucleic acid feature multimer
+* compartment
+* unspecified entity
+* perturbing agent
+* complex
+* phenotype
+* tag
+* process
+* uncertain process
+* omitted process
+* source and sink
+* dissociation
+* association
+* and
+* or
+* not
+
+Edges:
+* necessary stimulation
+* production
+* consumption
+* stimulation
+* catalysis
+* inhibition
+
+
 The following node JSON structure is required:
 ```
       "data": {
