@@ -16,6 +16,9 @@ const sbgnDataHandler = {
   },
   sbgnClass (element) {
     return element.data('class');
+  },
+  sbgnLabel (element) {
+    return element.data('label');
   }
 };
 

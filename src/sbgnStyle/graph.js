@@ -87,10 +87,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'height': (node) => sbgnDimensions.height(node),
           'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
         })
-        .selector('node[class="perturbing agent"]')
-        .css({
-          'shape-polygon-points': '-1, -0.95, -0.75, 0, -1, 0.95, 1, 0.95, 0.75, 0, 1, -0.95',
-        })
 
 
         // entity pool nodes that have one or more of (units of information, state variables, multimer)

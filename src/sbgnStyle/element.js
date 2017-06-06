@@ -1,78 +1,47 @@
 const sbgnData = require('./util/sbgn.js');
 var elementStyle = {};
 
+const sbgnShapeMap = new Map()
+.set('phenotype', 'hexagon')
+.set('compartment', 'barrel')
+.set('process', 'square')
+.set('omitted process', 'square')
+.set('uncertain process', 'square')
+.set('perturbing agent', 'concavehexagon')
+.set('tag', 'tag')
+.set('source and sink', 'polygon')
+.set('dissociation', 'ellipse')
+.set('association', 'ellipse')
+.set('simple chemical', 'ellipse')
+.set('nucleic acid feature', 'bottomroundrectangle')
+.set('macromolecule', 'roundrectangle')
+.set('complex', 'cutrectangle');
+
+const sbgnArrowMap = new Map()
+.set('necessary stimulation', 'triangle-cross')
+.set('inhibition', 'tee')
+.set('catalysis', 'circle')
+.set('stimulation', 'triangle')
+.set('production', 'triangle')
+.set('modulation', 'diamond');
+
+
 elementStyle.sbgnShape = (node) => {
-  let sbgnClass = sbgnData.sbgnClass(node);
-  if (sbgnClass.endsWith(' multimer')) {
-    sbgnClass = sbgnClass.replace(' multimer', '');
-  }
-
-  if (sbgnClass == 'phenotype') {
-    return 'hexagon';
-  }
-
-  if (sbgnClass == 'compartment') {
-    return 'barrel';
-  }
-
-  if (sbgnClass == 'process' || sbgnClass == 'omitted process' || sbgnClass == 'uncertain process') {
-    return 'square';
-  }
-
-  if (sbgnClass == 'perturbing agent' || sbgnClass == 'tag'
-    || sbgnClass == 'source and sink') {
-    return 'polygon';
-  }
-
-  if (sbgnClass == 'dissociation' || sbgnClass == 'association' || sbgnClass == 'simple chemical') {
-    return 'ellipse';
-  }
-
-  if ( sbgnClass == 'nucleic acid feature' || sbgnClass == 'macromolecule') {
-    return 'roundrectangle';
-  }
-
-  if (sbgnClass == 'complex') {
-    return 'cutrectangle';
-  }
-  return 'ellipse';
+  const sbgnClass = sbgnData.sbgnClass(node).replace(' multimer', '');
+  const shape = sbgnShapeMap.get(sbgnClass);
+  return shape ? shape : 'ellipse';
 };
 
 elementStyle.sbgnArrowShape = (edge) => {
-  let sbgnClass = sbgnData.sbgnClass(edge);
-  if (sbgnClass == 'necessary stimulation') {
-    return 'triangle-cross';
-  }
-  if (sbgnClass == 'inhibition') {
-    return 'tee';
-  }
-  if (sbgnClass == 'catalysis') {
-    return 'circle';
-  }
-  if (sbgnClass == 'stimulation' || sbgnClass == 'production') {
-    return 'triangle';
-  }
-  if (sbgnClass == 'modulation') {
-    return 'diamond';
-  }
-  return 'none';
+  const sbgnClass = sbgnData.sbgnClass(edge);
+  const arrowShape = sbgnArrowMap.get(sbgnClass);
+  return arrowShape ? arrowShape : 'none';
 };
 
 elementStyle.sbgnContent = (node) => {
-  let sbgnClass = sbgnData.sbgnClass(node);
-  let content = '';
-
-  if (sbgnClass.endsWith(' multimer')) {
-    sbgnClass = sbgnClass.replace(' multimer', '');
-  }
-
-  if (sbgnClass === 'macromolecule' || sbgnClass === 'simple chemical'
-      || sbgnClass === 'phenotype'
-      || sbgnClass === 'unspecified entity' || sbgnClass === 'nucleic acid feature'
-      || sbgnClass === 'perturbing agent' || sbgnClass === 'tag'
-      || sbgnClass === 'compartment' || sbgnClass === 'complex') {
-    content = node.data('label') ? node.data('label') : '';
-  }
+  const sbgnClass = sbgnData.sbgnClass(node).replace(' multimer', '');
+  let content = sbgnData.sbgnLabel(node);
+  
   if (sbgnClass == 'and') {
     content = 'AND';
   }
