@@ -2,12 +2,12 @@ const baseShapes = require('./baseShapes');
 const auxiliaryItems = require('./auxiliaryItems');
 
 const svgStr = require('../util/svg').svgStr;
-const dimensions = require('../dimensions');
+const element = require('../element');
 
 const processNodes = {
 
   process (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const squareStyle = new Map()
     .set('stroke', '#6A6A6A')
@@ -22,7 +22,7 @@ const processNodes = {
   },
 
   association (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const centerX = nw / 2;
     const centerY = nh / 2;
@@ -42,7 +42,7 @@ const processNodes = {
   },
 
   dissociation (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const centerX = nw / 2;
     const centerY = nh / 2;
@@ -63,7 +63,7 @@ const processNodes = {
   },
 
   phenotype (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')

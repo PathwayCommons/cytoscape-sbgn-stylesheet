@@ -1,4 +1,4 @@
-let sbgnStyleSheet = require('./sbgnStyle/graph');
+let sbgnStyleSheet = require('./sbgnStyle/');
 
 let defaultOptions = {
 };

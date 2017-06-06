@@ -1,7 +1,6 @@
 const elementStyle = require('./element.js');
 
 const sbgnShapes = require('./glyph');
-const sbgnDimensions = require('./dimensions');
 
 const isMultimer = require('./util/sbgn.js').isMultimer;
 const hasAuxItems = require('./util/sbgn.js').hasAuxItems;
@@ -54,8 +53,8 @@ var sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'background-image': (node) => sbgnShapes.draw(node),
-          'width': (node) => sbgnDimensions.width(node),
-          'height': (node) => sbgnDimensions.height(node),
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
           'background-fit': 'none',
           'background-width': '100%',
           'background-height': '100%',
@@ -83,9 +82,8 @@ var sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node[class="tag"]')
         .css({
-          'width': (node) => sbgnDimensions.width(node),
-          'height': (node) => sbgnDimensions.height(node),
-          'shape-polygon-points': '-1, -1,   0.25, -1,   1, 0,    0.25, 1,    -1, 1'
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
         })
 
 

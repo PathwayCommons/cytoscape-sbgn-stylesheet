@@ -8,13 +8,13 @@ const getUnitInfos = require('../util/sbgn').getUnitInfos;
 const getStateVars = require('../util/sbgn').getStateVars;
 const hasClonemarker = require('../util/sbgn').hasClonemarker;
 const isMultimer = require('../util/sbgn').isMultimer;
-const dimensions = require('../dimensions');
+const element = require('../element');
 
 
 const entityPoolNodes = {
 
   unspecifiedEntity (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -32,7 +32,7 @@ const entityPoolNodes = {
   },
 
   simpleChemical (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -64,7 +64,7 @@ const entityPoolNodes = {
   },
 
   macromolecule(node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
@@ -103,7 +103,7 @@ const entityPoolNodes = {
   },
 
   nucleicAcidFeature (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
 
     const styleMap = new Map()
@@ -181,7 +181,7 @@ const entityPoolNodes = {
   },
 
   sourceAndSink (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
 
     const centerX = nw / 2;
@@ -207,7 +207,7 @@ const entityPoolNodes = {
   },
 
   perturbingAgent (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const styleMap = new Map()
     .set('stroke', '#6A6A6A')
