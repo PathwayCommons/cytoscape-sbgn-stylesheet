@@ -4,10 +4,10 @@ const sbgnStyle = new Map()
 .set('unspecified entity', {w: 40, h: 40, shape: 'ellipse'})
 .set('simple chemical', {w: 60, h: 60, shape: 'ellipse'})
 .set('simple chemical multimer', {w: 60, h: 60, shape: 'ellipse'})
-.set('macromolecule', {w: 100, h: 60, shape: 'roundrectangle'})
-.set('macromolecule multimer', {w: 100, h: 60, shape: 'roundrectangle'})
-.set('nucleic acid feature', {w: 100, h: 60, shape: 'bottomroundrectangle'})
-.set('nucleic acid feature multimer', {w: 100, h: 60, shape: 'bottomroundrectangle'})
+.set('macromolecule', {w: 100, h: 56, shape: 'roundrectangle'})
+.set('macromolecule multimer', {w: 100, h: 56, shape: 'roundrectangle'})
+.set('nucleic acid feature', {w: 100, h: 56, shape: 'bottomroundrectangle'})
+.set('nucleic acid feature multimer', {w: 100, h: 56, shape: 'bottomroundrectangle'})
 .set('complex', {w: 0, h: 0, shape: 'cutrectangle'})
 .set('complex multimer', {w: 0, h: 0, shape: 'cutrectangle'})
 .set('source and sink', {w: 60, h: 60, shape: 'polygon'})
@@ -92,7 +92,6 @@ const elementStyle = {
   height (node) {
     return this.dimensions(node).h;
   },
-
 
   labelTextSize (node) {
     const sbgnClass = sbgnData.sbgnClass(node);

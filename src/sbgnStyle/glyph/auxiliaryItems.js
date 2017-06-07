@@ -30,13 +30,12 @@ const auxiliaryItems = {
     return baseShapes.rectangle(x, y, width, height, cloneStyle);
   },
 
-
-  compoundUnitOfInformation (x, y, width, height, uInfo) {
+  compoundUnitOfInformation (x, y, width, height, uInfo, borderWidth=4) {
     const fontSize = 14;
     const text = uInfo.label.text;
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
-    .set('stroke-width', '4')
+    .set('stroke-width', `${borderWidth}`)
     .set('fill', 'none');
 
 
@@ -58,12 +57,12 @@ const auxiliaryItems = {
     return unitOfInformationSvg;
   },
 
-  compoundStateVar (x, y, width, height, stateVar) {
+  compoundStateVar (x, y, width, height, stateVar, borderWidth=4) {
     const fontSize = 14;
 
     const stateVarStyle = new Map()
     .set('stroke', '#555555')
-    .set('stroke-width', '4')
+    .set('stroke-width', `${borderWidth}`)
     .set('fill', 'none');
 
 

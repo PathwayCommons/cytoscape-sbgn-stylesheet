@@ -1,11 +1,7 @@
-const elementStyle = require('./element.js');
+const elementStyle = require('./element');
+const sbgnsvg = require('./glyph');
 
-const sbgnShapes = require('./glyph');
-
-const isMultimer = require('./util/sbgn.js').isMultimer;
-const hasAuxItems = require('./util/sbgn.js').hasAuxItems;
-
-var sbgnStyleSheet = function (cytoscape) {
+const sbgnStyleSheet = function (cytoscape) {
 
   return cytoscape.stylesheet()
         // general node style
@@ -38,21 +34,19 @@ var sbgnStyleSheet = function (cytoscape) {
           'overlay-padding': '14'
         })
 
-
         // every process/entity pool node needs these properties
         .selector(`
           node[class="process"], node[class="uncertain process"], node[class="omitted process"],
-          node[class="association"], node[class="dissociation"],
+          node[class="dissociation"],
           node[class="phenotype"],
           node[class="source and sink"],
-          node[class="perturbing agent"],
           node[class="unspecified entity"],
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
           node[class="simple chemical"], node[class="simple chemical multimer"]
         `)
         .css({
-          'background-image': (node) => sbgnShapes.draw(node),
+          'background-image': (node) => sbgnsvg.draw(node),
           'width': (node) => elementStyle.width(node),
           'height': (node) => elementStyle.height(node),
           'background-fit': 'none',
@@ -63,6 +57,63 @@ var sbgnStyleSheet = function (cytoscape) {
           'border-width': 0,
         })
 
+        .selector(`
+          node[class="macromolecule"], node[class="macromolecule multimer"],
+          node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
+          node[class="simple chemical"], node[class="simple chemical multimer"]
+        `)
+        .css({
+          'background-image': (node) => sbgnsvg.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
+          //'background-fit': ['cover', 'cover', 'contain', 'none'],
+          'background-clip': 'node',
+          'padding': '8px',
+          'border-width': 2
+        })
+
+        .selector(`node[class="perturbing agent"]`)
+        .css({
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
+          'background-image': (node) => sbgnsvg.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
+          'background-fit': ['cover', 'cover', 'none', 'none'],
+          'background-clip': 'node',
+          'padding': '8px',
+          'border-width': 2
+        })
+
+        .selector(`node[class="phenotype"]`)
+        .css({
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
+          'background-image': (node) => sbgnsvg.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
+          'background-fit': ['cover', 'cover', 'contain', 'none'],
+          'background-clip': 'node',
+          'padding': '8px',
+          'border-width': 2
+        })
+
+        .selector(`node[class="unspecified entity"]`)
+        .css({
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
+          'background-image': (node) => sbgnsvg.draw(node),
+          'background-width': ['100%', '100%', '100%'],
+          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
+          'background-fit': ['cover', 'cover', 'contain', 'none'],
+          'background-clip': 'node',
+          'padding': '8px',
+          'border-width': 2
+        })
 
         // process node specific style
         .selector('node[class="association"], node[class="dissociation"]')
@@ -86,21 +137,6 @@ var sbgnStyleSheet = function (cytoscape) {
           'height': (node) => elementStyle.height(node),
         })
 
-
-        // entity pool nodes that have one or more of (units of information, state variables, multimer)
-        .selector(`
-          node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
-          node[class="macromolecule"], node[class="macromolecule multimer"],
-          node[class="simple chemical"], node[class="simple chemical multimer"],
-          node[class="perturbing agent"]
-        `)
-        .css({
-          'padding': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? 5 : 0,
-          'background-width': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
-          'background-height': (node) =>  (isMultimer(node) || hasAuxItems(node)) ? '104%' : '100%',
-        })
-
-
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
@@ -113,22 +149,20 @@ var sbgnStyleSheet = function (cytoscape) {
 
         .selector('node[class="complex"], node[class="complex multimer"]')
         .css({
-          'background-image': (node) => sbgnShapes.draw(node),
+          'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
           'background-position-y': ['100%', '22px', '100%', '0%', '0%'],
-          'background-fit': ['contain', 'contain', 'none', 'none'],
+          'background-fit': ['none', 'none', 'none', 'none'],
           'background-clip': 'node',
-          'padding': '22px',
-          'height': '5px',
-          'width': '5px'
+          'padding': '22px'
         })
 
         .selector('node[class="compartment"]')
         .css({
-          'background-image': (node) => sbgnShapes.draw(node), // cache this
+          'background-image': (node) => sbgnsvg.draw(node), // cache this
           'background-width': ['100%'],
-          'background-position-x': ['0%', '25%'],          // order: line, line, uinfo
+          'background-position-x': ['0%', '25%'],          // order: line, uinfo
           'background-position-y': ['38px', '0%'],
           'background-fit': ['contain', 'none'],
           'background-clip': 'node',
@@ -139,13 +173,13 @@ var sbgnStyleSheet = function (cytoscape) {
         // .selector('node[class="complex"], node[class="complex multimer"]')
         // .css({
         //   // function that generates the bg image and properties
-        //   // 'background-image': (node) => sbgnShapes.draw(node).images, // generate img and img properties
-        //   // 'background-width': (node) => sbgnShapes.draw(node).widths
-        //   // 'background-height': (node) => sbgnShapes.draw(node).heights
-        //   // 'background-position-x': (node) => sbgnShapes.draw(node).xPositions
-        //   // 'background-position-y': (node) => sbgnShapes.draw(node).yPositions
-        //   // 'background-fit': (node) => sbgnShapes.draw(node).imgFits
-        //   // 'background-clip': (node) => sbgnShapes.draw(node).imgClips
+        //   // 'background-image': (node) => sbgnsvg.draw(node).images, // generate img and img properties
+        //   // 'background-width': (node) => sbgnsvg.draw(node).widths
+        //   // 'background-height': (node) => sbgnsvg.draw(node).heights
+        //   // 'background-position-x': (node) => sbgnsvg.draw(node).xPositions
+        //   // 'background-position-y': (node) => sbgnsvg.draw(node).yPositions
+        //   // 'background-fit': (node) => sbgnsvg.draw(node).imgFits
+        //   // 'background-clip': (node) => sbgnsvg.draw(node).imgClips
         // })
 
         // edge styling

@@ -2,6 +2,10 @@ const baseShapes = require('./baseShapes');
 const auxiliaryItems = require('./auxiliaryItems');
 
 const svgStr = require('../util/svg').svgStr;
+const hasClonemarker = require('../util/sbgn').hasClonemarker;
+const getUnitInfos = require('../util/sbgn').getUnitInfos;
+const getStateVars = require('../util/sbgn').getStateVars;
+
 const element = require('../element');
 
 const processNodes = {
@@ -63,21 +67,42 @@ const processNodes = {
   },
 
   phenotype (node) {
-    const {w: nw, h: nh} = element.dimensions(node);
+    const auxItemWidth = 100;
+    const auxItemHeight = 20;
+    const borderWidth = 2;
+    const uInfos = getUnitInfos(node);
+    const sVars = getStateVars(node);
 
-    const styleMap = new Map()
+    const style = new Map()
     .set('stroke', '#6A6A6A')
-    .set('stroke-width', '3')
-    .set('fill', 'none');
+    .set('stroke-width', '1');
 
-    const shapeArgs = [1, 1, nw - 3, nh - 3];
+    const cloneMarkerSvg = svgStr(
+      hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    let phenotypeSvg =
-    `
-      ${baseShapes.hexagon(...shapeArgs, styleMap)}
-      ${node.data('clonemarker') ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.hexagon, shapeArgs) : ''}
-    `;
-    return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
+    const uInfoSvg = svgStr(
+      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    const sVarSvg = svgStr(
+      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    const topLine = svgStr(
+      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    const bottomLine = svgStr(
+      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   }
 };
 
