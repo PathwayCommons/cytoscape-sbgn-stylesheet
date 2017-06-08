@@ -10,6 +10,8 @@ const sbgnStyleSheet = function (cytoscape) {
           'shape': (node) => elementStyle.sbgnShape(node),
           'content': (node) => elementStyle.sbgnContent(node),
           'font-size': (node) => elementStyle.labelTextSize(node),
+          'width': (node) => elementStyle.width(node),
+          'height': (node) => elementStyle.height(node),
           'text-valign': 'center',
           'text-halign': 'center',
           'border-width': 1.5,
@@ -30,86 +32,25 @@ const sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node:active')
         .css({
-          'background-opacity': 0.7, 'overlay-color': '#d67614',
+          'background-opacity': 0.7,
+          'overlay-color': '#d67614',
           'overlay-padding': '14'
         })
 
-        // every process/entity pool node needs these properties
         .selector(`
-          node[class="process"], node[class="uncertain process"], node[class="omitted process"],
-          node[class="dissociation"],
-          node[class="phenotype"],
-          node[class="source and sink"],
           node[class="unspecified entity"],
-          node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
-          node[class="macromolecule"], node[class="macromolecule multimer"],
-          node[class="simple chemical"], node[class="simple chemical multimer"]
-        `)
-        .css({
-          'background-image': (node) => sbgnsvg.draw(node),
-          'width': (node) => elementStyle.width(node),
-          'height': (node) => elementStyle.height(node),
-          'background-fit': 'none',
-          'background-width': '100%',
-          'background-height': '100%',
-          'background-clip': 'none',
-          'background-repeat': 'no-repeat',
-          'border-width': 0,
-        })
-
-        .selector(`
+          node[class="phenotype"],
+          node[class="perturbing agent"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
           node[class="simple chemical"], node[class="simple chemical multimer"]
         `)
         .css({
-          'background-image': (node) => sbgnsvg.draw(node),
-          'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
-          //'background-fit': ['cover', 'cover', 'contain', 'none'],
-          'background-clip': 'node',
-          'padding': '8px',
-          'border-width': 2
-        })
-
-        .selector(`node[class="perturbing agent"]`)
-        .css({
-          'width': (node) => elementStyle.width(node),
-          'height': (node) => elementStyle.height(node),
           'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
           'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
           'background-fit': ['cover', 'cover', 'none', 'none'],
-          'background-clip': 'node',
-          'padding': '8px',
-          'border-width': 2
-        })
-
-        .selector(`node[class="phenotype"]`)
-        .css({
-          'width': (node) => elementStyle.width(node),
-          'height': (node) => elementStyle.height(node),
-          'background-image': (node) => sbgnsvg.draw(node),
-          'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
-          'background-fit': ['cover', 'cover', 'contain', 'none'],
-          'background-clip': 'node',
-          'padding': '8px',
-          'border-width': 2
-        })
-
-        .selector(`node[class="unspecified entity"]`)
-        .css({
-          'width': (node) => elementStyle.width(node),
-          'height': (node) => elementStyle.height(node),
-          'background-image': (node) => sbgnsvg.draw(node),
-          'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
-          'background-fit': ['cover', 'cover', 'contain', 'none'],
           'background-clip': 'node',
           'padding': '8px',
           'border-width': 2
@@ -129,12 +70,14 @@ const sbgnStyleSheet = function (cytoscape) {
         // entity pool node specific styles
         .selector('node[class="source and sink"]')
         .css({
+          'background-image': (node) => sbgnsvg.draw(node),
+          'background-fit': 'none',
+          'background-width': '100%',
+          'background-height': '100%',
+          'background-clip': 'none',
+          'background-repeat': 'no-repeat',
+          'border-width': 0,
           'shape-polygon-points': '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1, 0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0, 0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1, -0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0',
-        })
-        .selector('node[class="tag"]')
-        .css({
-          'width': (node) => elementStyle.width(node),
-          'height': (node) => elementStyle.height(node),
         })
 
         // compound node specific style
