@@ -26,27 +26,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
@@ -65,27 +65,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
@@ -104,27 +104,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
@@ -143,27 +143,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
@@ -181,27 +181,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight, sVars[0]) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
@@ -246,27 +246,27 @@ const entityPoolNodes = {
 
     const cloneMarkerSvg = svgStr(
       hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
       sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const topLine = svgStr(
       uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters

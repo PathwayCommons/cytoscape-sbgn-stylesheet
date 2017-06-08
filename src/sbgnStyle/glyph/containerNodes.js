@@ -18,12 +18,12 @@ const containerNodes = {
 
     const uInfoSvg = svgStr(
       uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     let lineSvg = svgStr(
       uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+      auxItemWidth, auxItemHeight
     );
 
     return [lineSvg, uInfoSvg]; // ordering of svg images matters

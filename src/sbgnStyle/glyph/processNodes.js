@@ -22,7 +22,7 @@ const processNodes = {
     `
       ${baseShapes.square(1, 1, Math.min(nw, nh) - 2, squareStyle)}
     `;
-    return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(processSvg, nw, nh);
   },
 
   association (node) {
@@ -42,7 +42,7 @@ const processNodes = {
     `
       ${baseShapes.circle(centerX, centerY, radius, styleMap)}
     `;
-    return svgStr(associationSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(associationSvg, nw, nh);
   },
 
   dissociation (node) {
@@ -63,7 +63,7 @@ const processNodes = {
       ${baseShapes.circle(centerX, centerY, outerRadius, styleMap)}
       ${baseShapes.circle(centerX, centerY, innerRadius, styleMap)}
     `;
-    return svgStr(dissociationSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(dissociationSvg, nw, nh);
   },
 
   phenotype (node) {
