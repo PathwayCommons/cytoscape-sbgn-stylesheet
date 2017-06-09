@@ -17,6 +17,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
+    const fontSize = 8;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -30,12 +31,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -45,7 +46,7 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -56,6 +57,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
+    const fontSize = 8;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -69,12 +71,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -84,7 +86,7 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -95,6 +97,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
+    const fontSize = 8;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -108,12 +111,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -123,7 +126,7 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -134,6 +137,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
+    const fontSize = 8;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -147,12 +151,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -162,9 +166,14 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
+    console.log(node.id());
+    if (node.id() == 'http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d') {
+      console.log(bottomLine);
+    }
+
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
@@ -200,7 +209,7 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -237,6 +246,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
+    const fontSize = 8;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -250,12 +260,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -265,7 +275,7 @@ const entityPoolNodes = {
     );
 
     const bottomLine = svgStr(
-      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 

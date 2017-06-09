@@ -30,8 +30,7 @@ const auxiliaryItems = {
     return baseShapes.rectangle(x, y, width, height, cloneStyle);
   },
 
-  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=3) {
-    const fontSize = 14;
+  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=3, fontSize=14) {
     const text = uInfo.label.text;
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
@@ -42,10 +41,9 @@ const auxiliaryItems = {
 
     const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
+    .set('font-size', `${fontSize}px`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
+    .set('text-anchor', 'middle');
 
     const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
 
@@ -58,8 +56,7 @@ const auxiliaryItems = {
     return unitOfInformationSvg;
   },
 
-  multiImgStateVar (x, y, width, height, stateVar, borderWidth=3) {
-    const fontSize = 14;
+  multiImgStateVar (x, y, width, height, stateVar, borderWidth=3, fontSize=14) {
 
     const stateVarStyle = new Map()
     .set('stroke', '#555555')
@@ -67,13 +64,11 @@ const auxiliaryItems = {
     .set('fill', 'white')
     .set('fill-opacity', 1);
 
-
     const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
+    .set('font-size', `${fontSize}px`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
+    .set('text-anchor', 'middle');
 
     const tw = textWidth(stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
     const w = Math.max(tw, 30);

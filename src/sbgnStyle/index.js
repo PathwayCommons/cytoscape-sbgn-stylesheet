@@ -48,8 +48,8 @@ const sbgnStyleSheet = function (cytoscape) {
         .css({
           'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '8px', '100%', '0%', '0%'],
+          'background-position-x': ['0%', '0%', '0%', '20px', '40px'],          // order: line, line, clonemarker, uinfo, svar
+          'background-position-y': ['100%', '8px', '52px', '44px', '0%'],
           'background-fit': ['cover', 'cover', 'none', 'none'],
           'background-clip': 'node',
           'padding': '8px',
