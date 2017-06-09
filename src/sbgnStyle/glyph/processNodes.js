@@ -78,17 +78,17 @@ const processNodes = {
     .set('stroke-width', '1');
 
     const cloneMarkerSvg = svgStr(
-      hasClonemarker(node) ? auxiliaryItems.compoundCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
+      hasClonemarker(node) ? auxiliaryItems.multiImgCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
       auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.compoundUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
       auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.compoundStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
       auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 

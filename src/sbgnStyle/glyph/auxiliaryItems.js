@@ -20,7 +20,7 @@ const stateVarLabel = (stateVar) => {
 
 const auxiliaryItems = {
 
-  compoundCloneMarker (x, y, width, height) {
+  multiImgCloneMarker (x, y, width, height) {
 
     const cloneStyle = new Map()
     .set('stroke', '#6A6A6A')
@@ -30,7 +30,7 @@ const auxiliaryItems = {
     return baseShapes.rectangle(x, y, width, height, cloneStyle);
   },
 
-  compoundUnitOfInformation (x, y, width, height, uInfo, borderWidth=4) {
+  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=4) {
     const fontSize = 14;
     const text = uInfo.label.text;
     const uinfoRectStyle = new Map()
@@ -57,7 +57,7 @@ const auxiliaryItems = {
     return unitOfInformationSvg;
   },
 
-  compoundStateVar (x, y, width, height, stateVar, borderWidth=4) {
+  multiImgStateVar (x, y, width, height, stateVar, borderWidth=4) {
     const fontSize = 14;
 
     const stateVarStyle = new Map()
@@ -84,65 +84,6 @@ const auxiliaryItems = {
     return statevariableSvg;
   },
 
-
-  stateVariable (x, y, radius, stateVar) {
-
-    const fontSize = 12;
-
-    const stateVarStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1.5')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    const textStyle = new Map()
-    .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
-    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
-
-    const tw = textWidth(stateVarLabel(stateVar, { family: textStyle.get('font-family'), size: fontSize}), 20);
-    const stateVarWidth = Math.max(tw * .5, 20);
-
-    const statevariableSvg =
-    `
-      ${baseShapes.ellipse(x, y, stateVarWidth, radius, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x, y, textStyle)}
-    `;
-
-    return statevariableSvg;
-  },
-
-  unitOfInformation (x, y, width, height, unitInfo) {
-
-    const fontSize = 12;
-    const text = unitInfo.label.text;
-
-    const uinfoRectStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1.5')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    const textStyle = new Map()
-    .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
-    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
-
-    const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
-
-    const unitOfInformationSvg =
-    `
-      ${baseShapes.roundRectangle(x - (uInfoWidth / 2), y, uInfoWidth, height, uinfoRectStyle)}
-      ${baseShapes.text(text, x, y + ( height / 2),  textStyle)}
-    `;
-
-    return unitOfInformationSvg;
-  },
-
   cloneMarker (nodeWidth, nodeHeight, shapeFn, shapeFnArgs) {
     const clipId = 'clonemarker';
 
@@ -159,23 +100,6 @@ const auxiliaryItems = {
     `;
 
     return cloneMarkerSvg;
-  },
-
-  multimer (shapeFn, shapeFnArgs) {
-    const clipId = 'multimer';
-
-    const multimerStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('fill', 'none')
-    .set('stroke-width', '3')
-    .set('clip-path', `url(#${clipId})`);
-
-    const multimerSvg =
-    `
-      ${baseShapes.clipPath(clipId, shapeFn, shapeFnArgs, new Map())}
-      ${shapeFn(...shapeFnArgs, multimerStyle)}
-    `;
-    return multimerSvg;
   }
 };
 

@@ -6,7 +6,7 @@ const styleMap2Str = (styleMap) => {
   let s = '';
 
   for( let [k, v] of styleMap ){
-    s += k + '=' + "'" + v + "'" + ' ';
+    s += k + '=' + '"' + v + '"' + ' ';
   }
 
   return s;
