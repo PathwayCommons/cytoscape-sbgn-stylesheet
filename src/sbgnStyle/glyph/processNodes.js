@@ -10,41 +10,6 @@ const element = require('../element');
 
 const processNodes = {
 
-  process (node) {
-    const {w: nw, h: nh} = element.dimensions(node);
-
-    const squareStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', 'none');
-
-    const processSvg =
-    `
-      ${baseShapes.square(1, 1, Math.min(nw, nh) - 2, squareStyle)}
-    `;
-    return svgStr(processSvg, nw, nh);
-  },
-
-  association (node) {
-    const {w: nw, h: nh} = element.dimensions(node);
-
-    const centerX = nw / 2;
-    const centerY = nh / 2;
-    const radius = (Math.min(nw, nh) - 2) / 2;
-
-    const styleMap = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', '#6A6A6A')
-    .set('fill-opacity', '0');
-
-    const associationSvg =
-    `
-      ${baseShapes.circle(centerX, centerY, radius, styleMap)}
-    `;
-    return svgStr(associationSvg, nw, nh);
-  },
-
   dissociation (node) {
     const {w: nw, h: nh} = element.dimensions(node);
 
