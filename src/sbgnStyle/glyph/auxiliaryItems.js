@@ -30,13 +30,14 @@ const auxiliaryItems = {
     return baseShapes.rectangle(x, y, width, height, cloneStyle);
   },
 
-  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=4) {
+  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=3) {
     const fontSize = 14;
     const text = uInfo.label.text;
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', `${borderWidth}`)
-    .set('fill', 'none');
+    .set('fill', 'white')
+    .set('fill-opacity', 1);
 
 
     const textStyle = new Map()
@@ -57,13 +58,14 @@ const auxiliaryItems = {
     return unitOfInformationSvg;
   },
 
-  multiImgStateVar (x, y, width, height, stateVar, borderWidth=4) {
+  multiImgStateVar (x, y, width, height, stateVar, borderWidth=3) {
     const fontSize = 14;
 
     const stateVarStyle = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', `${borderWidth}`)
-    .set('fill', 'none');
+    .set('fill', 'white')
+    .set('fill-opacity', 1);
 
 
     const textStyle = new Map()

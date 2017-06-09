@@ -17,7 +17,7 @@ const containerNodes = {
     .set('stroke-width', '6');
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0]) : '',
       auxItemWidth, auxItemHeight
     );
 

@@ -49,7 +49,7 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '5px', '70px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '16px', '100%', '0%', '0%'],
+          'background-position-y': ['100%', '8px', '100%', '0%', '0%'],
           'background-fit': ['cover', 'cover', 'none', 'none'],
           'background-clip': 'node',
           'padding': '8px',
@@ -106,7 +106,7 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '22px', '100%', '0%', '0%'],
+          'background-position-y': ['100%', '11px', '100%', '0%', '0%'],
           'background-fit': ['none', 'none', 'none', 'none'],
           'background-clip': 'node',
           'padding': '22px'
@@ -117,7 +117,7 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnsvg.draw(node), // cache this
           'background-width': ['100%'],
           'background-position-x': ['0%', '25%'],          // order: line, uinfo
-          'background-position-y': ['38px', '0%'],
+          'background-position-y': ['19px', '0%'],
           'background-fit': ['contain', 'none'],
           'background-clip': 'node',
           'padding': '38px'

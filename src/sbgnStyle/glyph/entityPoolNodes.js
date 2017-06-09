@@ -185,12 +185,12 @@ const entityPoolNodes = {
     );
 
     const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight, uInfos[0]) : '',
+      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0]) : '',
       auxItemWidth, auxItemHeight
     );
 
     const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight, sVars[0]) : '',
+      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0]) : '',
       auxItemWidth, auxItemHeight
     );
 
