@@ -92,7 +92,8 @@ const baseShapes = {
   },
 
   stadium (x, y, width, height, styleMap) {
-    return baseRectangle(x, y, width, height, .32*width, .32*width, .32*width, .32*width, styleMap);
+    const radiusRatio = .24 * Math.max(width, height);
+    return baseRectangle(x, y, width, height, radiusRatio, radiusRatio, radiusRatio, radiusRatio, styleMap);
   },
 
   square (x, y, length, styleMap) {
