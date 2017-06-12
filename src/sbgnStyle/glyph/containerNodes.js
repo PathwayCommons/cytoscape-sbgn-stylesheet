@@ -33,7 +33,8 @@ const containerNodes = {
       bgPosY: ['19px', '0%'],
       bgFit: ['contain', 'none'],
       bgClip: 'node',
-      padding: '38px'
+      padding: '38px',
+      borderWidth: '4'
     };
   }, function ( node ){ return '' + JSON.stringify(node.id());
   })

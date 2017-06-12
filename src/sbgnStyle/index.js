@@ -38,7 +38,6 @@ const sbgnStyleSheet = function (cytoscape) {
         })
 
         .selector(`
-          node[class="unspecified entity"],
           node[class="phenotype"],
           node[class="perturbing agent"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
@@ -54,6 +53,20 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-clip': 'node',
           'padding': '8px',
           'border-width': 2
+        })
+
+        .selector(`
+          node[class="unspecified entity"]
+        `)
+        .css({
+          'background-image': (node) => sbgnsvg.draw(node).bgImage,
+          'background-width': (node) => sbgnsvg.draw(node).bgWidth,
+          'background-position-x': (node) => sbgnsvg.draw(node).bgPosX,
+          'background-position-y': (node) => sbgnsvg.draw(node).bgPosY,
+          'background-fit': (node) => sbgnsvg.draw(node).bgFit,
+          'background-clip': (node) => sbgnsvg.draw(node).bgClip,
+          'padding': (node) => sbgnsvg.draw(node).padding,
+          'border-width': (node) => sbgnsvg.draw(node).borderWidth
         })
 
         // process node specific style
@@ -101,7 +114,7 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-fit': (node) => sbgnsvg.draw(node).bgFit,
           'background-clip': (node) => sbgnsvg.draw(node).bgClip,
           'padding': (node) => sbgnsvg.draw(node).padding,
-          'border-width': 4,
+          'border-width': (node) => sbgnsvg.draw(node).borderWidth,
           'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
           'text-valign': 'bottom',

@@ -10,10 +10,13 @@ const hasClonemarker = require('../util/sbgn').hasClonemarker;
 const isMultimer = require('../util/sbgn').isMultimer;
 const element = require('../element');
 
+const keyFn = function (node) {
+  return '' + JSON.stringify(node.id());
+};
 
 const entityPoolNodes = {
 
-  unspecifiedEntity (node) {
+  unspecifiedEntity: memoize(function (node) {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
@@ -49,9 +52,18 @@ const entityPoolNodes = {
       hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '20px', '40px'],
+      bgPosY: ['52px', '8px', '32px', '44px', '0%'],
+      bgFit: ['cover', 'cover', 'none', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
-  },
+  }, keyFn),
 
   simpleChemical (node) {
     const auxItemWidth = 100;
@@ -215,7 +227,8 @@ const entityPoolNodes = {
       bgPosY: ['100%', '11px', '100%', '0%', '0%'],
       bgFit: ['none', 'none', 'none', 'none'],
       bgClip: 'node',
-      padding: '22px'
+      padding: '22px',
+      borderWidth: 4
     };
   }, function( node ){ return '' + JSON.stringify(node.id()); }
   ),
