@@ -173,7 +173,7 @@ const entityPoolNodes = {
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
 
-  complex (node) {
+  complex: memoize (function (node) {
     const auxItemWidth = 60;
     const auxItemHeight = 24;
     const uInfos = getUnitInfos(node);
@@ -208,8 +208,17 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
-  },
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '25%', '88%'],
+      bgPosY: ['100%', '11px', '100%', '0%', '0%'],
+      bgFit: ['none', 'none', 'none', 'none'],
+      bgClip: 'node',
+      padding: '22px'
+    };
+  }, function( node ){ return '' + JSON.stringify(node.id()); }
+  ),
 
   sourceAndSink (node) {
     const {w: nw, h: nh} = element.dimensions(node);

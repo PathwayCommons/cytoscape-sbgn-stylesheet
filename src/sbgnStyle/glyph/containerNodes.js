@@ -35,13 +35,7 @@ const containerNodes = {
       bgClip: 'node',
       padding: '38px'
     };
-  }, function compartmentKey( node ){
-    return '' +
-      node.id() + '$' +
-      node.outerWidth() + '$' +
-      node.outerHeight() + '$' +
-      JSON.stringify( node.data() )
-    ;
+  }, function ( node ){ return '' + JSON.stringify(node.id());
   })
 };
 

@@ -94,33 +94,18 @@ const sbgnStyleSheet = function (cytoscape) {
         // compound node specific style
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
+          'background-image': (node) => sbgnsvg.draw(node).bgImage,
+          'background-width': (node) => sbgnsvg.draw(node).bgWidth,
+          'background-position-x': (node) => sbgnsvg.draw(node).bgPosX,
+          'background-position-y': (node) => sbgnsvg.draw(node).bgPosY,
+          'background-fit': (node) => sbgnsvg.draw(node).bgFit,
+          'background-clip': (node) => sbgnsvg.draw(node).bgClip,
+          'padding': (node) => sbgnsvg.draw(node).padding,
           'border-width': 4,
           'compound-sizing-wrt-labels': 'exclude',
           'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
-        })
-
-        .selector('node[class="complex"], node[class="complex multimer"]')
-        .css({
-          'background-image': (node) => sbgnsvg.draw(node),
-          'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '25%', '88%'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '11px', '100%', '0%', '0%'],
-          'background-fit': ['none', 'none', 'none', 'none'],
-          'background-clip': 'node',
-          'padding': '22px'
-        })
-
-        .selector('node[class="compartment"]')
-        .css({
-          'background-image': (node) => sbgnsvg.draw(node).bgImage, // cache this
-          'background-width': (node) => sbgnsvg.draw(node).bgWidth,
-          'background-position-x': (node) => sbgnsvg.draw(node).bgPosX,          // order: line, uinfo
-          'background-position-y': (node) => sbgnsvg.draw(node).bgPosY,
-          'background-fit': (node) => sbgnsvg.draw(node).bgFit,
-          'background-clip': (node) => sbgnsvg.draw(node).bgClip,
-          'padding': (node) => sbgnsvg.draw(node).padding
         })
 
         // edge styling
