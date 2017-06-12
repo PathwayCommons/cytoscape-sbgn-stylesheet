@@ -49,7 +49,7 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-image': (node) => sbgnsvg.draw(node),
           'background-width': ['100%', '100%', '100%'],
           'background-position-x': ['0%', '0%', '0%', '20px', '40px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['100%', '8px', '52px', '44px', '0%'],
+          'background-position-y': ['52px', '8px', '52px', '44px', '0%'],
           'background-fit': ['cover', 'cover', 'none', 'none'],
           'background-clip': 'node',
           'padding': '8px',
@@ -114,27 +114,14 @@ const sbgnStyleSheet = function (cytoscape) {
 
         .selector('node[class="compartment"]')
         .css({
-          'background-image': (node) => sbgnsvg.draw(node), // cache this
-          'background-width': ['100%'],
-          'background-position-x': ['0%', '25%'],          // order: line, uinfo
-          'background-position-y': ['19px', '0%'],
-          'background-fit': ['contain', 'none'],
-          'background-clip': 'node',
-          'padding': '38px'
+          'background-image': (node) => sbgnsvg.draw(node).bgImage, // cache this
+          'background-width': (node) => sbgnsvg.draw(node).bgWidth,
+          'background-position-x': (node) => sbgnsvg.draw(node).bgPosX,          // order: line, uinfo
+          'background-position-y': (node) => sbgnsvg.draw(node).bgPosY,
+          'background-fit': (node) => sbgnsvg.draw(node).bgFit,
+          'background-clip': (node) => sbgnsvg.draw(node).bgClip,
+          'padding': (node) => sbgnsvg.draw(node).padding
         })
-
-        // TODO: cached version of multi-img compounds
-        // .selector('node[class="complex"], node[class="complex multimer"]')
-        // .css({
-        //   // function that generates the bg image and properties
-        //   // 'background-image': (node) => sbgnsvg.draw(node).images, // generate img and img properties
-        //   // 'background-width': (node) => sbgnsvg.draw(node).widths
-        //   // 'background-height': (node) => sbgnsvg.draw(node).heights
-        //   // 'background-position-x': (node) => sbgnsvg.draw(node).xPositions
-        //   // 'background-position-y': (node) => sbgnsvg.draw(node).yPositions
-        //   // 'background-fit': (node) => sbgnsvg.draw(node).imgFits
-        //   // 'background-clip': (node) => sbgnsvg.draw(node).imgClips
-        // })
 
         // edge styling
         .selector('edge')

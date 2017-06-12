@@ -161,7 +161,7 @@ const entityPoolNodes = {
     );
 
     const topLine = svgStr(
-      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -169,11 +169,6 @@ const entityPoolNodes = {
       hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
-    console.log(node.id());
-    if (node.id() == 'http___pathwaycommons_org_pc2_Dna_277621fa77f798084817b801ead2a2d0_http___pathwaycommons_org_pc2_Complex_2cd907cf6cee0204aef5972250a7735d') {
-      console.log(bottomLine);
-    }
-
 
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },

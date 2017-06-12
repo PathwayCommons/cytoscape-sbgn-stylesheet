@@ -1,13 +1,13 @@
 const svgStr = require('../util/svg').svgStr;
 const sbgnData = require('../util/sbgn');
-
+const memoize = require('lodash.memoize');
 
 const auxiliaryItems = require('./auxiliaryItems');
 const baseShapes = require('./baseShapes');
 
 const containerNodes = {
 
-  compartment (node) {
+  compartment: memoize( function (node) {
     const auxItemWidth = 60;
     const auxItemHeight = 40;
     const uInfos = sbgnData.getUnitInfos(node);
@@ -26,8 +26,23 @@ const containerNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [lineSvg, uInfoSvg]; // ordering of svg images matters
-  }
+    return {
+      bgImage: [lineSvg, uInfoSvg],
+      bgWidth: ['100%'],
+      bgPosX: ['0%', '25%'],
+      bgPosY: ['19px', '0%'],
+      bgFit: ['contain', 'none'],
+      bgClip: 'node',
+      padding: '38px'
+    };
+  }, function compartmentKey( node ){
+    return '' +
+      node.id() + '$' +
+      node.outerWidth() + '$' +
+      node.outerHeight() + '$' +
+      JSON.stringify( node.data() )
+    ;
+  })
 };
 
 module.exports = containerNodes;
