@@ -7,7 +7,7 @@ const baseShapes = require('./baseShapes');
 
 const containerNodes = {
 
-  compartment: memoize( function (node) {
+  compartment (node) {
     const auxItemWidth = 60;
     const auxItemHeight = 40;
     const uInfos = sbgnData.getUnitInfos(node);
@@ -36,8 +36,7 @@ const containerNodes = {
       padding: '38px',
       borderWidth: '4'
     };
-  }, function ( node ){ return '' + JSON.stringify(node.id());
-  })
+  }
 };
 
 module.exports = containerNodes;

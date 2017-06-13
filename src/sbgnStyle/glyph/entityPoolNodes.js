@@ -1,5 +1,3 @@
-const memoize = require('lodash.memoize');
-
 const baseShapes = require('./baseShapes');
 const auxiliaryItems = require('./auxiliaryItems');
 
@@ -7,16 +5,13 @@ const svgStr = require('../util/svg').svgStr;
 const getUnitInfos = require('../util/sbgn').getUnitInfos;
 const getStateVars = require('../util/sbgn').getStateVars;
 const hasClonemarker = require('../util/sbgn').hasClonemarker;
-const isMultimer = require('../util/sbgn').isMultimer;
+
 const element = require('../element');
 
-const keyFn = function (node) {
-  return '' + JSON.stringify(node.id());
-};
 
 const entityPoolNodes = {
 
-  unspecifiedEntity: memoize(function (node) {
+  unspecifiedEntity (node) {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
@@ -63,7 +58,7 @@ const entityPoolNodes = {
       borderWidth: 2
     };
 
-  }, keyFn),
+  },
 
   simpleChemical (node) {
     const auxItemWidth = 100;
@@ -185,7 +180,7 @@ const entityPoolNodes = {
     return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
   },
 
-  complex: memoize (function (node) {
+  complex (node) {
     const auxItemWidth = 60;
     const auxItemHeight = 24;
     const uInfos = getUnitInfos(node);
@@ -230,8 +225,7 @@ const entityPoolNodes = {
       padding: '22px',
       borderWidth: 4
     };
-  }, function( node ){ return '' + JSON.stringify(node.id()); }
-  ),
+  },
 
   sourceAndSink (node) {
     const {w: nw, h: nh} = element.dimensions(node);
