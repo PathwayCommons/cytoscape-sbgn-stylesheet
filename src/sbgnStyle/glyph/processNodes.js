@@ -3,8 +3,6 @@ const auxiliaryItems = require('./auxiliaryItems');
 
 const svgStr = require('../util/svg').svgStr;
 const hasClonemarker = require('../util/sbgn').hasClonemarker;
-const getUnitInfos = require('../util/sbgn').getUnitInfos;
-const getStateVars = require('../util/sbgn').getStateVars;
 
 const element = require('../element');
 
@@ -34,9 +32,6 @@ const processNodes = {
   phenotype (node) {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
-    const borderWidth = 2;
-    const uInfos = getUnitInfos(node);
-    const sVars = getStateVars(node);
 
     const style = new Map()
     .set('stroke', '#6A6A6A')
@@ -47,27 +42,21 @@ const processNodes = {
       auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
-    const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
-    );
-
-    const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
-    );
-
-    const topLine = svgStr(
-      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
-    );
-
     const bottomLine = svgStr(
       hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
+    return {
+      bgImage: [bottomLine, cloneMarkerSvg],
+      bgWidth: ['100%', '100%'],
+      bgPosX: ['0%', '0%'],
+      bgPosY: ['56px', '56px'],
+      bgFit: ['cover', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
   }
 };
 

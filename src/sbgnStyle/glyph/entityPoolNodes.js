@@ -15,7 +15,7 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
-    const fontSize = 8;
+    const fontSize = 10;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -64,9 +64,8 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
-    const fontSize = 8;
+    const fontSize = 10;
     const uInfos = getUnitInfos(node);
-    const sVars = getStateVars(node);
 
     const style = new Map()
     .set('stroke', '#6A6A6A')
@@ -82,13 +81,8 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
-      auxItemWidth, auxItemHeight
-    );
-
     const topLine = svgStr(
-      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -97,14 +91,23 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '12px'],
+      bgPosY: ['52px', '8px', '48px', '0px'],
+      bgFit: ['cover', 'cover', 'none', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
   },
 
   macromolecule(node) {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
-    const fontSize = 8;
+    const fontSize = 10;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -137,14 +140,22 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
-  },
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '20px', '40px'],
+      bgPosY: ['52px', '8px', '52px', '44px', '0%'],
+      bgFit: ['cover', 'cover', 'none', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };  },
 
   nucleicAcidFeature (node) {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
-    const fontSize = 8;
+    const fontSize = 10;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
 
@@ -177,7 +188,16 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '20px', '40px'],
+      bgPosY: ['52px', '8px', '52px', '44px', '0%'],
+      bgFit: ['cover', 'cover', 'none', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
   },
 
   complex (node) {
@@ -230,7 +250,6 @@ const entityPoolNodes = {
   sourceAndSink (node) {
     const {w: nw, h: nh} = element.dimensions(node);
 
-
     const centerX = nw / 2;
     const centerY = nh / 2;
     const radius = (nw - 2) / 2;
@@ -257,9 +276,8 @@ const entityPoolNodes = {
     const auxItemWidth = 100;
     const auxItemHeight = 20;
     const borderWidth = 2;
-    const fontSize = 8;
+    const fontSize = 10;
     const uInfos = getUnitInfos(node);
-    const sVars = getStateVars(node);
 
     const style = new Map()
     .set('stroke', '#6A6A6A')
@@ -275,13 +293,8 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0], borderWidth, fontSize) : '',
-      auxItemWidth, auxItemHeight
-    );
-
     const topLine = svgStr(
-      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
       auxItemWidth, auxItemHeight
     );
 
@@ -290,7 +303,16 @@ const entityPoolNodes = {
       auxItemWidth, auxItemHeight
     );
 
-    return [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg]; // ordering of svg images matters
+    return {
+      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg],
+      bgWidth: ['100%', '100%', '100%'],
+      bgPosX: ['0%', '0%', '0%', '20px'],
+      bgPosY: ['56px', '8px', '56px', '0%'],
+      bgFit: ['cover', 'cover', 'none', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
   }
 };
 

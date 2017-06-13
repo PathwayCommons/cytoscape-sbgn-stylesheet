@@ -10,12 +10,8 @@ const cacheKeyFn = (node) => '' + JSON.stringify(node.id());
 
 const sbgnNodeShapeMap = new Map()
 // process nodes
-.set('process', processNodes.process)
-.set('omitted process', processNodes.process)
-.set('uncertain process', processNodes.process)
-.set('association', processNodes.association)
-.set('dissociation', processNodes.dissociation)
-.set('phenotype', processNodes.phenotype)
+.set('dissociation', memoize(processNodes.dissociation, cacheKeyFn))
+.set('phenotype', memoize(processNodes.phenotype, cacheKeyFn))
 
 // entity pool nodes
 .set('source and sink', memoize(entityPoolNodes.sourceAndSink, cacheKeyFn))
@@ -33,7 +29,7 @@ const sbgnNodeShapeMap = new Map()
 const draw = (node) => {
   const sbgnClass = sbgnData.sbgnClass(node).replace(' multimer', '');
   let shapeFn = sbgnNodeShapeMap.get(sbgnClass);
-  if (shapeFn === undefined) {
+  if (shapeFn == null) {
     throw new TypeError(`${sbgnClass} does not have a shape implementation`);
   }
   return shapeFn(node);

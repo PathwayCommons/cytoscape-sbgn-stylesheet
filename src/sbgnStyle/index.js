@@ -37,26 +37,15 @@ const sbgnStyleSheet = function (cytoscape) {
           'overlay-padding': '14'
         })
 
+        // draw sbgn specific styling (auxiliary items, clonemarker, etc.)
         .selector(`
-          node[class="phenotype"],
-          node[class="perturbing agent"],
+          node[class="unspecified entity"],
+          node[class="simple chemical"], node[class="simple chemical multimer"],
           node[class="macromolecule"], node[class="macromolecule multimer"],
           node[class="nucleic acid feature"], node[class="nucleic acid feature multimer"],
-          node[class="simple chemical"], node[class="simple chemical multimer"]
-        `)
-        .css({
-          'background-image': (node) => sbgnsvg.draw(node),
-          'background-width': ['100%', '100%', '100%'],
-          'background-position-x': ['0%', '0%', '0%', '20px', '40px'],          // order: line, line, clonemarker, uinfo, svar
-          'background-position-y': ['52px', '8px', '52px', '44px', '0%'],
-          'background-fit': ['cover', 'cover', 'none', 'none'],
-          'background-clip': 'node',
-          'padding': '8px',
-          'border-width': 2
-        })
-
-        .selector(`
-          node[class="unspecified entity"]
+          node[class="perturbing agent"],
+          node[class="phenotype"],
+          node[class="complex"], node[class="complex multimer"], node[class="compartment"]
         `)
         .css({
           'background-image': (node) => sbgnsvg.draw(node).bgImage,
@@ -69,6 +58,15 @@ const sbgnStyleSheet = function (cytoscape) {
           'border-width': (node) => sbgnsvg.draw(node).borderWidth
         })
 
+        // compound node specific style
+        .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
+        .css({
+          'compound-sizing-wrt-labels': 'exclude',
+          'background-opacity': .2,
+          'text-valign': 'bottom',
+          'text-halign': 'center',
+        })
+
         // process node specific style
         .selector('node[class="association"], node[class="dissociation"]')
         .css({
@@ -79,8 +77,8 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-color': '#6B6B6B'
         })
 
-
-        // entity pool node specific styles
+        // source and sink and dissociation are drawn differently because
+        // of their unique shape
         .selector('node[class="source and sink"]')
         .css({
           'background-image': (node) => sbgnsvg.draw(node),
@@ -93,6 +91,8 @@ const sbgnStyleSheet = function (cytoscape) {
           'shape-polygon-points': '-0.86, 0.5, -0.75, 0.65, -1, 0.95, -0.95, 1, -0.65, 0.75, -0.5, 0.86, 0, 1, 0.5, 0.86, 0.71, 0.71, 0.86, 0.5, 1, 0, 0.86, -0.5, 0.75, -0.65, 1, -0.95, 0.95, -1, 0.65, -0.75, 0.5, -0.86, 0, -1, -0.5, -0.86, -0.71, -0.71, -0.86, -0.5, -1, 0',
         })
 
+        // source and sink and dissociation are drawn differently because
+        // of their unique shape
         .selector('node[class="dissociation"]')
         .css({
           'background-image': (node) => sbgnsvg.draw(node),
@@ -102,23 +102,6 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-clip': 'none',
           'background-repeat': 'no-repeat',
           'border-width': 0,
-        })
-
-        // compound node specific style
-        .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
-        .css({
-          'background-image': (node) => sbgnsvg.draw(node).bgImage,
-          'background-width': (node) => sbgnsvg.draw(node).bgWidth,
-          'background-position-x': (node) => sbgnsvg.draw(node).bgPosX,
-          'background-position-y': (node) => sbgnsvg.draw(node).bgPosY,
-          'background-fit': (node) => sbgnsvg.draw(node).bgFit,
-          'background-clip': (node) => sbgnsvg.draw(node).bgClip,
-          'padding': (node) => sbgnsvg.draw(node).padding,
-          'border-width': (node) => sbgnsvg.draw(node).borderWidth,
-          'compound-sizing-wrt-labels': 'exclude',
-          'background-opacity': .2,
-          'text-valign': 'bottom',
-          'text-halign': 'center',
         })
 
         // edge styling
