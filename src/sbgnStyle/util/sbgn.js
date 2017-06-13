@@ -19,6 +19,21 @@ const sbgnDataHandler = {
   },
   sbgnLabel (element) {
     return element.data('label');
+  },
+  stateVarLabel (stateVar) {
+    const variable = stateVar.state.variable;
+    const value = stateVar.state.value;
+    if (value && variable) {
+      return `${value}@${variable}`;
+    }
+    if (value) {
+      return value;
+    }
+
+    if (variable) {
+      return variable;
+    }
+    return '';
   }
 };
 

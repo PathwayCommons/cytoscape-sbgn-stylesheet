@@ -1,22 +1,7 @@
 const textWidth = require('text-width');
 
 const baseShapes = require('./baseShapes.js');
-
-const stateVarLabel = (stateVar) => {
-  const variable = stateVar.state.variable;
-  const value = stateVar.state.value;
-  if (value && variable) {
-    return `${value}@${variable}`;
-  }
-  if (value) {
-    return value;
-  }
-
-  if (variable) {
-    return variable;
-  }
-  return '';
-};
+const sbgnData = require('../util/sbgn');
 
 const auxiliaryItems = {
 
@@ -70,12 +55,12 @@ const auxiliaryItems = {
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
     .set('text-anchor', 'middle');
 
-    const tw = textWidth(stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
+    const tw = textWidth(sbgnData.stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
     const w = Math.max(tw, 30);
     const statevariableSvg =
     `
       ${baseShapes.stadium(x, y, w, height, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
+      ${baseShapes.text(sbgnData.stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
     `;
 
     return statevariableSvg;
