@@ -1,15 +1,15 @@
 {
-  "name": "sbgn-renderer",
-  "version": "1.1.1",
-  "description": "A library that renders SBGN",
-  "main": "dist/sbgn-renderer.js",
+  "name": "cytoscape-sbgn-stylesheet",
+  "version": "2.0.0",
+  "description": "SBGN specific glyph style for cytoscape.js",
+  "main": "dist/cytoscape-sbgn-stylesheet.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "clean": "rm -rf demo/browserify-bundle.js dist/*",
     "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
     "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] -p [ browserify-livereload --host 127.0.0.1 --port 30303 ] --poll=50 --verbose",
-    "build": "browserify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/sbgn-renderer.js",
-    "watch": "watchify --standalone sbgn-renderer -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/sbgn-renderer.js' --poll=50 --verbose",
+    "build": "browserify --standalone cytoscape-sbgn-stylesheet -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/cytoscape-sbgn-stylesheet.js",
+    "watch": "watchify --standalone cytoscape-sbgn-stylesheet -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/cytoscape-sbgn-stylesheet.js' --poll=50 --verbose",
     "build-test": "browserify test/*.js -o test/testenv/test-bundle.js -d",
     "watch-test": "watchify test/*.js -o test/testenv/test-bundle.js -d --poll=50 --verbose"
   },

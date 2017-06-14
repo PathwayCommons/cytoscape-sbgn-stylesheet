@@ -1,11 +1,11 @@
-# SBGN Renderer
-A JavaSript library that renders biological networks using cytoscape.js and the System Biology Graphical Notation language
+# cytoscape-sbgn-stylesheet
+A Cytoscape.js package that provides SBGN specific glyph styles
 
 ### Purpose
 To render SBGN(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
 
 ### Requirements
-Input needs to be formatted Cytoscape.js graph JSON.  
+Input needs to be formatted Cytoscape.js graph JSON.
 
 The following graph JSON structure is required:
 ```
@@ -15,7 +15,7 @@ The following graph JSON structure is required:
 }
 ```
 
-#### Supported SBGN classes
+#### Supported SBGN glyphs
 Nodes:
 * simple chemical
 * simple chemical multimer
@@ -46,6 +46,10 @@ Edges:
 * stimulation
 * catalysis
 * inhibition
+
+#### Unsupported SBGN glyphs
+* submap
+* ports
 
 
 The following node JSON structure is required:
@@ -79,40 +83,40 @@ To get Cytoscape.js graph JSON, you need the following:
 
 
 ### Installation
-SBGN Renderer can be installed via npm
+Install via npm
 
 ```
-npm install sbgn-renderer
+npm install cytoscape-sbgn-stylesheet
 ```
 
 ### Usage
 
-SBGNRenderer provides Cytoscape.js's API, as well as SBGN specific functions for SBGN graph analysis.
-Learn how to use SBGNRenderer by learning how to use [Cytoscape.js](http://js.cytoscape.org/#introduction)
-Learn how to use the [SBGN API] ()
+Initialize cytoscape.js and call this module as a stylesheet parameter
 
-CommonJS Usage
 ```js
-var SBGNRenderer = require('sbgn-renderer');
+var cytoscape = require('cytoscape');
+var sbgnStylesheet = require('cytoscape-sbgn-stylesheet');
 
-var renderer = new SBGNRenderer(/* opts */);
-renderer.nodes();    // get cytoscape graph nodes
-renderer.edges();    // get cytoscape graph edges
-// renderer.<cytoscape-api-method-here>
+var cy = cytoscape({
+  container: container,
+  stylesheet: sbgnStylesheet(cytoscape),
+  // other arguments here
+});
+
 ```
 
 ##### Demo
-For a detailed example, refer to the code in the [demo](https://github.com/PathwayCommons/sbgn-renderer/tree/master/demo):
+For a detailed example, refer to the code in the [demo](https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet/tree/master/demo):
 
 ###### Running the Demo
 Clone this repository
 ```
-git clone https://github.com/PathwayCommons/sbgn-renderer
+git clone https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet
 ```
 
 Change directory to the newly cloned folder
 ```
-cd sbgn-renderer
+cd cytoscape-sbgn-stylesheet
 ```
 
 Run a local server
@@ -133,7 +137,7 @@ The following npm scripts are available.  To run a script, type:
 npm run <command>
 ```
 
-* ```build```: Builds the sbgn-renderer library; Places it in the dist folder
+* ```build```: Builds the cytoscape-sbgn-stylesheet library; Places it in the dist folder
 * ```build-demo```: Builds the browserify version of the demo app in the demo folder
 * ```clean```: Removes the browserify demo bundle and the contents of the dist folder
 * ```watch```: Watches for changes in the src directory and builds the library in response
