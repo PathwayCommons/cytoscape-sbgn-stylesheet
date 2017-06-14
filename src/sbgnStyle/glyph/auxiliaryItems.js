@@ -1,26 +1,11 @@
 const textWidth = require('text-width');
 
 const baseShapes = require('./baseShapes.js');
-
-const stateVarLabel = (stateVar) => {
-  const variable = stateVar.state.variable;
-  const value = stateVar.state.value;
-  if (value && variable) {
-    return `${value}@${variable}`;
-  }
-  if (value) {
-    return value;
-  }
-
-  if (variable) {
-    return variable;
-  }
-  return '';
-};
+const sbgnData = require('../util/sbgn');
 
 const auxiliaryItems = {
 
-  compoundCloneMarker (x, y, width, height) {
+  multiImgCloneMarker (x, y, width, height) {
 
     const cloneStyle = new Map()
     .set('stroke', '#6A6A6A')
@@ -30,22 +15,20 @@ const auxiliaryItems = {
     return baseShapes.rectangle(x, y, width, height, cloneStyle);
   },
 
-
-  compoundUnitOfInformation (x, y, width, height, uInfo) {
-    const fontSize = 14;
+  multiImgUnitOfInformation (x, y, width, height, uInfo, borderWidth=3, fontSize=14) {
     const text = uInfo.label.text;
     const uinfoRectStyle = new Map()
     .set('stroke', '#555555')
-    .set('stroke-width', '4')
-    .set('fill', 'none');
+    .set('stroke-width', `${borderWidth}`)
+    .set('fill', 'white')
+    .set('fill-opacity', 1);
 
 
     const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
+    .set('font-size', `${fontSize}px`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
+    .set('text-anchor', 'middle');
 
     const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
 
@@ -58,90 +41,29 @@ const auxiliaryItems = {
     return unitOfInformationSvg;
   },
 
-  compoundStateVar (x, y, width, height, stateVar) {
-    const fontSize = 14;
+  multiImgStateVar (x, y, width, height, stateVar, borderWidth=3, fontSize=14) {
 
     const stateVarStyle = new Map()
     .set('stroke', '#555555')
-    .set('stroke-width', '4')
-    .set('fill', 'none');
-
+    .set('stroke-width', `${borderWidth}`)
+    .set('fill', 'white')
+    .set('fill-opacity', 1);
 
     const textStyle = new Map()
     .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
+    .set('font-size', `${fontSize}px`)
     .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
+    .set('text-anchor', 'middle');
 
-    const tw = textWidth(stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
+    const tw = textWidth(sbgnData.stateVarLabel(stateVar), { family: textStyle.get('font-family'), size: fontSize}) + 10;
     const w = Math.max(tw, 30);
     const statevariableSvg =
     `
       ${baseShapes.stadium(x, y, w, height, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
+      ${baseShapes.text(sbgnData.stateVarLabel(stateVar), x + ( w / 2 ), y + height / 2, textStyle)}
     `;
 
     return statevariableSvg;
-  },
-
-
-  stateVariable (x, y, radius, stateVar) {
-
-    const fontSize = 12;
-
-    const stateVarStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1.5')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    const textStyle = new Map()
-    .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
-    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
-
-    const tw = textWidth(stateVarLabel(stateVar, { family: textStyle.get('font-family'), size: fontSize}), 20);
-    const stateVarWidth = Math.max(tw * .5, 20);
-
-    const statevariableSvg =
-    `
-      ${baseShapes.ellipse(x, y, stateVarWidth, radius, stateVarStyle)}
-      ${baseShapes.text(stateVarLabel(stateVar), x, y, textStyle)}
-    `;
-
-    return statevariableSvg;
-  },
-
-  unitOfInformation (x, y, width, height, unitInfo) {
-
-    const fontSize = 12;
-    const text = unitInfo.label.text;
-
-    const uinfoRectStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '1.5')
-    .set('fill', 'white')
-    .set('fill-opacity', '1');
-
-    const textStyle = new Map()
-    .set('alignment-baseline', 'middle')
-    .set('font-size', `${fontSize}`)
-    .set('font-family', 'Helvetica Neue, Helvetica, sans-serif')
-    .set('text-anchor', 'middle')
-    .set('stroke', 'black');
-
-    const uInfoWidth = textWidth(text, { family: textStyle.get('font-family'), size: fontSize}) + 5;
-
-    const unitOfInformationSvg =
-    `
-      ${baseShapes.roundRectangle(x - (uInfoWidth / 2), y, uInfoWidth, height, uinfoRectStyle)}
-      ${baseShapes.text(text, x, y + ( height / 2),  textStyle)}
-    `;
-
-    return unitOfInformationSvg;
   },
 
   cloneMarker (nodeWidth, nodeHeight, shapeFn, shapeFnArgs) {
@@ -160,23 +82,6 @@ const auxiliaryItems = {
     `;
 
     return cloneMarkerSvg;
-  },
-
-  multimer (shapeFn, shapeFnArgs) {
-    const clipId = 'multimer';
-
-    const multimerStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('fill', 'none')
-    .set('stroke-width', '3')
-    .set('clip-path', `url(#${clipId})`);
-
-    const multimerSvg =
-    `
-      ${baseShapes.clipPath(clipId, shapeFn, shapeFnArgs, new Map())}
-      ${shapeFn(...shapeFnArgs, multimerStyle)}
-    `;
-    return multimerSvg;
   }
 };
 

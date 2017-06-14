@@ -1,39 +1,35 @@
+const memoize = require('lodash.memoize');
+
 const containerNodes = require('./containerNodes.js');
 const entityPoolNodes = require('./entityPoolNodes.js');
 const processNodes = require('./processNodes.js');
 
 const sbgnData = require('../util/sbgn.js');
 
+const cacheKeyFn = (node) => '' + JSON.stringify(node.id());
+
 const sbgnNodeShapeMap = new Map()
 // process nodes
-.set('process', processNodes.process)
-.set('omitted process', processNodes.process)
-.set('uncertain process', processNodes.process)
-.set('association', processNodes.association)
-.set('dissociation', processNodes.dissociation)
-.set('phenotype', processNodes.phenotype)
+.set('dissociation', memoize(processNodes.dissociation, cacheKeyFn))
+.set('phenotype', memoize(processNodes.phenotype, cacheKeyFn))
 
 // entity pool nodes
-.set('source and sink', entityPoolNodes.sourceAndSink)
-.set('unspecified entity', entityPoolNodes.unspecifiedEntity)
-.set('simple chemical', entityPoolNodes.simpleChemical)
-.set('simple chemical multimer', entityPoolNodes.simpleChemical)
-.set('macromolecule', entityPoolNodes.macromolecule)
-.set('macromolecule multimer', entityPoolNodes.macromolecule)
-.set('nucleic acid feature', entityPoolNodes.nucleicAcidFeature)
-.set('nucleic acid feature multimer', entityPoolNodes.nucleicAcidFeature)
-.set('complex', entityPoolNodes.complex)
-.set('complex multimer', entityPoolNodes.complex)
-.set('perturbing agent', entityPoolNodes.perturbingAgent)
+.set('source and sink', memoize(entityPoolNodes.sourceAndSink, cacheKeyFn))
+.set('unspecified entity', memoize(entityPoolNodes.unspecifiedEntity, cacheKeyFn))
+.set('simple chemical', memoize(entityPoolNodes.simpleChemical, cacheKeyFn))
+.set('macromolecule', memoize(entityPoolNodes.macromolecule, cacheKeyFn))
+.set('nucleic acid feature', memoize(entityPoolNodes.nucleicAcidFeature, cacheKeyFn))
+.set('complex', memoize(entityPoolNodes.complex, cacheKeyFn))
+.set('perturbing agent', memoize(entityPoolNodes.perturbingAgent, cacheKeyFn))
 
 // container nodes
-.set('compartment', containerNodes.compartment);
+.set('compartment', memoize(containerNodes.compartment, cacheKeyFn));
 
 
 const draw = (node) => {
-  const sbgnClass = sbgnData.sbgnClass(node);
+  const sbgnClass = sbgnData.sbgnClass(node).replace(' multimer', '');
   let shapeFn = sbgnNodeShapeMap.get(sbgnClass);
-  if (shapeFn === undefined) {
+  if (shapeFn == null) {
     throw new TypeError(`${sbgnClass} does not have a shape implementation`);
   }
   return shapeFn(node);

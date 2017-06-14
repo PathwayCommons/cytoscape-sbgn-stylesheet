@@ -2,47 +2,14 @@ const baseShapes = require('./baseShapes');
 const auxiliaryItems = require('./auxiliaryItems');
 
 const svgStr = require('../util/svg').svgStr;
-const dimensions = require('../dimensions');
+const hasClonemarker = require('../util/sbgn').hasClonemarker;
+
+const element = require('../element');
 
 const processNodes = {
 
-  process (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
-
-    const squareStyle = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', 'none');
-
-    const processSvg =
-    `
-      ${baseShapes.square(1, 1, Math.min(nw, nh) - 2, squareStyle)}
-    `;
-    return svgStr(processSvg, nw, nh, 0, 0, nw, nh);
-  },
-
-  association (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
-
-    const centerX = nw / 2;
-    const centerY = nh / 2;
-    const radius = (Math.min(nw, nh) - 2) / 2;
-
-    const styleMap = new Map()
-    .set('stroke', '#6A6A6A')
-    .set('stroke-width', '2')
-    .set('fill', '#6A6A6A')
-    .set('fill-opacity', '0');
-
-    const associationSvg =
-    `
-      ${baseShapes.circle(centerX, centerY, radius, styleMap)}
-    `;
-    return svgStr(associationSvg, nw, nh, 0, 0, nw, nh);
-  },
-
   dissociation (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const {w: nw, h: nh} = element.dimensions(node);
 
     const centerX = nw / 2;
     const centerY = nh / 2;
@@ -59,25 +26,37 @@ const processNodes = {
       ${baseShapes.circle(centerX, centerY, outerRadius, styleMap)}
       ${baseShapes.circle(centerX, centerY, innerRadius, styleMap)}
     `;
-    return svgStr(dissociationSvg, nw, nh, 0, 0, nw, nh);
+    return svgStr(dissociationSvg, nw, nh);
   },
 
   phenotype (node) {
-    const {w: nw, h: nh} = dimensions.get(node);
+    const auxItemWidth = 100;
+    const auxItemHeight = 20;
 
-    const styleMap = new Map()
+    const style = new Map()
     .set('stroke', '#6A6A6A')
-    .set('stroke-width', '3')
-    .set('fill', 'none');
+    .set('stroke-width', '1');
 
-    const shapeArgs = [1, 1, nw - 3, nh - 3];
+    const cloneMarkerSvg = svgStr(
+      hasClonemarker(node) ? auxiliaryItems.multiImgCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
 
-    let phenotypeSvg =
-    `
-      ${baseShapes.hexagon(...shapeArgs, styleMap)}
-      ${node.data('clonemarker') ? auxiliaryItems.cloneMarker(nw - 3, nh - 3, baseShapes.hexagon, shapeArgs) : ''}
-    `;
-    return svgStr(phenotypeSvg, nw, nh, 0, 0, nw, nh);
+    const bottomLine = svgStr(
+      hasClonemarker(node) ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
+      auxItemWidth, auxItemHeight, 0, 0, auxItemWidth, auxItemHeight
+    );
+
+    return {
+      bgImage: [bottomLine, cloneMarkerSvg],
+      bgWidth: ['100%', '100%'],
+      bgPosX: ['0%', '0%'],
+      bgPosY: ['56px', '56px'],
+      bgFit: ['cover', 'none'],
+      bgClip: 'node',
+      padding: '8px',
+      borderWidth: 2
+    };
   }
 };
 

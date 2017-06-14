@@ -34,6 +34,7 @@
     "browserify": "^13.1.1",
     "browserify-livereload": "^1.0.10",
     "chai": "^3.5.0",
+    "cytoscape": "https://github.com/d2fong/cytoscape.js#tmp",
     "derequire": "^2.0.6",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
@@ -46,10 +47,12 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "cytoscape": "https://github.com/d2fong/cytoscape.js.git#unstable",
     "extend": "^3.0.0",
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.memoize": "^4.1.2",
     "text-width": "^1.2.0"
+  },
+  "peerDependencies": {
+    "cytoscape": "https://github.com/d2fong/cytoscape.js#tmp"
   }
 }
