@@ -106,7 +106,7 @@ To get Cytoscape.js graph JSON, you need the following:
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
 
-##### Incompatibilities
+#### Style Incompatibilities
 
 The following cytoscape.js style properties are used to render SBGN PD graphics.  Overriding these entirely will produce unexpected behaviour:
 * ```shape```
