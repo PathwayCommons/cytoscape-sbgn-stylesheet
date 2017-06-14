@@ -2,7 +2,7 @@
 A Cytoscape.js package that provides SBGN specific glyph styles
 
 ### Purpose
-To render SBGN(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
+To render SBGN-PD(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
 
 ### Requirements
 Input needs to be formatted Cytoscape.js graph JSON.
@@ -15,14 +15,10 @@ The following graph JSON structure is required:
 }
 ```
 
-#### Supported SBGN glyphs
-Nodes:
+#### Supported SBGN PD glyphs
 * simple chemical
-* simple chemical multimer
 * macromolecule
-* macromolecule multimer
 * nucleic acid feature
-* nucleic acid feature multimer
 * compartment
 * unspecified entity
 * perturbing agent
@@ -39,7 +35,7 @@ Nodes:
 * or
 * not
 
-Edges:
+#### Supported SBGN PD arcs
 * necessary stimulation
 * production
 * consumption
@@ -47,9 +43,14 @@ Edges:
 * catalysis
 * inhibition
 
-#### Unsupported SBGN glyphs
+#### Unsupported SBGN PD glyphs
 * submap
 * ports
+* simple chemical multimer
+* macromolecule multimer
+* nucleic acid feature multimer
+* complex multimer
+
 
 
 The following node JSON structure is required:
