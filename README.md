@@ -4,6 +4,29 @@ A Cytoscape.js package that provides SBGN specific glyph styles
 ### Purpose
 To render SBGN-PD(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.
 
+### Installation
+Install via npm
+
+```
+npm install cytoscape-sbgn-stylesheet
+```
+
+### Usage
+
+Initialize cytoscape.js and call this module as a stylesheet parameter
+
+```js
+var cytoscape = require('cytoscape');
+var sbgnStylesheet = require('cytoscape-sbgn-stylesheet');
+
+var cy = cytoscape({
+  container: container,
+  stylesheet: sbgnStylesheet(cytoscape),
+  // other arguments here
+});
+
+```
+
 ### Requirements
 Input needs to be formatted Cytoscape.js graph JSON.
 
@@ -83,28 +106,21 @@ To get Cytoscape.js graph JSON, you need the following:
 * An [SBGN-ML to Cytoscape.js converter](https://github.com/PathwayCommons/sbgnml-to-cytoscape).
 
 
-### Installation
-Install via npm
+##### Incompatibilities
 
-```
-npm install cytoscape-sbgn-stylesheet
-```
+The following cytoscape.js style properties are used to render SBGN PD graphics.  Overriding these entirely will produce unexpected behaviour:
+* ```shape```
+* ```width```
+* ```height```
+* ```background-image```
+* ```background-width```
+* ```background-position-x```
+* ```background-position-y```
+* ```background-fit```
+* ```background-clip```
+* ```padding```
+* ```border-width```
 
-### Usage
-
-Initialize cytoscape.js and call this module as a stylesheet parameter
-
-```js
-var cytoscape = require('cytoscape');
-var sbgnStylesheet = require('cytoscape-sbgn-stylesheet');
-
-var cy = cytoscape({
-  container: container,
-  stylesheet: sbgnStylesheet(cytoscape),
-  // other arguments here
-});
-
-```
 
 ##### Demo
 For a detailed example, refer to the code in the [demo](https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet/tree/master/demo):
