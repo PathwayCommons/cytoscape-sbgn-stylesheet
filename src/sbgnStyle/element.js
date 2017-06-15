@@ -8,8 +8,8 @@ const sbgnStyle = new Map()
 .set('macromolecule multimer', {w: 96, h: 48, shape: 'roundrectangle'})
 .set('nucleic acid feature', {w: 88, h: 56, shape: 'bottomroundrectangle'})
 .set('nucleic acid feature multimer', {w: 88, h: 52, shape: 'bottomroundrectangle'})
-.set('complex', {w: 0, h: 0, shape: 'cutrectangle'})
-.set('complex multimer', {w: 0, h: 0, shape: 'cutrectangle'})
+.set('complex', {w: 10, h: 10, shape: 'cutrectangle'})
+.set('complex multimer', {w: 10, h: 10, shape: 'cutrectangle'})
 .set('source and sink', {w: 60, h: 60, shape: 'polygon'})
 .set('perturbing agent', {w: 140, h: 60, shape: 'concavehexagon'})
 
@@ -20,7 +20,7 @@ const sbgnStyle = new Map()
 .set('association', {w:25, h: 25, shape: 'ellipse'})
 .set('dissociation', {w:25, h: 25, shape: 'ellipse'})
 
-.set('compartment', {w: 200, h: 150, shape: 'barrel'})
+.set('compartment', {w: 50, h: 50, shape: 'barrel'})
 
 .set('tag', {w: 100, h: 65, shape: 'tag'})
 .set('and', {w: 40, h: 40, shape: 'ellipse'})
@@ -34,7 +34,6 @@ const sbgnArrowMap = new Map()
 .set('stimulation', 'triangle')
 .set('production', 'triangle')
 .set('modulation', 'diamond');
-
 
 const scaledTextSize = (height, sizeCoefficient = 1) => {
   return (height / 2.45) * sizeCoefficient;
