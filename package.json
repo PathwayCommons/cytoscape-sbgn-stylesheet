@@ -1,6 +1,6 @@
 {
   "name": "cytoscape-sbgn-stylesheet",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "SBGN specific glyph style for cytoscape.js",
   "main": "dist/cytoscape-sbgn-stylesheet.js",
   "scripts": {
