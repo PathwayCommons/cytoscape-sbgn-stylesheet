@@ -201,46 +201,72 @@ const entityPoolNodes = {
   },
 
   complex (node) {
-    const auxItemWidth = 60;
-    const auxItemHeight = 24;
+    const itemW = 60;
+    const itemH = 24;
     const uInfos = getUnitInfos(node);
     const sVars = getStateVars(node);
+
+    const images = [];
+    const bgWidth = [];
+    const bgHeight = [];
+    const bgPosX = [];
+    const bgPosY = [];
+    const bgFit = [];
 
     const style = new Map()
     .set('stroke', '#555555')
     .set('stroke-width', '6');
 
-    const cloneMarkerSvg = svgStr(
-      hasClonemarker(node) ? auxiliaryItems.multiImgCloneMarker(0, 2, auxItemWidth, auxItemHeight - 3) : '',
-      auxItemWidth, auxItemHeight
-    );
+    // order of svg image generation matters
+    if (uInfos.length + sVars.length > 0) {
+      const topLineSvg = svgStr(baseShapes.line(0, 0, itemW, 0, style), itemW, itemH);
+      images.push(topLineSvg);
+      bgWidth.push('100%');
+      bgPosX.push('0%');
+      bgPosY.push('11px');
+      bgFit.push('none');
+    }
 
-    const uInfoSvg = svgStr(
-      uInfos.length > 0 ? auxiliaryItems.multiImgUnitOfInformation(2, 0, auxItemWidth - 5, auxItemHeight - 3, uInfos[0]) : '',
-      auxItemWidth, auxItemHeight
-    );
+    if (hasClonemarker(node)) {
+      const bottomLineSvg = svgStr(baseShapes.line(0, 0, itemW, 0, style), itemW, itemH);
+      images.push(bottomLineSvg);
+      bgWidth.push('100%');
+      bgPosX.push('0%');
+      bgPosY.push('100%');
+      bgFit.push('none');
+    }
 
-    const sVarSvg = svgStr(
-      sVars.length > 0 ? auxiliaryItems.multiImgStateVar(2, 0, auxItemWidth - 5, auxItemHeight - 3, sVars[0]) : '',
-      auxItemWidth, auxItemHeight
-    );
+    if (hasClonemarker(node)) {
+      const cloneSvg = svgStr(auxiliaryItems.multiImgCloneMarker(0, 2, itemW, itemH - 3), itemW, itemH);
+      images.push(cloneSvg);
+      bgWidth.push('100%');
+      bgPosX.push('0%');
+      bgPosY.push('100%');
+      bgFit.push('none');
+    }
 
-    const topLine = svgStr(
-      uInfos.length + sVars.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight
-    );
+    if (uInfos.length > 0) {
+      const uInfoSvg = svgStr(auxiliaryItems.multiImgUnitOfInformation(2, 0, itemW - 5, itemH - 3, uInfos[0]), itemW, itemH);
+      images.push(uInfoSvg);
+      bgPosX.push('25%');
+      bgPosY.push('0%');
+      bgFit.push('none');
+    }
 
-    const bottomLine = svgStr(
-      hasClonemarker(node) || uInfos.length > 0 ? baseShapes.line(0, 0, auxItemWidth, 0, style) : '',
-      auxItemWidth, auxItemHeight
-    );
+    if (sVars.length > 0) {
+      const sVarSvg = svgStr(auxiliaryItems.multiImgStateVar(2, 0, itemW - 5, itemH - 3, sVars[0]), itemW, itemH);
+      images.push(sVarSvg);
+      bgPosX.push('88%');
+      bgPosY.push('0%');
+      bgFit.push('none');
+    }
 
     return {
-      bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
-      bgWidth: ['100%', '100%', '100%'],
-      bgPosX: ['0%', '0%', '0%', '25%', '88%'],
-      bgPosY: ['100%', '11px', '100%', '0%', '0%'],
-      bgFit: ['none', 'none', 'none', 'none'],
+      bgImage: images,
+      bgWidth: bgWidth,
+      bgPosX: bgPosX,
+      bgPosY: bgPosY,
+      bgFit: bgFit,
       bgClip: 'node',
       padding: '22px',
       borderWidth: 4
