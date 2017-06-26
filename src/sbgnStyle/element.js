@@ -104,7 +104,7 @@ const elementStyle = {
     }
 
     if (sbgnClass === 'compartment') {
-      return 50;
+      return 40;
     }
 
     if (sbgnClass.endsWith('process')) {
