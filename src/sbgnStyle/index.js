@@ -133,7 +133,6 @@ const sbgnStyleSheet = function (cytoscape) {
         })
         .selector('edge[cardinality > 0]')
         .css({
-          'text-rotation': 'autorotate',
           'text-background-shape': 'rectangle',
           'text-border-opacity': '1',
           'text-border-width': '1',
@@ -143,8 +142,7 @@ const sbgnStyleSheet = function (cytoscape) {
         .selector('edge[class="consumption"][cardinality > 0], edge[class="production"][cardinality > 0]')
         .css({
           'source-label': (edge) => '' + edge.data('cardinality'),
-          'source-text-margin-y': '-10',
-          'source-text-offset': (edge) => elementStyle.cardinalityDistance(edge)
+          'source-text-offset': 10
         })
         .selector('edge[class]')
         .css({

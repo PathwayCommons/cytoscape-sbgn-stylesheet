@@ -112,14 +112,6 @@ const elementStyle = {
     }
 
     return scaledTextSize(textScalingConstant);
-  },
-
-  cardinalityDistance (edge) {
-    const srcPos = edge.source().position();
-    const tgtPos = edge.target().position();
-
-    const distance = Math.sqrt(Math.pow((srcPos.x - tgtPos.x), 2) + Math.pow((srcPos.y - tgtPos.y), 2));
-    return distance * 0.15;
   }
 };
 
