@@ -34,7 +34,7 @@
     "browserify": "^13.1.1",
     "browserify-livereload": "^1.0.10",
     "chai": "^3.5.0",
-    "cytoscape": "https://github.com/d2fong/cytoscape.js#tmp",
+    "cytoscape": "./demo/cytoscape.js/",
     "derequire": "^2.0.6",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
