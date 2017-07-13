@@ -35,10 +35,6 @@ const sbgnArrowMap = new Map()
 .set('production', 'triangle')
 .set('modulation', 'diamond');
 
-const scaledTextSize = (height, sizeCoefficient = 1) => {
-  return (height / 2.45) * sizeCoefficient;
-};
-
 const elementStyle = {
   sbgnShape (node) {
     const sbgnClass = sbgnData.sbgnClass(node).replace(' multimer', '');
@@ -90,28 +86,6 @@ const elementStyle = {
 
   height (node) {
     return this.dimensions(node).h;
-  },
-
-  labelTextSize (node) {
-    const sbgnClass = sbgnData.sbgnClass(node);
-    const textScalingConstant = 40;
-
-    if (sbgnClass === 'association' || sbgnClass === 'dissociation') {
-      return 20;
-    }
-    if (sbgnClass.includes('complex')) {
-      return 16;
-    }
-
-    if (sbgnClass === 'compartment') {
-      return 40;
-    }
-
-    if (sbgnClass.endsWith('process')) {
-      return scaledTextSize(textScalingConstant, 1.5);
-    }
-
-    return scaledTextSize(textScalingConstant);
   }
 };
 

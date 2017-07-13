@@ -9,7 +9,7 @@ const sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape': (node) => elementStyle.sbgnShape(node),
           'content': (node) => elementStyle.sbgnContent(node),
-          'font-size': (node) => elementStyle.labelTextSize(node),
+          'font-size': 20,
           'width': (node) => elementStyle.width(node),
           'height': (node) => elementStyle.height(node),
           'text-valign': 'center',
