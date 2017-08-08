@@ -1983,9 +1983,9 @@ module.exports = Selector;
 var util = __webpack_require__(1);
 var is = __webpack_require__(0);
 var Map = __webpack_require__(118);
-var Set = __webpack_require__(17);
+var Set = __webpack_require__(11);
 
-var Element = __webpack_require__(12);
+var Element = __webpack_require__(13);
 
 // factory for generating edge ids when no id is specified for a new element
 var idFactory = {
@@ -2220,9 +2220,7 @@ elesfn.json = function (obj) {
       classes: null
     };
 
-    json.classes = Object.keys(p.classes).filter(function (cls) {
-      return p.classes[cls];
-    }).join(' ');
+    json.classes = Array.from(p.classes).join(' ');
 
     return json;
   }
@@ -2732,7 +2730,7 @@ module.exports = __webpack_require__(137);
 
 var util = __webpack_require__(1);
 var is = __webpack_require__(0);
-var Event = __webpack_require__(14);
+var Event = __webpack_require__(15);
 
 var eventRegex = /(\w+)(\.(?:\w+|\*))?/; // regex for matching event strings (e.g. "click.namespace")
 var universalNamespace = '.*'; // matches as if no namespace specified and prevents users from unbinding accidentally
@@ -2979,6 +2977,85 @@ module.exports = newQuery;
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/* global Set */
+
+var undef =  true ? 'undefined' : _typeof(undefined);
+
+var ObjectSet = function () {
+  function ObjectSet(arrayOrObjectSet) {
+    _classCallCheck(this, ObjectSet);
+
+    this._obj = Object.create(null);
+
+    if (arrayOrObjectSet != null) {
+      var arr = void 0;
+
+      if (arrayOrObjectSet.instanceString != null && arrayOrObjectSet.instanceString() === this.instanceString()) {
+        arr = arrayOrObjectSet.toArray();
+      } else {
+        arr = arrayOrObjectSet;
+      }
+
+      for (var i = 0; i < arr.length; i++) {
+        this.add(arr[i]);
+      }
+    }
+  }
+
+  _createClass(ObjectSet, [{
+    key: 'instanceString',
+    value: function instanceString() {
+      return 'set';
+    }
+  }, {
+    key: 'add',
+    value: function add(val) {
+      this._obj[val] = 1;
+    }
+  }, {
+    key: 'delete',
+    value: function _delete(val) {
+      this._obj[val] = 0;
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      this._obj = Object.create(null);
+    }
+  }, {
+    key: 'has',
+    value: function has(val) {
+      return this._obj[val] === 1;
+    }
+  }, {
+    key: 'toArray',
+    value: function toArray() {
+      var _this = this;
+
+      return Object.keys(this._obj).filter(function (key) {
+        return _this.has(key);
+      });
+    }
+  }]);
+
+  return ObjectSet;
+}();
+
+module.exports = (typeof Set === 'undefined' ? 'undefined' : _typeof(Set)) !== undef ? Set : ObjectSet;
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3420,7 +3497,7 @@ corefn.$id = corefn.getElementById;
 module.exports = Core;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3482,7 +3559,7 @@ var Element = function Element(cy, params, restore) {
     grabbed: false, // whether the element is grabbed by the mouse; renderer sets this privately
     grabbable: params.grabbable === undefined ? true : params.grabbable ? true : false, // whether the element can be grabbed
     active: false, // whether the element is active from user interaction
-    classes: {}, // map ( className => true )
+    classes: new Set(), // map ( className => true )
     animation: { // object for currently-running animations
       current: [],
       queue: []
@@ -3515,7 +3592,7 @@ var Element = function Element(cy, params, restore) {
         continue;
       }
 
-      _p.classes[cls] = true;
+      _p.classes.add(cls);
     }
   }
 
@@ -3533,7 +3610,7 @@ var Element = function Element(cy, params, restore) {
 module.exports = Element;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3596,7 +3673,7 @@ var zIndexSort = function zIndexSort(a, b) {
 module.exports = zIndexSort;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3716,7 +3793,7 @@ Event.prototype = {
 module.exports = Event;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3806,7 +3883,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3981,37 +4058,6 @@ var stateSelectorRegex = '(' + stateSelectors.map(function (s) {
 }).join('|') + ')';
 
 module.exports = { stateSelectors: stateSelectors, stateSelectorMatches: stateSelectorMatches, stateSelectorRegex: stateSelectorRegex };
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function ObjectSet() {
-  this._obj = {};
-}
-
-var p = ObjectSet.prototype;
-
-p.add = function (val) {
-  this._obj[val] = 1;
-};
-
-p.remove = function (val) {
-  this._obj[val] = 0;
-};
-
-p.has = function (val) {
-  return this._obj[val] === 1;
-};
-
-p.forEach = function (callback, thisArg) {
-  return Object.keys(this._obj).forEach(callback, thisArg);
-};
-
-module.exports = typeof Set !== 'undefined' ? Set : ObjectSet;
 
 /***/ }),
 /* 18 */
@@ -4262,7 +4308,7 @@ module.exports = g;
 var util = __webpack_require__(1);
 var define = __webpack_require__(3);
 var Collection = __webpack_require__(7);
-var Core = __webpack_require__(11);
+var Core = __webpack_require__(12);
 var incExts = __webpack_require__(76);
 var is = __webpack_require__(0);
 var Emitter = __webpack_require__(9);
@@ -4627,7 +4673,7 @@ module.exports = Stylesheet;
 "use strict";
 
 
-module.exports = "snapshot-6012b7b11a-1499968389404";
+module.exports = "2.1.0";
 
 /***/ }),
 /* 24 */
@@ -6787,20 +6833,14 @@ module.exports = elesfn;
 
 
 var util = __webpack_require__(1);
+var Set = __webpack_require__(11);
 
 var elesfn = {
   classes: function classes(_classes) {
     _classes = (_classes || '').match(/\S+/g) || [];
     var self = this;
     var changed = [];
-    var classesMap = {};
-
-    // fill in classes map
-    for (var i = 0; i < _classes.length; i++) {
-      var cls = _classes[i];
-
-      classesMap[cls] = true;
-    }
+    var classesMap = new Set(_classes);
 
     // check and update each ele
     for (var j = 0; j < self.length; j++) {
@@ -6810,34 +6850,72 @@ var elesfn = {
       var changedEle = false;
 
       // check if ele has all of the passed classes
-      for (var _i = 0; _i < _classes.length; _i++) {
-        var _cls = _classes[_i];
-        var eleHasClass = eleClasses[_cls];
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-        if (!eleHasClass) {
-          changedEle = true;
-          break;
+      try {
+        for (var _iterator = classesMap[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var cls = _step.value;
+
+          var eleHasClass = eleClasses.has(cls);
+
+          if (!eleHasClass) {
+            changedEle = true;
+            break;
+          }
+        }
+
+        // check if ele has classes outside of those passed
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
         }
       }
 
-      // check if ele has classes outside of those passed
       if (!changedEle) {
-        var classes = Object.keys(eleClasses);
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
-        for (var _i2 = 0; _i2 < classes.length; _i2++) {
-          var eleCls = classes[_i2];
-          var _eleHasClass = eleClasses[eleCls];
-          var specdClass = classesMap[eleCls]; // i.e. this class is passed to the function
+        try {
+          for (var _iterator2 = eleClasses[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var eleCls = _step2.value;
 
-          if (_eleHasClass && !specdClass) {
-            changedEle = true;
-            break;
+
+            var specdClass = classesMap.has(eleCls);
+            if (!specdClass) {
+              changedEle = true;
+              break;
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
           }
         }
       }
 
       if (changedEle) {
-        _p.classes = util.copy(classesMap);
+        _p.classes = new Set(classesMap);
 
         changed.push(ele);
       }
@@ -6857,7 +6935,7 @@ var elesfn = {
 
   hasClass: function hasClass(className) {
     var ele = this[0];
-    return ele != null && ele._private.classes[className] ? true : false;
+    return ele != null && ele._private.classes.has(className);
   },
 
   toggleClass: function toggleClass(classesStr, toggle) {
@@ -6872,11 +6950,11 @@ var elesfn = {
       for (var j = 0; j < classes.length; j++) {
         var cls = classes[j];
         var eleClasses = ele._private.classes;
-        var hasClass = eleClasses[cls];
+        var hasClass = eleClasses.has(cls);
         var shouldAdd = toggle || toggle === undefined && !hasClass;
 
         if (shouldAdd) {
-          eleClasses[cls] = true;
+          eleClasses.add(cls);
 
           if (!hasClass && !changedEle) {
             changed.push(ele);
@@ -6884,7 +6962,7 @@ var elesfn = {
           }
         } else {
           // then remove
-          eleClasses[cls] = false;
+          eleClasses.delete(cls);
 
           if (hasClass && !changedEle) {
             changed.push(ele);
@@ -7031,7 +7109,7 @@ module.exports = elesfn;
 "use strict";
 
 
-var Set = __webpack_require__(17);
+var Set = __webpack_require__(11);
 
 var elesfn = {
   parent: function parent(selector) {
@@ -9264,7 +9342,7 @@ module.exports = elesfn;
 
 
 var is = __webpack_require__(0);
-var zIndexSort = __webpack_require__(13);
+var zIndexSort = __webpack_require__(14);
 
 var elesfn = {
   forEach: function forEach(fn, thisArg) {
@@ -10694,7 +10772,7 @@ module.exports = elesfn;
 var is = __webpack_require__(0);
 var util = __webpack_require__(1);
 var Collection = __webpack_require__(7);
-var Element = __webpack_require__(12);
+var Element = __webpack_require__(13);
 
 var corefn = {
   add: function add(opts) {
@@ -18449,7 +18527,7 @@ module.exports = BRp;
 "use strict";
 
 
-var zIndexSort = __webpack_require__(13);
+var zIndexSort = __webpack_require__(14);
 
 var BRp = {};
 
@@ -18779,7 +18857,7 @@ module.exports = BR;
 var is = __webpack_require__(0);
 var util = __webpack_require__(1);
 var math = __webpack_require__(2);
-var Event = __webpack_require__(14);
+var Event = __webpack_require__(15);
 
 var BRp = {};
 
@@ -23597,7 +23675,7 @@ module.exports = CRp;
 var math = __webpack_require__(2);
 var util = __webpack_require__(1);
 var Heap = __webpack_require__(8);
-var defs = __webpack_require__(15);
+var defs = __webpack_require__(16);
 
 var minTxrH = 25; // the size of the texture cache for small height eles (special case)
 var txrStepH = 50; // the min size of the regular cache, and the size it increases with each step up
@@ -24156,12 +24234,6 @@ CRp.bufferCanvasImage = function (options) {
 
     buffCxt.clearRect(0, 0, width, height);
 
-    if (options.bg) {
-      buffCxt.fillStyle = options.bg;
-      buffCxt.rect(0, 0, width, height);
-      buffCxt.fill();
-    }
-
     buffCxt.globalCompositeOperation = 'source-over';
 
     var zsortedEles = this.getCachedZSortedEles();
@@ -24172,6 +24244,9 @@ CRp.bufferCanvasImage = function (options) {
       buffCxt.scale(scale, scale);
 
       this.drawElements(buffCxt, zsortedEles);
+
+      buffCxt.scale(1 / scale, 1 / scale);
+      buffCxt.translate(bb.x1 * scale, bb.y1 * scale);
     } else {
       // draw the current view
       var pan = cy.pan();
@@ -24187,6 +24262,18 @@ CRp.bufferCanvasImage = function (options) {
       buffCxt.scale(scale, scale);
 
       this.drawElements(buffCxt, zsortedEles);
+
+      buffCxt.scale(1 / scale, 1 / scale);
+      buffCxt.translate(-translation.x, -translation.y);
+    }
+
+    // need to fill bg at end like this in order to fill cleared transparent pixels in jpgs
+    if (options.bg) {
+      buffCxt.globalCompositeOperation = 'destination-over';
+
+      buffCxt.fillStyle = options.bg;
+      buffCxt.rect(0, 0, width, height);
+      buffCxt.fill();
     }
   }
 
@@ -24392,7 +24479,7 @@ var util = __webpack_require__(1);
 var math = __webpack_require__(2);
 var Heap = __webpack_require__(8);
 var is = __webpack_require__(0);
-var defs = __webpack_require__(15);
+var defs = __webpack_require__(16);
 
 var defNumLayers = 1; // default number of layers to use
 var minLvl = -4; // when scaling smaller than that we don't need to re-render
@@ -25175,7 +25262,7 @@ module.exports = NullRenderer;
 
 
 var is = __webpack_require__(0);
-var Core = __webpack_require__(11);
+var Core = __webpack_require__(12);
 var extension = __webpack_require__(21);
 var Stylesheet = __webpack_require__(22);
 
@@ -25256,7 +25343,7 @@ module.exports = typeof Map !== 'undefined' ? Map : ObjectMap;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _require = __webpack_require__(16),
+var _require = __webpack_require__(17),
     stateSelectorRegex = _require.stateSelectorRegex;
 
 var tokens = __webpack_require__(122);
@@ -25499,7 +25586,7 @@ module.exports = exprs;
 "use strict";
 
 
-var _require = __webpack_require__(16),
+var _require = __webpack_require__(17),
     stateSelectorMatches = _require.stateSelectorMatches;
 
 var is = __webpack_require__(0);
