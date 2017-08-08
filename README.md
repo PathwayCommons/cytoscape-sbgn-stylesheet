@@ -39,6 +39,10 @@ The following graph JSON structure is required:
 ```
 
 #### Supported SBGN PD glyphs
+* simple chemical multimer
+* macromolecule multimer
+* nucleic acid feature multimer
+* complex multimer
 * simple chemical
 * macromolecule
 * nucleic acid feature
@@ -69,11 +73,6 @@ The following graph JSON structure is required:
 #### Unsupported SBGN PD glyphs
 * submap
 * ports
-* simple chemical multimer
-* macromolecule multimer
-* nucleic acid feature multimer
-* complex multimer
-
 
 
 The following node JSON structure is required:
