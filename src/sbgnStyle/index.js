@@ -9,7 +9,7 @@ const sbgnStyleSheet = function (cytoscape) {
         .css({
           'shape': (node) => elementStyle.sbgnShape(node),
           'content': (node) => elementStyle.sbgnContent(node),
-          'font-size': (node) => elementStyle.labelTextSize(node),
+          'font-size': 20,
           'width': (node) => elementStyle.width(node),
           'height': (node) => elementStyle.height(node),
           'text-valign': 'center',
@@ -56,6 +56,42 @@ const sbgnStyleSheet = function (cytoscape) {
           'background-clip': (node) => sbgnsvg.draw(node).bgClip,
           'padding': (node) => sbgnsvg.draw(node).padding,
           'border-width': (node) => sbgnsvg.draw(node).borderWidth
+        })
+
+        .selector(`
+          node[class="simple chemical multimer"],
+          node[class="macromolecule multimer"],
+          node[class="nucleic acid feature multimer"],
+          node[class="complex multimer"]
+        `)
+        .css({
+          'ghost': 'yes',
+          'ghost-opacity': 0.8
+        })
+
+        .selector(`
+          node[class="macromolecule multimer"],
+          node[class="nucleic acid feature multimer"]
+        `)
+        .css({
+          'ghost-offset-x': 12,
+          'ghost-offset-y': 12
+        })
+
+        .selector(`
+          node[class="simple chemical multimer"]
+        `)
+        .css({
+          'ghost-offset-x': 5,
+          'ghost-offset-y': 5
+        })
+
+        .selector(`
+          node[class="complex multimer"]
+        `)
+        .css({
+          'ghost-offset-x': 16,
+          'ghost-offset-y': 16
         })
 
         // compound node specific style
