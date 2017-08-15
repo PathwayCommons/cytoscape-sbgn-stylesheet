@@ -1,4 +1,4 @@
-const cytoscape = window.cytoscape = require('./cytoscape.js/');
+const cytoscape = window.cytoscape = require('cytoscape');
 const convertSbgnml = require('sbgnml-to-cytoscape');
 const textWidth = require('text-width');
 const $ = require('jquery');
