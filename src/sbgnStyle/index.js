@@ -17,7 +17,6 @@ const sbgnStyleSheet = function (cytoscape) {
           'border-width': 1.5,
           'border-color': '#555',
           'background-color': '#f6f6f6',
-          'background-opacity': 0.5,
           'text-opacity': 1,
           'opacity': 1,
           'text-outline-color': 'white',
@@ -32,7 +31,6 @@ const sbgnStyleSheet = function (cytoscape) {
         })
         .selector('node:active')
         .css({
-          'background-opacity': 0.7,
           'overlay-color': '#d67614',
           'overlay-padding': '14'
         })
@@ -66,7 +64,7 @@ const sbgnStyleSheet = function (cytoscape) {
         `)
         .css({
           'ghost': 'yes',
-          'ghost-opacity': 0.8
+          'ghost-opacity': 1
         })
 
         .selector(`
@@ -98,7 +96,6 @@ const sbgnStyleSheet = function (cytoscape) {
         .selector('node[class="complex"], node[class="complex multimer"], node[class="compartment"]')
         .css({
           'compound-sizing-wrt-labels': 'exclude',
-          'background-opacity': .2,
           'text-valign': 'bottom',
           'text-halign': 'center',
         })
