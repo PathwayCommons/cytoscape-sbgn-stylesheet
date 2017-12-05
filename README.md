@@ -120,41 +120,31 @@ The following cytoscape.js style properties are used to render SBGN PD graphics.
 * ```padding```
 * ```border-width```
 
+## Run targets
 
-##### Demo
-For a detailed example, refer to the code in the [demo](https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet/tree/master/demo):
+- `npm run build` : build project
+- `npm run build-prod` : build the project for production
+- `npm run bundle-profile` : visualise the bundle dependencies
+- `npm run clean` : clean the project
+- `npm run watch` : watch mode (debug mode enabled, autorebuild, autoreload)
+- `npm test` : run tests
+- `npm run lint` : lint the project
 
-###### Running the Demo
-Clone this repository
-```
-git clone https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet
-```
+## Testing
 
-Change directory to the newly cloned folder
-```
-cd cytoscape-sbgn-stylesheet
-```
+All files `/test` will be run by [Mocha](https://mochajs.org/).  You can `npm test` to run all tests, or you can run `mocha -g specific-test-name` (prerequisite: `npm install -g mocha`) to run specific tests.
 
-Run a local server
-```
-node http-server -p <PORT>
-```
+[Chai](http://chaijs.com/) is included to make the tests easier to read and write.
 
-Open your browser and type the following address:
-```
-localhost:<PORT>/demo/
-```
+## Publishing a release
 
-### Building the Library
-
-The following npm scripts are available.  To run a script, type:
-
-```
-npm run <command>
-```
-
-* ```build```: Builds the cytoscape-sbgn-stylesheet library; Places it in the dist folder
-* ```build-demo```: Builds the browserify version of the demo app in the demo folder
-* ```clean```: Removes the browserify demo bundle and the contents of the dist folder
-* ```watch```: Watches for changes in the src directory and builds the library in response
-* ```watch-demo```: Watches for changes in demo/browserify-entry.js and builds the demo in response
+1. Make sure the tests are passing: `npm test`
+1. Do a prod build: `npm run build-prod`
+1. Make sure the linting is passing: `npm run lint`
+1. Bump the version number with `npm version`, in accordance with [semver](http://semver.org/).  The `version` command in `npm` updates both `package.json` and git tags, but note that it uses a `v` prefix on the tags (e.g. `v1.2.3`).
+  1. For a bug fix / patch release, run `npm version patch`.
+  1. For a new feature release, run `npm version minor`.
+  1. For a breaking API change, run `npm version major.`
+  1. For a specific version number (e.g. 1.2.3), run `npm version 1.2.3`.
+1. Push the release: `git push origin --tags`
+1. Publish to npm: `npm publish .`
