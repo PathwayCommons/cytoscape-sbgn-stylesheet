@@ -1,51 +1,33 @@
 {
   "name": "cytoscape-sbgn-stylesheet",
   "version": "3.0.1",
-  "description": "SBGN specific glyph style for cytoscape.js",
-  "main": "dist/cytoscape-sbgn-stylesheet.js",
-  "scripts": {
-    "test": "mocha --compilers js:babel-register --require babel-polyfill",
-    "clean": "rm -rf demo/browserify-bundle.js dist/*",
-    "build-demo": "browserify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ]",
-    "watch-demo": "watchify -e demo/browserify-entry.js -o demo/browserify-bundle.js -d -t [ babelify --comments false ] -p [ browserify-livereload --host 127.0.0.1 --port 30303 ] --poll=50 --verbose",
-    "build": "browserify --standalone cytoscape-sbgn-stylesheet -e src/index.js -d -t [ babelify --comments false ] | derequire > dist/cytoscape-sbgn-stylesheet.js",
-    "watch": "watchify --standalone cytoscape-sbgn-stylesheet -e src/index.js -d -t [ babelify --comments false ] -o 'derequire > dist/cytoscape-sbgn-stylesheet.js' --poll=50 --verbose",
-    "build-test": "browserify test/*.js -o test/testenv/test-bundle.js -d",
-    "watch-test": "watchify test/*.js -o test/testenv/test-bundle.js -d --poll=50 --verbose"
+  "description": "cytoscape.js stylesheet for sbgn PD glyphs ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet.git"
   },
-  "keywords": [
-    "biology",
-    "canvas",
-    "render",
-    "sbgn",
-    "network",
-    "graph",
-    "visualization",
-    "cytoscape",
-    "cytoscape.js"
-  ],
-  "author": "Dylan Fong",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-polyfill": "^6.22.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.22.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.1",
-    "browserify-livereload": "^1.0.10",
-    "chai": "^3.5.0",
-    "derequire": "^2.0.6",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.1",
-    "eslint-plugin-react": "^6.7.1",
-    "jquery": "^3.2.1",
-    "mocha": "^3.2.0",
-    "sbgnml-to-cytoscape": "^3.0.2",
-    "watchify": "^3.9.0"
+  "bugs": {
+    "url": "https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet/issues"
+  },
+  "homepage": "https://github.com/PathwayCommons/cytoscape-sbgn-stylesheet",
+  "main": "./build/bundle.js",
+  "scripts": {
+    "prepublish": "run-s build",
+    "postinstall": "run-s build",
+    "lint:js": "eslint ./src",
+    "bundle:js": "webpack",
+    "watch:js": "webpack --watch",
+    "watch:sync-bundle": "browser-sync start --config browser-sync.config.js",
+    "bundle": "run-s bundle:*",
+    "build": "run-p bundle",
+    "build-prod": "cross-env NODE_ENV=production run-s build",
+    "clean": "rimraf build/*",
+    "lint": "run-s lint:*",
+    "watch": "run-p watch:*",
+    "test": "mocha"
   },
   "dependencies": {
+    "camelcase": "^4.1.0",
     "extend": "^3.0.0",
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.memoize": "^4.1.2",
@@ -53,5 +35,31 @@
   },
   "peerDependencies": {
     "cytoscape": "^3.2.0"
-  }
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.13",
+    "chai": "^4.1.2",
+    "cross-env": "^5.0.0",
+    "echo-cli": "^1.0.8",
+    "eslint": "^4.6.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.5.3",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.0"
+  },
+  "engines": {
+    "node": ">=6.3.0"
+  },
+  "browserslist": "last 3 versions, >1%"
 }
