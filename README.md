@@ -1,5 +1,5 @@
 # cytoscape-sbgn-stylesheet
-A Cytoscape.js package that provides SBGN specific glyph styles
+A Cytoscape.js package that provides SBGN specific glyph styles ([demo](https://pathwaycommons.github.io/cytoscape-sbgn-stylesheet/))
 
 ### Purpose
 To render SBGN-PD(Systems Biology Graphical Notation) graphs -- a visual language for representing biological processes.

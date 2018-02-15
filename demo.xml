@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+   <map language="process description">
+      <glyph id="glyph1" class="compartment">
+         <label text="synaptic cleft" />
+         <bbox y="451.4672628114068" x="643.0041361913168" w="254.08954881649527" h="304.8762412720447" />
+      </glyph>
+      <glyph id="glyph10" class="macromolecule" compartmentRef="glyph1">
+         <label text="AChE" />
+         <bbox y="695.5935040834514" x="669.7050429901893" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph19" class="process" compartmentRef="glyph1">
+         <bbox y="622.7047526281501" x="761.6065327100307" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph11" class="simple chemical" compartmentRef="glyph1">
+         <label text="acetate" />
+         <bbox y="642.9950321120291" x="836.343685007812" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph17" class="process" compartmentRef="glyph1">
+         <bbox y="452.2172628114067" x="770.4404211840899" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph7" class="simple chemical" compartmentRef="glyph1">
+         <label text="ACh" />
+         <bbox y="517.3570926019304" x="812.867868440539" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph5" class="simple chemical" compartmentRef="glyph1">
+         <label text="choline" />
+         <bbox y="561.1376395474406" x="643.7541361913168" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph0" class="compartment">
+         <label text="synaptic button" />
+         <bbox y="49.28191371048774" x="19.87697950944448" w="528.3772339877597" h="600.409043170399" />
+      </glyph>
+      <glyph id="glyph14" class="compartment" compartmentRef="glyph0">
+         <label text="synaptic vesicle" />
+         <bbox y="210.10518711003323" x="461.5042134972042" w="61.5" h="61.5" />
+      </glyph>
+      <glyph id="glyph6" class="simple chemical" compartmentRef="glyph14">
+         <label text="ACh" />
+         <bbox y="210.85518711003323" x="462.2542134972042" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph8" class="macromolecule" compartmentRef="glyph0">
+         <label text="CHT1" />
+         <bbox y="463.88399094919043" x="173.13067713678856" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph13" class="simple chemical" compartmentRef="glyph0">
+         <label text="Ach" />
+         <bbox y="174.40035574974667" x="266.06141509780923" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph4" class="macromolecule" compartmentRef="glyph0">
+         <label text="vAChT" />
+         <bbox y="50.0319137104878" x="341.0948426971652" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph18" class="process" compartmentRef="glyph0">
+         <bbox y="165.79855923606135" x="381.3423913539207" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph3" class="macromolecule" compartmentRef="glyph0">
+         <label text="ChAT" />
+         <bbox y="254.84234943576757" x="20.62697950944448" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph9" class="macromolecule" compartmentRef="glyph0">
+         <label text="SNARE" />
+         <bbox y="588.9409568808867" x="372.77215278290015" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph15" class="process" compartmentRef="glyph0">
+         <bbox y="423.5590129724641" x="342.0061729818583" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph12" class="simple chemical" compartmentRef="glyph0">
+         <label text="choline" />
+         <bbox y="319.41797443653786" x="243.0840166839621" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph47" class="simple chemical" compartmentRef="glyph0">
+         <label text="acetyl CoA" />
+         <bbox y="141.2675330945018" x="125.17928220362705" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph16" class="process" compartmentRef="glyph0">
+         <bbox y="250.8070789152547" x="197.27865035440527" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph2" class="compartment">
+         <label text="muscle cytosol" />
+         <bbox y="18.974806008196992" x="1223.249018133457" w="862.289418115462" h="663.5121323746293" />
+      </glyph>
+      <glyph id="glyph20" class="macromolecule" compartmentRef="glyph2">
+         <label text="nAChR" />
+         <bbox y="462.58732111519737" x="1223.999018133457" w="120" h="60" />
+         <glyph id="glyph20a" class="state variable">
+            <state value="closed" />
+            <bbox y="507.58732111519737" x="1253.999018133457" w="60.0" h="30.0" />
+         </glyph>
+      </glyph>
+      <glyph id="glyph24" class="process" compartmentRef="glyph2">
+         <bbox y="388.6650341622118" x="1291.6362730997278" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph22" class="simple chemical" compartmentRef="glyph2">
+         <label text="Ca2+" />
+         <bbox y="202.05000581952652" x="1559.5695675154066" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph42" class="association" compartmentRef="glyph2">
+         <bbox y="241.92937531016833" x="1680.9446371300062" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph38" class="complex multimer" compartmentRef="glyph2">
+         <bbox y="334.30565593238714" x="1526.3897609318626" w="196.5" h="136.5" />
+         <glyph id="glyph38a" class="state variable">
+            <state value="relaxed" />
+            <bbox y="471.55565593238714" x="1520.6397609318626" w="67.0" h="30.0" />
+         </glyph>
+         <glyph id="glyph29" class="macromolecule">
+            <label text="myosin" />
+            <bbox y="335.05565593238714" x="1527.1397609318626" w="120" h="60" />
+         </glyph>
+         <glyph id="glyph30" class="macromolecule">
+            <label text="actin" />
+            <bbox y="410.05565593238714" x="1527.1397609318626" w="120" h="60" />
+         </glyph>
+         <glyph id="glyph46" class="simple chemical">
+            <label text="ATP" />
+            <bbox y="335.05565593238714" x="1662.1397609318626" w="60" h="60" />
+         </glyph>
+      </glyph>
+      <glyph id="glyph33" class="simple chemical" compartmentRef="glyph2">
+         <label text="Pi" />
+         <bbox y="550.5826529205284" x="1627.0448245589985" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph43" class="process" compartmentRef="glyph2">
+         <bbox y="539.6009389943749" x="1741.2193616265988" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph40" class="simple chemical" compartmentRef="glyph2">
+         <label text="ADP" />
+         <bbox y="617.3483839558924" x="1729.2930830609844" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph44" class="dissociation" compartmentRef="glyph2">
+         <bbox y="320.8071031300308" x="1925.250386913732" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph26" class="macromolecule" compartmentRef="glyph2">
+         <label text="actin" />
+         <bbox y="238.820483039897" x="1760.439889522249" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph25" class="simple chemical" compartmentRef="glyph2">
+         <label text="ATP" />
+         <bbox y="66.8211999690675" x="2024.788436248919" w="60" h="60" />
+      </glyph>
+      <glyph id="glyph27" class="macromolecule" compartmentRef="glyph2">
+         <label text="myosin" />
+         <bbox y="215.72390413349126" x="1943.3717441786537" w="120" h="60" />
+      </glyph>
+      <glyph id="glyph45" class="association" compartmentRef="glyph2">
+         <bbox y="141.57845482385733" x="1957.0754642626248" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph36" class="complex" compartmentRef="glyph2">
+         <bbox y="34.72480600819699" x="1744.1344575025842" w="121.5" h="136.5" />
+         <glyph id="glyph28" class="macromolecule">
+            <label text="myosin" />
+            <bbox y="35.47480600819699" x="1744.8844575025842" w="120" h="60" />
+         </glyph>
+         <glyph id="glyph35" class="simple chemical">
+            <label text="ATP" />
+            <bbox y="110.47480600819699" x="1744.8844575025842" w="60" h="60" />
+         </glyph>
+      </glyph>
+      <glyph id="glyph21" class="macromolecule" compartmentRef="glyph2">
+         <label text="nAChR" />
+         <bbox y="288.76950553546544" x="1324.4372296707947" w="120" h="60" />
+         <glyph id="glyph21a" class="state variable">
+            <state value="open" />
+            <bbox y="334.76950553546544" x="1358.9372296707947" w="51.0" h="28.0" />
+         </glyph>
+      </glyph>
+      <glyph id="glyph41" class="process" compartmentRef="glyph2">
+         <bbox y="238.3516476521878" x="1478.6367504586137" w="20" h="20" />
+      </glyph>
+      <glyph id="glyph37" class="complex" compartmentRef="glyph2">
+         <bbox y="411.3744130185455" x="1830.6659362399225" w="121.5" h="136.5" />
+         <glyph id="glyph37a" class="state variable">
+            <state value="tense" />
+            <bbox y="549.6244130185455" x="1824.9159362399225" w="54.0" h="28.0" />
+         </glyph>
+         <glyph id="glyph31" class="macromolecule">
+            <label text="actin" />
+            <bbox y="412.1244130185455" x="1831.4159362399225" w="120" h="60" />
+         </glyph>
+         <glyph id="glyph39" class="macromolecule">
+            <label text="myosin" />
+            <bbox y="487.1244130185455" x="1831.4159362399225" w="120" h="60" />
+         </glyph>
+      </glyph>
+      <glyph id="glyph32" class="phenotype" compartmentRef="glyph2">
+         <label text="muscle contraction" />
+         <bbox y="621.7369383828263" x="1896.8873538946682" w="160" h="60" />
+      </glyph>
+      <glyph id="glyph23" class="simple chemical" compartmentRef="glyph2">
+         <label text="Ca2+" />
+         <bbox y="140.3243361927971" x="1379.3416303507177" w="60" h="60" />
+      </glyph>
+      <arc id="glyph8-glyph15" target="glyph15" source="glyph8" class="necessary stimulation">
+         <start y="464.8528832261997" x="290.3389421250261" />
+         <end y="439.9912386382744" x="339.33092566215623" />
+      </arc>
+      <arc id="glyph12-glyph16" target="glyph16" source="glyph12" class="consumption">
+         <start y="324.7309513674411" x="254.75062114505866" />
+         <end y="270.8070789152547" x="214.70497935632255" />
+      </arc>
+      <arc id="glyph16-glyph13" target="glyph13" source="glyph16" class="production">
+         <start y="254.45373732597977" x="217.27865035440527" />
+         <end y="222.49902512484957" x="267.5745643267831" />
+      </arc>
+      <arc id="glyph13-glyph18" target="glyph18" source="glyph13" class="consumption">
+         <start y="195.5594446942901" x="325.51308384016585" />
+         <end y="178.80039629079565" x="381.3423913539207" />
+      </arc>
+      <arc id="glyph18-glyph6" target="glyph6" source="glyph18" class="production">
+         <start y="182.24543795574186" x="401.3423913539207" />
+         <end y="222.56788850460813" x="463.8880856381534" />
+      </arc>
+      <arc id="glyph4-glyph18" target="glyph18" source="glyph4" class="necessary stimulation">
+         <start y="110.7819137104878" x="397.96339878828684" />
+         <end y="162.81399500823883" x="392.6646819087387" />
+      </arc>
+      <arc id="glyph3-glyph16" target="glyph16" source="glyph3" class="catalysis">
+         <start y="273.3135423195269" x="141.37697950944448" />
+         <end y="263.2641656789284" x="194.33125524334446" />
+      </arc>
+      <arc id="glyph10-glyph19" target="glyph19" source="glyph10" class="catalysis">
+         <start y="694.8435040834514" x="743.5761607380164" />
+         <end y="645.439397215615" x="765.8620203669591" />
+      </arc>
+      <arc id="glyph7-glyph19" target="glyph19" source="glyph7" class="consumption">
+         <start y="570.9610773089896" x="823.1596365069303" />
+         <end y="622.7047526281501" x="779.9560686795718" />
+      </arc>
+      <arc id="glyph19-glyph5" target="glyph5" source="glyph19" class="production">
+         <start y="628.4568124080289" x="761.6065327100307" />
+         <end y="604.3332164631153" x="704.8176075018853" />
+      </arc>
+      <arc id="glyph19-glyph11" target="glyph11" source="glyph19" class="production">
+         <start y="636.9576015376505" x="781.6065327100307" />
+         <end y="659.7865414320246" x="835.2857025563353" />
+      </arc>
+      <arc id="glyph9-glyph17" target="glyph17" source="glyph9" class="necessary stimulation">
+         <start y="592.1883174154278" x="492.11891520667257" />
+         <end y="467.9579938772444" x="767.7054608396006" />
+      </arc>
+      <arc id="glyph6-glyph17" target="glyph17" source="glyph6" class="consumption">
+         <start y="259.58679648246584" x="516.6404659833611" />
+         <end y="454.5360459524138" x="770.4404211840899" />
+      </arc>
+      <arc id="glyph17-glyph7" target="glyph7" source="glyph17" class="production">
+         <start y="472.2172628114067" x="787.7727646254668" />
+         <end y="520.1396392257084" x="822.9110968651268" />
+      </arc>
+      <arc id="glyph7-glyph24" target="glyph24" source="glyph7" class="necessary stimulation">
+         <start y="537.8762096290043" x="872.1197975744215" />
+         <end y="402.8311121046721" x="1288.7824263549587" />
+      </arc>
+      <arc id="glyph20-glyph24" target="glyph24" source="glyph20" class="consumption">
+         <start y="461.83732111519737" x="1289.773425974317" />
+         <end y="408.6650341622118" x="1299.758416891318" />
+      </arc>
+      <arc id="glyph24-glyph21" target="glyph21" source="glyph24" class="production">
+         <start y="389.01592720314267" x="1311.6362730997278" />
+         <end y="351.60261128521404" x="1350.4101369159685" />
+      </arc>
+      <arc id="glyph41-glyph22" target="glyph22" source="glyph41" class="production">
+         <start y="246.73654938107856" x="1498.6367504586137" />
+         <end y="237.43122857725183" x="1556.251330142584" />
+      </arc>
+      <arc id="glyph22-glyph42" target="glyph42" source="glyph22" class="stimulation">
+         <start y="237.96729649397645" x="1619.7448582525985" />
+         <end y="249.2834323256582" x="1677.451620946709" />
+      </arc>
+      <arc id="glyph36-glyph42" target="glyph42" source="glyph36" class="consumption">
+         <start y="186.974806008197" x="1740.6303365571994" />
+         <end y="243.3909521175467" x="1697.4759332788346" />
+      </arc>
+      <arc id="glyph26-glyph42" target="glyph42" source="glyph26" class="consumption">
+         <start y="260.89637172597145" x="1759.689889522249" />
+         <end y="253.31980574707853" x="1701.6043370882655" />
+      </arc>
+      <arc id="glyph42-glyph38" target="glyph38" source="glyph42" class="production">
+         <start y="261.7683059526904" x="1686.6135929358609" />
+         <end y="315.8099078461019" x="1662.8247713020123" />
+      </arc>
+      <arc id="glyph38-glyph43" target="glyph43" source="glyph38" class="consumption">
+         <start y="486.55565593238714" x="1696.9486867059425" />
+         <end y="539.6009389943749" x="1742.6111561773037" />
+      </arc>
+      <arc id="glyph43-glyph37" target="glyph37" source="glyph43" class="production">
+         <start y="544.6096240375844" x="1761.2193616265988" />
+         <end y="519.1477478996622" x="1812.2317228146692" />
+      </arc>
+      <arc id="glyph43-glyph33" target="glyph33" source="glyph43" class="production">
+         <start y="552.8907575473362" x="1741.2193616265988" />
+         <end y="570.0356041215265" x="1689.1044917692404" />
+      </arc>
+      <arc id="glyph43-glyph40" target="glyph40" source="glyph43" class="production">
+         <start y="559.6009389943749" x="1752.0453393733894" />
+         <end y="613.7129260709761" x="1756.5148690893789" />
+      </arc>
+      <arc id="glyph37-glyph44" target="glyph44" source="glyph37" class="consumption">
+         <start y="395.6244130185455" x="1916.158312374516" />
+         <end y="341.1190687003432" x="1932.2129758324504" />
+      </arc>
+      <arc id="glyph44-glyph27" target="glyph27" source="glyph44" class="production">
+         <start y="322.415400514" x="1941.9691537056442" />
+         <end y="278.81577463098824" x="1976.8769348706937" />
+      </arc>
+      <arc id="glyph44-glyph26" target="glyph26" source="glyph44" class="production">
+         <start y="325.6999570941882" x="1925.791023332149" />
+         <end y="300.24059383681606" x="1878.6356508566205" />
+      </arc>
+      <arc id="glyph25-glyph45" target="glyph45" source="glyph25" class="consumption">
+         <start y="113.10511727763199" x="2028.7040244846519" />
+         <end y="145.88570324444046" x="1976.1944049607018" />
+      </arc>
+      <arc id="glyph27-glyph45" target="glyph45" source="glyph27" class="consumption">
+         <start y="214.97390413349126" x="1991.516570980137" />
+         <end y="161.60882940052443" x="1970.9425155748975" />
+      </arc>
+      <arc id="glyph45-glyph36" target="glyph36" source="glyph45" class="production">
+         <start y="148.49259039187083" x="1956.7778946121005" />
+         <end y="126.76067107603826" x="1884.2581978701724" />
+      </arc>
+      <arc id="glyph21-glyph41" target="glyph41" source="glyph21" class="necessary stimulation">
+         <start y="288.01950553546544" x="1429.9389725601695" />
+         <end y="256.7894120156941" x="1476.1511249422108" />
+      </arc>
+      <arc id="glyph5-glyph15" target="glyph15" source="glyph5" class="consumption">
+         <start y="577.6125609025862" x="646.1382938603194" />
+         <end y="438.4565925873626" x="362.0061729818583" />
+      </arc>
+      <arc id="glyph15-glyph12" target="glyph12" source="glyph15" class="production">
+         <start y="423.5590129724641" x="342.62642706106146" />
+         <end y="374.0340251438889" x="296.1732468048025" />
+      </arc>
+      <arc id="glyph47-glyph16" target="glyph16" source="glyph47" class="consumption">
+         <start y="197.8457757937921" x="170.64406526119444" />
+         <end y="250.8070789152547" x="201.4600628606654" />
+      </arc>
+      <arc id="glyph37-glyph32" target="glyph32" source="glyph37" class="stimulation">
+         <start y="563.6244130185455" x="1933.1305009864616" />
+         <end y="618.3000146429506" x="1960.2825119866666" />
+      </arc>
+      <arc id="glyph23-glyph41" target="glyph41" source="glyph23" class="consumption">
+         <start y="191.89194556770548" x="1431.2596760175047" />
+         <end y="238.51153247823765" x="1478.6367504586137" />
+      </arc>
+   </map>
+</sbgn>
