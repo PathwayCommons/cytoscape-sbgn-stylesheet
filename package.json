@@ -20,6 +20,7 @@
     "postinstall": "run-s build",
     "lint:js": "eslint ./src",
     "bundle:js": "webpack",
+    "bundle:demojs": "webpack --config demo.webpack.config.js",
     "watch:js": "webpack --watch",
     "watch:sync-bundle": "browser-sync start --config browser-sync.config.js",
     "dev": "webpack-dev-server --watch --open --open-page demo.html",
