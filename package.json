@@ -17,7 +17,6 @@
     "gh-pages:deploy": "gh-pages -d .",
     "gh-pages:cleanup": "rimraf index.html",
     "prepublish": "run-s build",
-    "postinstall": "run-s build",
     "lint:js": "eslint ./src",
     "bundle:js": "webpack",
     "bundle:demojs": "webpack --config demo.webpack.config.js",
