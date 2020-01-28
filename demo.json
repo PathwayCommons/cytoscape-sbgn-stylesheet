@@ -25,6 +25,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -53,6 +54,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -90,6 +92,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -118,6 +121,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -146,6 +150,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -174,6 +179,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -211,6 +217,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -239,6 +246,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -267,6 +275,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -295,6 +304,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -323,6 +333,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -351,6 +362,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -379,6 +391,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -407,6 +420,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -435,6 +449,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -463,6 +478,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -491,6 +507,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -519,6 +536,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -556,6 +574,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -584,6 +603,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -612,6 +632,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -640,6 +661,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -668,6 +690,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -696,6 +719,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -724,6 +748,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -761,6 +786,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -788,6 +814,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -816,6 +843,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -844,6 +872,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -872,6 +901,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -891,8 +921,8 @@
       }
     },
     "position": {
-      "x": -217.71550172481395,
-      "y": 600.672185394768
+      "x": 275.88008415416454,
+      "y": 504.97508201006804
     },
     "group": "nodes",
     "removed": false,
@@ -900,6 +930,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -928,6 +959,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -956,6 +988,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -984,6 +1017,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1012,6 +1046,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1040,6 +1075,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1059,8 +1095,8 @@
       }
     },
     "position": {
-      "x": -217.22444583966654,
-      "y": 764.48057723514
+      "x": 271.3344503874855,
+      "y": 673.8201635022664
     },
     "group": "nodes",
     "removed": false,
@@ -1068,6 +1104,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1096,6 +1133,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1124,6 +1162,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1142,8 +1181,8 @@
       }
     },
     "position": {
-      "x": 127.30656193656145,
-      "y": 457.5634003967006
+      "x": 141.80241206888627,
+      "y": 412.2331935302638
     },
     "group": "nodes",
     "removed": false,
@@ -1151,6 +1190,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1179,6 +1219,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1207,6 +1248,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1235,6 +1277,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1263,6 +1306,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1291,6 +1335,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1319,6 +1364,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1346,6 +1392,7 @@
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": false,
     "classes": ""
   },
   {
@@ -1359,13 +1406,17 @@
       "portSource": "glyph8",
       "portTarget": "glyph15"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1379,13 +1430,17 @@
       "portSource": "glyph12",
       "portTarget": "glyph16"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1399,13 +1454,17 @@
       "portSource": "glyph16",
       "portTarget": "glyph13"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1419,13 +1478,17 @@
       "portSource": "glyph13",
       "portTarget": "glyph18"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1439,13 +1502,17 @@
       "portSource": "glyph18",
       "portTarget": "glyph6"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1459,13 +1526,17 @@
       "portSource": "glyph4",
       "portTarget": "glyph18"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1479,13 +1550,17 @@
       "portSource": "glyph3",
       "portTarget": "glyph16"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1499,13 +1574,17 @@
       "portSource": "glyph10",
       "portTarget": "glyph19"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1519,13 +1598,17 @@
       "portSource": "glyph7",
       "portTarget": "glyph19"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1539,13 +1622,17 @@
       "portSource": "glyph19",
       "portTarget": "glyph5"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1559,13 +1646,17 @@
       "portSource": "glyph19",
       "portTarget": "glyph11"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1579,13 +1670,17 @@
       "portSource": "glyph9",
       "portTarget": "glyph17"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1599,13 +1694,17 @@
       "portSource": "glyph6",
       "portTarget": "glyph17"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1619,13 +1718,17 @@
       "portSource": "glyph17",
       "portTarget": "glyph7"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1639,13 +1742,17 @@
       "portSource": "glyph7",
       "portTarget": "glyph24"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1659,13 +1766,17 @@
       "portSource": "glyph20",
       "portTarget": "glyph24"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1679,13 +1790,17 @@
       "portSource": "glyph24",
       "portTarget": "glyph21"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1699,13 +1814,17 @@
       "portSource": "glyph41",
       "portTarget": "glyph22"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1719,13 +1838,17 @@
       "portSource": "glyph22",
       "portTarget": "glyph42"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1739,13 +1862,17 @@
       "portSource": "glyph36",
       "portTarget": "glyph42"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1759,13 +1886,17 @@
       "portSource": "glyph26",
       "portTarget": "glyph42"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1779,13 +1910,17 @@
       "portSource": "glyph42",
       "portTarget": "glyph38"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1799,13 +1934,17 @@
       "portSource": "glyph38",
       "portTarget": "glyph43"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1819,13 +1958,17 @@
       "portSource": "glyph43",
       "portTarget": "glyph37"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1839,13 +1982,17 @@
       "portSource": "glyph43",
       "portTarget": "glyph33"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1859,13 +2006,17 @@
       "portSource": "glyph43",
       "portTarget": "glyph40"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1879,13 +2030,17 @@
       "portSource": "glyph37",
       "portTarget": "glyph44"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1899,13 +2054,17 @@
       "portSource": "glyph44",
       "portTarget": "glyph27"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1919,13 +2078,17 @@
       "portSource": "glyph44",
       "portTarget": "glyph26"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1939,13 +2102,17 @@
       "portSource": "glyph25",
       "portTarget": "glyph45"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1959,13 +2126,17 @@
       "portSource": "glyph27",
       "portTarget": "glyph45"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1979,13 +2150,17 @@
       "portSource": "glyph45",
       "portTarget": "glyph36"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -1999,13 +2174,17 @@
       "portSource": "glyph21",
       "portTarget": "glyph41"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -2019,13 +2198,17 @@
       "portSource": "glyph5",
       "portTarget": "glyph15"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -2039,13 +2222,17 @@
       "portSource": "glyph15",
       "portTarget": "glyph12"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -2059,13 +2246,17 @@
       "portSource": "glyph47",
       "portTarget": "glyph16"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -2079,13 +2270,17 @@
       "portSource": "glyph37",
       "portTarget": "glyph32"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   },
   {
@@ -2099,13 +2294,17 @@
       "portSource": "glyph23",
       "portTarget": "glyph41"
     },
-    "position": {},
+    "position": {
+      "x": 0,
+      "y": 0
+    },
     "group": "edges",
     "removed": false,
     "selected": false,
     "selectable": true,
     "locked": false,
     "grabbable": true,
+    "pannable": true,
     "classes": ""
   }
 ]
