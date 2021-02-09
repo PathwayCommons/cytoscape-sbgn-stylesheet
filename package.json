@@ -1,6 +1,6 @@
 {
   "name": "cytoscape-sbgn-stylesheet",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "cytoscape.js stylesheet for sbgn PD glyphs ",
   "repository": {
     "type": "git",
