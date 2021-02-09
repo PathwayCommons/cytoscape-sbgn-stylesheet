@@ -21,7 +21,7 @@ var sbgnStylesheet = require('cytoscape-sbgn-stylesheet');
 
 var cy = cytoscape({
   container: container,
-  stylesheet: sbgnStylesheet(cytoscape),
+  style: sbgnStylesheet(cytoscape),
   // other arguments here
 });
 
