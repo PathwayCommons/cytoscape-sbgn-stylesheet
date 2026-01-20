@@ -92,7 +92,7 @@ const baseShapes = {
   },
 
   stadium (x, y, width, height, styleMap) {
-    const radiusRatio = .24 * Math.max(width, height);
+    const radiusRatio = height / 2;  // Fix for issue #88: Use half height for proper stadium shape
     return baseRectangle(x, y, width, height, radiusRatio, radiusRatio, radiusRatio, radiusRatio, styleMap);
   },
 
