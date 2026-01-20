@@ -21,7 +21,9 @@ const sbgnStyleSheet = function (cytoscape) {
           'opacity': 1,
           'text-outline-color': 'white',
           'text-outline-opacity': 1,
-          'text-outline-width': 0.75
+          'text-outline-width': 0.75,
+          'text-wrap': 'wrap',  // Fix for issue #80: Enable text wrapping for long labels
+          'text-max-width': (node) => elementStyle.width(node) - 10  // Padding for wrapped text
         })
         .selector('node:selected')
         .css({
