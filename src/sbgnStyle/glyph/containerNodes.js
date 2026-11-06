@@ -1,6 +1,5 @@
 const svgStr = require('../util/svg').svgStr;
 const sbgnData = require('../util/sbgn');
-const memoize = require('lodash.memoize');
 
 const auxiliaryItems = require('./auxiliaryItems');
 const baseShapes = require('./baseShapes');
