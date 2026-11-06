@@ -6,6 +6,8 @@ const svgUtil = require('../src/sbgnStyle/util/svg.js');
 const s = require('../src/sbgnStyle/glyph/baseShapes.js');
 
 const sbgnShapes = require('../src/sbgnStyle/glyph/');
+const auxiliaryItems = require('../src/sbgnStyle/glyph/auxiliaryItems.js');
+const entityPoolNodes = require('../src/sbgnStyle/glyph/entityPoolNodes.js');
 
 const browser = !(typeof window === 'undefined');
 
@@ -76,5 +78,59 @@ describe('sbgn shape svg', function () {
       }
     };
     expect(sbgnShapes.draw.bind(dummyNode)).to.throw(TypeError);
+  });
+});
+
+describe('auxiliaryItems cloneMarker', () => {
+  it('should clip with height equal to nodeHeight / 4', () => {
+    const nw = 100;
+    const nh = 80;
+    const svg = auxiliaryItems.cloneMarker(nw, nh, s.rectangle, [0, 0, nw, nh]);
+    expect(svg).to.contain('M 0 60');
+    expect(svg).to.not.contain('140');
+  });
+});
+
+describe('entityPoolNodes clone marker styling', () => {
+  before(() => {
+    if (typeof global.DOMParser === 'undefined') {
+      global.DOMParser = function () {
+        this.parseFromString = function (str) {
+          return {
+            documentElement: {
+              outerHTML: str
+            }
+          };
+        };
+      };
+    }
+  });
+
+  const dummyNode = {
+    data(key) {
+      const data = {
+        clonemarker: true,
+        unitsOfInformation: [],
+        stateVariables: []
+      };
+      return data[key];
+    }
+  };
+
+  const types = [
+    'unspecifiedEntity',
+    'simpleChemical',
+    'macromolecule',
+    'nucleicAcidFeature',
+    'perturbingAgent'
+  ];
+
+  types.forEach((type) => {
+    it(`${type} should have 100% bgHeight and 100% bgPosY for bottomLine and cloneMarkerSvg`, () => {
+      const style = entityPoolNodes[type](dummyNode);
+      expect(style.bgHeight).to.deep.equal(['100%', '100%', '100%']);
+      expect(style.bgPosY[0]).to.equal('100%');
+      expect(style.bgPosY[2]).to.equal('100%');
+    });
   });
 });

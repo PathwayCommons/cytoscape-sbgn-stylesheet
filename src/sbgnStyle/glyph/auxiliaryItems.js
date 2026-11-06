@@ -77,7 +77,7 @@ const auxiliaryItems = {
 
     const cloneMarkerSvg =
     `
-      ${baseShapes.clipPath(clipId, baseShapes.rectangle,  [0, 3 * nodeHeight / 4, nodeWidth, nodeHeight, new Map()])}
+      ${baseShapes.clipPath(clipId, baseShapes.rectangle, [0, 3 * nodeHeight / 4, nodeWidth, nodeHeight / 4, new Map()])}
       ${shapeFn(...shapeFnArgs, cloneMarkerStyle)}
     `;
 

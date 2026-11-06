@@ -50,8 +50,9 @@ const entityPoolNodes = {
     return {
       bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
       bgWidth: ['100%', '100%', '100%'],
+      bgHeight: ['100%', '100%', '100%'],
       bgPosX: ['0%', '0%', '0%', '20px', '40px'],
-      bgPosY: ['52px', '8px', '32px', '44px', '0%'],
+      bgPosY: ['100%', '8px', '100%', '44px', '0%'],
       bgFit: ['cover', 'cover', 'none', 'none'],
       bgClip: 'node',
       padding: '8px',
@@ -94,8 +95,9 @@ const entityPoolNodes = {
     return {
       bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg],
       bgWidth: ['100%', '100%', '100%'],
+      bgHeight: ['100%', '100%', '100%'],
       bgPosX: ['0%', '0%', '0%', '12px'],
-      bgPosY: ['52px', '8px', '48px', '0px'],
+      bgPosY: ['100%', '8px', '100%', '0px'],
       bgFit: ['cover', 'cover', 'none', 'none'],
       bgClip: 'node',
       padding: '8px',
@@ -143,8 +145,9 @@ const entityPoolNodes = {
     return {
       bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
       bgWidth: ['100%', '100%', '100%'],
+      bgHeight: ['100%', '100%', '100%'],
       bgPosX: ['0%', '0%', '0%', '20px', '40px'],
-      bgPosY: ['52px', '8px', '52px', '44px', '0%'],
+      bgPosY: ['100%', '8px', '100%', '44px', '0%'],
       bgFit: ['cover', 'cover', 'none', 'none'],
       bgClip: 'node',
       padding: '8px',
@@ -191,8 +194,9 @@ const entityPoolNodes = {
     return {
       bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg, sVarSvg],
       bgWidth: ['100%', '100%', '100%'],
+      bgHeight: ['100%', '100%', '100%'],
       bgPosX: ['0%', '0%', '0%', '20px', '40px'],
-      bgPosY: ['52px', '8px', '52px', '44px', '0%'],
+      bgPosY: ['100%', '8px', '100%', '44px', '0%'],
       bgFit: ['cover', 'cover', 'none', 'none'],
       bgClip: 'node',
       padding: '8px',
@@ -208,7 +212,6 @@ const entityPoolNodes = {
 
     const images = [];
     const bgWidth = [];
-    const bgHeight = [];
     const bgPosX = [];
     const bgPosY = [];
     const bgFit = [];
@@ -332,8 +335,9 @@ const entityPoolNodes = {
     return {
       bgImage: [bottomLine, topLine, cloneMarkerSvg, uInfoSvg],
       bgWidth: ['100%', '100%', '100%'],
+      bgHeight: ['100%', '100%', '100%'],
       bgPosX: ['0%', '0%', '0%', '20px'],
-      bgPosY: ['56px', '8px', '56px', '0%'],
+      bgPosY: ['100%', '8px', '100%', '0%'],
       bgFit: ['cover', 'cover', 'none', 'none'],
       bgClip: 'node',
       padding: '8px',
